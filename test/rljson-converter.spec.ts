@@ -6,12 +6,12 @@
 
 import { describe, expect, it } from 'vitest';
 
-import { TemplateProject } from '../src/template-project';
+import { RljsonConverter } from '../src/rljson-converter';
 
 
-describe('TemplateProject', () => {
+describe('RljsonConverter', () => {
   it('should validate a template', () => {
-    const templateProject = TemplateProject.example;
-    expect(templateProject).toBeDefined();
+    const rljsonConverter = RljsonConverter.example;
+    expect(rljsonConverter).toBeDefined();
   });
 });

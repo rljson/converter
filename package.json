@@ -1,9 +1,9 @@
 {
-  "name": "@rljson/template-project",
+  "name": "@rljson/rljson-converter",
   "version": "0.0.17",
-  "description": "Rljson template-project description",
-  "homepage": "https://github.com/rljson/template-project",
-  "bugs": "https://github.com/rljson/template-project/issues",
+  "description": "Convert flat textual data i. e. from JSON or XML into RLJSON data structure and data itself automatically.",
+  "homepage": "https://github.com/rljson/rljson-converter",
+  "bugs": "https://github.com/rljson/rljson-converter/issues",
   "private": false,
   "license": "MIT",
   "engines": {
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rljson/template-project.git"
+    "url": "git+https://github.com/rljson/rljson-converter.git"
   },
-  "main": "dist/template-project.js",
+  "main": "dist/rljson-converter.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
