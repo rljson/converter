@@ -8,7 +8,7 @@ found in the LICENSE file in the root of this package.
 
 # Update doc, scripts and settings
 
-To update documentation, scripts and settings from template-project, execute
+To update documentation, scripts and settings from rljson-converter, execute
 
 ```bash
 node update-dna.js

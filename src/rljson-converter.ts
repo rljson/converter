@@ -5,9 +5,9 @@
 // found in the LICENSE file in the root of this package.
 
 // .............................................................................
-export class TemplateProject {
+export class RljsonConverter {
   /** Example instance for test purposes */
-  static get example(): TemplateProject {
-    return new TemplateProject();
+  static get example(): RljsonConverter {
+    return new RljsonConverter();
   }
 }
