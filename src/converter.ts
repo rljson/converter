@@ -7,14 +7,20 @@
 import { hip } from '@rljson/hash';
 import { Json } from '@rljson/json';
 import {
-  Cake, CakesTable, ComponentRef, ComponentsTable, JsonWithId, Layer, LayerRef, LayersTable, Rljson,
-  SliceIdsRef, SliceIdsTable
+  Cake,
+  CakesTable,
+  ComponentRef,
+  ComponentsTable,
+  JsonWithId,
+  Layer,
+  LayerRef,
+  LayersTable,
+  Rljson,
+  SliceIdsRef,
+  SliceIdsTable,
 } from '@rljson/rljson';
 
-
-// .............................................................................
 export class Converter {
-  /** Example instance for test purposes */
   static get example(): Converter {
     return new Converter();
   }
@@ -48,28 +54,24 @@ const resolvePropertyReference = (
   return { [ref]: (refCompRow as any)._hash as ComponentRef };
 };
 
+// Pass keys array instead of splitting every time
 const nestedProperty = (
   obj: any,
   idx: number,
-  path: string,
+  path: string | string[],
   nestedTypes: Rljson,
 ) => {
-  const keys = path.split('/');
-
+  const keys = Array.isArray(path) ? path : path.split('/');
+  const key = keys[0];
   if (keys.length === 1) {
-    const key = keys[0];
     if (key.slice(-3) == 'Ref')
       return resolvePropertyReference(key, idx, nestedTypes);
     else if (key.slice(-7).toLowerCase() == 'sliceid')
       return resolvePropertySliceId(key, idx, nestedTypes);
-    else return { [key]: obj ? (obj[key] ? obj[key] : null) : null };
+    else
+      return { [key]: obj ? (obj[key] !== undefined ? obj[key] : null) : null };
   } else {
-    return nestedProperty(
-      obj[keys[0]],
-      idx,
-      keys.slice(1).join('/'),
-      nestedTypes,
-    );
+    return nestedProperty(obj[key], idx, keys.slice(1), nestedTypes);
   }
 };
 
@@ -86,23 +88,18 @@ export const fromJson = (
     ? decomposeSheet._name.toLowerCase() + 'Cake'
     : 'cake';
 
-  //Recursively decompose nested types
-  const nestedTypes =
-    decomposeSheet._types && Array.isArray(decomposeSheet._types)
-      ? decomposeSheet._types
-          .map((t) => t as DecomposeSheet)
-          .map((t) =>
-            fromJson(
-              t._path
-                ? json.flatMap((i) => (i as any)[t._path as string])
-                : json,
-              t,
-            ),
-          )
-          .reduce((a, b) => ({ ...a, ...b }), {})
-      : {};
+  // Recursively decompose nested types
+  const nestedTypes: Rljson = {};
+  if (decomposeSheet._types && Array.isArray(decomposeSheet._types)) {
+    for (const t of decomposeSheet._types as DecomposeSheet[]) {
+      const nestedJson = t._path
+        ? json.flatMap((i) => (i as any)[t._path as string])
+        : json;
+      const result = fromJson(nestedJson, t);
+      Object.assign(nestedTypes, result);
+    }
+  }
 
-  //This type
   const componentsName = (layerName: string, objName?: string) =>
     objName
       ? `${objName.toLowerCase()}${
@@ -120,122 +117,114 @@ export const fromJson = (
     ],
   });
 
+  // Use for-loops for performance
   const createComponent = (
     data: Array<Json>,
     componentKey: string,
     typeName: string,
     componentProperties: string[] | Json,
   ) => {
-    if (Array.isArray(componentProperties))
-      return Object.assign({
-        [componentsName(componentKey, typeName)]: hip(
-          Object.assign({
-            _data: data.map((item, idx) =>
-              (componentProperties as string[])
-                .map((componentProperty) =>
-                  nestedProperty(
-                    item,
-                    idx,
-                    componentProperty as string,
-                    nestedTypes,
-                  ),
-                )
-                .reduce((a, b) => ({ ...a, ...b }), {}),
-            ),
-          } as ComponentsTable<Json>),
-        ),
-      }) as Record<string, ComponentsTable<Json>>;
-    else {
-      const nestedComps: Record<string, ComponentsTable<Json>> = Object.entries(
+    if (Array.isArray(componentProperties)) {
+      const compArr = new Array(data.length);
+      for (let idx = 0; idx < data.length; idx++) {
+        const item = data[idx];
+        const obj: any = {};
+        for (const componentProperty of componentProperties as string[]) {
+          Object.assign(
+            obj,
+            nestedProperty(item, idx, componentProperty, nestedTypes),
+          );
+        }
+        compArr[idx] = obj;
+      }
+      const name = componentsName(componentKey, typeName);
+      return { [name]: hip({ _data: compArr }) } as Record<
+        string,
+        ComponentsTable<Json>
+      >;
+    } else {
+      const nestedComps: Record<string, ComponentsTable<Json>> = {};
+      for (const [nestedCompKey, nestedCompProps] of Object.entries(
         componentProperties as Json,
-      )
-        .map(([nestedCompKey, nestedCompProps]) =>
+      )) {
+        Object.assign(
+          nestedComps,
           createComponent(
             data,
             nestedCompKey,
             typeName,
             nestedCompProps as string[] | Json,
           ),
-        )
-        .reduce((a, b) => ({ ...a, ...b }), {});
-
+        );
+      }
+      const mergedArr = new Array(data.length);
+      for (let idx = 0; idx < data.length; idx++) {
+        const obj: any = {};
+        for (const compKey of Object.keys(componentProperties)) {
+          const compName = componentsName(compKey, typeName);
+          const comp = nestedComps[compName];
+          obj[compKey + 'Ref'] = comp._data[idx]._hash as ComponentRef;
+        }
+        mergedArr[idx] = obj;
+      }
       const mergedComp: Record<string, ComponentsTable<Json>> = {
-        [componentsName(componentKey, typeName)]: hip({
-          _data: data.map((_, idx) =>
-            Object.keys(componentProperties)
-              .map((compKey) => {
-                const compName = componentsName(compKey, typeName);
-                const comp = nestedComps[compName];
-                return {
-                  [compKey + 'Ref']: comp._data[idx]._hash as ComponentRef,
-                };
-              })
-              .reduce((a, b) => ({ ...a, ...b }), {}),
-          ),
-        } as ComponentsTable<Json>),
-      };
-
-      return { ...nestedComps, ...mergedComp } as Record<
-        string,
-        ComponentsTable<Json>
-      >;
+        [componentsName(componentKey, typeName)]: hip({ _data: mergedArr }),
+      } as any;
+      return { ...nestedComps, ...mergedComp };
     }
   };
 
-  const components: Record<string, ComponentsTable<Json>> = Object.entries(
+  // Use for-loops for components
+  const components: Record<string, ComponentsTable<Json>> = {};
+  for (const [layerKey, componentProperties] of Object.entries(
     decomposeSheet,
-  )
-    .filter(([layerKey]) => !layerKey.startsWith('_'))
-    .map(([layerKey, componentProperties]) =>
-      createComponent(
-        json,
-        layerKey,
-        decomposeSheet._name as string,
-        componentProperties as string[],
-      ),
-    )
-    .reduce((a, b) => ({ ...a, ...b }), {});
+  )) {
+    if (!layerKey.startsWith('_')) {
+      Object.assign(
+        components,
+        createComponent(
+          json,
+          layerKey,
+          decomposeSheet._name as string,
+          componentProperties as string[],
+        ),
+      );
+    }
+  }
 
-  const layers = Object.entries(components)
-    .map(
-      ([componentKey, component]) =>
-        Object.assign({
-          [componentKey + 'Layer']: hip({
-            _data: [
-              {
-                add: component._data
-                  .map((compItem, idx) =>
-                    Object.assign({
-                      [ids[idx] as string]: (compItem as any)._hash,
-                    }),
-                  )
-                  .reduce((a, b) => ({ ...a, ...b }), {}),
-                sliceIdsTable: slideIdsName,
-                sliceIdsTableRow: sliceIds._data[0]._hash as string,
-                componentsTable: componentKey,
-              } as Layer,
-            ],
-          } as LayersTable),
-        }) as Record<string, LayersTable>,
-    )
-    .reduce((a, b) => ({ ...a, ...b }), {});
+  // Use for-loops for layers
+  const layers: Record<string, LayersTable> = {};
+  for (const [componentKey, component] of Object.entries(components)) {
+    const layerObj: any = {};
+    for (let idx = 0; idx < component._data.length; idx++) {
+      layerObj[ids[idx] as string] = (component._data[idx] as any)._hash;
+    }
+    const layerName = componentKey + 'Layer';
+    layers[layerName] = hip({
+      _type: 'layers',
+      _data: [
+        {
+          add: layerObj,
+          sliceIdsTable: slideIdsName,
+          sliceIdsTableRow: sliceIds._data[0]._hash as string,
+          componentsTable: componentKey,
+        } as Layer,
+      ],
+    });
+  }
 
-  //Reference to explicit layer, not LayerTable Hash
+  // Use for-loops for cake layers
+  const cakeLayers: { [key: string]: LayerRef } = {};
+  for (const [layerKey, layer] of Object.entries(layers)) {
+    cakeLayers[layerKey] = layer._data[0]._hash as string;
+  }
   const cake: CakesTable = {
     _type: 'cakes',
     _data: [
       {
         sliceIdsTable: slideIdsName,
         sliceIdsRow: sliceIds._data[0]._hash as string,
-        layers: Object.entries(layers)
-          .map(([layerKey, layer]) =>
-            Object.assign({
-              [layerKey]: layer._data[0]._hash as string,
-            }),
-          )
-          .reduce((a, b) => ({ ...a, ...b }), {}) as {
-          [key: string]: LayerRef;
-        },
+        layers: cakeLayers,
       } as Cake,
     ],
   };
