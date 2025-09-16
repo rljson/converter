@@ -34,7 +34,7 @@ describe('From JSON', () => {
   it('converts a JSON file without error', async () => {
     const json = JSON.parse(
       fs.readFileSync(
-        path.join(__dirname, 'files', 'catalog-example-reduced.json'),
+        path.join(__dirname, 'files', 'catalog-example.json'),
         'utf-8',
       ),
     );
