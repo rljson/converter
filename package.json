@@ -51,12 +51,15 @@
   "dependencies": {
     "@rljson/hash": "^0.0.16",
     "@rljson/json": "^0.0.21",
-    "@rljson/rljson": "^0.0.51"
+    "@rljson/rljson": "link:../rljson"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "overrides": {
+      "@rljson/rljson": "link:../rljson"
+    }
   },
   "packageManager": "pnpm@10.11.0"
 }

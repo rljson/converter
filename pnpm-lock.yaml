@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@rljson/rljson': link:../rljson
+
 importers:
 
   .:
@@ -15,8 +18,8 @@ importers:
         specifier: ^0.0.21
         version: 0.0.21
       '@rljson/rljson':
-        specifier: ^0.0.51
-        version: 0.0.51
+        specifier: link:../rljson
+        version: link:../rljson
     devDependencies:
       '@types/node':
         specifier: ^24.5.0
@@ -403,10 +406,6 @@ packages:
 
   '@rljson/json@0.0.21':
     resolution: {integrity: sha512-oNDY2B6HgHSzbaRh2fU8tTEEChuCzJU2sF9yzLYzS9jryT13XyfvSO13WkkPXgpMCe78AuIaGwbusNg8YARrdA==}
-    engines: {node: '>=22.14.0'}
-
-  '@rljson/rljson@0.0.51':
-    resolution: {integrity: sha512-7GpjUq0+L/4xW4YuZUppAq1edp8cuJxE1quGAmKr1UWBobugnWmfcM+i6p3JgTZo6wPvqZ4xzUuRxiaEfTi3xA==}
     engines: {node: '>=22.14.0'}
 
   '@rollup/pluginutils@5.3.0':
@@ -2073,11 +2072,6 @@ snapshots:
       js-base64: 3.7.8
 
   '@rljson/json@0.0.21': {}
-
-  '@rljson/rljson@0.0.51':
-    dependencies:
-      '@rljson/hash': 0.0.16
-      '@rljson/json': 0.0.21
 
   '@rollup/pluginutils@5.3.0(rollup@4.50.2)':
     dependencies:
