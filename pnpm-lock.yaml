@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@rljson/rljson': link:../rljson
-
 importers:
 
   .:
@@ -18,8 +15,8 @@ importers:
         specifier: ^0.0.21
         version: 0.0.21
       '@rljson/rljson':
-        specifier: link:../rljson
-        version: link:../rljson
+        specifier: ^0.0.53
+        version: 0.0.53
     devDependencies:
       '@types/node':
         specifier: ^24.5.0
@@ -40,8 +37,8 @@ importers:
         specifier: ^9.35.0
         version: 9.35.0
       eslint-plugin-jsdoc:
-        specifier: ^58.0.0
-        version: 58.0.0(eslint@9.35.0)
+        specifier: ^58.1.0
+        version: 58.1.0(eslint@9.35.0)
       eslint-plugin-tsdoc:
         specifier: ^0.4.0
         version: 0.4.0
@@ -406,6 +403,10 @@ packages:
 
   '@rljson/json@0.0.21':
     resolution: {integrity: sha512-oNDY2B6HgHSzbaRh2fU8tTEEChuCzJU2sF9yzLYzS9jryT13XyfvSO13WkkPXgpMCe78AuIaGwbusNg8YARrdA==}
+    engines: {node: '>=22.14.0'}
+
+  '@rljson/rljson@0.0.53':
+    resolution: {integrity: sha512-c800moE7cSlauNC/6MWmPZXXmJzpePiTd3Wh2xn+iJr2rfpJC/17tn0Qls2QFV9+pWFLVbPhlynWlQxfL2R5rQ==}
     engines: {node: '>=22.14.0'}
 
   '@rollup/pluginutils@5.3.0':
@@ -921,8 +922,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-jsdoc@58.0.0:
-    resolution: {integrity: sha512-mLVLC3FyLP+EqMOQZV5zEtpxpb9ZCat4VfIeHp8rK8vCwN9qmXTDjR9QnseR/Vgy3ehSeky2V0xaRGRMTavrUg==}
+  eslint-plugin-jsdoc@58.1.0:
+    resolution: {integrity: sha512-tRmxAuWXLEkmxlJk/K4eCR9llk2jjFtKWwFfpQaEkwCh/CZAq+kFOv9fU2p4HLzK0BF21lHYHl60dXvYHcBL1w==}
     engines: {node: '>=20.11.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -2073,6 +2074,11 @@ snapshots:
 
   '@rljson/json@0.0.21': {}
 
+  '@rljson/rljson@0.0.53':
+    dependencies:
+      '@rljson/hash': 0.0.16
+      '@rljson/json': 0.0.21
+
   '@rollup/pluginutils@5.3.0(rollup@4.50.2)':
     dependencies:
       '@types/estree': 1.0.8
@@ -2613,7 +2619,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-jsdoc@58.0.0(eslint@9.35.0):
+  eslint-plugin-jsdoc@58.1.0(eslint@9.35.0):
     dependencies:
       '@es-joy/jsdoccomment': 0.58.0
       are-docs-informative: 0.0.2
