@@ -25,7 +25,7 @@ export type DecomposeSheet = {
   _name?: string;
   _path?: string;
   _types?: DecomposeSheet[];
-} & { [key: string]: string[] | string | DecomposeSheet[] };
+} & { [key: string]: string[] | string | DecomposeSheet[] | Json };
 
 const resolvePropertySliceId = (
   ref: string,
@@ -120,15 +120,17 @@ export const fromJson = (
     ],
   });
 
-  const components: Record<string, ComponentsTable<Json>> = Object.entries(
-    decomposeSheet,
-  )
-    .filter(([layerKey]) => !layerKey.startsWith('_'))
-    .map(([layerKey, componentProperties]) =>
-      Object.assign({
-        [componentsName(layerKey, decomposeSheet._name)]: hip(
+  const createComponent = (
+    data: Array<Json>,
+    componentKey: string,
+    typeName: string,
+    componentProperties: string[] | Json,
+  ) => {
+    if (Array.isArray(componentProperties))
+      return Object.assign({
+        [componentsName(componentKey, typeName)]: hip(
           Object.assign({
-            _data: json.map((item, idx) =>
+            _data: data.map((item, idx) =>
               (componentProperties as string[])
                 .map((componentProperty) =>
                   nestedProperty(
@@ -142,7 +144,55 @@ export const fromJson = (
             ),
           } as ComponentsTable<Json>),
         ),
-      } as Record<string, ComponentsTable<Json>>),
+      }) as Record<string, ComponentsTable<Json>>;
+    else {
+      const nestedComps: Record<string, ComponentsTable<Json>> = Object.entries(
+        componentProperties as Json,
+      )
+        .map(([nestedCompKey, nestedCompProps]) =>
+          createComponent(
+            data,
+            nestedCompKey,
+            typeName,
+            nestedCompProps as string[] | Json,
+          ),
+        )
+        .reduce((a, b) => ({ ...a, ...b }), {});
+
+      const mergedComp: Record<string, ComponentsTable<Json>> = {
+        [componentsName(componentKey, typeName)]: hip({
+          _data: data.map((_, idx) =>
+            Object.keys(componentProperties)
+              .map((compKey) => {
+                const compName = componentsName(compKey, typeName);
+                const comp = nestedComps[compName];
+                return {
+                  [compKey + 'Ref']: comp._data[idx]._hash as ComponentRef,
+                };
+              })
+              .reduce((a, b) => ({ ...a, ...b }), {}),
+          ),
+        } as ComponentsTable<Json>),
+      };
+
+      return { ...nestedComps, ...mergedComp } as Record<
+        string,
+        ComponentsTable<Json>
+      >;
+    }
+  };
+
+  const components: Record<string, ComponentsTable<Json>> = Object.entries(
+    decomposeSheet,
+  )
+    .filter(([layerKey]) => !layerKey.startsWith('_'))
+    .map(([layerKey, componentProperties]) =>
+      createComponent(
+        json,
+        layerKey,
+        decomposeSheet._name as string,
+        componentProperties as string[],
+      ),
     )
     .reduce((a, b) => ({ ...a, ...b }), {});
 
