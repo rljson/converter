@@ -4,8 +4,7 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
-import { RljsonConverter } from './rljson-converter.ts';
-
+import { Converter } from './converter.ts';
 
 export const example = () => {
   // Print methods
@@ -15,9 +14,9 @@ export const example = () => {
   const p = (text: string) => l(`    ${text}`);
 
   // Example
-  h1('RljsonConverter.example');
-  h2('Returns an instance of the RljsonConverter.');
-  const example = RljsonConverter.example;
+  h1('Converter.example');
+  h2('Returns an instance of the Converter.');
+  const example = Converter.example;
   p(JSON.stringify(example, null, 2));
 };
 

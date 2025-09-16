@@ -33,13 +33,13 @@ git pull
 
 ## Set pull request title
 
-Replace `Compare goldens based on json and not strings` here and below
+Replace `Rename rljson-converter into converter here and below
 by your new pull request title.
 
 ## Create a feature branch
 
 ```bash
-node scripts/create-branch.js "Compare goldens based on json and not strings "
+node scripts/create-branch.js "Rename rljson-converter into converter"
 ```
 
 ## Update dependencies
@@ -65,7 +65,7 @@ In Vscode, press
 
 ```bash
 git add .
-git commit -am"Compare goldens based on json and not strings "
+git commit -am"Rename rljson-converter into converter"
 ```
 
 ## Increase version
@@ -96,7 +96,7 @@ node scripts/push-branch.js
 ## Create a pull request
 
 ```bash
-gh pr create --base main --title "Compare goldens based on json and not strings " --body " "
+gh pr create --base main --title "Rename rljson-converter into converter" --body " "
 ```
 
 ## Code review
