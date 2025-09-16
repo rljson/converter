@@ -5,9 +5,9 @@
 // found in the LICENSE file in the root of this package.
 
 // .............................................................................
-export class RljsonConverter {
+export class Converter {
   /** Example instance for test purposes */
-  static get example(): RljsonConverter {
-    return new RljsonConverter();
+  static get example(): Converter {
+    return new Converter();
   }
 }

@@ -34,7 +34,7 @@ To create a new repo checkout [create-new-repo.md](doc/workflows/create-new-repo
 
 Checkout [./README.trouble.md](./README.trouble.md)
 
-Visit <https://github.com/rljson/rljson-converter/issues>
+Visit <https://github.com/rljson/converter/issues>
 
 Check if there is already an issue for your problem.
 

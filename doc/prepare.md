@@ -22,11 +22,11 @@ found in the LICENSE file in the root of this package.
   - [Create an account on NPM](#create-an-account-on-npm)
   - [Request access to Rljson](#request-access-to-rljson)
   - [Generate and install an access token](#generate-and-install-an-access-token)
-- [Open rljson-converter the first time](#open-rljson-converter-the-first-time)
+- [Open converter the first time](#open-converter-the-first-time)
   - [Create a dev and rljson folder](#create-a-dev-and-rljson-folder)
   - [Clone code](#clone-code)
   - [Configure email address and user name](#configure-email-address-and-user-name)
-  - [Open rljson-converter with Vscode](#open-rljson-converter-with-vscode)
+  - [Open converter with Vscode](#open-converter-with-vscode)
   - [Install recommended extensions](#install-recommended-extensions)
   - [Activate PNPM for the project](#activate-pnpm-for-the-project)
 
@@ -218,7 +218,7 @@ Replace `your-auth-token` by your token.
 
 Now you should be able to publish package updates
 
-## Open rljson-converter the first time
+## Open converter the first time
 
 ### Create a dev and rljson folder
 
@@ -234,7 +234,7 @@ cd rljson
 ### Clone code
 
 ```bash
-git clone https://github.com/rljson/rljson-converter.git
+git clone https://github.com/rljson/converter.git
 ```
 
 ### Configure email address and user name
@@ -251,10 +251,10 @@ Replace `email` by your email and execute:
 git config --global user.email "email"
 ```
 
-### Open rljson-converter with Vscode
+### Open converter with Vscode
 
 ```bash
-code rljson-converter
+code converter
 ```
 
 ### Install recommended extensions
