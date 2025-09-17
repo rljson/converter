@@ -31,6 +31,7 @@ export type DecomposeChart = {
   _name?: string;
   _path?: string;
   _types?: DecomposeChart[];
+  _skipLayerCreation?: string[];
 } & { [key: string]: string[] | string | DecomposeChart[] | Json };
 
 const resolvePropertySliceId = (
@@ -136,6 +137,10 @@ export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
     ],
   });
 
+  const skipLayersForComps = chart._skipLayerCreation
+    ? chart._skipLayerCreation.map((l) => componentsName(l, chart._name))
+    : [];
+
   // Use for-loops for performance
   const createComponent = (
     data: Array<Json>,
@@ -212,6 +217,8 @@ export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
   // Use for-loops for layers
   const layers: Record<string, LayersTable> = {};
   for (const [componentKey, component] of Object.entries(components)) {
+    if (skipLayersForComps.includes(componentKey)) continue;
+
     const layerObj: any = {};
     for (let idx = 0; idx < component._data.length; idx++) {
       layerObj[ids[idx] as string] = (component._data[idx] as any)._hash;

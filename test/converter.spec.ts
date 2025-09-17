@@ -77,6 +77,11 @@ describe('From JSON', () => {
                 _path: 'ArtikelListe',
                 _sliceId: 'Type',
                 _name: 'Article',
+                _skipLayerCreation: [
+                  'basicShapeHeight',
+                  'basicShapeDepth',
+                  'basicShapeWidth',
+                ],
                 text: ['ArtikelText'],
                 basicShape: {
                   basicShapeHeight: [
