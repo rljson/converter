@@ -218,7 +218,7 @@ describe('From JSON', () => {
       }),
     ).toThrowError('If subtypes are defined, _path must be provided!');
   });
-  it('List w/ types should convert w/ errors.', async () => {
+  it('List w/ types should convert w/o errors.', async () => {
     const json = [
       {
         id: 'car1',
@@ -264,7 +264,7 @@ describe('From JSON', () => {
     await expectGolden('example/converter/list-with-types.json').toBe(rljson);
     expect(result).toStrictEqual({});
   });
-  it('List w/ types and references should convert w/ errors.', async () => {
+  it('List w/ types and references should convert w/o errors.', async () => {
     const json = [
       {
         id: 'car1',
