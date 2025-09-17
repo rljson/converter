@@ -58,20 +58,44 @@ const resolvePropertyReference = (
 const nestedProperty = (
   obj: any,
   idx: number,
-  path: string | string[],
+  path:
+    | string
+    | string[]
+    | { origin: string; destination: string }
+    | { origin: string; destination: string }[],
   nestedTypes: Rljson,
+  destination?: string,
 ) => {
-  const keys = Array.isArray(path) ? path : path.split('/');
-  const key = keys[0];
-  if (keys.length === 1) {
-    if (!obj || !obj[key]) return null;
-    if (key.slice(-3) == 'Ref')
-      return resolvePropertyReference(key, idx, nestedTypes);
-    else if (key.slice(-7).toLowerCase() == 'sliceid')
-      return resolvePropertySliceId(key, idx, nestedTypes);
-    else return { [key]: obj[key] };
+  if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
+    const pathParsed = path as { origin: string; destination: string };
+    return nestedProperty(
+      obj,
+      idx,
+      pathParsed.origin,
+      nestedTypes,
+      pathParsed.destination,
+    );
   } else {
-    return nestedProperty(obj[key], idx, keys.slice(1), nestedTypes);
+    const keys = Array.isArray(path)
+      ? (path as string[])
+      : (path.split('/') as string[]);
+    const key = keys[0];
+    if (keys.length === 1) {
+      if (!obj || !obj[key]) return null;
+      if (key.slice(-3) == 'Ref')
+        return resolvePropertyReference(key, idx, nestedTypes);
+      else if (key.slice(-7).toLowerCase() == 'sliceid')
+        return resolvePropertySliceId(key, idx, nestedTypes);
+      else return { [destination ? destination : key]: obj[key] };
+    } else {
+      return nestedProperty(
+        obj[key],
+        idx,
+        keys.slice(1),
+        nestedTypes,
+        destination,
+      );
+    }
   }
 };
 
