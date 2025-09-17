@@ -20,11 +20,15 @@ import {
   SliceIdsTable,
 } from '@rljson/rljson';
 
+import { traverse } from 'object-traversal';
+
+/* v8 ignore start */
 export class Converter {
   static get example(): Converter {
     return new Converter();
   }
 }
+/* v8 ignore end */
 
 export type DecomposeChart = {
   _sliceId: string;
@@ -32,7 +36,7 @@ export type DecomposeChart = {
   _path?: string;
   _types?: DecomposeChart[];
   _skipLayerCreation?: string[];
-} & { [key: string]: string[] | string | DecomposeChart[] | Json };
+} & Json;
 
 const resolvePropertySliceId = (
   ref: string,
@@ -55,6 +59,13 @@ const resolvePropertyReference = (
   return { [ref]: (refCompRow as any)._hash as ComponentRef };
 };
 
+const componentsName = (layerName: string, objName?: string) =>
+  objName
+    ? `${objName.toLowerCase()}${
+        layerName.charAt(0).toUpperCase() + layerName.slice(1)
+      }`
+    : layerName.toLowerCase();
+
 // Pass keys array instead of splitting every time
 const nestedProperty = (
   obj: any,
@@ -64,7 +75,7 @@ const nestedProperty = (
     | string[]
     | { origin: string; destination: string }
     | { origin: string; destination: string }[],
-  nestedTypes: Rljson,
+  nestedTypes?: Rljson,
   destination?: string,
 ) => {
   if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
@@ -82,12 +93,23 @@ const nestedProperty = (
       : (path.split('/') as string[]);
     const key = keys[0];
     if (keys.length === 1) {
-      if (!obj || !obj[key]) return null;
-      if (key.slice(-3) == 'Ref')
+      if (key.slice(-3) == 'Ref') {
+        if (!nestedTypes)
+          throw new Error(
+            'References to nested types are not possible without defining _types in the chart!',
+          );
         return resolvePropertyReference(key, idx, nestedTypes);
-      else if (key.slice(-7).toLowerCase() == 'sliceid')
+      }
+      if (key.slice(-7).toLowerCase() == 'sliceid') {
+        if (!nestedTypes)
+          throw new Error(
+            'References to nested types are not possible without defining _types in the chart!',
+          );
         return resolvePropertySliceId(key, idx, nestedTypes);
-      else return { [destination ? destination : key]: obj[key] };
+      }
+      if (!obj || !obj[key]) return null;
+
+      return { [destination ? destination : key]: obj[key] };
     } else {
       return nestedProperty(
         obj[key],
@@ -100,33 +122,124 @@ const nestedProperty = (
   }
 };
 
-export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
+const createComponent = (
+  data: Array<Json>,
+  componentKey: string,
+  typeName: string,
+  componentProperties: string[] | Json,
+  nestedTypes?: Rljson,
+) => {
+  if (Array.isArray(componentProperties)) {
+    //Array of properties --> loop through properties and collect them as
+    // key-value pairs in one object
+
+    const compArr = new Array(data.length);
+    for (let idx = 0; idx < data.length; idx++) {
+      const item = data[idx];
+      const obj: any = {};
+      for (const componentProperty of componentProperties as string[]) {
+        Object.assign(
+          obj,
+          nestedProperty(item, idx, componentProperty, nestedTypes),
+        );
+      }
+      compArr[idx] = obj;
+    }
+    const name = componentsName(componentKey, typeName);
+    return { [name]: hip({ _data: compArr }) } as Record<
+      string,
+      ComponentsTable<Json>
+    >;
+  } else {
+    //Nested object --> loop through keys and create one component per key
+    // Then merge them into one component with references to the nested ones
+    const nestedComps: Record<string, ComponentsTable<Json>> = {};
+    for (const [nestedCompKey, nestedCompProps] of Object.entries(
+      componentProperties as Json,
+    )) {
+      Object.assign(
+        nestedComps,
+        createComponent(
+          data,
+          nestedCompKey,
+          typeName,
+          nestedCompProps as string[] | Json,
+          nestedTypes,
+        ),
+      );
+    }
+    const mergedArr = new Array(data.length);
+    for (let idx = 0; idx < data.length; idx++) {
+      const obj: any = {};
+      for (const compKey of Object.keys(componentProperties)) {
+        const compName = componentsName(compKey, typeName);
+        const comp = nestedComps[compName];
+        obj[compKey + 'Ref'] = comp._data[idx]._hash as ComponentRef;
+      }
+      mergedArr[idx] = obj;
+    }
+    const mergedComp: Record<string, ComponentsTable<Json>> = {
+      [componentsName(componentKey, typeName)]: hip({ _data: mergedArr }),
+    } as any;
+    return { ...nestedComps, ...mergedComp };
+  }
+};
+
+export const fromJson = (
+  json: Json | Array<Json>,
+  chart: DecomposeChart,
+): Rljson => {
+  //If a single object is passed, convert to array
   if (!Array.isArray(json)) return fromJson([json], chart);
+
+  //Property Guards
+  //............................................................................
+
+  //SubTypes given -> distinguish them by name
+  if (!chart._name && Array.isArray(chart._types))
+    throw new Error('If subtypes are defined, _name must be provided!');
+
+  //Component names must be unique within one chart
+  const componentNames: string[] = [];
+  traverse(chart, ({ key }) =>
+    isNaN(+key!) && !!key?.indexOf('_') ? componentNames.push(key) : null,
+  );
+  if (new Set(componentNames).size < componentNames.length)
+    throw new Error('All component names must be unique within one chart!');
+
+  //Type names must be unique within one chart
+  const typeNames: string[] = [];
+  traverse(chart, ({ key, value }) =>
+    key === '_name' ? typeNames.push(value) : null,
+  );
+  if (new Set(typeNames).size < typeNames.length)
+    throw new Error('All _name properties must be unique within one chart!');
+
+  //SubTypes given --> they need pathes
+  if (
+    Array.isArray(chart._types) &&
+    chart._types.map((t) => t._path).includes(undefined)
+  )
+    throw new Error('If subtypes are defined, _path must be provided!');
+
+  //............................................................................
 
   const slideIdsName = chart._name
     ? chart._name.toLowerCase() + 'SliceId'
     : 'sliceId';
   const cakeName = chart._name ? chart._name.toLowerCase() + 'Cake' : 'cake';
 
-  // Recursively decompose nested types
+  // Convert nested types first --> references to nested types possible
   const nestedTypes: Rljson = {};
   if (chart._types && Array.isArray(chart._types)) {
     for (const t of chart._types as DecomposeChart[]) {
-      const nestedJson = t._path
-        ? json.flatMap((i) => (i as any)[t._path as string])
-        : json;
+      const nestedJson = json.flatMap((i) => (i as any)[t._path as string]);
       const result = fromJson(nestedJson, t);
       Object.assign(nestedTypes, result);
     }
   }
 
-  const componentsName = (layerName: string, objName?: string) =>
-    objName
-      ? `${objName.toLowerCase()}${
-          layerName.charAt(0).toUpperCase() + layerName.slice(1)
-        }`
-      : layerName.toLowerCase();
-
+  //Extracting sliceIds
   const ids = json.map((item) => item[chart._sliceId]);
   const sliceIds: SliceIdsTable = hip({
     _type: 'sliceIds',
@@ -137,68 +250,11 @@ export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
     ],
   });
 
+  //Translating skipped layers if name is given
   const skipLayersForComps = chart._skipLayerCreation
     ? chart._skipLayerCreation.map((l) => componentsName(l, chart._name))
     : [];
 
-  // Use for-loops for performance
-  const createComponent = (
-    data: Array<Json>,
-    componentKey: string,
-    typeName: string,
-    componentProperties: string[] | Json,
-  ) => {
-    if (Array.isArray(componentProperties)) {
-      const compArr = new Array(data.length);
-      for (let idx = 0; idx < data.length; idx++) {
-        const item = data[idx];
-        const obj: any = {};
-        for (const componentProperty of componentProperties as string[]) {
-          Object.assign(
-            obj,
-            nestedProperty(item, idx, componentProperty, nestedTypes),
-          );
-        }
-        compArr[idx] = obj;
-      }
-      const name = componentsName(componentKey, typeName);
-      return { [name]: hip({ _data: compArr }) } as Record<
-        string,
-        ComponentsTable<Json>
-      >;
-    } else {
-      const nestedComps: Record<string, ComponentsTable<Json>> = {};
-      for (const [nestedCompKey, nestedCompProps] of Object.entries(
-        componentProperties as Json,
-      )) {
-        Object.assign(
-          nestedComps,
-          createComponent(
-            data,
-            nestedCompKey,
-            typeName,
-            nestedCompProps as string[] | Json,
-          ),
-        );
-      }
-      const mergedArr = new Array(data.length);
-      for (let idx = 0; idx < data.length; idx++) {
-        const obj: any = {};
-        for (const compKey of Object.keys(componentProperties)) {
-          const compName = componentsName(compKey, typeName);
-          const comp = nestedComps[compName];
-          obj[compKey + 'Ref'] = comp._data[idx]._hash as ComponentRef;
-        }
-        mergedArr[idx] = obj;
-      }
-      const mergedComp: Record<string, ComponentsTable<Json>> = {
-        [componentsName(componentKey, typeName)]: hip({ _data: mergedArr }),
-      } as any;
-      return { ...nestedComps, ...mergedComp };
-    }
-  };
-
-  // Use for-loops for components
   const components: Record<string, ComponentsTable<Json>> = {};
   for (const [layerKey, componentProperties] of Object.entries(chart)) {
     if (!layerKey.startsWith('_')) {
@@ -209,6 +265,7 @@ export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
           layerKey,
           chart._name as string,
           componentProperties as string[],
+          nestedTypes,
         ),
       );
     }

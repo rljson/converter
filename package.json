@@ -28,7 +28,7 @@
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
-    "@types/node": "^24.5.0",
+    "@types/node": "^24.5.1",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "@vitest/coverage-v8": "^3.2.4",
@@ -51,7 +51,8 @@
   "dependencies": {
     "@rljson/hash": "^0.0.16",
     "@rljson/json": "^0.0.21",
-    "@rljson/rljson": "^0.0.53"
+    "@rljson/rljson": "^0.0.53",
+    "object-traversal": "^1.0.1"
   },
   "packageManager": "pnpm@10.11.0"
 }
