@@ -12,7 +12,7 @@ import path from 'path';
 import { describe, expect, it } from 'vitest';
 
 import {
-  DecomposeSheet,
+  DecomposeChart,
   exampleFromJsonDecomposeSheet,
   exampleFromJsonJson,
   fromJson,
@@ -102,7 +102,7 @@ describe('From JSON', () => {
             ],
           },
         ],
-      } as DecomposeSheet;
+      } as DecomposeChart;
 
       const rljsonWithDuplicates = fromJson(json, decomposeSheet);
       const rljson = removeDuplicates(rljsonWithDuplicates);

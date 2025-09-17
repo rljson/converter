@@ -26,12 +26,12 @@ export class Converter {
   }
 }
 
-export type DecomposeSheet = {
+export type DecomposeChart = {
   _sliceId: string;
   _name?: string;
   _path?: string;
-  _types?: DecomposeSheet[];
-} & { [key: string]: string[] | string | DecomposeSheet[] | Json };
+  _types?: DecomposeChart[];
+} & { [key: string]: string[] | string | DecomposeChart[] | Json };
 
 const resolvePropertySliceId = (
   ref: string,
@@ -64,34 +64,29 @@ const nestedProperty = (
   const keys = Array.isArray(path) ? path : path.split('/');
   const key = keys[0];
   if (keys.length === 1) {
+    if (!obj || !obj[key]) return null;
     if (key.slice(-3) == 'Ref')
       return resolvePropertyReference(key, idx, nestedTypes);
     else if (key.slice(-7).toLowerCase() == 'sliceid')
       return resolvePropertySliceId(key, idx, nestedTypes);
-    else
-      return { [key]: obj ? (obj[key] !== undefined ? obj[key] : null) : null };
+    else return { [key]: obj[key] };
   } else {
     return nestedProperty(obj[key], idx, keys.slice(1), nestedTypes);
   }
 };
 
-export const fromJson = (
-  json: Array<Json>,
-  decomposeSheet: DecomposeSheet,
-): Rljson => {
-  if (!Array.isArray(json)) return fromJson([json], decomposeSheet);
+export const fromJson = (json: Array<Json>, chart: DecomposeChart): Rljson => {
+  if (!Array.isArray(json)) return fromJson([json], chart);
 
-  const slideIdsName = decomposeSheet._name
-    ? decomposeSheet._name.toLowerCase() + 'SliceId'
+  const slideIdsName = chart._name
+    ? chart._name.toLowerCase() + 'SliceId'
     : 'sliceId';
-  const cakeName = decomposeSheet._name
-    ? decomposeSheet._name.toLowerCase() + 'Cake'
-    : 'cake';
+  const cakeName = chart._name ? chart._name.toLowerCase() + 'Cake' : 'cake';
 
   // Recursively decompose nested types
   const nestedTypes: Rljson = {};
-  if (decomposeSheet._types && Array.isArray(decomposeSheet._types)) {
-    for (const t of decomposeSheet._types as DecomposeSheet[]) {
+  if (chart._types && Array.isArray(chart._types)) {
+    for (const t of chart._types as DecomposeChart[]) {
       const nestedJson = t._path
         ? json.flatMap((i) => (i as any)[t._path as string])
         : json;
@@ -107,7 +102,7 @@ export const fromJson = (
         }`
       : layerName.toLowerCase();
 
-  const ids = json.map((item) => item[decomposeSheet._sliceId]);
+  const ids = json.map((item) => item[chart._sliceId]);
   const sliceIds: SliceIdsTable = hip({
     _type: 'sliceIds',
     _data: [
@@ -176,16 +171,14 @@ export const fromJson = (
 
   // Use for-loops for components
   const components: Record<string, ComponentsTable<Json>> = {};
-  for (const [layerKey, componentProperties] of Object.entries(
-    decomposeSheet,
-  )) {
+  for (const [layerKey, componentProperties] of Object.entries(chart)) {
     if (!layerKey.startsWith('_')) {
       Object.assign(
         components,
         createComponent(
           json,
           layerKey,
-          decomposeSheet._name as string,
+          chart._name as string,
           componentProperties as string[],
         ),
       );
@@ -282,8 +275,8 @@ export const exampleFromJsonJson: Array<Json> = [
     ],
   },
 ];
-//TODO: id -> sliceId
-export const exampleFromJsonDecomposeSheet: DecomposeSheet = {
+
+export const exampleFromJsonDecomposeSheet: DecomposeChart = {
   _sliceId: 'VIN',
   _name: 'Car',
   general: ['brand', 'type', 'doors'],
