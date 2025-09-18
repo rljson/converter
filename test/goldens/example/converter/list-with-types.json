@@ -1,0 +1,143 @@
+{
+  "carSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1",
+          "car2"
+        ],
+        "_hash": "_nk8S8AyHcfQkgZB4h7np7"
+      }
+    ],
+    "_hash": "guR8VN34AS7AeQ3sInxtwc"
+  },
+  "carModel": {
+    "_data": [
+      {
+        "model": "X",
+        "_hash": "jSKIU_xaQFBLdriXQwYxEs"
+      },
+      {
+        "model": "Y",
+        "_hash": "Ss858-cdBHm-x-DXXPVJFj"
+      }
+    ],
+    "_hash": "6WNqTvefGlwxlFJk0Hnh8U"
+  },
+  "carManufacturer": {
+    "_data": [
+      {
+        "manufacturer": "Tesla",
+        "_hash": "QpyVdIP4-QnBEUVLsccjHG"
+      },
+      {
+        "manufacturer": "Tesla",
+        "_hash": "QpyVdIP4-QnBEUVLsccjHG"
+      }
+    ],
+    "_hash": "mw6eDDIbYPJWlBRFwRLDHZ"
+  },
+  "carModelLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "jSKIU_xaQFBLdriXQwYxEs",
+          "car2": "Ss858-cdBHm-x-DXXPVJFj",
+          "_hash": "j1o4E-_7iVvbb1o4Gn6mi4"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "componentsTable": "carModel",
+        "_hash": "_bF_LsT-kiQw18vRk1BEhY"
+      }
+    ],
+    "_hash": "WEfJELfdhsc9p8r5zFKiyg"
+  },
+  "carManufacturerLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "QpyVdIP4-QnBEUVLsccjHG",
+          "car2": "QpyVdIP4-QnBEUVLsccjHG",
+          "_hash": "iudxEghRivvWxko6so9q-2"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "componentsTable": "carManufacturer",
+        "_hash": "zOu5K9QHP3VskL0QZUe5Mv"
+      }
+    ],
+    "_hash": "kP7-49Oi645zalVmrLGEnc"
+  },
+  "carCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "layers": {
+          "carModelLayer": "_bF_LsT-kiQw18vRk1BEhY",
+          "carManufacturerLayer": "zOu5K9QHP3VskL0QZUe5Mv"
+        }
+      }
+    ]
+  },
+  "colorSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "RAL9000",
+          "RAL7000"
+        ],
+        "_hash": "8Cl7CQ3A3A7KWUYLGkv1g5"
+      }
+    ],
+    "_hash": "dLmhCXNzePio5NNCIkequj"
+  },
+  "colorGenereral": {
+    "_data": [
+      {
+        "name": "Black",
+        "_hash": "cIMFhZaDtJAkCF_h3PCCT1"
+      },
+      {
+        "name": "Gray",
+        "_hash": "nxgBIGoNSFZO083VAufXk9"
+      }
+    ],
+    "_hash": "IOrpbrVf3WQyd7vd2NvuQZ"
+  },
+  "colorGenereralLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "RAL9000": "cIMFhZaDtJAkCF_h3PCCT1",
+          "RAL7000": "nxgBIGoNSFZO083VAufXk9",
+          "_hash": "9AEGfK5CuBEJv3PSVAunCn"
+        },
+        "sliceIdsTable": "colorSliceId",
+        "sliceIdsTableRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
+        "componentsTable": "colorGenereral",
+        "_hash": "hRwC5LD6igi3ada6XbeoxA"
+      }
+    ],
+    "_hash": "SCijxg8evGY2aJUf5yVydW"
+  },
+  "colorCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "colorSliceId",
+        "sliceIdsRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
+        "layers": {
+          "colorGenereralLayer": "hRwC5LD6igi3ada6XbeoxA"
+        }
+      }
+    ]
+  }
+}

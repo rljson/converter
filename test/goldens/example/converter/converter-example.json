@@ -81,6 +81,7 @@
     "_hash": "dagFSoJ1GivzVpM7xj0b4p"
   },
   "carGeneralLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -94,9 +95,10 @@
         "_hash": "Gv1hBZjCrOPaW1T9qwB7i1"
       }
     ],
-    "_hash": "EZBGvFEz7s8Kk3TOyv5yDt"
+    "_hash": "l1EqfFPrepjZPGklNgZm2T"
   },
   "carTechnicalLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -110,9 +112,10 @@
         "_hash": "3FqkEWxnPT6ctdPHk04XBL"
       }
     ],
-    "_hash": "niKuGSdR0IJhvoCDNLPsHw"
+    "_hash": "wSHzbkD7z3rBsLvq3ReY0w"
   },
   "carColorLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -126,9 +129,10 @@
         "_hash": "3-Xak37KCHtV-LXU084JCt"
       }
     ],
-    "_hash": "uDCrKxPvhOTj4wcInFrt7g"
+    "_hash": "2CPFGUver5DOm8s0_3WPQT"
   },
   "carWheelLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -142,7 +146,7 @@
         "_hash": "ElfozvEqKw_3oMC-FvsQ4u"
       }
     ],
-    "_hash": "_eJzxR4mOAYS8pu96nEzc2"
+    "_hash": "SovWYc0nSILtuIEyXot0ts"
   },
   "carCake": {
     "_type": "cakes",
@@ -199,6 +203,7 @@
     "_hash": "NxACjUL9cXgXcalytGsor3"
   },
   "wheelBrandLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -212,9 +217,10 @@
         "_hash": "QtYdaYaOgULRv2VToNq2td"
       }
     ],
-    "_hash": "5DGyA7HMil823c2gyIuKB5"
+    "_hash": "xB4Dkjv1IwTVUTy5reV4CO"
   },
   "wheelDimensionLayer": {
+    "_type": "layers",
     "_data": [
       {
         "add": {
@@ -228,7 +234,7 @@
         "_hash": "3wKgawhS1yjWlNvS8f85qc"
       }
     ],
-    "_hash": "O1xzqQ6Q4l8mm1wps5ap9q"
+    "_hash": "bsdPHbqts6OWx2E-jWXIg6"
   },
   "wheelCake": {
     "_type": "cakes",

@@ -1,0 +1,51 @@
+{
+  "sliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1"
+        ],
+        "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
+      }
+    ],
+    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+  },
+  "model": {
+    "_data": [
+      {
+        "model": "X",
+        "_hash": "jSKIU_xaQFBLdriXQwYxEs"
+      }
+    ],
+    "_hash": "crQppfp050WDt2FCBwEgaY"
+  },
+  "modelLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "jSKIU_xaQFBLdriXQwYxEs",
+          "_hash": "lxUYdSgTSEuQBfUxf352LX"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "model",
+        "_hash": "AC_agy2Qjz8E2GgOU3gCxd"
+      }
+    ],
+    "_hash": "Dv8dXacIqoMwp1x1SaXd-s"
+  },
+  "cake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "sliceId",
+        "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "layers": {
+          "modelLayer": "AC_agy2Qjz8E2GgOU3gCxd"
+        }
+      }
+    ]
+  }
+}
