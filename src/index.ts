@@ -4,4 +4,5 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
-export { Converter } from './converter.ts';
+export * from './converter.ts';
+export * from './example.ts';
