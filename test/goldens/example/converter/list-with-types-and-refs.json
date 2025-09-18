@@ -1,0 +1,114 @@
+{
+  "carSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1",
+          "car2"
+        ],
+        "_hash": "_nk8S8AyHcfQkgZB4h7np7"
+      }
+    ],
+    "_hash": "guR8VN34AS7AeQ3sInxtwc"
+  },
+  "carColorRefs": {
+    "_data": [
+      {
+        "colorSliceId": "RAL9000",
+        "colorGeneralRef": "cIMFhZaDtJAkCF_h3PCCT1",
+        "_hash": "crdjHhdKI3OJzSe0UUgoRQ"
+      },
+      {
+        "colorSliceId": "RAL7000",
+        "colorGeneralRef": "nxgBIGoNSFZO083VAufXk9",
+        "_hash": "fN3Eky49X61qms09jJ3g27"
+      }
+    ],
+    "_hash": "YTOwgpcP_67Rkqs6dyazek"
+  },
+  "carColorRefsLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "crdjHhdKI3OJzSe0UUgoRQ",
+          "car2": "fN3Eky49X61qms09jJ3g27",
+          "_hash": "MYOJG23VpNUSEBTPWpVsMU"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "componentsTable": "carColorRefs",
+        "_hash": "oEZRuN0MNu6qjZhSRHuEZF"
+      }
+    ],
+    "_hash": "-RbKczjcyLzwIjUt26uuaN"
+  },
+  "carCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "layers": {
+          "carColorRefsLayer": "oEZRuN0MNu6qjZhSRHuEZF"
+        }
+      }
+    ]
+  },
+  "colorSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "RAL9000",
+          "RAL7000"
+        ],
+        "_hash": "8Cl7CQ3A3A7KWUYLGkv1g5"
+      }
+    ],
+    "_hash": "dLmhCXNzePio5NNCIkequj"
+  },
+  "colorGeneral": {
+    "_data": [
+      {
+        "name": "Black",
+        "_hash": "cIMFhZaDtJAkCF_h3PCCT1"
+      },
+      {
+        "name": "Gray",
+        "_hash": "nxgBIGoNSFZO083VAufXk9"
+      }
+    ],
+    "_hash": "IOrpbrVf3WQyd7vd2NvuQZ"
+  },
+  "colorGeneralLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "RAL9000": "cIMFhZaDtJAkCF_h3PCCT1",
+          "RAL7000": "nxgBIGoNSFZO083VAufXk9",
+          "_hash": "9AEGfK5CuBEJv3PSVAunCn"
+        },
+        "sliceIdsTable": "colorSliceId",
+        "sliceIdsTableRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
+        "componentsTable": "colorGeneral",
+        "_hash": "_Hb9rvFMGppT5tv55GFnHs"
+      }
+    ],
+    "_hash": "2sYrfeLlf0gxszie8P655m"
+  },
+  "colorCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "colorSliceId",
+        "sliceIdsRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
+        "layers": {
+          "colorGeneralLayer": "_Hb9rvFMGppT5tv55GFnHs"
+        }
+      }
+    ]
+  }
+}

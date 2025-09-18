@@ -1,0 +1,211 @@
+{
+  "sliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1"
+        ],
+        "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
+      }
+    ],
+    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+  },
+  "info": {
+    "_data": [
+      {
+        "model": "X",
+        "manufacturer": "Tesla",
+        "_hash": "CZxQxtVn67eqdTieAOBH7w"
+      }
+    ],
+    "_hash": "fk5ECpXjhrrjc95eNBY3dp"
+  },
+  "registration": {
+    "_data": [
+      {
+        "country": "D",
+        "licensePlate": "B-TX-100",
+        "_hash": "Ioji5I_7czSVgteQgiURcn"
+      }
+    ],
+    "_hash": "EQn9iwDC5GCyG-IXPdKlr0"
+  },
+  "length": {
+    "_data": [
+      {
+        "length": 5036,
+        "_hash": "poMsKI0UqeEM6h8qKVF3IU"
+      }
+    ],
+    "_hash": "UkqJDrwGDVxxJFHxbpVAkf"
+  },
+  "width": {
+    "_data": [
+      {
+        "width": 1999,
+        "_hash": "8EZxlYaF4z0HUMAW6bXsN6"
+      }
+    ],
+    "_hash": "-Nzvk5tnpueFrrjt7oxqJm"
+  },
+  "height": {
+    "_data": [
+      {
+        "height": 1684,
+        "_hash": "QtTfCbiTktna-iwRI0RsAa"
+      }
+    ],
+    "_hash": "Tsh1Dx-pQC41lFkQ2zKlk5"
+  },
+  "dimension": {
+    "_data": [
+      {
+        "lengthRef": "poMsKI0UqeEM6h8qKVF3IU",
+        "widthRef": "8EZxlYaF4z0HUMAW6bXsN6",
+        "heightRef": "QtTfCbiTktna-iwRI0RsAa",
+        "_hash": "m-z0VnUwWNoDhNQFwbvt1F"
+      }
+    ],
+    "_hash": "pxltA3N7aSwmxrIjxFld73"
+  },
+  "brand": {
+    "_data": [
+      {
+        "brand": "Tesla",
+        "_hash": "h2XRVY0DCSeSc2bJkbDiPP"
+      }
+    ],
+    "_hash": "V1JfH7G1I0QZWYshcLTP0y"
+  },
+  "infoLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "CZxQxtVn67eqdTieAOBH7w",
+          "_hash": "O2bdw6Rxd-ws3JwiSD0KkJ"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "info",
+        "_hash": "4gVMk7D7Js-LdQi_3avx0E"
+      }
+    ],
+    "_hash": "RW_GXSTlJmdZbKjyZcTVUf"
+  },
+  "registrationLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "Ioji5I_7czSVgteQgiURcn",
+          "_hash": "IJep_4TGhDRYT74XpztJTj"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "registration",
+        "_hash": "KcopK_QDBeVM1sXgPmdbBi"
+      }
+    ],
+    "_hash": "PdUaPEo5VeDikS2cs8jfaH"
+  },
+  "lengthLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "poMsKI0UqeEM6h8qKVF3IU",
+          "_hash": "CcjFFWDmsYYd_47gj5BVQc"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "length",
+        "_hash": "i27ra0ELjcMrBCrPAo8saL"
+      }
+    ],
+    "_hash": "IA-vcPctHAK-Zl2byQnFgn"
+  },
+  "widthLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "8EZxlYaF4z0HUMAW6bXsN6",
+          "_hash": "LE8KeYIEfoPzD991ofxkF9"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "width",
+        "_hash": "cGRHVusmYxmEUb9MapQMpq"
+      }
+    ],
+    "_hash": "A_WD6Owjvplw81e9-xdQNn"
+  },
+  "heightLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "QtTfCbiTktna-iwRI0RsAa",
+          "_hash": "o2d_DAOGZzz22klE2wXqG9"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "height",
+        "_hash": "VwWvL53zMYqUenfMDladIM"
+      }
+    ],
+    "_hash": "uncFRXGQYlbg67c6i32Zsl"
+  },
+  "dimensionLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "m-z0VnUwWNoDhNQFwbvt1F",
+          "_hash": "7aXDYy_ZhmDttHSrMMidEf"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "dimension",
+        "_hash": "kyHH-8krIzKjPj8anTNrpz"
+      }
+    ],
+    "_hash": "3xZj2Ojlhu_zhI6HqXgd1F"
+  },
+  "brandLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "h2XRVY0DCSeSc2bJkbDiPP",
+          "_hash": "LIqRIUIJAzBSdDgPnIyrFK"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "brand",
+        "_hash": "QwLTkN0P1kXZNU6HwW3lGe"
+      }
+    ],
+    "_hash": "U4wuYHulBRCG4dmTq9gRLg"
+  },
+  "cake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "sliceId",
+        "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "layers": {
+          "infoLayer": "4gVMk7D7Js-LdQi_3avx0E",
+          "registrationLayer": "KcopK_QDBeVM1sXgPmdbBi",
+          "lengthLayer": "i27ra0ELjcMrBCrPAo8saL",
+          "widthLayer": "cGRHVusmYxmEUb9MapQMpq",
+          "heightLayer": "VwWvL53zMYqUenfMDladIM",
+          "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz",
+          "brandLayer": "QwLTkN0P1kXZNU6HwW3lGe"
+        }
+      }
+    ]
+  }
+}

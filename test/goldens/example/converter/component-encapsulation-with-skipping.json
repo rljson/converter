@@ -1,0 +1,80 @@
+{
+  "sliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1"
+        ],
+        "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
+      }
+    ],
+    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+  },
+  "length": {
+    "_data": [
+      {
+        "length": 5036,
+        "_hash": "poMsKI0UqeEM6h8qKVF3IU"
+      }
+    ],
+    "_hash": "UkqJDrwGDVxxJFHxbpVAkf"
+  },
+  "width": {
+    "_data": [
+      {
+        "width": 1999,
+        "_hash": "8EZxlYaF4z0HUMAW6bXsN6"
+      }
+    ],
+    "_hash": "-Nzvk5tnpueFrrjt7oxqJm"
+  },
+  "height": {
+    "_data": [
+      {
+        "height": 1684,
+        "_hash": "QtTfCbiTktna-iwRI0RsAa"
+      }
+    ],
+    "_hash": "Tsh1Dx-pQC41lFkQ2zKlk5"
+  },
+  "dimension": {
+    "_data": [
+      {
+        "lengthRef": "poMsKI0UqeEM6h8qKVF3IU",
+        "widthRef": "8EZxlYaF4z0HUMAW6bXsN6",
+        "heightRef": "QtTfCbiTktna-iwRI0RsAa",
+        "_hash": "m-z0VnUwWNoDhNQFwbvt1F"
+      }
+    ],
+    "_hash": "pxltA3N7aSwmxrIjxFld73"
+  },
+  "dimensionLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "m-z0VnUwWNoDhNQFwbvt1F",
+          "_hash": "7aXDYy_ZhmDttHSrMMidEf"
+        },
+        "sliceIdsTable": "sliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "dimension",
+        "_hash": "kyHH-8krIzKjPj8anTNrpz"
+      }
+    ],
+    "_hash": "3xZj2Ojlhu_zhI6HqXgd1F"
+  },
+  "cake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "sliceId",
+        "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "layers": {
+          "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz"
+        }
+      }
+    ]
+  }
+}
