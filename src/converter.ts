@@ -93,14 +93,14 @@ const nestedProperty = (
       : (path.split('/') as string[]);
     const key = keys[0];
     if (keys.length === 1) {
-      if (key.slice(-3) == 'Ref') {
+      if (key.endsWith('Ref')) {
         if (!nestedTypes)
           throw new Error(
             'References to nested types are not possible without defining _types in the chart!',
           );
         return resolvePropertyReference(key, idx, nestedTypes);
       }
-      if (key.slice(-7).toLowerCase() == 'sliceid') {
+      if (key.endsWith('SliceId')) {
         if (!nestedTypes)
           throw new Error(
             'References to nested types are not possible without defining _types in the chart!',
