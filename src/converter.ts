@@ -11,7 +11,6 @@ import {
   CakesTable,
   ComponentRef,
   ComponentsTable,
-  JsonWithId,
   Layer,
   LayerRef,
   LayersTable,
@@ -39,24 +38,80 @@ export type DecomposeChart = {
 } & Json;
 
 const resolvePropertySliceId = (
-  ref: string,
-  idx: number,
-  nestedTypes: Rljson,
+  obj: Json,
+  refType: string,
+  chart: DecomposeChart,
 ) => {
-  const slideIds = nestedTypes[ref] as SliceIdsTable;
-  const sliceId = slideIds._data[0].add[idx];
-  return { [ref]: sliceId as SliceIdsRef };
+  const typesIndexed: { [key: string]: string | undefined } = {};
+  for (const t of chart._types || []) {
+    if (t._name)
+      Object.assign(typesIndexed, {
+        [t._name]: {
+          path: t._path,
+          sliceId: t._sliceId,
+        },
+      });
+  }
+  const type = typesIndexed[refType] as any;
+  const typePath = type?.path;
+  const typeSliceId = type?.sliceId;
+
+  const sliceIds: Array<SliceIdsRef> = [];
+  for (const i of (obj[typePath] as SliceIdsRef[]) || []) {
+    sliceIds.push(i[typeSliceId] as SliceIdsRef);
+  }
+
+  //Mapping all child objects correctly
+  return { [refType.toLowerCase() + 'SliceId']: sliceIds as SliceIdsRef[] };
 };
 
 const resolvePropertyReference = (
   ref: string,
-  idx: number,
-  nestedTypes: Rljson,
+  obj: Json,
+  refType: string,
+  nestedRljson: Rljson,
+  chart: DecomposeChart,
 ) => {
-  const refCompRef = ref.slice(0, -3) as string;
-  const refComp = nestedTypes[refCompRef] as ComponentsTable<any>;
-  const refCompRow = refComp._data[idx] as JsonWithId;
-  return { [ref]: (refCompRow as any)._hash as ComponentRef };
+  const compName = ref.split('@')[0].replace('Ref', '');
+  const subChart = chart._types?.find((t) => t._name === refType);
+
+  if (!subChart)
+    throw new Error(`Could not find subChart for reference type ${refType}!`);
+
+  if (!subChart[compName])
+    throw new Error(
+      `Could not find component ${compName} in subChart for reference type ${refType}!`,
+    );
+
+  //Items we want to create references to
+  const refItems = obj[subChart._path as string] as Array<Json>;
+  if (!refItems || !Array.isArray(refItems) || refItems.length === 0) {
+    return { [ref]: [] };
+  }
+
+  //Hence there could be nested components, we need to synthesize a component
+  // only consisting of the items we want to reference
+  const refItemComp = createComponent(
+    refItems,
+    compName,
+    refType,
+    subChart[compName] as string[] | Json,
+    subChart,
+    nestedRljson,
+  );
+
+  //Now we collect the references itself out of the synthesized component
+  const refs: Array<ComponentRef> = [];
+  for (let idx = 0; idx < refItems.length; idx++) {
+    refs.push(
+      (refItemComp[componentsName(compName, refType)]._data[idx] as any)
+        ._hash as ComponentRef,
+    );
+  }
+
+  const refName = componentsName(compName, refType) + 'Ref';
+
+  return { [refName]: refs as ComponentRef[] };
 };
 
 const componentsName = (layerName: string, objName?: string) =>
@@ -69,22 +124,22 @@ const componentsName = (layerName: string, objName?: string) =>
 // Pass keys array instead of splitting every time
 const nestedProperty = (
   obj: any,
-  idx: number,
   path:
     | string
     | string[]
     | { origin: string; destination: string }
     | { origin: string; destination: string }[],
-  nestedTypes?: Rljson,
+  chart?: DecomposeChart,
+  nestedRljson?: Rljson,
   destination?: string,
 ) => {
   if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
     const pathParsed = path as { origin: string; destination: string };
     return nestedProperty(
       obj,
-      idx,
       pathParsed.origin,
-      nestedTypes,
+      chart,
+      nestedRljson,
       pathParsed.destination,
     );
   } else {
@@ -93,19 +148,28 @@ const nestedProperty = (
       : (path.split('/') as string[]);
     const key = keys[0];
     if (keys.length === 1) {
-      if (key.endsWith('Ref')) {
-        if (!nestedTypes)
+      if (key.includes('@')) {
+        if (!nestedRljson)
           throw new Error(
             'References to nested types are not possible without defining _types in the chart!',
           );
-        return resolvePropertyReference(key, idx, nestedTypes);
-      }
-      if (key.endsWith('SliceId')) {
-        if (!nestedTypes)
-          throw new Error(
-            'References to nested types are not possible without defining _types in the chart!',
+        if (!chart)
+          throw new Error('Chart must be provided to resolve references!');
+
+        const refComp = key.split('@')[0];
+        const refType = key.split('@')[1];
+
+        if (refComp === 'sliceId') {
+          return resolvePropertySliceId(obj, refType, chart);
+        } else {
+          return resolvePropertyReference(
+            key,
+            obj,
+            refType,
+            nestedRljson,
+            chart,
           );
-        return resolvePropertySliceId(key, idx, nestedTypes);
+        }
       }
       if (!obj || !obj[key]) return null;
 
@@ -113,9 +177,9 @@ const nestedProperty = (
     } else {
       return nestedProperty(
         obj[key],
-        idx,
         keys.slice(1),
-        nestedTypes,
+        chart,
+        nestedRljson,
         destination,
       );
     }
@@ -127,7 +191,8 @@ const createComponent = (
   componentKey: string,
   typeName: string,
   componentProperties: string[] | Json,
-  nestedTypes?: Rljson,
+  chart?: DecomposeChart,
+  nestedRljson?: Rljson,
 ) => {
   if (Array.isArray(componentProperties)) {
     //Array of properties --> loop through properties and collect them as
@@ -140,7 +205,7 @@ const createComponent = (
       for (const componentProperty of componentProperties as string[]) {
         Object.assign(
           obj,
-          nestedProperty(item, idx, componentProperty, nestedTypes),
+          nestedProperty(item, componentProperty, chart, nestedRljson),
         );
       }
       compArr[idx] = obj;
@@ -164,7 +229,8 @@ const createComponent = (
           nestedCompKey,
           typeName,
           nestedCompProps as string[] | Json,
-          nestedTypes,
+          chart,
+          nestedRljson,
         ),
       );
     }
@@ -230,12 +296,12 @@ export const fromJson = (
   const cakeName = chart._name ? chart._name.toLowerCase() + 'Cake' : 'cake';
 
   // Convert nested types first --> references to nested types possible
-  const nestedTypes: Rljson = {};
+  const nestedRljson: Rljson = {};
   if (chart._types && Array.isArray(chart._types)) {
     for (const t of chart._types as DecomposeChart[]) {
       const nestedJson = json.flatMap((i) => (i as any)[t._path as string]);
       const result = fromJson(nestedJson, t);
-      Object.assign(nestedTypes, result);
+      Object.assign(nestedRljson, result);
     }
   }
 
@@ -265,7 +331,8 @@ export const fromJson = (
           layerKey,
           chart._name as string,
           componentProperties as string[],
-          nestedTypes,
+          chart,
+          nestedRljson,
         ),
       );
     }
@@ -315,7 +382,7 @@ export const fromJson = (
     ...components,
     ...layers,
     [cakeName]: cake,
-    ...nestedTypes,
+    ...nestedRljson,
   };
 };
 

@@ -264,6 +264,62 @@ describe('From JSON', () => {
     await expectGolden('example/converter/list-with-types.json').toBe(rljson);
     expect(result).toStrictEqual({});
   });
+  it('List w/ types and multilateral references should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        screws: [
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+          {
+            id: 'SCW-002',
+            type: 'DIN7990',
+            material: 'Steel Zinc plated',
+            dimension: 'M6x30',
+          },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      meta: ['model', 'manufacturer'],
+      screwRefs: ['sliceId@Screw', 'technicalRef@Screw'],
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: 'id',
+          technical: ['type', 'material', 'dimension'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    // const v = new Validate();
+    // v.addValidator(new BaseValidator());
+    // const result = await v.run(rljson);
+
+    await expectGolden('example/converter/list-with-types-multi-ref.json').toBe(
+      rljson,
+    );
+    //Validation skipped, because RLJSON needs multi-ref for sliceIds
+    //expect(result).toStrictEqual({});
+  });
   it('List w/ types and references should convert w/o errors.', async () => {
     const json = [
       {
