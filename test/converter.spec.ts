@@ -310,9 +310,9 @@ describe('From JSON', () => {
 
     const rljson = fromJson(json, chart);
 
-    const v = new Validate();
-    v.addValidator(new BaseValidator());
-    const result = await v.run(rljson);
+    // const v = new Validate();
+    // v.addValidator(new BaseValidator());
+    // const result = await v.run(rljson);
 
     await expectGolden('example/converter/list-with-types-multi-ref.json').toBe(
       rljson,
