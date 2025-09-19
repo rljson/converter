@@ -136,8 +136,6 @@ It is also possible to alias component properties. The definition of the Compone
 
 RLJSON provides the concept of hard-linked References, which means, that on any Components Object you can reference another Components Objects by suffixing the components Key by "Ref" and by providing its unique reference (Hash). Otherwise its possible to reference a sliceId of another Type by just suffixing the types Key by "SliceId".
 
-When Converter should build these references we need some special Syntax within Decompose Chart.
-
 ```ts
 const json = [
   {
@@ -172,6 +170,7 @@ const chart: DecomposeChart = {
 ```
 
 In this example, we provide two kinds of references. First within `sliceId@Color`, we refer directly to the sliceId of the Sub-Type Color. By providing `generalRef@Color` as another component property, we refer to general Component of the Sub-Type Color. The result will look like this:
+
 
 ```ts
   carColorRefs: {
