@@ -15,34 +15,30 @@
   "carColorRefs": {
     "_data": [
       {
-        "colorSliceId": "RAL9000",
-        "colorGeneralRef": "cIMFhZaDtJAkCF_h3PCCT1",
-        "_hash": "crdjHhdKI3OJzSe0UUgoRQ"
+        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       },
       {
-        "colorSliceId": "RAL7000",
-        "colorGeneralRef": "nxgBIGoNSFZO083VAufXk9",
-        "_hash": "fN3Eky49X61qms09jJ3g27"
+        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "YTOwgpcP_67Rkqs6dyazek"
+    "_hash": "du-6IBU7HSLFj3IqLTN9Pp"
   },
   "carColorRefsLayer": {
     "_type": "layers",
     "_data": [
       {
         "add": {
-          "car1": "crdjHhdKI3OJzSe0UUgoRQ",
-          "car2": "fN3Eky49X61qms09jJ3g27",
-          "_hash": "MYOJG23VpNUSEBTPWpVsMU"
+          "car1": "RBNvo1WzZ4oRRq0W9-hknp",
+          "car2": "RBNvo1WzZ4oRRq0W9-hknp",
+          "_hash": "WKi1WFOrB3IIuOvMjLa0Gk"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
         "componentsTable": "carColorRefs",
-        "_hash": "oEZRuN0MNu6qjZhSRHuEZF"
+        "_hash": "PWLI0WVK2KL7xXaAw3n9xG"
       }
     ],
-    "_hash": "-RbKczjcyLzwIjUt26uuaN"
+    "_hash": "IyuMHwTlUMwo1jy_y-o5F7"
   },
   "carCake": {
     "_type": "cakes",
@@ -51,7 +47,7 @@
         "sliceIdsTable": "carSliceId",
         "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
         "layers": {
-          "carColorRefsLayer": "oEZRuN0MNu6qjZhSRHuEZF"
+          "carColorRefsLayer": "PWLI0WVK2KL7xXaAw3n9xG"
         }
       }
     ]

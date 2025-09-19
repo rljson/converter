@@ -66,19 +66,13 @@
   "carWheel": {
     "_data": [
       {
-        "wheelSliceId": "BOB37382",
-        "wheelBrandRef": "VQxyOOlL5pVCWUoteV_x8V",
-        "wheelDimensionRef": "pQB1jQ9uRxoYAcVc25VA20",
-        "_hash": "SJWbwBlx9lTONxYl-Ykkk-"
+        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       },
       {
-        "wheelSliceId": "BOB37383",
-        "wheelBrandRef": "VQxyOOlL5pVCWUoteV_x8V",
-        "wheelDimensionRef": "7G8GafBJu0ohK_1lcTWgEn",
-        "_hash": "NS1n6MlF2NwGd2wF3biHmK"
+        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "dagFSoJ1GivzVpM7xj0b4p"
+    "_hash": "du-6IBU7HSLFj3IqLTN9Pp"
   },
   "carGeneralLayer": {
     "_type": "layers",
@@ -136,17 +130,17 @@
     "_data": [
       {
         "add": {
-          "VIN1": "SJWbwBlx9lTONxYl-Ykkk-",
-          "VIN2": "NS1n6MlF2NwGd2wF3biHmK",
-          "_hash": "W0rhH3mobE0XqzkiOQ_az8"
+          "VIN1": "RBNvo1WzZ4oRRq0W9-hknp",
+          "VIN2": "RBNvo1WzZ4oRRq0W9-hknp",
+          "_hash": "OJtYyRy9yW1COM_YBlCUH2"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "gaY8E_pzUVZYJT1RTMWsrh",
         "componentsTable": "carWheel",
-        "_hash": "ElfozvEqKw_3oMC-FvsQ4u"
+        "_hash": "tYWK2dZbgVJv2xmI5knESg"
       }
     ],
-    "_hash": "SovWYc0nSILtuIEyXot0ts"
+    "_hash": "6qlGNIlZgHHttBg8DAQNro"
   },
   "carCake": {
     "_type": "cakes",
@@ -158,7 +152,7 @@
           "carGeneralLayer": "Gv1hBZjCrOPaW1T9qwB7i1",
           "carTechnicalLayer": "3FqkEWxnPT6ctdPHk04XBL",
           "carColorLayer": "3-Xak37KCHtV-LXU084JCt",
-          "carWheelLayer": "ElfozvEqKw_3oMC-FvsQ4u"
+          "carWheelLayer": "tYWK2dZbgVJv2xmI5knESg"
         }
       }
     ]

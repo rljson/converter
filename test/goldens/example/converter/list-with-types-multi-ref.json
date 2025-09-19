@@ -1,0 +1,153 @@
+{
+  "carSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "car1"
+        ],
+        "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
+      }
+    ],
+    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+  },
+  "carMeta": {
+    "_data": [
+      {
+        "model": "X",
+        "manufacturer": "Tesla",
+        "_hash": "CZxQxtVn67eqdTieAOBH7w"
+      }
+    ],
+    "_hash": "fk5ECpXjhrrjc95eNBY3dp"
+  },
+  "carScrewRefs": {
+    "_data": [
+      {
+        "screwSliceId": [
+          "SCW-001",
+          "SCW-001",
+          "SCW-002"
+        ],
+        "screwTechnicalRef": [
+          "zsnKCV7s9ufse2ElLXhIAh",
+          "zsnKCV7s9ufse2ElLXhIAh",
+          "T1FZitsrdgi4d0bzuOZa6M"
+        ],
+        "_hash": "wACgN9KPHyITDCtCs75Duz"
+      }
+    ],
+    "_hash": "L4gkediwW491ZrLIquxv2X"
+  },
+  "carMetaLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "CZxQxtVn67eqdTieAOBH7w",
+          "_hash": "O2bdw6Rxd-ws3JwiSD0KkJ"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "carMeta",
+        "_hash": "6nmN98POuTqRn79mRFaYyQ"
+      }
+    ],
+    "_hash": "Ezi3GGk1myFXKAGt0QBBNM"
+  },
+  "carScrewRefsLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "wACgN9KPHyITDCtCs75Duz",
+          "_hash": "RKD2K6b48pCTJu8jjlrRsk"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "componentsTable": "carScrewRefs",
+        "_hash": "5PMAptjeJfTIS8qc_6MBdc"
+      }
+    ],
+    "_hash": "iDy1sfCrx_C48yb2MRTHWk"
+  },
+  "carCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
+        "layers": {
+          "carMetaLayer": "6nmN98POuTqRn79mRFaYyQ",
+          "carScrewRefsLayer": "5PMAptjeJfTIS8qc_6MBdc"
+        }
+      }
+    ]
+  },
+  "screwSliceId": {
+    "_type": "sliceIds",
+    "_data": [
+      {
+        "add": [
+          "SCW-001",
+          "SCW-001",
+          "SCW-002"
+        ],
+        "_hash": "xUloAEA4YX0vxsvmbQSmgZ"
+      }
+    ],
+    "_hash": "Gy0uwOVPQ-V2lbvXuTNrMs"
+  },
+  "screwTechnical": {
+    "_data": [
+      {
+        "type": "DIN7984",
+        "material": "Stainless Steel",
+        "dimension": "M4x20",
+        "_hash": "zsnKCV7s9ufse2ElLXhIAh"
+      },
+      {
+        "type": "DIN7984",
+        "material": "Stainless Steel",
+        "dimension": "M4x20",
+        "_hash": "zsnKCV7s9ufse2ElLXhIAh"
+      },
+      {
+        "type": "DIN7990",
+        "material": "Steel Zinc plated",
+        "dimension": "M6x30",
+        "_hash": "T1FZitsrdgi4d0bzuOZa6M"
+      }
+    ],
+    "_hash": "epmd-lDGsHDxWY_RGwysAT"
+  },
+  "screwTechnicalLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "SCW-001": "zsnKCV7s9ufse2ElLXhIAh",
+          "SCW-002": "T1FZitsrdgi4d0bzuOZa6M",
+          "_hash": "tLh_mRFVOBg_wQ0IjWzLJC"
+        },
+        "sliceIdsTable": "screwSliceId",
+        "sliceIdsTableRow": "xUloAEA4YX0vxsvmbQSmgZ",
+        "componentsTable": "screwTechnical",
+        "_hash": "uYHoXEKloDRV4ZjpEJ8iLJ"
+      }
+    ],
+    "_hash": "JXTyfEdGJ6qqw1weMn65hn"
+  },
+  "screwCake": {
+    "_type": "cakes",
+    "_data": [
+      {
+        "sliceIdsTable": "screwSliceId",
+        "sliceIdsRow": "xUloAEA4YX0vxsvmbQSmgZ",
+        "layers": {
+          "screwTechnicalLayer": "uYHoXEKloDRV4ZjpEJ8iLJ"
+        }
+      }
+    ]
+  }
+}
