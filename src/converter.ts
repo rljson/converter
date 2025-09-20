@@ -14,6 +14,7 @@ import {
   Layer,
   LayerRef,
   LayersTable,
+  removeDuplicates,
   Rljson,
   SliceIdsRef,
   SliceIdsTable,
@@ -377,13 +378,18 @@ export const fromJson = (
     ],
   };
 
-  return {
+  const rljson: Rljson = {
     [slideIdsName]: sliceIds,
     ...components,
     ...layers,
     [cakeName]: cake,
     ...nestedRljson,
   };
+
+  //Remove duplicate entries on all levels
+  removeDuplicates(rljson);
+
+  return rljson;
 };
 
 export const exampleFromJsonJson: Array<Json> = [
