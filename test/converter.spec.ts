@@ -4,7 +4,7 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
-import { BaseValidator, Validate } from '@rljson/rljson';
+import { BaseValidator, removeDuplicates, Validate } from '@rljson/rljson';
 
 import { describe, expect, it } from 'vitest';
 
@@ -413,6 +413,7 @@ describe('From JSON', () => {
       'dimensionLayer',
       'brandLayer',
       'cake',
+      'tableCfgs',
     ]);
 
     await expectGolden('example/converter/component-encapsulation.json').toBe(
@@ -460,10 +461,79 @@ describe('From JSON', () => {
       'dimension',
       'dimensionLayer',
       'cake',
+      'tableCfgs',
     ]);
 
     await expectGolden(
       'example/converter/component-encapsulation-with-skipping.json',
+    ).toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
+  it('Named Object with nested components but skipping layers should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        registration: {
+          country: 'D',
+          licensePlate: 'B-TX-100',
+        },
+        dimension: {
+          length: 5036,
+          width: 1999,
+          height: 1684,
+        },
+      },
+      {
+        id: 'car2',
+        model: 'Y',
+        manufacturer: 'Tesla',
+        registration: {
+          country: 'D',
+          licensePlate: 'B-TY-200',
+        },
+        dimension: {
+          length: 4751,
+          width: 1921,
+          height: 1624,
+        },
+      },
+    ];
+    const chart: DecomposeChart = {
+      _name: 'Car',
+      _sliceId: 'id',
+      _skipLayerCreation: ['length', 'width', 'height'],
+      manufacturer: ['manufacturer'],
+      dimension: {
+        length: ['dimension/length'],
+        width: ['dimension/width'],
+        height: ['dimension/height'],
+      },
+    };
+
+    const rljson = fromJson(json, chart);
+    removeDuplicates(rljson);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    expect(Object.keys(rljson)).toEqual([
+      'carSliceId',
+      'carManufacturer',
+      'carLength',
+      'carWidth',
+      'carHeight',
+      'carDimension',
+      'carManufacturerLayer',
+      'carDimensionLayer',
+      'carCake',
+      'tableCfgs',
+    ]);
+
+    await expectGolden(
+      'example/converter/component-named-encapsulation-with-skipping.json',
     ).toBe(rljson);
     expect(result).toStrictEqual({});
   });

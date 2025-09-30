@@ -79,8 +79,10 @@
         "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "layers": {
           "carMetaLayer": "6nmN98POuTqRn79mRFaYyQ",
-          "carScrewRefsLayer": "5PMAptjeJfTIS8qc_6MBdc"
-        }
+          "carScrewRefsLayer": "5PMAptjeJfTIS8qc_6MBdc",
+          "_hash": "iFKllaaXX1u8UPxecE9FUY"
+        },
+        "_hash": "gdYaoIwxSbybuWxL8MrK8E"
       }
     ]
   },
@@ -145,8 +147,241 @@
         "sliceIdsTable": "screwSliceId",
         "sliceIdsRow": "xUloAEA4YX0vxsvmbQSmgZ",
         "layers": {
-          "screwTechnicalLayer": "uYHoXEKloDRV4ZjpEJ8iLJ"
-        }
+          "screwTechnicalLayer": "uYHoXEKloDRV4ZjpEJ8iLJ",
+          "_hash": "OURHBM1RcNqBcv2NkPn_lB"
+        },
+        "_hash": "HU6A9ixXjdFxzhBo8jeAl5"
+      }
+    ]
+  },
+  "tableCfgs": {
+    "_type": "tableCfgs",
+    "_data": [
+      {
+        "key": "screwTechnical",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "type",
+            "type": "string"
+          },
+          {
+            "key": "material",
+            "type": "string"
+          },
+          {
+            "key": "dimension",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "screwTechnicalLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "screwCake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+          },
+          {
+            "key": "layers",
+            "type": "jsonArray",
+            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "LGAelMxEcb77S58QNaAH6j"
+      },
+      {
+        "key": "carMeta",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          },
+          {
+            "key": "manufacturer",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carMetaLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "carScrewRefs",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "screwSliceId",
+            "type": "object"
+          },
+          {
+            "key": "technicalRef@Screw",
+            "type": "object"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carScrewRefsLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "carCake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+          },
+          {
+            "key": "layers",
+            "type": "jsonArray",
+            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "01e55dj2RKOpx77ElgJuhT"
       }
     ]
   }

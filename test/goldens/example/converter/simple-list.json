@@ -80,8 +80,145 @@
         "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
         "layers": {
           "modelLayer": "vIp_6US48cj1Rd4HiHAkYD",
-          "manufacturerLayer": "OUFfnYAJwYZJUCUYEqM5NS"
-        }
+          "manufacturerLayer": "OUFfnYAJwYZJUCUYEqM5NS",
+          "_hash": "vUo5j8yhxDpfqvcthECFHA"
+        },
+        "_hash": "rTsDd8-XHlJvsLcdbu5ETv"
+      }
+    ]
+  },
+  "tableCfgs": {
+    "_type": "tableCfgs",
+    "_data": [
+      {
+        "key": "model",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "modelLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "manufacturer",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "manufacturer",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "manufacturerLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "cake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+          },
+          {
+            "key": "layers",
+            "type": "jsonArray",
+            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "qmSXHk9hD_6tyi37N5g0iA"
       }
     ]
   }

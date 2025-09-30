@@ -43,8 +43,95 @@
         "sliceIdsTable": "sliceId",
         "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "layers": {
-          "modelLayer": "AC_agy2Qjz8E2GgOU3gCxd"
-        }
+          "modelLayer": "AC_agy2Qjz8E2GgOU3gCxd",
+          "_hash": "9pcxQvjO8arqCy0Ob_5w6g"
+        },
+        "_hash": "SxGxHLy-r4fJxUwWycBBJA"
+      }
+    ]
+  },
+  "tableCfgs": {
+    "_type": "tableCfgs",
+    "_data": [
+      {
+        "key": "model",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "model",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "modelLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "cake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+          },
+          {
+            "key": "layers",
+            "type": "jsonArray",
+            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "qmSXHk9hD_6tyi37N5g0iA"
       }
     ]
   }

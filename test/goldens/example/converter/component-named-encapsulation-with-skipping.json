@@ -12,19 +12,6 @@
     ],
     "_hash": "guR8VN34AS7AeQ3sInxtwc"
   },
-  "carModel": {
-    "_data": [
-      {
-        "model": "X",
-        "_hash": "jSKIU_xaQFBLdriXQwYxEs"
-      },
-      {
-        "model": "Y",
-        "_hash": "Ss858-cdBHm-x-DXXPVJFj"
-      }
-    ],
-    "_hash": "6WNqTvefGlwxlFJk0Hnh8U"
-  },
   "carManufacturer": {
     "_data": [
       {
@@ -38,22 +25,61 @@
     ],
     "_hash": "mw6eDDIbYPJWlBRFwRLDHZ"
   },
-  "carModelLayer": {
-    "_type": "layers",
+  "carLength": {
     "_data": [
       {
-        "add": {
-          "car1": "jSKIU_xaQFBLdriXQwYxEs",
-          "car2": "Ss858-cdBHm-x-DXXPVJFj",
-          "_hash": "j1o4E-_7iVvbb1o4Gn6mi4"
-        },
-        "sliceIdsTable": "carSliceId",
-        "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
-        "componentsTable": "carModel",
-        "_hash": "_bF_LsT-kiQw18vRk1BEhY"
+        "length": 5036,
+        "_hash": "poMsKI0UqeEM6h8qKVF3IU"
+      },
+      {
+        "length": 4751,
+        "_hash": "H87S-yPo8pVfZc1_RsEREk"
       }
     ],
-    "_hash": "WEfJELfdhsc9p8r5zFKiyg"
+    "_hash": "RjmmP1n63glH0Bx8F2O76L"
+  },
+  "carWidth": {
+    "_data": [
+      {
+        "width": 1999,
+        "_hash": "8EZxlYaF4z0HUMAW6bXsN6"
+      },
+      {
+        "width": 1921,
+        "_hash": "UBLIJHMX5Q7lso4Sqfc2lQ"
+      }
+    ],
+    "_hash": "VI10ct5Kfhoyzxd3mq4fma"
+  },
+  "carHeight": {
+    "_data": [
+      {
+        "height": 1684,
+        "_hash": "QtTfCbiTktna-iwRI0RsAa"
+      },
+      {
+        "height": 1624,
+        "_hash": "Mbhc6ZN7VtXEt6FEink6VQ"
+      }
+    ],
+    "_hash": "vlE4Sgz_xNhqR3jtL6erPH"
+  },
+  "carDimension": {
+    "_data": [
+      {
+        "carLengthRef": "poMsKI0UqeEM6h8qKVF3IU",
+        "carWidthRef": "8EZxlYaF4z0HUMAW6bXsN6",
+        "carHeightRef": "QtTfCbiTktna-iwRI0RsAa",
+        "_hash": "GXndSxXdHagZXqW2YEw2uL"
+      },
+      {
+        "carLengthRef": "H87S-yPo8pVfZc1_RsEREk",
+        "carWidthRef": "UBLIJHMX5Q7lso4Sqfc2lQ",
+        "carHeightRef": "Mbhc6ZN7VtXEt6FEink6VQ",
+        "_hash": "1r71iomvWePyWZhrRY4E7P"
+      }
+    ],
+    "_hash": "T69lRCVOlth6nFG3rsiYHK"
   },
   "carManufacturerLayer": {
     "_type": "layers",
@@ -72,6 +98,23 @@
     ],
     "_hash": "kP7-49Oi645zalVmrLGEnc"
   },
+  "carDimensionLayer": {
+    "_type": "layers",
+    "_data": [
+      {
+        "add": {
+          "car1": "GXndSxXdHagZXqW2YEw2uL",
+          "car2": "1r71iomvWePyWZhrRY4E7P",
+          "_hash": "tz37YKofsSFxYSlti3tI8u"
+        },
+        "sliceIdsTable": "carSliceId",
+        "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
+        "componentsTable": "carDimension",
+        "_hash": "81m-dmhExa0Fm9KaNcEnL9"
+      }
+    ],
+    "_hash": "XwBG-rFPWZ_LatK7UbL_rn"
+  },
   "carCake": {
     "_type": "cakes",
     "_data": [
@@ -79,204 +122,17 @@
         "sliceIdsTable": "carSliceId",
         "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
         "layers": {
-          "carModelLayer": "_bF_LsT-kiQw18vRk1BEhY",
           "carManufacturerLayer": "zOu5K9QHP3VskL0QZUe5Mv",
-          "_hash": "LFOCaBObQ8S_S3d1FdhccP"
+          "carDimensionLayer": "81m-dmhExa0Fm9KaNcEnL9",
+          "_hash": "rpTLIIkfmkxgsowYNYmOnl"
         },
-        "_hash": "EJE0bObdQnUIch7ZQs1mc5"
-      }
-    ]
-  },
-  "colorSliceId": {
-    "_type": "sliceIds",
-    "_data": [
-      {
-        "add": [
-          "RAL9000",
-          "RAL7000"
-        ],
-        "_hash": "8Cl7CQ3A3A7KWUYLGkv1g5"
-      }
-    ],
-    "_hash": "dLmhCXNzePio5NNCIkequj"
-  },
-  "colorGenereral": {
-    "_data": [
-      {
-        "name": "Black",
-        "_hash": "cIMFhZaDtJAkCF_h3PCCT1"
-      },
-      {
-        "name": "Gray",
-        "_hash": "nxgBIGoNSFZO083VAufXk9"
-      }
-    ],
-    "_hash": "IOrpbrVf3WQyd7vd2NvuQZ"
-  },
-  "colorGenereralLayer": {
-    "_type": "layers",
-    "_data": [
-      {
-        "add": {
-          "RAL9000": "cIMFhZaDtJAkCF_h3PCCT1",
-          "RAL7000": "nxgBIGoNSFZO083VAufXk9",
-          "_hash": "9AEGfK5CuBEJv3PSVAunCn"
-        },
-        "sliceIdsTable": "colorSliceId",
-        "sliceIdsTableRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
-        "componentsTable": "colorGenereral",
-        "_hash": "hRwC5LD6igi3ada6XbeoxA"
-      }
-    ],
-    "_hash": "SCijxg8evGY2aJUf5yVydW"
-  },
-  "colorCake": {
-    "_type": "cakes",
-    "_data": [
-      {
-        "sliceIdsTable": "colorSliceId",
-        "sliceIdsRow": "8Cl7CQ3A3A7KWUYLGkv1g5",
-        "layers": {
-          "colorGenereralLayer": "hRwC5LD6igi3ada6XbeoxA",
-          "_hash": "Bom8RVb61XyOgmdfLa-uFO"
-        },
-        "_hash": "YljKyCAT0LUN7XBZl-s5MS"
+        "_hash": "OLFDS3Y3_EL394Hzz_f6xZ"
       }
     ]
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "colorGenereral",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "name",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "colorGenereralLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "colorCake",
-        "type": "cakes",
-        "columns": [
-          {
-            "key": "sliceIdsTable",
-            "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
-          },
-          {
-            "key": "sliceIdsRow",
-            "type": "string",
-            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
-          },
-          {
-            "key": "layers",
-            "type": "jsonArray",
-            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
-          },
-          {
-            "key": "id",
-            "type": "string",
-            "_hash": "eq2P3RIaSgy81i7PomNUvn"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true,
-        "_hash": "exkmj5DS_ft8qHl9gpFr04"
-      },
-      {
-        "key": "carModel",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "model",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carModelLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "carManufacturer",
         "type": "components",
@@ -326,6 +182,122 @@
         "isHead": false,
         "isRoot": false,
         "isShared": true
+      },
+      {
+        "key": "carLength",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "length",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carWidth",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "width",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carHeight",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "height",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carDimension",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "carLengthRef",
+            "type": "string"
+          },
+          {
+            "key": "carWidthRef",
+            "type": "string"
+          },
+          {
+            "key": "carHeightRef",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "carDimensionLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string",
+            "_hash": "3C9r1caJ8XZbC-zkIy9LNo"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string",
+            "_hash": "cAr1yAw5gzMphNUyDhRxSX"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string",
+            "_hash": "n_aO7skoEe0XAMFTUg0V0g"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray",
+            "_hash": "mmIm0vGCQE685DvWxbZ6iO"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray",
+            "_hash": "X8rx1TcEZn-rv-oGGXktDe"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "3Rdr6L_6Kazw6p-eSRfUxI"
       },
       {
         "key": "carCake",
