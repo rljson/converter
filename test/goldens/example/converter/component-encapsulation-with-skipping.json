@@ -72,8 +72,154 @@
         "sliceIdsTable": "sliceId",
         "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "layers": {
-          "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz"
-        }
+          "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz",
+          "_hash": "piqqREmb3f35oiFf-IPuxG"
+        },
+        "_hash": "qozwyyLU087eVW1nfc-DkS"
+      }
+    ]
+  },
+  "tableCfgs": {
+    "_type": "tableCfgs",
+    "_data": [
+      {
+        "key": "length",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "length",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "width",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "width",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "height",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "height",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "dimension",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string"
+          },
+          {
+            "key": "lengthRef",
+            "type": "string"
+          },
+          {
+            "key": "widthRef",
+            "type": "string"
+          },
+          {
+            "key": "heightRef",
+            "type": "string"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false
+      },
+      {
+        "key": "dimensionLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "base",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true
+      },
+      {
+        "key": "cake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+          },
+          {
+            "key": "layers",
+            "type": "jsonArray",
+            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "qmSXHk9hD_6tyi37N5g0iA"
       }
     ]
   }
