@@ -1,6 +1,6 @@
 {
   "name": "@rljson/converter",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Convert flat textual data i. e. from JSON or XML into RLJSON data structure and data itself automatically.",
   "homepage": "https://github.com/rljson/converter",
   "bugs": "https://github.com/rljson/converter/issues",
