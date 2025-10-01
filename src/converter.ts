@@ -362,10 +362,17 @@ export const fromJson = (
   //Component names must be unique within one chart
   const componentNames: string[] = [];
   traverse(chart, ({ key }) =>
-    isNaN(+key!) && !!key?.indexOf('_') ? componentNames.push(key) : null,
+    isNaN(+key!) &&
+    !['origin', 'destination'].includes(key!) &&
+    !key?.startsWith('_')
+      ? componentNames.push(key!)
+      : null,
   );
   if (new Set(componentNames).size < componentNames.length)
-    throw new Error('All component names must be unique within one chart!');
+    throw new Error(
+      'All component names must be unique within one chart! Component names: ' +
+        componentNames.join(', '),
+    );
 
   //Type names must be unique within one chart
   const typeNames: string[] = [];

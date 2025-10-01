@@ -73,10 +73,11 @@
     "_data": [
       {
         "brand": "Tesla",
-        "_hash": "h2XRVY0DCSeSc2bJkbDiPP"
+        "type": "X",
+        "_hash": "ZW6sbN1MOuekKuupMaxYgi"
       }
     ],
-    "_hash": "V1JfH7G1I0QZWYshcLTP0y"
+    "_hash": "WlTtQKK5wjFWSAAHz-yGHK"
   },
   "infoLayer": {
     "_type": "layers",
@@ -179,16 +180,16 @@
     "_data": [
       {
         "add": {
-          "car1": "h2XRVY0DCSeSc2bJkbDiPP",
-          "_hash": "LIqRIUIJAzBSdDgPnIyrFK"
+          "car1": "ZW6sbN1MOuekKuupMaxYgi",
+          "_hash": "LbDbaf9APPWeUEsVGpB0k4"
         },
         "sliceIdsTable": "sliceId",
         "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "componentsTable": "brand",
-        "_hash": "QwLTkN0P1kXZNU6HwW3lGe"
+        "_hash": "VxAMxHOaoVYhtyRPWIo_ZC"
       }
     ],
-    "_hash": "U4wuYHulBRCG4dmTq9gRLg"
+    "_hash": "RBcCUdWuLlw93khEQt--eU"
   },
   "cake": {
     "_type": "cakes",
@@ -203,10 +204,10 @@
           "widthLayer": "cGRHVusmYxmEUb9MapQMpq",
           "heightLayer": "VwWvL53zMYqUenfMDladIM",
           "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz",
-          "brandLayer": "QwLTkN0P1kXZNU6HwW3lGe",
-          "_hash": "JoFjP2FSD_zDwIpanImsgb"
+          "brandLayer": "VxAMxHOaoVYhtyRPWIo_ZC",
+          "_hash": "FyBgjleMf-W73gcQPTQEaS"
         },
-        "_hash": "4kIirfj0qfzU06AwJ7Vm4G"
+        "_hash": "rlsKwbKzYpEPpI4936gXEq"
       }
     ]
   },
@@ -440,6 +441,10 @@
           },
           {
             "key": "brand",
+            "type": "string"
+          },
+          {
+            "key": "type",
             "type": "string"
           }
         ],

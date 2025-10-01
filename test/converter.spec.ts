@@ -387,7 +387,10 @@ describe('From JSON', () => {
         width: ['dimension/width'],
         height: ['dimension/height'],
       },
-      brand: [{ origin: 'manufacturer', destination: 'brand' }],
+      brand: [
+        { origin: 'manufacturer', destination: 'brand' },
+        { origin: 'model', destination: 'type' },
+      ],
     };
 
     const rljson = fromJson(json, chart);
