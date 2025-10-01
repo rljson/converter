@@ -77,120 +77,12 @@
         },
         "_hash": "qozwyyLU087eVW1nfc-DkS"
       }
-    ]
+    ],
+    "_hash": "Ok33pM1tzwQPnrSu7Fz7WH"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "length",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "length",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "width",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "width",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "height",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "height",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "dimension",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "lengthRef",
-            "type": "string"
-          },
-          {
-            "key": "widthRef",
-            "type": "string"
-          },
-          {
-            "key": "heightRef",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "dimensionLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "cake",
         "type": "cakes",
@@ -221,6 +113,8 @@
         "isShared": true,
         "_hash": "qmSXHk9hD_6tyi37N5g0iA"
       }
-    ]
-  }
+    ],
+    "_hash": "du0xsN8nqye3c4DorjQsV5"
+  },
+  "_hash": "nQxpf5bpbm--wt1w_CIGzQ"
 }

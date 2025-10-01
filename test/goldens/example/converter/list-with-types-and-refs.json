@@ -16,12 +16,9 @@
     "_data": [
       {
         "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
-      },
-      {
-        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "du-6IBU7HSLFj3IqLTN9Pp"
+    "_hash": "_Q9OEfMfome8deCB8JLcC3"
   },
   "carColorRefsLayer": {
     "_type": "layers",
@@ -52,7 +49,8 @@
         },
         "_hash": "t6AFrjUzm0MhcimXuDttAv"
       }
-    ]
+    ],
+    "_hash": "gA7d4EHyFmf_vpelM4Ub_2"
   },
   "colorSliceId": {
     "_type": "sliceIds",
@@ -109,61 +107,12 @@
         },
         "_hash": "UEM7Kz5osQ1IU59KOXMvgw"
       }
-    ]
+    ],
+    "_hash": "4Ef9UPQ_K-XbYLGA36vc4I"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "colorGeneral",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "name",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "colorGeneralLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "colorCake",
         "type": "cakes",
@@ -195,60 +144,6 @@
         "_hash": "exkmj5DS_ft8qHl9gpFr04"
       },
       {
-        "key": "carColorRefs",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "colorSliceId",
-            "type": "string"
-          },
-          {
-            "key": "colorGeneralRef",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carColorRefsLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
         "key": "carCake",
         "type": "cakes",
         "columns": [
@@ -278,6 +173,8 @@
         "isShared": true,
         "_hash": "01e55dj2RKOpx77ElgJuhT"
       }
-    ]
-  }
+    ],
+    "_hash": "s5mILxijE6dFhdE6W5-5dB"
+  },
+  "_hash": "m4H2GPV76S_YfDMCsnLOfY"
 }

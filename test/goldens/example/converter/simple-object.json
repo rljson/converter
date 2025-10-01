@@ -48,61 +48,12 @@
         },
         "_hash": "SxGxHLy-r4fJxUwWycBBJA"
       }
-    ]
+    ],
+    "_hash": "1lz05arVRxkGdbMz9ZQDnz"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "model",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "model",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "modelLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "cake",
         "type": "cakes",
@@ -133,6 +84,8 @@
         "isShared": true,
         "_hash": "qmSXHk9hD_6tyi37N5g0iA"
       }
-    ]
-  }
+    ],
+    "_hash": "du0xsN8nqye3c4DorjQsV5"
+  },
+  "_hash": "5OBvGWuzS-aJ3dd_k6sriJ"
 }

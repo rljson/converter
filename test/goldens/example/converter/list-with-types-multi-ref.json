@@ -84,7 +84,8 @@
         },
         "_hash": "gdYaoIwxSbybuWxL8MrK8E"
       }
-    ]
+    ],
+    "_hash": "fXgTYorXIP5eT7qAvqrFzE"
   },
   "screwSliceId": {
     "_type": "sliceIds",
@@ -109,19 +110,13 @@
         "_hash": "zsnKCV7s9ufse2ElLXhIAh"
       },
       {
-        "type": "DIN7984",
-        "material": "Stainless Steel",
-        "dimension": "M4x20",
-        "_hash": "zsnKCV7s9ufse2ElLXhIAh"
-      },
-      {
         "type": "DIN7990",
         "material": "Steel Zinc plated",
         "dimension": "M6x30",
         "_hash": "T1FZitsrdgi4d0bzuOZa6M"
       }
     ],
-    "_hash": "epmd-lDGsHDxWY_RGwysAT"
+    "_hash": "wRhlWnF0z4eZNa1O36ECY0"
   },
   "screwTechnicalLayer": {
     "_type": "layers",
@@ -152,69 +147,12 @@
         },
         "_hash": "HU6A9ixXjdFxzhBo8jeAl5"
       }
-    ]
+    ],
+    "_hash": "ee5t9pHue7VgAKxlLruJ_K"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "screwTechnical",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "type",
-            "type": "string"
-          },
-          {
-            "key": "material",
-            "type": "string"
-          },
-          {
-            "key": "dimension",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "screwTechnicalLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "screwCake",
         "type": "cakes",
@@ -246,114 +184,6 @@
         "_hash": "LGAelMxEcb77S58QNaAH6j"
       },
       {
-        "key": "carMeta",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "model",
-            "type": "string"
-          },
-          {
-            "key": "manufacturer",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carMetaLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "carScrewRefs",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "screwSliceId",
-            "type": "object"
-          },
-          {
-            "key": "technicalRef@Screw",
-            "type": "object"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carScrewRefsLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
         "key": "carCake",
         "type": "cakes",
         "columns": [
@@ -383,6 +213,8 @@
         "isShared": true,
         "_hash": "01e55dj2RKOpx77ElgJuhT"
       }
-    ]
-  }
+    ],
+    "_hash": "blhwXTos1RyF6QepMUwZI8"
+  },
+  "_hash": "FrAy07-t5jCtcA8j3DiHp1"
 }
