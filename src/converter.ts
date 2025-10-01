@@ -237,10 +237,9 @@ const createComponent = (
       compArr[idx] = obj;
     }
     const name = componentsName(componentKey, typeName);
-    return { [name]: hip({ _data: compArr }) } as Record<
-      string,
-      ComponentsTable<Json>
-    >;
+    return {
+      [name]: hip({ _data: compArr }, { throwOnWrongHashes: false }),
+    } as Record<string, ComponentsTable<Json>>;
   } else {
     //Nested object --> loop through keys and create one component per key
     // Then merge them into one component with references to the nested ones
@@ -271,7 +270,10 @@ const createComponent = (
       mergedArr[idx] = obj;
     }
     const mergedComp: Record<string, ComponentsTable<Json>> = {
-      [componentsName(componentKey, typeName)]: hip({ _data: mergedArr }),
+      [componentsName(componentKey, typeName)]: hip(
+        { _data: mergedArr },
+        { throwOnWrongHashes: false },
+      ),
     } as any;
     return { ...nestedComps, ...mergedComp };
   }
@@ -406,14 +408,17 @@ export const fromJson = (
     : 'sliceId';
 
   const ids = json.map((item) => item[chart._sliceId]);
-  const sliceIds: SliceIdsTable = hip({
-    _type: 'sliceIds',
-    _data: [
-      {
-        add: ids as SliceIdsRef[],
-      },
-    ],
-  });
+  const sliceIds: SliceIdsTable = hip(
+    {
+      _type: 'sliceIds',
+      _data: [
+        {
+          add: ids as SliceIdsRef[],
+        },
+      ],
+    },
+    { throwOnWrongHashes: false },
+  );
 
   //Translating skipped layers if name is given
   const skipLayersForComps = chart._skipLayerCreation
@@ -447,17 +452,20 @@ export const fromJson = (
       layerObj[ids[idx] as string] = (component._data[idx] as any)._hash;
     }
     const layerName = componentKey + 'Layer';
-    layers[layerName] = hip({
-      _type: 'layers',
-      _data: [
-        {
-          add: layerObj,
-          sliceIdsTable: slideIdsName,
-          sliceIdsTableRow: sliceIds._data[0]._hash as string,
-          componentsTable: componentKey,
-        } as Layer,
-      ],
-    });
+    layers[layerName] = hip(
+      {
+        _type: 'layers',
+        _data: [
+          {
+            add: layerObj,
+            sliceIdsTable: slideIdsName,
+            sliceIdsTableRow: sliceIds._data[0]._hash as string,
+            componentsTable: componentKey,
+          } as Layer,
+        ],
+      },
+      { throwOnWrongHashes: false },
+    );
   }
 
   // Create Cake
@@ -519,9 +527,7 @@ export const fromJson = (
   };
 
   //Remove duplicate entries on all levels
-  removeDuplicates(rljson);
-
-  return rljson;
+  return removeDuplicates(rljson);
 };
 
 export const exampleFromJsonJson: Array<Json> = [

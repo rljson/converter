@@ -417,6 +417,7 @@ describe('From JSON', () => {
       'brandLayer',
       'cake',
       'tableCfgs',
+      '_hash',
     ]);
 
     await expectGolden('example/converter/component-encapsulation.json').toBe(
@@ -465,6 +466,7 @@ describe('From JSON', () => {
       'dimensionLayer',
       'cake',
       'tableCfgs',
+      '_hash',
     ]);
 
     await expectGolden(
@@ -533,6 +535,7 @@ describe('From JSON', () => {
       'carDimensionLayer',
       'carCake',
       'tableCfgs',
+      '_hash',
     ]);
 
     await expectGolden(

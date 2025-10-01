@@ -67,12 +67,9 @@
     "_data": [
       {
         "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
-      },
-      {
-        "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "du-6IBU7HSLFj3IqLTN9Pp"
+    "_hash": "_Q9OEfMfome8deCB8JLcC3"
   },
   "carGeneralLayer": {
     "_type": "layers",
@@ -157,7 +154,8 @@
         },
         "_hash": "0Z0z_u39BMbROSbCYB-us-"
       }
-    ]
+    ],
+    "_hash": "XUJNPMkKqbACqJGNK1a2Wx"
   },
   "wheelSliceId": {
     "_type": "sliceIds",
@@ -177,13 +175,9 @@
       {
         "brand": "Borbet",
         "_hash": "VQxyOOlL5pVCWUoteV_x8V"
-      },
-      {
-        "brand": "Borbet",
-        "_hash": "VQxyOOlL5pVCWUoteV_x8V"
       }
     ],
-    "_hash": "5rbdtYEHQzUvEvC_85h-vx"
+    "_hash": "hRpo5vQRuI9Gid21fv9xro"
   },
   "wheelDimension": {
     "_data": [
@@ -245,111 +239,12 @@
         },
         "_hash": "hGbYKpi_xrKddU6uuDRZhS"
       }
-    ]
+    ],
+    "_hash": "N67R0IWOsHisp10nsGigxp"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "wheelBrand",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "brand",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "wheelBrandLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "wheelDimension",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "dimension",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "wheelDimensionLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
       {
         "key": "wheelCake",
         "type": "cakes",
@@ -381,238 +276,6 @@
         "_hash": "nSdRyn6W7FeCKVuvRi7W6N"
       },
       {
-        "key": "carGeneral",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "brand",
-            "type": "string"
-          },
-          {
-            "key": "type",
-            "type": "string"
-          },
-          {
-            "key": "doors",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carGeneralLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "carTechnical",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "engine",
-            "type": "string"
-          },
-          {
-            "key": "transmission",
-            "type": "string"
-          },
-          {
-            "key": "gears",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carTechnicalLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "carColor",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "sides",
-            "type": "string"
-          },
-          {
-            "key": "roof",
-            "type": "string"
-          },
-          {
-            "key": "highlights",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carColorLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "carWheel",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "wheelSliceId",
-            "type": "string"
-          },
-          {
-            "key": "wheelBrandRef",
-            "type": "string"
-          },
-          {
-            "key": "wheelDimensionRef",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carWheelLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
         "key": "carCake",
         "type": "cakes",
         "columns": [
@@ -642,6 +305,8 @@
         "isShared": true,
         "_hash": "01e55dj2RKOpx77ElgJuhT"
       }
-    ]
-  }
+    ],
+    "_hash": "PBvbUz9kBJbQ-N9RvZi7-F"
+  },
+  "_hash": "fbFxMYfNWnedZKSnu6DhlB"
 }

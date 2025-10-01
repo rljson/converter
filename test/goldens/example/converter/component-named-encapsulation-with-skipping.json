@@ -17,13 +17,9 @@
       {
         "manufacturer": "Tesla",
         "_hash": "QpyVdIP4-QnBEUVLsccjHG"
-      },
-      {
-        "manufacturer": "Tesla",
-        "_hash": "QpyVdIP4-QnBEUVLsccjHG"
       }
     ],
-    "_hash": "mw6eDDIbYPJWlBRFwRLDHZ"
+    "_hash": "y9fgcE1k0RKlOWCXaQKO5C"
   },
   "carLength": {
     "_data": [
@@ -128,177 +124,12 @@
         },
         "_hash": "OLFDS3Y3_EL394Hzz_f6xZ"
       }
-    ]
+    ],
+    "_hash": "pif7Bb-h5IdoCnpRktFC6Q"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
-      {
-        "key": "carManufacturer",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "manufacturer",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carManufacturerLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true
-      },
-      {
-        "key": "carLength",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "length",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carWidth",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "width",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carHeight",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "height",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carDimension",
-        "type": "components",
-        "columns": [
-          {
-            "key": "_hash",
-            "type": "string"
-          },
-          {
-            "key": "carLengthRef",
-            "type": "string"
-          },
-          {
-            "key": "carWidthRef",
-            "type": "string"
-          },
-          {
-            "key": "carHeightRef",
-            "type": "string"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": false
-      },
-      {
-        "key": "carDimensionLayer",
-        "type": "layers",
-        "columns": [
-          {
-            "key": "base",
-            "type": "string",
-            "_hash": "3C9r1caJ8XZbC-zkIy9LNo"
-          },
-          {
-            "key": "sliceIdsTable",
-            "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
-          },
-          {
-            "key": "sliceIdsTableRow",
-            "type": "string",
-            "_hash": "cAr1yAw5gzMphNUyDhRxSX"
-          },
-          {
-            "key": "componentsTable",
-            "type": "string",
-            "_hash": "n_aO7skoEe0XAMFTUg0V0g"
-          },
-          {
-            "key": "add",
-            "type": "jsonArray",
-            "_hash": "mmIm0vGCQE685DvWxbZ6iO"
-          },
-          {
-            "key": "remove",
-            "type": "jsonArray",
-            "_hash": "X8rx1TcEZn-rv-oGGXktDe"
-          }
-        ],
-        "isHead": false,
-        "isRoot": false,
-        "isShared": true,
-        "_hash": "3Rdr6L_6Kazw6p-eSRfUxI"
-      },
       {
         "key": "carCake",
         "type": "cakes",
@@ -329,6 +160,8 @@
         "isShared": true,
         "_hash": "01e55dj2RKOpx77ElgJuhT"
       }
-    ]
-  }
+    ],
+    "_hash": "dFM-231rQfU8Xc753pH4NK"
+  },
+  "_hash": "F4Bd6xbypj95bVDFdLfFlo"
 }
