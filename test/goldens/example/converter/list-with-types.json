@@ -10,7 +10,8 @@
         "_hash": "_nk8S8AyHcfQkgZB4h7np7"
       }
     ],
-    "_hash": "guR8VN34AS7AeQ3sInxtwc"
+    "_hash": "1rpYtBgvbwjpxWRubY4PLG",
+    "tableCfg": "4yM_dWqrCcWxWyt93d4LJx"
   },
   "carModel": {
     "_data": [
@@ -23,7 +24,8 @@
         "_hash": "Ss858-cdBHm-x-DXXPVJFj"
       }
     ],
-    "_hash": "6WNqTvefGlwxlFJk0Hnh8U"
+    "_hash": "xCYp2xf17QEGHE1oB5ykVP",
+    "tableCfg": "D1dZcOESairH050llpIAJ6"
   },
   "carManufacturer": {
     "_data": [
@@ -32,7 +34,8 @@
         "_hash": "QpyVdIP4-QnBEUVLsccjHG"
       }
     ],
-    "_hash": "y9fgcE1k0RKlOWCXaQKO5C"
+    "_hash": "6oBviXYDfXkvJkNd39roB5",
+    "tableCfg": "KGIbzSm1TAVuOyAVWgTYdh"
   },
   "carModelLayer": {
     "_type": "layers",
@@ -49,7 +52,8 @@
         "_hash": "_bF_LsT-kiQw18vRk1BEhY"
       }
     ],
-    "_hash": "WEfJELfdhsc9p8r5zFKiyg"
+    "_hash": "KvnsT_UARHsnF7L6W5S2dW",
+    "tableCfg": "kroeJzIiPbP2Ka3S6WDseg"
   },
   "carManufacturerLayer": {
     "_type": "layers",
@@ -66,7 +70,8 @@
         "_hash": "zOu5K9QHP3VskL0QZUe5Mv"
       }
     ],
-    "_hash": "kP7-49Oi645zalVmrLGEnc"
+    "_hash": "nKkG6_SVTkiB7j-_I33xkD",
+    "tableCfg": "Q5jnbgJwD4BG-_KYdrdJXZ"
   },
   "carCake": {
     "_type": "cakes",
@@ -82,7 +87,8 @@
         "_hash": "EJE0bObdQnUIch7ZQs1mc5"
       }
     ],
-    "_hash": "mpLvDYnLMHqm_Ft0gw8JOg"
+    "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
+    "_hash": "2n6-lI2jK2WHTWtI5q6eYs"
   },
   "colorSliceId": {
     "_type": "sliceIds",
@@ -95,7 +101,8 @@
         "_hash": "8Cl7CQ3A3A7KWUYLGkv1g5"
       }
     ],
-    "_hash": "dLmhCXNzePio5NNCIkequj"
+    "_hash": "-KHey7eC50Ms-Mb3Dd41ak",
+    "tableCfg": "-Hvv09YoAgL5QIM9t7Cf5Q"
   },
   "colorGenereral": {
     "_data": [
@@ -108,7 +115,8 @@
         "_hash": "nxgBIGoNSFZO083VAufXk9"
       }
     ],
-    "_hash": "IOrpbrVf3WQyd7vd2NvuQZ"
+    "_hash": "GFp3XRfcYwPH_57xqleL6l",
+    "tableCfg": "S35LLhmLQO4lvJPnXhI05X"
   },
   "colorGenereralLayer": {
     "_type": "layers",
@@ -125,7 +133,8 @@
         "_hash": "hRwC5LD6igi3ada6XbeoxA"
       }
     ],
-    "_hash": "SCijxg8evGY2aJUf5yVydW"
+    "_hash": "O1VAonjq5KsiB8UQQFEhT9",
+    "tableCfg": "THl_yZx514E64HzFQN2S4e"
   },
   "colorCake": {
     "_type": "cakes",
@@ -140,73 +149,429 @@
         "_hash": "YljKyCAT0LUN7XBZl-s5MS"
       }
     ],
-    "_hash": "fIDjpzg38Ci2TCBH_SOXTD"
+    "tableCfg": "_B0EebPJy0F6OiOjhxyIIL",
+    "_hash": "6gru_ng0BevWephCNC7OLv"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
       {
-        "key": "colorCake",
-        "type": "cakes",
+        "key": "carModelLayer",
+        "type": "layers",
         "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base",
+            "titleShort": "Base",
+            "_hash": "EfTZIQZC5xpkbx3LcIDhlS"
+          },
           {
             "key": "sliceIdsTable",
             "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
           },
           {
-            "key": "sliceIdsRow",
+            "key": "sliceIdsTableRow",
             "type": "string",
-            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+            "titleLong": "Slice Ids Table Row",
+            "titleShort": "Slice Ids Table Row",
+            "_hash": "b7tMAXjYmRs96pxCcwt812"
           },
           {
-            "key": "layers",
-            "type": "jsonArray",
-            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
-          },
-          {
-            "key": "id",
+            "key": "componentsTable",
             "type": "string",
-            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+            "titleLong": "Components Table",
+            "titleShort": "Components Table",
+            "_hash": "8oL-bX7Ty76VQFzuIWBrdg"
+          },
+          {
+            "key": "add",
+            "type": "json",
+            "titleLong": "Add",
+            "titleShort": "Add",
+            "_hash": "FZN1kwlNoq9Cv6qIWvNg-3"
+          },
+          {
+            "key": "remove",
+            "type": "json",
+            "titleLong": "Remove",
+            "titleShort": "Remove",
+            "_hash": "UXIjvdKRUxEq3KTXudtaon"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "exkmj5DS_ft8qHl9gpFr04"
+        "_hash": "kroeJzIiPbP2Ka3S6WDseg"
+      },
+      {
+        "key": "carManufacturerLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base",
+            "titleShort": "Base",
+            "_hash": "EfTZIQZC5xpkbx3LcIDhlS"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string",
+            "titleLong": "Slice Ids Table Row",
+            "titleShort": "Slice Ids Table Row",
+            "_hash": "b7tMAXjYmRs96pxCcwt812"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string",
+            "titleLong": "Components Table",
+            "titleShort": "Components Table",
+            "_hash": "8oL-bX7Ty76VQFzuIWBrdg"
+          },
+          {
+            "key": "add",
+            "type": "json",
+            "titleLong": "Add",
+            "titleShort": "Add",
+            "_hash": "FZN1kwlNoq9Cv6qIWvNg-3"
+          },
+          {
+            "key": "remove",
+            "type": "json",
+            "titleLong": "Remove",
+            "titleShort": "Remove",
+            "_hash": "UXIjvdKRUxEq3KTXudtaon"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "Q5jnbgJwD4BG-_KYdrdJXZ"
+      },
+      {
+        "key": "carModel",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "model",
+            "type": "string",
+            "titleLong": "Model",
+            "titleShort": "model",
+            "_hash": "VVe9BvthShRXKDSi8j0v0V"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "D1dZcOESairH050llpIAJ6"
+      },
+      {
+        "key": "carManufacturer",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "manufacturer",
+            "type": "string",
+            "titleLong": "Manufacturer",
+            "titleShort": "manufacturer",
+            "_hash": "mwM9JT5fVicdLRxUtDFx-9"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "KGIbzSm1TAVuOyAVWgTYdh"
       },
       {
         "key": "carCake",
         "type": "cakes",
         "columns": [
           {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
             "key": "sliceIdsTable",
             "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
           },
           {
             "key": "sliceIdsRow",
             "type": "string",
-            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+            "titleLong": "Slice Ids Row",
+            "titleShort": "Slice Ids Row",
+            "_hash": "T3yH4vS0oUYRZAFPq0eIkc"
           },
           {
             "key": "layers",
-            "type": "jsonArray",
-            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
+            "type": "json",
+            "titleLong": "Layers",
+            "titleShort": "Layers",
+            "_hash": "DpUNHLADN7AoClIh7IjdUE"
           },
           {
             "key": "id",
             "type": "string",
-            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+            "titleLong": "ID",
+            "titleShort": "ID",
+            "_hash": "UmazCpc_m0Ww4a9TQd1MpY"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "01e55dj2RKOpx77ElgJuhT"
+        "_hash": "5tcrs9FhrPleZv_JXzetfy"
+      },
+      {
+        "key": "carSliceId",
+        "type": "sliceIds",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base Slice ID",
+            "titleShort": "Base",
+            "_hash": "o9xR4pvOiAH_Pa2DKOsdTW"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray",
+            "titleLong": "Slice IDs",
+            "titleShort": "IDs",
+            "_hash": "_fblsOPzjZqKHBArTgBNfR"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray",
+            "titleLong": "Removed Slice IDs",
+            "titleShort": "Removed",
+            "_hash": "2gv0UnQ6-BRjZJ3lsdzvZ1"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "4yM_dWqrCcWxWyt93d4LJx"
+      },
+      {
+        "key": "colorGenereralLayer",
+        "type": "layers",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base",
+            "titleShort": "Base",
+            "_hash": "EfTZIQZC5xpkbx3LcIDhlS"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
+          },
+          {
+            "key": "sliceIdsTableRow",
+            "type": "string",
+            "titleLong": "Slice Ids Table Row",
+            "titleShort": "Slice Ids Table Row",
+            "_hash": "b7tMAXjYmRs96pxCcwt812"
+          },
+          {
+            "key": "componentsTable",
+            "type": "string",
+            "titleLong": "Components Table",
+            "titleShort": "Components Table",
+            "_hash": "8oL-bX7Ty76VQFzuIWBrdg"
+          },
+          {
+            "key": "add",
+            "type": "json",
+            "titleLong": "Add",
+            "titleShort": "Add",
+            "_hash": "FZN1kwlNoq9Cv6qIWvNg-3"
+          },
+          {
+            "key": "remove",
+            "type": "json",
+            "titleLong": "Remove",
+            "titleShort": "Remove",
+            "_hash": "UXIjvdKRUxEq3KTXudtaon"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "THl_yZx514E64HzFQN2S4e"
+      },
+      {
+        "key": "colorGenereral",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "name",
+            "type": "string",
+            "titleLong": "Name",
+            "titleShort": "name",
+            "_hash": "zpGBxObOneWRf8WlRfe0wT"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "S35LLhmLQO4lvJPnXhI05X"
+      },
+      {
+        "key": "colorCake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "titleLong": "Slice Ids Row",
+            "titleShort": "Slice Ids Row",
+            "_hash": "T3yH4vS0oUYRZAFPq0eIkc"
+          },
+          {
+            "key": "layers",
+            "type": "json",
+            "titleLong": "Layers",
+            "titleShort": "Layers",
+            "_hash": "DpUNHLADN7AoClIh7IjdUE"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "titleLong": "ID",
+            "titleShort": "ID",
+            "_hash": "UmazCpc_m0Ww4a9TQd1MpY"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "_B0EebPJy0F6OiOjhxyIIL"
+      },
+      {
+        "key": "colorSliceId",
+        "type": "sliceIds",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base Slice ID",
+            "titleShort": "Base",
+            "_hash": "o9xR4pvOiAH_Pa2DKOsdTW"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray",
+            "titleLong": "Slice IDs",
+            "titleShort": "IDs",
+            "_hash": "_fblsOPzjZqKHBArTgBNfR"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray",
+            "titleLong": "Removed Slice IDs",
+            "titleShort": "Removed",
+            "_hash": "2gv0UnQ6-BRjZJ3lsdzvZ1"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "-Hvv09YoAgL5QIM9t7Cf5Q"
       }
     ],
-    "_hash": "s5mILxijE6dFhdE6W5-5dB"
+    "_hash": "lALrPLMWzb5f9P225EPQk0"
   },
-  "_hash": "YKmX069u3W_bZYyHS3k3Ht"
+  "_hash": "Yu-Rp9aba0sRz_e4g2C5dk"
 }

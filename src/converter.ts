@@ -80,6 +80,7 @@ const resolvePropertyReference = (
 ) => {
   const compName = ref.split('@')[0].replace('Ref', '');
   const subChart = chart._types?.find((t) => t._name === refType);
+  const refName = componentsName(compName, refType) + 'Ref';
 
   if (!subChart)
     throw new Error(`Could not find subChart for reference type ${refType}!`);
@@ -92,7 +93,7 @@ const resolvePropertyReference = (
   //Items we want to create references to
   const refItems = obj[subChart._path as string] as Array<Json>;
   if (!refItems || !Array.isArray(refItems) || refItems.length === 0) {
-    return { [ref]: [] };
+    return { [refName]: [] };
   }
 
   //Hence there could be nested components, we need to synthesize a component
@@ -114,8 +115,6 @@ const resolvePropertyReference = (
         ._hash as ComponentRef,
     );
   }
-
-  const refName = componentsName(compName, refType) + 'Ref';
 
   return { [refName]: refs as ComponentRef[] };
 };
@@ -271,7 +270,10 @@ const createComponent = (
     }
     const mergedComp: Record<string, ComponentsTable<Json>> = {
       [componentsName(componentKey, typeName)]: hip(
-        { _data: mergedArr },
+        {
+          _data: mergedArr,
+          _type: 'components',
+        } as ComponentsTable<Json>,
         { throwOnWrongHashes: false },
       ),
     } as any;
@@ -289,7 +291,9 @@ const createComponentTableCfgs = (
   if (Array.isArray(componentProperties)) {
     //Array of properties --> loop through properties and collect them as
     // key-value pairs in one object
-    const columns: ColumnCfg[] = [{ key: '_hash', type: 'string' }];
+    const columns: ColumnCfg[] = [
+      { key: '_hash', type: 'string', titleLong: 'Hash', titleShort: 'Hash' },
+    ];
     for (const componentProperty of componentProperties as string[]) {
       const skeleton = synthesizeObjectFromPath(componentProperty);
       const propSkeleton = nestedProperty(
@@ -303,6 +307,8 @@ const createComponentTableCfgs = (
           ({
             key,
             type: typeof value,
+            titleLong: key.charAt(0).toUpperCase() + key.slice(1),
+            titleShort: key,
           } as ColumnCfg),
       );
       columns.push(...column);
@@ -442,8 +448,10 @@ export const fromJson = (
     }
   }
 
-  // Use for-loops for layers
+  const tableCfgs = [] as Array<TableCfg>;
   const layers: Record<string, LayersTable> = {};
+
+  // Use for-loops for layers
   for (const [componentKey, component] of Object.entries(components)) {
     if (skipLayersForComps.includes(componentKey)) continue;
 
@@ -466,6 +474,8 @@ export const fromJson = (
       },
       { throwOnWrongHashes: false },
     );
+
+    tableCfgs.push(createLayerTableCfg(layerName));
   }
 
   // Create Cake
@@ -486,7 +496,6 @@ export const fromJson = (
   };
 
   // TableCfgs
-  const tableCfgs: TablesCfgTable = { _type: 'tableCfgs', _data: [] };
   for (const [layerKey, componentProperties] of Object.entries(chart)) {
     if (!layerKey.startsWith('_')) {
       const compName = componentsName(layerKey, chart._name);
@@ -498,23 +507,66 @@ export const fromJson = (
         chart,
         nestedRljson,
       );
-      tableCfgs._data.push(...compTableCfgs);
+      tableCfgs.push(...compTableCfgs);
 
       //Create TableCfg for layer
       const layerName = compName + 'Layer';
       const layerTableCfg: TableCfg = createLayerTableCfg(layerName);
-      tableCfgs._data.push(layerTableCfg);
+      tableCfgs.push(layerTableCfg);
     }
   }
 
+  //Create TableCfg for cake
   const cakeTableCfg: TableCfg = createCakeTableCfg(cakeName);
-  tableCfgs._data.push(cakeTableCfg);
+  tableCfgs.push(cakeTableCfg);
+
+  //Create TableCfg for sliceIds
+  const sliceIdsTableCfg: TableCfg = {
+    key: slideIdsName,
+    type: 'sliceIds',
+    columns: [
+      {
+        key: '_hash',
+        type: 'string',
+        titleLong: 'Hash',
+        titleShort: 'Hash',
+      },
+      {
+        key: 'base',
+        type: 'string',
+        titleLong: 'Base Slice ID',
+        titleShort: 'Base',
+      },
+      {
+        key: 'add',
+        type: 'jsonArray',
+        titleLong: 'Slice IDs',
+        titleShort: 'IDs',
+      },
+      {
+        key: 'remove',
+        type: 'jsonArray',
+        titleLong: 'Removed Slice IDs',
+        titleShort: 'Removed',
+      },
+    ],
+    isHead: false,
+    isRoot: false,
+    isShared: false,
+  };
+  tableCfgs.push(sliceIdsTableCfg);
 
   //Merge tableCfgs of nested rljson if existing
-  tableCfgs._data = [
-    ...(nestedRljson.tableCfgs?._data || []),
-    ...tableCfgs._data,
-  ];
+  if (nestedRljson.tableCfgs) {
+    tableCfgs.push(...nestedRljson.tableCfgs._data);
+  }
+
+  delete nestedRljson.tableCfgs;
+
+  const tableCfgsTable: TablesCfgTable = {
+    _type: 'tableCfgs',
+    _data: tableCfgs.map((cfg) => hip(cfg, { throwOnWrongHashes: false })),
+  };
 
   //Assemble final rljson
   const rljson: Rljson = {
@@ -523,8 +575,18 @@ export const fromJson = (
     ...layers,
     [cakeName]: cake,
     ...nestedRljson,
-    tableCfgs,
+    tableCfgs: tableCfgsTable,
   };
+
+  //Assign tableCfgs to rljson tables
+  for (const [key, value] of Object.entries(rljson)) {
+    if (key === 'tableCfgs' || key.startsWith('_')) continue;
+
+    const tableCfg = tableCfgs.find((cfg) => cfg.key === key);
+    if (!tableCfg) throw new Error(`Could not find TableCfg for table ${key}!`);
+
+    (value as any).tableCfg = tableCfg._hash;
+  }
 
   //Remove duplicate entries on all levels
   return removeDuplicates(rljson);

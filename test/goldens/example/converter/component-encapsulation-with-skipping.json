@@ -9,7 +9,8 @@
         "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
       }
     ],
-    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+    "_hash": "hGuo3Hv9dHyOqC8sOFXrzD",
+    "tableCfg": "RZTg2Ienhp2gd_mjN4CE0u"
   },
   "length": {
     "_data": [
@@ -18,7 +19,8 @@
         "_hash": "poMsKI0UqeEM6h8qKVF3IU"
       }
     ],
-    "_hash": "UkqJDrwGDVxxJFHxbpVAkf"
+    "_hash": "L2yeTLt3tRR0gTukN6Ea6p",
+    "tableCfg": "O75bH48JFQPPkZG5ZEEee0"
   },
   "width": {
     "_data": [
@@ -27,7 +29,8 @@
         "_hash": "8EZxlYaF4z0HUMAW6bXsN6"
       }
     ],
-    "_hash": "-Nzvk5tnpueFrrjt7oxqJm"
+    "_hash": "Q5cH9tVJwe5UENK4_kJeSp",
+    "tableCfg": "ST1aUCL0VOHobMs1wGi3hf"
   },
   "height": {
     "_data": [
@@ -36,7 +39,8 @@
         "_hash": "QtTfCbiTktna-iwRI0RsAa"
       }
     ],
-    "_hash": "Tsh1Dx-pQC41lFkQ2zKlk5"
+    "_hash": "bszjtffsfiQihi2xJMWvBn",
+    "tableCfg": "89tbXojUMw5G0cSqzltGWU"
   },
   "dimension": {
     "_data": [
@@ -47,7 +51,9 @@
         "_hash": "m-z0VnUwWNoDhNQFwbvt1F"
       }
     ],
-    "_hash": "pxltA3N7aSwmxrIjxFld73"
+    "_type": "components",
+    "_hash": "IsXOARyz1mndsqtRJ5kvL8",
+    "tableCfg": "_Eci_zSb4bbF6INcOvOLTR"
   },
   "dimensionLayer": {
     "_type": "layers",
@@ -63,7 +69,8 @@
         "_hash": "kyHH-8krIzKjPj8anTNrpz"
       }
     ],
-    "_hash": "3xZj2Ojlhu_zhI6HqXgd1F"
+    "_hash": "5prrnMBuovFsxUzcSbY1kz",
+    "tableCfg": "Nebb-ICMb7zaG0VoA3fN_l"
   },
   "cake": {
     "_type": "cakes",
@@ -78,43 +85,266 @@
         "_hash": "qozwyyLU087eVW1nfc-DkS"
       }
     ],
-    "_hash": "Ok33pM1tzwQPnrSu7Fz7WH"
+    "tableCfg": "LNnUkPxIRwOGWTu6_mzDpx",
+    "_hash": "W8-k6f_t6hwdstuN0DyEAO"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
       {
-        "key": "cake",
-        "type": "cakes",
+        "key": "dimensionLayer",
+        "type": "layers",
         "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base",
+            "titleShort": "Base",
+            "_hash": "EfTZIQZC5xpkbx3LcIDhlS"
+          },
           {
             "key": "sliceIdsTable",
             "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
           },
           {
-            "key": "sliceIdsRow",
+            "key": "sliceIdsTableRow",
             "type": "string",
-            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+            "titleLong": "Slice Ids Table Row",
+            "titleShort": "Slice Ids Table Row",
+            "_hash": "b7tMAXjYmRs96pxCcwt812"
           },
           {
-            "key": "layers",
-            "type": "jsonArray",
-            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
-          },
-          {
-            "key": "id",
+            "key": "componentsTable",
             "type": "string",
-            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+            "titleLong": "Components Table",
+            "titleShort": "Components Table",
+            "_hash": "8oL-bX7Ty76VQFzuIWBrdg"
+          },
+          {
+            "key": "add",
+            "type": "json",
+            "titleLong": "Add",
+            "titleShort": "Add",
+            "_hash": "FZN1kwlNoq9Cv6qIWvNg-3"
+          },
+          {
+            "key": "remove",
+            "type": "json",
+            "titleLong": "Remove",
+            "titleShort": "Remove",
+            "_hash": "UXIjvdKRUxEq3KTXudtaon"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "qmSXHk9hD_6tyi37N5g0iA"
+        "_hash": "Nebb-ICMb7zaG0VoA3fN_l"
+      },
+      {
+        "key": "length",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "length",
+            "type": "string",
+            "titleLong": "Length",
+            "titleShort": "length",
+            "_hash": "2Kme74xf2-jm7mYI0no6Nc"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "O75bH48JFQPPkZG5ZEEee0"
+      },
+      {
+        "key": "width",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "width",
+            "type": "string",
+            "titleLong": "Width",
+            "titleShort": "width",
+            "_hash": "baaV8n1VJPDqU56VS1vk9O"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "ST1aUCL0VOHobMs1wGi3hf"
+      },
+      {
+        "key": "height",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "height",
+            "type": "string",
+            "titleLong": "Height",
+            "titleShort": "height",
+            "_hash": "ektPvbfw1vD33hNHKunU2K"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "89tbXojUMw5G0cSqzltGWU"
+      },
+      {
+        "key": "dimension",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "lengthRef",
+            "type": "string",
+            "titleLong": "LengthRef",
+            "titleShort": "lengthRef",
+            "_hash": "ovLPL9S5gE-nKJmEB1osMW"
+          },
+          {
+            "key": "widthRef",
+            "type": "string",
+            "titleLong": "WidthRef",
+            "titleShort": "widthRef",
+            "_hash": "0jwY0l3AKZ6OwpzGdpBtDV"
+          },
+          {
+            "key": "heightRef",
+            "type": "string",
+            "titleLong": "HeightRef",
+            "titleShort": "heightRef",
+            "_hash": "sKRdhHrYYBhdH9gCIbpTHR"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "_Eci_zSb4bbF6INcOvOLTR"
+      },
+      {
+        "key": "cake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "titleLong": "Slice Ids Row",
+            "titleShort": "Slice Ids Row",
+            "_hash": "T3yH4vS0oUYRZAFPq0eIkc"
+          },
+          {
+            "key": "layers",
+            "type": "json",
+            "titleLong": "Layers",
+            "titleShort": "Layers",
+            "_hash": "DpUNHLADN7AoClIh7IjdUE"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "titleLong": "ID",
+            "titleShort": "ID",
+            "_hash": "UmazCpc_m0Ww4a9TQd1MpY"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "LNnUkPxIRwOGWTu6_mzDpx"
+      },
+      {
+        "key": "sliceId",
+        "type": "sliceIds",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base Slice ID",
+            "titleShort": "Base",
+            "_hash": "o9xR4pvOiAH_Pa2DKOsdTW"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray",
+            "titleLong": "Slice IDs",
+            "titleShort": "IDs",
+            "_hash": "_fblsOPzjZqKHBArTgBNfR"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray",
+            "titleLong": "Removed Slice IDs",
+            "titleShort": "Removed",
+            "_hash": "2gv0UnQ6-BRjZJ3lsdzvZ1"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "RZTg2Ienhp2gd_mjN4CE0u"
       }
     ],
-    "_hash": "du0xsN8nqye3c4DorjQsV5"
+    "_hash": "ScfjxgP8wkAdVobeiiuUtP"
   },
-  "_hash": "nQxpf5bpbm--wt1w_CIGzQ"
+  "_hash": "mpIDdvIWkRmxxLhRNoQ1np"
 }
