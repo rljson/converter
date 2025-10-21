@@ -19,7 +19,8 @@
         "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "dfzyBXLClp6Fen7XGO04e3",
+    "_type": "components",
+    "_hash": "Fqs2tBSfE3T-Bg1e2kS9P9",
     "tableCfg": "XNw5DwnZ5kfGOxmklvuWiZ"
   },
   "carColorRefsLayer": {
@@ -105,7 +106,8 @@
         "_hash": "nxgBIGoNSFZO083VAufXk9"
       }
     ],
-    "_hash": "CMGOID-LYTvtzrSTyQFUhq",
+    "_type": "components",
+    "_hash": "vIL9LNjY8vM2RR-z3RScU1",
     "tableCfg": "DN5AwXY-0BHn5Dop6ev6AD"
   },
   "colorGeneralLayer": {
@@ -927,5 +929,5 @@
     ],
     "_hash": "B02WWu0HJ4A-43xT9ZeiX5"
   },
-  "_hash": "bRKNyBc-7A8PA_KcVhaKAd"
+  "_hash": "lw9SpBCbmu-TD0KAIssOnu"
 }

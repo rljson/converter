@@ -282,7 +282,10 @@ const createComponent = (
     }
     const name = componentsName(componentKey, typeName);
     return {
-      [name]: hip({ _data: compArr }, { throwOnWrongHashes: false }),
+      [name]: hip(
+        { _data: compArr, _type: 'components' },
+        { throwOnWrongHashes: false },
+      ),
     } as Record<string, ComponentsTable<Json>>;
   } else {
     //Nested object --> loop through keys and create one component per key

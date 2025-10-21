@@ -28,7 +28,8 @@
         "_hash": "32MNv-aROHGLPpb96BMIqq"
       }
     ],
-    "_hash": "-3kHKVtWrVAlRvahhtIJ0d",
+    "_type": "components",
+    "_hash": "4fYETryLGhFHx99jy8omr6",
     "tableCfg": "fNc9HXghdZ6QX2ynxK4iIU"
   },
   "carTechnical": {
@@ -46,7 +47,8 @@
         "_hash": "cE6GU1sf4CvCGuGozsgaa7"
       }
     ],
-    "_hash": "6XWX_OQrOFBCKVsW1Q-WyG",
+    "_type": "components",
+    "_hash": "1d_OxS_24qR57Y5blFf6-T",
     "tableCfg": "LSWJucmlZQkNFL6irhhSZ-"
   },
   "carColor": {
@@ -64,7 +66,8 @@
         "_hash": "5vRZZ-vTbp1zhman-kDIV3"
       }
     ],
-    "_hash": "usX0K5jU7HRJ4TTZVOG2pK",
+    "_type": "components",
+    "_hash": "HjDI6rEGwY6BgybTDZk1AM",
     "tableCfg": "xHXYV0bki9Mpg6n2R_yDRc"
   },
   "carWheel": {
@@ -73,7 +76,8 @@
         "_hash": "RBNvo1WzZ4oRRq0W9-hknp"
       }
     ],
-    "_hash": "8B1T7lUWU-ZiBz3F0ypZbP",
+    "_type": "components",
+    "_hash": "c_ySEu8KR7PXX4w7HcYDST",
     "tableCfg": "0X24UNCGDXSggM4MX0lZGD"
   },
   "carGeneralLayer": {
@@ -248,7 +252,8 @@
         "_hash": "VQxyOOlL5pVCWUoteV_x8V"
       }
     ],
-    "_hash": "MqG0Rj_uBLNPH9-VwVXbyM",
+    "_type": "components",
+    "_hash": "hFU7_6QCNkKGOeq-ITeEeF",
     "tableCfg": "zMK95q_5KOvnvfbbWPtwBR"
   },
   "wheelDimension": {
@@ -262,7 +267,8 @@
         "_hash": "7G8GafBJu0ohK_1lcTWgEn"
       }
     ],
-    "_hash": "fNlsmGRzOxB8vozFDQ63hM",
+    "_type": "components",
+    "_hash": "7xiip3G5nczs9vyue6QEqn",
     "tableCfg": "_MbavmAP6R0tsRZlG5DiSt"
   },
   "wheelBrandLayer": {
@@ -1912,5 +1918,5 @@
     ],
     "_hash": "bRB6sNEYVFVVt8J52qY2nc"
   },
-  "_hash": "nDBrtouOkbj8j5SObPMP8o"
+  "_hash": "UpHVEaZhM1g534KpyzEg-X"
 }

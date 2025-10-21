@@ -24,7 +24,8 @@
         "_hash": "Ss858-cdBHm-x-DXXPVJFj"
       }
     ],
-    "_hash": "xCYp2xf17QEGHE1oB5ykVP",
+    "_type": "components",
+    "_hash": "HKMXgA4KX81Cds1CwygpTc",
     "tableCfg": "D1dZcOESairH050llpIAJ6"
   },
   "carManufacturer": {
@@ -34,7 +35,8 @@
         "_hash": "QpyVdIP4-QnBEUVLsccjHG"
       }
     ],
-    "_hash": "6oBviXYDfXkvJkNd39roB5",
+    "_type": "components",
+    "_hash": "5G281I1aik1e85T2P3HTIk",
     "tableCfg": "KGIbzSm1TAVuOyAVWgTYdh"
   },
   "carModelLayer": {
@@ -151,7 +153,8 @@
         "_hash": "nxgBIGoNSFZO083VAufXk9"
       }
     ],
-    "_hash": "GFp3XRfcYwPH_57xqleL6l",
+    "_type": "components",
+    "_hash": "uu6lZgjfkmYTKsZSZ5KGNi",
     "tableCfg": "S35LLhmLQO4lvJPnXhI05X"
   },
   "colorGenereralLayer": {
@@ -1153,5 +1156,5 @@
     ],
     "_hash": "WDfByS7ave4TowE9fvzI1o"
   },
-  "_hash": "9atSM_WwwYSfhRykqeChWW"
+  "_hash": "i1ZLaN9OwDsfN4_jw6LnK_"
 }
