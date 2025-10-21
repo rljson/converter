@@ -76,6 +76,42 @@
     "_hash": "h3_EzMiNtDDTtFSRSOFcCb",
     "tableCfg": "lZ2v3SwR_LXu6uPBdhkDMu"
   },
+  "carMetaHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "_QdqVfvEAuSWIzrX6-mGke",
+    "_hash": "p39LG1IZzdSSQLyyqLGIvr"
+  },
+  "carScrewRefsHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "HePvG6U5hdA55djxQZEhO8",
+    "_hash": "9lhQ_dhb4Fz3-wQ1xNMmx1"
+  },
+  "carMetaLayerHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "PzuQ2NkwB26Uh0fII0SUWx",
+    "_hash": "E0C8hPJz4D7hOXh359zEV4"
+  },
+  "carScrewRefsLayerHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "Esr4TZswxWIlBfUjhjzMHg",
+    "_hash": "uY8-ZC8spc56ARg2zJn9Ci"
+  },
+  "carCakeHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "D656vP5hULH5lwAilFpanT",
+    "_hash": "hKj2sGTSFbfqnNAhcLzxfK"
+  },
+  "carSliceIdHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "dvbj8AbTNiHSOJRU-jkJGM",
+    "_hash": "NxSzT8QzX6n5ZLhJuJdwm1"
+  },
   "carCake": {
     "_type": "cakes",
     "_data": [
@@ -143,6 +179,30 @@
     ],
     "_hash": "H2N6lhE3w2RK8r4UKxfJcV",
     "tableCfg": "zg_fEuvUGUE61xdtb5xQWS"
+  },
+  "screwTechnicalHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "eBxbaudzs7i-qDMe1K9_cu",
+    "_hash": "DsOSFH6kVxLpQ0iVmp135a"
+  },
+  "screwTechnicalLayerHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "xxX4EfDdCo1jGtFn74Ee3u",
+    "_hash": "Eqf92gRZn98dylOckmfxc4"
+  },
+  "screwCakeHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "G8ZEOfvZzD379vPLN5D34l",
+    "_hash": "7uBZUTvn1XanWBG5GgzS7Y"
+  },
+  "screwSliceIdHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "Sekh0mFsJyAMphFXA7Mjd_",
+    "_hash": "eAjwk5iKmEQeAlEL8TdPCX"
   },
   "screwCake": {
     "_type": "cakes",
@@ -223,6 +283,58 @@
         "_hash": "V55nE_yQcdFe8qABOPvln3"
       },
       {
+        "key": "carMetaLayerHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carMetaLayerRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "Ac9j_bl6W6CNIvLgnHslKX"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "PzuQ2NkwB26Uh0fII0SUWx"
+      },
+      {
         "key": "carScrewRefsLayer",
         "type": "layers",
         "columns": [
@@ -282,6 +394,58 @@
         "_hash": "lZ2v3SwR_LXu6uPBdhkDMu"
       },
       {
+        "key": "carScrewRefsLayerHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carScrewRefsLayerRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "FEjIK47BOl9tD48IWvfiLi"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "Esr4TZswxWIlBfUjhjzMHg"
+      },
+      {
         "key": "carMeta",
         "type": "components",
         "columns": [
@@ -313,6 +477,58 @@
         "_hash": "GV3V2OgMg8Q6n0M7OxQnXN"
       },
       {
+        "key": "carMetaHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carMetaRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "hwrhDgctR4EsIN-7x8kblx"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "_QdqVfvEAuSWIzrX6-mGke"
+      },
+      {
         "key": "carScrewRefs",
         "type": "components",
         "columns": [
@@ -342,6 +558,58 @@
         "isRoot": false,
         "isShared": false,
         "_hash": "IBxmsTygl5fMsyPqckFjAW"
+      },
+      {
+        "key": "carScrewRefsHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carScrewRefsRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "9zEikTi1jPxJegmQIqrm0P"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "HePvG6U5hdA55djxQZEhO8"
       },
       {
         "key": "carCake",
@@ -389,6 +657,58 @@
         "_hash": "5tcrs9FhrPleZv_JXzetfy"
       },
       {
+        "key": "carCakeHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carCakeRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "KzlfQRh5ox6VU5yaGMQZTV"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "D656vP5hULH5lwAilFpanT"
+      },
+      {
         "key": "carSliceId",
         "type": "sliceIds",
         "columns": [
@@ -425,6 +745,58 @@
         "isRoot": false,
         "isShared": false,
         "_hash": "4yM_dWqrCcWxWyt93d4LJx"
+      },
+      {
+        "key": "carSliceIdHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "carSliceIdRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "kclIYAaRIM7Fp4oafDILIr"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "dvbj8AbTNiHSOJRU-jkJGM"
       },
       {
         "key": "screwTechnicalLayer",
@@ -486,6 +858,58 @@
         "_hash": "zg_fEuvUGUE61xdtb5xQWS"
       },
       {
+        "key": "screwTechnicalLayerHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "screwTechnicalLayerRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "5V_cN_ur2umEqxIHhZ96lM"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "xxX4EfDdCo1jGtFn74Ee3u"
+      },
+      {
         "key": "screwTechnical",
         "type": "components",
         "columns": [
@@ -522,6 +946,58 @@
         "isRoot": false,
         "isShared": false,
         "_hash": "fozvRzxS360a6ffz2IExGR"
+      },
+      {
+        "key": "screwTechnicalHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "screwTechnicalRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "8O6Zj9Lxai227wTEuDaBjb"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "eBxbaudzs7i-qDMe1K9_cu"
       },
       {
         "key": "screwCake",
@@ -569,6 +1045,58 @@
         "_hash": "CdUr4i-a1UDjkV-Kf6qyJB"
       },
       {
+        "key": "screwCakeHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "screwCakeRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "b5sl3hbs_mLDQLoT8VZHv3"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "G8ZEOfvZzD379vPLN5D34l"
+      },
+      {
         "key": "screwSliceId",
         "type": "sliceIds",
         "columns": [
@@ -605,9 +1133,61 @@
         "isRoot": false,
         "isShared": false,
         "_hash": "izkhRcql5wabLhmbpEaMf8"
+      },
+      {
+        "key": "screwSliceIdHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "screwSliceIdRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "5fKwPlTzYIIRdib7tvab6Q"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "Sekh0mFsJyAMphFXA7Mjd_"
       }
     ],
-    "_hash": "v5JYckddDJL50T3j4cUYkC"
+    "_hash": "JEEdsok3oxzvKkX-Y6WUlc"
   },
-  "_hash": "eOcYhUqabR0ykVobOycHTn"
+  "_hash": "N4PoXWsYvvIBFJ_6pWFvra"
 }
