@@ -20,7 +20,8 @@
         "_hash": "CZxQxtVn67eqdTieAOBH7w"
       }
     ],
-    "_hash": "CF-HNWCeFk13m8tWgMxTAu",
+    "_type": "components",
+    "_hash": "BQIWhgINMz5rqzfqLXpFrN",
     "tableCfg": "GV3V2OgMg8Q6n0M7OxQnXN"
   },
   "carScrewRefs": {
@@ -39,7 +40,8 @@
         "_hash": "wACgN9KPHyITDCtCs75Duz"
       }
     ],
-    "_hash": "yzyIEB0Aa8kGXLLagpHjys",
+    "_type": "components",
+    "_hash": "Wc_0mNKkBJXapzzXAisZb6",
     "tableCfg": "IBxmsTygl5fMsyPqckFjAW"
   },
   "carMetaLayer": {
@@ -159,7 +161,8 @@
         "_hash": "T1FZitsrdgi4d0bzuOZa6M"
       }
     ],
-    "_hash": "naVsMH4OaR53bkxGtBz2-V",
+    "_type": "components",
+    "_hash": "OXhW0NvrMDIZBxUMXwlaPj",
     "tableCfg": "fozvRzxS360a6ffz2IExGR"
   },
   "screwTechnicalLayer": {
@@ -1189,5 +1192,5 @@
     ],
     "_hash": "JEEdsok3oxzvKkX-Y6WUlc"
   },
-  "_hash": "N4PoXWsYvvIBFJ_6pWFvra"
+  "_hash": "yGgWxhnsuh0_lk153wYyuN"
 }
