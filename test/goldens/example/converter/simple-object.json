@@ -9,7 +9,8 @@
         "_hash": "kDDxr90W7nJNEn8p2X5Hbl"
       }
     ],
-    "_hash": "SG_qsFyRAIOl1nAQrvbVX9"
+    "_hash": "hGuo3Hv9dHyOqC8sOFXrzD",
+    "tableCfg": "RZTg2Ienhp2gd_mjN4CE0u"
   },
   "model": {
     "_data": [
@@ -18,7 +19,8 @@
         "_hash": "jSKIU_xaQFBLdriXQwYxEs"
       }
     ],
-    "_hash": "crQppfp050WDt2FCBwEgaY"
+    "_hash": "MnUl_Sp20W8X9l3beC9LUB",
+    "tableCfg": "_CfWsmTw_a-K3yT8mQTQT0"
   },
   "modelLayer": {
     "_type": "layers",
@@ -34,7 +36,32 @@
         "_hash": "AC_agy2Qjz8E2GgOU3gCxd"
       }
     ],
-    "_hash": "Dv8dXacIqoMwp1x1SaXd-s"
+    "_hash": "KBbWMsLADeZEYxyIHlxUjV",
+    "tableCfg": "MhjeRIcSNxPfb_tQRCZiYa"
+  },
+  "modelHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "ENev6D05Q_iPgxqCANaKEz",
+    "_hash": "hgiWh7jt5_1A7b50xpfqOT"
+  },
+  "modelLayerHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "1-Amtjc-TDSQLtKFsVsEew",
+    "_hash": "-JX434ogwfONMWzrER37tV"
+  },
+  "cakeHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "zZxylvUZe_-GcKiBbPhIA0",
+    "_hash": "1b7S1LUeonY6yht1sNcZMm"
+  },
+  "sliceIdHistory": {
+    "_type": "history",
+    "_data": [],
+    "tableCfg": "ddBnf0r55oy6_0_5NQfHHo",
+    "_hash": "lwtVBOAEaniEuV_xdBESAA"
   },
   "cake": {
     "_type": "cakes",
@@ -49,43 +76,388 @@
         "_hash": "SxGxHLy-r4fJxUwWycBBJA"
       }
     ],
-    "_hash": "1lz05arVRxkGdbMz9ZQDnz"
+    "tableCfg": "LNnUkPxIRwOGWTu6_mzDpx",
+    "_hash": "geoyKraY_yoOoHHGe9noxj"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
     "_data": [
       {
-        "key": "cake",
-        "type": "cakes",
+        "key": "modelLayer",
+        "type": "layers",
         "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base",
+            "titleShort": "Base",
+            "_hash": "EfTZIQZC5xpkbx3LcIDhlS"
+          },
           {
             "key": "sliceIdsTable",
             "type": "string",
-            "_hash": "aFC-Sy4-HrgjGp_LvfwHDW"
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
           },
           {
-            "key": "sliceIdsRow",
+            "key": "sliceIdsTableRow",
             "type": "string",
-            "_hash": "Xg_kc-k0tYxZ-TaTKNeH78"
+            "titleLong": "Slice Ids Table Row",
+            "titleShort": "Slice Ids Table Row",
+            "_hash": "b7tMAXjYmRs96pxCcwt812"
           },
           {
-            "key": "layers",
-            "type": "jsonArray",
-            "_hash": "_L-xsfPKcsmJ93oSwadBAY"
-          },
-          {
-            "key": "id",
+            "key": "componentsTable",
             "type": "string",
-            "_hash": "eq2P3RIaSgy81i7PomNUvn"
+            "titleLong": "Components Table",
+            "titleShort": "Components Table",
+            "_hash": "8oL-bX7Ty76VQFzuIWBrdg"
+          },
+          {
+            "key": "add",
+            "type": "json",
+            "titleLong": "Add",
+            "titleShort": "Add",
+            "_hash": "FZN1kwlNoq9Cv6qIWvNg-3"
+          },
+          {
+            "key": "remove",
+            "type": "json",
+            "titleLong": "Remove",
+            "titleShort": "Remove",
+            "_hash": "UXIjvdKRUxEq3KTXudtaon"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "qmSXHk9hD_6tyi37N5g0iA"
+        "_hash": "MhjeRIcSNxPfb_tQRCZiYa"
+      },
+      {
+        "key": "modelLayerHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "modelLayerRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "k8rDwagxgRtnbHQ9y8XFY3"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "1-Amtjc-TDSQLtKFsVsEew"
+      },
+      {
+        "key": "model",
+        "type": "components",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "model",
+            "type": "string",
+            "titleLong": "Model",
+            "titleShort": "model",
+            "_hash": "VVe9BvthShRXKDSi8j0v0V"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "_CfWsmTw_a-K3yT8mQTQT0"
+      },
+      {
+        "key": "modelHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "modelRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "NsFGUpw-w2jDd4_lfCxSIU"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "ENev6D05Q_iPgxqCANaKEz"
+      },
+      {
+        "key": "cake",
+        "type": "cakes",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "sliceIdsTable",
+            "type": "string",
+            "titleLong": "Slice Ids Table",
+            "titleShort": "Slice Ids Table",
+            "_hash": "1k77uzMUkjc7tCJlGN31GI"
+          },
+          {
+            "key": "sliceIdsRow",
+            "type": "string",
+            "titleLong": "Slice Ids Row",
+            "titleShort": "Slice Ids Row",
+            "_hash": "T3yH4vS0oUYRZAFPq0eIkc"
+          },
+          {
+            "key": "layers",
+            "type": "json",
+            "titleLong": "Layers",
+            "titleShort": "Layers",
+            "_hash": "DpUNHLADN7AoClIh7IjdUE"
+          },
+          {
+            "key": "id",
+            "type": "string",
+            "titleLong": "ID",
+            "titleShort": "ID",
+            "_hash": "UmazCpc_m0Ww4a9TQd1MpY"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "LNnUkPxIRwOGWTu6_mzDpx"
+      },
+      {
+        "key": "cakeHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "cakeRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "RIQePWGEW8pM49hSSxddYp"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "zZxylvUZe_-GcKiBbPhIA0"
+      },
+      {
+        "key": "sliceId",
+        "type": "sliceIds",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "base",
+            "type": "string",
+            "titleLong": "Base Slice ID",
+            "titleShort": "Base",
+            "_hash": "o9xR4pvOiAH_Pa2DKOsdTW"
+          },
+          {
+            "key": "add",
+            "type": "jsonArray",
+            "titleLong": "Slice IDs",
+            "titleShort": "IDs",
+            "_hash": "_fblsOPzjZqKHBArTgBNfR"
+          },
+          {
+            "key": "remove",
+            "type": "jsonArray",
+            "titleLong": "Removed Slice IDs",
+            "titleShort": "Removed",
+            "_hash": "2gv0UnQ6-BRjZJ3lsdzvZ1"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "RZTg2Ienhp2gd_mjN4CE0u"
+      },
+      {
+        "key": "sliceIdHistory",
+        "type": "history",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time ID",
+            "titleShort": "Time ID",
+            "_hash": "h3f2KT-46nyCtBx3cx3P-r"
+          },
+          {
+            "key": "sliceIdRef",
+            "type": "string",
+            "titleLong": "Reference",
+            "titleShort": "Ref",
+            "_hash": "PFYdeVJeUa4_HUHn4d4DvJ"
+          },
+          {
+            "key": "route",
+            "type": "string",
+            "titleLong": "Route",
+            "titleShort": "Route",
+            "_hash": "Vn9lhEP3B4VYT2iRPuknGj"
+          },
+          {
+            "key": "origin",
+            "type": "string",
+            "titleLong": "Origin",
+            "titleShort": "Origin",
+            "_hash": "kUSefbcu2Ozrq2HKvZTpRz"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous",
+            "titleShort": "Previous",
+            "_hash": "BTy3s7x-cGnl0N0i1rY2wG"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": false,
+        "_hash": "ddBnf0r55oy6_0_5NQfHHo"
       }
     ],
-    "_hash": "du0xsN8nqye3c4DorjQsV5"
+    "_hash": "93CDILPHaJrT1I0-lskxgy"
   },
-  "_hash": "5OBvGWuzS-aJ3dd_k6sriJ"
+  "_hash": "ZDATe-6R6IeUACuyalFzaD"
 }
