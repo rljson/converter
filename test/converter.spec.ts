@@ -297,7 +297,7 @@ describe('From JSON', () => {
       _sliceId: 'id',
       _name: 'Car',
       meta: ['model', 'manufacturer'],
-      screwRefs: ['sliceId@Screw', 'technicalRef@Screw'],
+      screwRefs: ['sliceId@Screw', 'technical@Screw'],
       _types: [
         {
           _name: 'Screw',
@@ -310,15 +310,77 @@ describe('From JSON', () => {
 
     const rljson = fromJson(json, chart);
 
-    // const v = new Validate();
-    // v.addValidator(new BaseValidator());
-    // const result = await v.run(rljson);
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const valid = await v.run(rljson);
 
     await expectGolden('example/converter/list-with-types-multi-ref.json').toBe(
       rljson,
     );
-    //Validation skipped, because RLJSON needs multi-ref for sliceIds
-    //expect(result).toStrictEqual({});
+
+    expect(valid).toStrictEqual({});
+  });
+
+  it('List w/ types and named multilateral references should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        screws: [
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+          {
+            id: 'SCW-002',
+            type: 'DIN7990',
+            material: 'Steel Zinc plated',
+            dimension: 'M6x30',
+          },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      meta: ['model', 'manufacturer'],
+      screwRefs: [
+        'sliceId@Screw',
+        'technical@Screw',
+        { origin: 'sliceId@Screw', destination: 'pointToScrewIds' },
+        { origin: 'technical@Screw', destination: 'pointToScrewTechnical' },
+      ],
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: 'id',
+          technical: ['type', 'material', 'dimension'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const valid = await v.run(rljson);
+
+    await expectGolden(
+      'example/converter/list-with-types-named-multi-ref.json',
+    ).toBe(rljson);
+
+    expect(valid).toStrictEqual({});
   });
   it('List w/ types and references should convert w/o errors.', async () => {
     const json = [
@@ -341,7 +403,7 @@ describe('From JSON', () => {
     const chart: DecomposeChart = {
       _sliceId: 'id',
       _name: 'Car',
-      colorRefs: ['colorSliceId', 'colorGeneralRef'],
+      colorRefs: ['sliceId@Color', 'general@Color'],
       _types: [
         {
           _name: 'Color',
@@ -439,6 +501,86 @@ describe('From JSON', () => {
     await expectGolden('example/converter/component-encapsulation.json').toBe(
       rljson,
     );
+    expect(result).toStrictEqual({});
+  });
+
+  it('Object with nested components and named type should convert w/o errors.', async () => {
+    const json = {
+      id: 'car1',
+      model: 'X',
+      manufacturer: 'Tesla',
+      registration: {
+        country: 'D',
+        licensePlate: 'B-TX-100',
+      },
+      dimension: {
+        length: 5036,
+        width: 1999,
+        height: 1684,
+      },
+    };
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      info: ['model', 'manufacturer'],
+      registration: ['registration/country', 'registration/licensePlate'],
+      dimension: {
+        length: ['dimension/length'],
+        width: ['dimension/width'],
+        height: ['dimension/height'],
+      },
+      brand: [
+        { origin: 'manufacturer', destination: 'brand' },
+        { origin: 'model', destination: 'type' },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    expect(Object.keys(rljson)).toEqual([
+      'carSliceId',
+      'carInfo',
+      'carRegistration',
+      'carLength',
+      'carWidth',
+      'carHeight',
+      'carDimension',
+      'carBrand',
+      'carInfoLayer',
+      'carRegistrationLayer',
+      'carLengthLayer',
+      'carWidthLayer',
+      'carHeightLayer',
+      'carDimensionLayer',
+      'carBrandLayer',
+      'carInfoHistory',
+      'carRegistrationHistory',
+      'carLengthHistory',
+      'carWidthHistory',
+      'carHeightHistory',
+      'carDimensionHistory',
+      'carBrandHistory',
+      'carInfoLayerHistory',
+      'carRegistrationLayerHistory',
+      'carLengthLayerHistory',
+      'carWidthLayerHistory',
+      'carHeightLayerHistory',
+      'carDimensionLayerHistory',
+      'carBrandLayerHistory',
+      'carCakeHistory',
+      'carSliceIdHistory',
+      'carCake',
+      'tableCfgs',
+      '_hash',
+    ]);
+
+    await expectGolden(
+      'example/converter/component-encapsulation-with-named-type.json',
+    ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
 

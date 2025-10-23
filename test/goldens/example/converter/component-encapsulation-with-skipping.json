@@ -48,31 +48,31 @@
   "dimension": {
     "_data": [
       {
-        "lengthRef": "poMsKI0UqeEM6h8qKVF3IU",
-        "widthRef": "8EZxlYaF4z0HUMAW6bXsN6",
-        "heightRef": "QtTfCbiTktna-iwRI0RsAa",
-        "_hash": "m-z0VnUwWNoDhNQFwbvt1F"
+        "length": "poMsKI0UqeEM6h8qKVF3IU",
+        "width": "8EZxlYaF4z0HUMAW6bXsN6",
+        "height": "QtTfCbiTktna-iwRI0RsAa",
+        "_hash": "efU5WOc7cEm2_PxFeqif82"
       }
     ],
     "_type": "components",
-    "_hash": "IsXOARyz1mndsqtRJ5kvL8",
-    "tableCfg": "_Eci_zSb4bbF6INcOvOLTR"
+    "_hash": "WvRv41dscQpbIp-IUsB70H",
+    "tableCfg": "aH-uFmD3VGC7HPWt74iwCN"
   },
   "dimensionLayer": {
     "_type": "layers",
     "_data": [
       {
         "add": {
-          "car1": "m-z0VnUwWNoDhNQFwbvt1F",
-          "_hash": "7aXDYy_ZhmDttHSrMMidEf"
+          "car1": "efU5WOc7cEm2_PxFeqif82",
+          "_hash": "dfI3xVkYcD7l9wY2paCMQd"
         },
         "sliceIdsTable": "sliceId",
         "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "componentsTable": "dimension",
-        "_hash": "kyHH-8krIzKjPj8anTNrpz"
+        "_hash": "a57rSzQUGPhECj3lr7mfCz"
       }
     ],
-    "_hash": "5prrnMBuovFsxUzcSbY1kz",
+    "_hash": "ubJrhxprI01sspA2RMfQZv",
     "tableCfg": "Nebb-ICMb7zaG0VoA3fN_l"
   },
   "lengthHistory": {
@@ -124,14 +124,14 @@
         "sliceIdsTable": "sliceId",
         "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "layers": {
-          "dimensionLayer": "kyHH-8krIzKjPj8anTNrpz",
-          "_hash": "piqqREmb3f35oiFf-IPuxG"
+          "dimensionLayer": "a57rSzQUGPhECj3lr7mfCz",
+          "_hash": "sFOHrvrAl1lxlhTA5byBcH"
         },
-        "_hash": "qozwyyLU087eVW1nfc-DkS"
+        "_hash": "33uMH5imoVfETWn9_UzhgZ"
       }
     ],
     "tableCfg": "LNnUkPxIRwOGWTu6_mzDpx",
-    "_hash": "W8-k6f_t6hwdstuN0DyEAO"
+    "_hash": "q43g8M6meHh8dsmV8s2MP6"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
@@ -487,31 +487,43 @@
             "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
           },
           {
-            "key": "lengthRef",
+            "key": "length",
             "type": "string",
-            "titleLong": "LengthRef",
-            "titleShort": "lengthRef",
-            "_hash": "ovLPL9S5gE-nKJmEB1osMW"
+            "titleLong": "Length",
+            "titleShort": "length",
+            "ref": {
+              "tableKey": "length",
+              "_hash": "D8SHtuE-VPJ11T-MUEFQb6"
+            },
+            "_hash": "lisWyVlMlh7NYyNaSE8hyv"
           },
           {
-            "key": "widthRef",
+            "key": "width",
             "type": "string",
-            "titleLong": "WidthRef",
-            "titleShort": "widthRef",
-            "_hash": "0jwY0l3AKZ6OwpzGdpBtDV"
+            "titleLong": "Width",
+            "titleShort": "width",
+            "ref": {
+              "tableKey": "width",
+              "_hash": "26P2Dp-3r2niA93mL94m04"
+            },
+            "_hash": "_ugVfX_GURZwotV74vvv1y"
           },
           {
-            "key": "heightRef",
+            "key": "height",
             "type": "string",
-            "titleLong": "HeightRef",
-            "titleShort": "heightRef",
-            "_hash": "sKRdhHrYYBhdH9gCIbpTHR"
+            "titleLong": "Height",
+            "titleShort": "height",
+            "ref": {
+              "tableKey": "height",
+              "_hash": "cG-crZH3OURjZpz3n855N7"
+            },
+            "_hash": "KZ2axlCuE_e-Lq5KKkRuOh"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "_Eci_zSb4bbF6INcOvOLTR"
+        "_hash": "aH-uFmD3VGC7HPWt74iwCN"
       },
       {
         "key": "dimensionHistory",
@@ -753,7 +765,7 @@
         "_hash": "ddBnf0r55oy6_0_5NQfHHo"
       }
     ],
-    "_hash": "JS1Z3tAuO6pjUWNUD1PydA"
+    "_hash": "ogozY7ocibhrIQ5LuJcdK2"
   },
-  "_hash": "1-PitbYoJHli198g0_oGl8"
+  "_hash": "doWcon40bhbWbwO5Dl9pEs"
 }
