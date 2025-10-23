@@ -32,17 +32,17 @@
           "SCW-001",
           "SCW-002"
         ],
-        "screwTechnicalRef": [
+        "screwTechnical": [
           "zsnKCV7s9ufse2ElLXhIAh",
           "zsnKCV7s9ufse2ElLXhIAh",
           "T1FZitsrdgi4d0bzuOZa6M"
         ],
-        "_hash": "wACgN9KPHyITDCtCs75Duz"
+        "_hash": "EauoEBfjQCaQjGWA0ZGIEb"
       }
     ],
     "_type": "components",
-    "_hash": "Wc_0mNKkBJXapzzXAisZb6",
-    "tableCfg": "IBxmsTygl5fMsyPqckFjAW"
+    "_hash": "qdsqlhj4gqtDXBjJJDK2p7",
+    "tableCfg": "5H3XJrec9Bo8nyYyMq94T0"
   },
   "carMetaLayer": {
     "_type": "layers",
@@ -66,16 +66,16 @@
     "_data": [
       {
         "add": {
-          "car1": "wACgN9KPHyITDCtCs75Duz",
-          "_hash": "RKD2K6b48pCTJu8jjlrRsk"
+          "car1": "EauoEBfjQCaQjGWA0ZGIEb",
+          "_hash": "p_Nl7nbB7JJyYT7A3iOf7t"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "componentsTable": "carScrewRefs",
-        "_hash": "5PMAptjeJfTIS8qc_6MBdc"
+        "_hash": "1R-WghUnKo6un0karMMnUs"
       }
     ],
-    "_hash": "h3_EzMiNtDDTtFSRSOFcCb",
+    "_hash": "KRml9XHwv4TcuZFcinvn4B",
     "tableCfg": "lZ2v3SwR_LXu6uPBdhkDMu"
   },
   "carMetaHistory": {
@@ -122,14 +122,14 @@
         "sliceIdsRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "layers": {
           "carMetaLayer": "6nmN98POuTqRn79mRFaYyQ",
-          "carScrewRefsLayer": "5PMAptjeJfTIS8qc_6MBdc",
-          "_hash": "iFKllaaXX1u8UPxecE9FUY"
+          "carScrewRefsLayer": "1R-WghUnKo6un0karMMnUs",
+          "_hash": "2Ry9EGl15wnVCIC0Mohh7m"
         },
-        "_hash": "gdYaoIwxSbybuWxL8MrK8E"
+        "_hash": "-30XmdqIv_gS2u7amCHobe"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "IPLWfZuNzcMIH94w8q-EUp"
+    "_hash": "Qr7-YD-n2qx3aiZzh9ygIH"
   },
   "screwSliceId": {
     "_type": "sliceIds",
@@ -544,23 +544,31 @@
           },
           {
             "key": "screwSliceId",
-            "type": "object",
+            "type": "string",
             "titleLong": "ScrewSliceId",
             "titleShort": "screwSliceId",
-            "_hash": "PPGdeCLbQX9gHsR_OIBlaB"
+            "ref": {
+              "tableKey": "screwSliceId",
+              "_hash": "2h2syHJEVAm9GVPLcGYO-d"
+            },
+            "_hash": "SYimS-In5wUc_HCYnMW6MR"
           },
           {
-            "key": "screwTechnicalRef",
-            "type": "object",
-            "titleLong": "ScrewTechnicalRef",
-            "titleShort": "screwTechnicalRef",
-            "_hash": "Kg2U0yNdTNxZ4VKO4vsPV-"
+            "key": "screwTechnical",
+            "type": "string",
+            "titleLong": "ScrewTechnical",
+            "titleShort": "screwTechnical",
+            "ref": {
+              "tableKey": "screwTechnical",
+              "_hash": "a7sKgBkS9OgSXeeNaY_7NZ"
+            },
+            "_hash": "_Wt7RANCab4KEyQ2UK68bC"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "IBxmsTygl5fMsyPqckFjAW"
+        "_hash": "5H3XJrec9Bo8nyYyMq94T0"
       },
       {
         "key": "carScrewRefsHistory",
@@ -1190,7 +1198,7 @@
         "_hash": "Sekh0mFsJyAMphFXA7Mjd_"
       }
     ],
-    "_hash": "JEEdsok3oxzvKkX-Y6WUlc"
+    "_hash": "Orj5ST5Pyi9H831R3MXolZ"
   },
-  "_hash": "yGgWxhnsuh0_lk153wYyuN"
+  "_hash": "Xz2r7yp7vqmSYE74YZ-YUc"
 }
