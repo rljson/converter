@@ -13,7 +13,7 @@ import {
   ComponentRef,
   ComponentsTable,
   createCakeTableCfg,
-  createHistoryTableCfg,
+  createInsertHistoryTableCfg,
   createLayerTableCfg,
   Layer,
   LayerRef,
@@ -50,8 +50,8 @@ export type DecomposeChartComponentPropertyDef = {
 };
 
 const createHistoryTable = (tableKey: string): Rljson => ({
-  [tableKey + 'History']: {
-    _type: 'history',
+  [tableKey + 'InsertHistory']: {
+    _type: 'insertHistory',
     _data: [],
   },
 });
@@ -590,7 +590,7 @@ export const fromJson = (
     //Create TableCfg for layer
     const layerTableCfg: TableCfg = createLayerTableCfg(layerName);
     tableCfgs.push(layerTableCfg);
-    tableCfgs.push(createHistoryTableCfg(layerTableCfg));
+    tableCfgs.push(createInsertHistoryTableCfg(layerTableCfg));
   }
 
   // Create Cake
@@ -629,7 +629,7 @@ export const fromJson = (
       //Add component TableCfgs and their history TableCfgs
       for (const cfg of compTableCfgs) {
         tableCfgs.push(cfg);
-        tableCfgs.push(createHistoryTableCfg(cfg));
+        tableCfgs.push(createInsertHistoryTableCfg(cfg));
       }
 
       //Create TableCfg for layer
@@ -638,7 +638,7 @@ export const fromJson = (
 
       //Add layer TableCfg and its history TableCfg
       tableCfgs.push(layerTableCfg);
-      tableCfgs.push(createHistoryTableCfg(layerTableCfg));
+      tableCfgs.push(createInsertHistoryTableCfg(layerTableCfg));
     }
   }
 
@@ -647,7 +647,7 @@ export const fromJson = (
 
   //Add cake TableCfg and its history TableCfg
   tableCfgs.push(cakeTableCfg);
-  tableCfgs.push(createHistoryTableCfg(cakeTableCfg));
+  tableCfgs.push(createInsertHistoryTableCfg(cakeTableCfg));
 
   //Create TableCfg for sliceIds
 
@@ -656,7 +656,7 @@ export const fromJson = (
     chart._name as string,
   );
   tableCfgs.push(sliceIdsTableCfg);
-  tableCfgs.push(createHistoryTableCfg(sliceIdsTableCfg));
+  tableCfgs.push(createInsertHistoryTableCfg(sliceIdsTableCfg));
 
   //Create History for sliceIds
   Object.assign(

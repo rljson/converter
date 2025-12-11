@@ -152,65 +152,65 @@
     "_hash": "r1bokYmDId0h8eqd-MiJxA",
     "tableCfg": "VN-Jr8Xw8yf9W-5scM_k4J"
   },
-  "carGeneralHistory": {
-    "_type": "history",
+  "carGeneralInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "3_vgmiUFGjDcY6OzSN3juI",
-    "_hash": "a61thdXfTDQPk3xOgNFVk1"
+    "tableCfg": "LM5Zb-ZSNutLIkteGrtVgd",
+    "_hash": "5-zTYT5hEfnfOpc8E8j-qq"
   },
-  "carTechnicalHistory": {
-    "_type": "history",
+  "carTechnicalInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "xTUHrTkv2bFTMcmJcHdxoG",
-    "_hash": "bMlYmoXI-AhlEHMRiTJZi3"
+    "tableCfg": "jQFLabd4EvneJAo82YC7lL",
+    "_hash": "r-1vu3SaO-Y_uiOSwTzcOc"
   },
-  "carColorHistory": {
-    "_type": "history",
+  "carColorInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "Pp5uzMS6jd4KBC3Ljvkf8j",
-    "_hash": "sQLX_-fDWDYZXtnbqcJjOK"
+    "tableCfg": "vHKJUIHyxWeQNNsCWme11m",
+    "_hash": "D9UWR15szdPzzviu5nxAxi"
   },
-  "carWheelHistory": {
-    "_type": "history",
+  "carWheelInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "FTYUdj93ZqDisKuJAPBHdC",
-    "_hash": "XVJUJmcsGYJ2WEvWBnGeYb"
+    "tableCfg": "0jBchqOSjH8O1JCmSEl6ij",
+    "_hash": "zu017qBOyYKI-SpFIy0ygO"
   },
-  "carGeneralLayerHistory": {
-    "_type": "history",
+  "carGeneralLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "Tdx315O_IRDKx3QdEYCBS7",
-    "_hash": "5tAl1e-_396w6CGBlY4P7I"
+    "tableCfg": "E3vjXoN5QpoUQCk0gU0HVr",
+    "_hash": "wM_pbKOoeD3nE8GAaJlCPk"
   },
-  "carTechnicalLayerHistory": {
-    "_type": "history",
+  "carTechnicalLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "F3jPtuYNakkaUcq1c76x7D",
-    "_hash": "VEjWQrbs-0PHZiiIGUm7X3"
+    "tableCfg": "ZoKCv4q51F3zKpjT5pGjJQ",
+    "_hash": "dRhcMq8oEu2T_AkU0dpL9t"
   },
-  "carColorLayerHistory": {
-    "_type": "history",
+  "carColorLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "8SrDQYRmrnvqALp6B-i7Y1",
-    "_hash": "OtV-9e_q2IFcJ-UpUGHcp7"
+    "tableCfg": "h8_j3SBgi-4_sogP4I2wjN",
+    "_hash": "xOpQYPKvHUpr0QW1dRyPkk"
   },
-  "carWheelLayerHistory": {
-    "_type": "history",
+  "carWheelLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "CDdWDBQw0Kb0A3NfOab81Y",
-    "_hash": "cMgZv3DrzFFX0Bqfio8pl5"
+    "tableCfg": "YEzJwhVqEQoLDTvouAw53d",
+    "_hash": "fSvcXAFpN82hxBi-uhqd48"
   },
-  "carCakeHistory": {
-    "_type": "history",
+  "carCakeInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "D656vP5hULH5lwAilFpanT",
-    "_hash": "hKj2sGTSFbfqnNAhcLzxfK"
+    "tableCfg": "Mq5c69xgIk66BP1RXxa49V",
+    "_hash": "S7Sy6K4Uc6dntW4_mZJJe8"
   },
-  "carSliceIdHistory": {
-    "_type": "history",
+  "carSliceIdInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "dvbj8AbTNiHSOJRU-jkJGM",
-    "_hash": "NxSzT8QzX6n5ZLhJuJdwm1"
+    "tableCfg": "DZMEfQVN_Jqv6tw9JgEUpZ",
+    "_hash": "-xhfLQ1yunp98FTGPwM16x"
   },
   "carCake": {
     "_type": "cakes",
@@ -307,41 +307,41 @@
     "_hash": "GoKxUSeXvDWo3duIqoEtDf",
     "tableCfg": "leqVFZksYrc7mAmfGzIMJV"
   },
-  "wheelBrandHistory": {
-    "_type": "history",
+  "wheelBrandInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "3LPbWShrjCz4j_A2NjjODg",
-    "_hash": "mUDXR6ZQnkRbZUnwb6htDK"
+    "tableCfg": "ny6QLDn7RzWHof0qgK6Jc3",
+    "_hash": "UUFvbAINLSHWitc0nYcjkC"
   },
-  "wheelDimensionHistory": {
-    "_type": "history",
+  "wheelDimensionInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "hbLFo1KHt3v9Ddcc3l3T8p",
-    "_hash": "-oDuDC9IczB23yent9BZlI"
+    "tableCfg": "KlOHDFWswsVjOyVHb9zIaU",
+    "_hash": "oBwg1-fE9J5EyrLEoCqFGQ"
   },
-  "wheelBrandLayerHistory": {
-    "_type": "history",
+  "wheelBrandLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "82JuQ8uf6oX6UvhRwdqMwJ",
-    "_hash": "uSJ6bOLmog8k7k9vMSDjDE"
+    "tableCfg": "zmFrMMBYbWEoskGR_1CbLH",
+    "_hash": "Z1rh08C97wrdSZ7bhLZlt8"
   },
-  "wheelDimensionLayerHistory": {
-    "_type": "history",
+  "wheelDimensionLayerInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "kz2k_1hVoFGkTfmF6hQFNi",
-    "_hash": "ujx3wAKA7JVWkhHo3cNRFA"
+    "tableCfg": "8BZPlCv3K_Oyh6jT7O5Eio",
+    "_hash": "LUKiz82y3s_dWYkUWvHYtE"
   },
-  "wheelCakeHistory": {
-    "_type": "history",
+  "wheelCakeInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "L2sGyR9UbW6bdh5bX3z1W0",
-    "_hash": "WncwjJW27sEqz9ABEpAa4Z"
+    "tableCfg": "RilwPGFRnDnszBXbR9vNTv",
+    "_hash": "cQKZH2wGplOEa-T6PNE_G6"
   },
-  "wheelSliceIdHistory": {
-    "_type": "history",
+  "wheelSliceIdInsertHistory": {
+    "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "iT2IEyyhLdTLvTeom_yC1F",
-    "_hash": "NRZ_s1aT6P9g9jgIEeBrJp"
+    "tableCfg": "-uPg8CVuU959tkBZ6eWNFW",
+    "_hash": "H-mFIEKmH5BIdoEhSn7_2T"
   },
   "wheelCake": {
     "_type": "cakes",
@@ -423,8 +423,8 @@
         "_hash": "JYefyjTR46Fo-c8Tlo6P7n"
       },
       {
-        "key": "carGeneralLayerHistory",
-        "type": "history",
+        "key": "carGeneralLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -472,7 +472,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "Tdx315O_IRDKx3QdEYCBS7"
+        "_hash": "E3vjXoN5QpoUQCk0gU0HVr"
       },
       {
         "key": "carTechnicalLayer",
@@ -534,8 +534,8 @@
         "_hash": "0iL8Czul98-LD7oXDW9SWO"
       },
       {
-        "key": "carTechnicalLayerHistory",
-        "type": "history",
+        "key": "carTechnicalLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -583,7 +583,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "F3jPtuYNakkaUcq1c76x7D"
+        "_hash": "ZoKCv4q51F3zKpjT5pGjJQ"
       },
       {
         "key": "carColorLayer",
@@ -645,8 +645,8 @@
         "_hash": "AqNt4hM9EEUx-s1AaDtzOs"
       },
       {
-        "key": "carColorLayerHistory",
-        "type": "history",
+        "key": "carColorLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -694,7 +694,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "8SrDQYRmrnvqALp6B-i7Y1"
+        "_hash": "h8_j3SBgi-4_sogP4I2wjN"
       },
       {
         "key": "carWheelLayer",
@@ -756,8 +756,8 @@
         "_hash": "VN-Jr8Xw8yf9W-5scM_k4J"
       },
       {
-        "key": "carWheelLayerHistory",
-        "type": "history",
+        "key": "carWheelLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -805,7 +805,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "CDdWDBQw0Kb0A3NfOab81Y"
+        "_hash": "YEzJwhVqEQoLDTvouAw53d"
       },
       {
         "key": "carGeneral",
@@ -846,8 +846,8 @@
         "_hash": "fNc9HXghdZ6QX2ynxK4iIU"
       },
       {
-        "key": "carGeneralHistory",
-        "type": "history",
+        "key": "carGeneralInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -895,7 +895,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "3_vgmiUFGjDcY6OzSN3juI"
+        "_hash": "LM5Zb-ZSNutLIkteGrtVgd"
       },
       {
         "key": "carTechnical",
@@ -936,8 +936,8 @@
         "_hash": "LSWJucmlZQkNFL6irhhSZ-"
       },
       {
-        "key": "carTechnicalHistory",
-        "type": "history",
+        "key": "carTechnicalInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -985,7 +985,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "xTUHrTkv2bFTMcmJcHdxoG"
+        "_hash": "jQFLabd4EvneJAo82YC7lL"
       },
       {
         "key": "carColor",
@@ -1026,8 +1026,8 @@
         "_hash": "xHXYV0bki9Mpg6n2R_yDRc"
       },
       {
-        "key": "carColorHistory",
-        "type": "history",
+        "key": "carColorInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1075,7 +1075,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "Pp5uzMS6jd4KBC3Ljvkf8j"
+        "_hash": "vHKJUIHyxWeQNNsCWme11m"
       },
       {
         "key": "carWheel",
@@ -1116,8 +1116,8 @@
         "_hash": "0X24UNCGDXSggM4MX0lZGD"
       },
       {
-        "key": "carWheelHistory",
-        "type": "history",
+        "key": "carWheelInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1165,7 +1165,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "FTYUdj93ZqDisKuJAPBHdC"
+        "_hash": "0jBchqOSjH8O1JCmSEl6ij"
       },
       {
         "key": "carCake",
@@ -1213,8 +1213,8 @@
         "_hash": "5tcrs9FhrPleZv_JXzetfy"
       },
       {
-        "key": "carCakeHistory",
-        "type": "history",
+        "key": "carCakeInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1262,7 +1262,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "D656vP5hULH5lwAilFpanT"
+        "_hash": "Mq5c69xgIk66BP1RXxa49V"
       },
       {
         "key": "carSliceId",
@@ -1303,8 +1303,8 @@
         "_hash": "4yM_dWqrCcWxWyt93d4LJx"
       },
       {
-        "key": "carSliceIdHistory",
-        "type": "history",
+        "key": "carSliceIdInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1352,7 +1352,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "dvbj8AbTNiHSOJRU-jkJGM"
+        "_hash": "DZMEfQVN_Jqv6tw9JgEUpZ"
       },
       {
         "key": "wheelBrandLayer",
@@ -1414,8 +1414,8 @@
         "_hash": "fq2nyVH81Zad-bSLusBBhp"
       },
       {
-        "key": "wheelBrandLayerHistory",
-        "type": "history",
+        "key": "wheelBrandLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1463,7 +1463,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "82JuQ8uf6oX6UvhRwdqMwJ"
+        "_hash": "zmFrMMBYbWEoskGR_1CbLH"
       },
       {
         "key": "wheelDimensionLayer",
@@ -1525,8 +1525,8 @@
         "_hash": "leqVFZksYrc7mAmfGzIMJV"
       },
       {
-        "key": "wheelDimensionLayerHistory",
-        "type": "history",
+        "key": "wheelDimensionLayerInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1574,7 +1574,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "kz2k_1hVoFGkTfmF6hQFNi"
+        "_hash": "8BZPlCv3K_Oyh6jT7O5Eio"
       },
       {
         "key": "wheelBrand",
@@ -1601,8 +1601,8 @@
         "_hash": "zMK95q_5KOvnvfbbWPtwBR"
       },
       {
-        "key": "wheelBrandHistory",
-        "type": "history",
+        "key": "wheelBrandInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1650,7 +1650,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "3LPbWShrjCz4j_A2NjjODg"
+        "_hash": "ny6QLDn7RzWHof0qgK6Jc3"
       },
       {
         "key": "wheelDimension",
@@ -1677,8 +1677,8 @@
         "_hash": "_MbavmAP6R0tsRZlG5DiSt"
       },
       {
-        "key": "wheelDimensionHistory",
-        "type": "history",
+        "key": "wheelDimensionInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1726,7 +1726,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "hbLFo1KHt3v9Ddcc3l3T8p"
+        "_hash": "KlOHDFWswsVjOyVHb9zIaU"
       },
       {
         "key": "wheelCake",
@@ -1774,8 +1774,8 @@
         "_hash": "Gxm-GLYcPM0yn2bT9LOMh3"
       },
       {
-        "key": "wheelCakeHistory",
-        "type": "history",
+        "key": "wheelCakeInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1823,7 +1823,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "L2sGyR9UbW6bdh5bX3z1W0"
+        "_hash": "RilwPGFRnDnszBXbR9vNTv"
       },
       {
         "key": "wheelSliceId",
@@ -1864,8 +1864,8 @@
         "_hash": "clXgzWlqks0NILXjfnhvLE"
       },
       {
-        "key": "wheelSliceIdHistory",
-        "type": "history",
+        "key": "wheelSliceIdInsertHistory",
+        "type": "insertHistory",
         "columns": [
           {
             "key": "_hash",
@@ -1913,10 +1913,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "iT2IEyyhLdTLvTeom_yC1F"
+        "_hash": "-uPg8CVuU959tkBZ6eWNFW"
       }
     ],
-    "_hash": "bRB6sNEYVFVVt8J52qY2nc"
+    "_hash": "4V-q8ilOmL7Pkg5m11PbkG"
   },
-  "_hash": "UpHVEaZhM1g534KpyzEg-X"
+  "_hash": "g51j-xQczGRxYCICCHXpp6"
 }
