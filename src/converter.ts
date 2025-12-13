@@ -5,7 +5,7 @@
 // found in the LICENSE file in the root of this package.
 
 import { hip } from '@rljson/hash';
-import { Json } from '@rljson/json';
+import { Json, JsonBasicValueType } from '@rljson/json';
 import {
   Cake,
   CakesTable,
@@ -53,6 +53,7 @@ export type DecomposeChart = {
 export type DecomposeChartComponentPropertyDef = {
   origin: string;
   destination: string;
+  type?: JsonBasicValueType;
 };
 
 const createInsertHistoryTable = (tableKey: string): Rljson => ({
@@ -197,13 +198,15 @@ const synthesizeObjectFromPath = (
 ) => {
   const path: string =
     typeof p === 'object' && 'destination' in p && 'origin' in p ? p.origin : p;
+  const type = typeof p === 'object' && 'type' in p ? p.type : 'string';
   const keys = path.split('/');
   const obj: any = {};
   let current = obj;
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
     if (i === keys.length - 1) {
-      current[key] = 'string';
+      /* v8 ignore next -- @preserve */
+      current[key] = type ?? 'string';
     } else {
       current[key] = {};
       current = current[key];
@@ -417,7 +420,7 @@ const createComponentTableCfgs = (
         ([key, value]) =>
           ({
             key,
-            type: !!ref ? 'string' : typeof value,
+            type: !!ref ? 'string' : value,
             titleLong: key.charAt(0).toUpperCase() + key.slice(1),
             titleShort: key,
             ref,
@@ -484,7 +487,7 @@ export const fromJson = (
   const componentNames: string[] = [];
   traverse(chart, ({ key }) =>
     isNaN(+key!) &&
-    !['origin', 'destination'].includes(key!) &&
+    !['origin', 'destination', 'type'].includes(key!) &&
     !key?.startsWith('_')
       ? componentNames.push(key!)
       : null,

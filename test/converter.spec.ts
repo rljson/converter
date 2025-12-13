@@ -10,6 +10,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   DecomposeChart,
+  DecomposeChartComponentPropertyDef,
   exampleFromJsonDecomposeSheet,
   exampleFromJsonJson,
   fromJson,
@@ -66,6 +67,60 @@ describe('From JSON', () => {
     const result = await v.run(rljson);
 
     await expectGolden('example/converter/simple-list.json').toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
+  it('Basic objects List w/ typed Components should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        length: 5036,
+        width: 1999,
+        height: 1684,
+      },
+      {
+        id: 'car2',
+        model: 'Y',
+        manufacturer: 'Tesla',
+        length: 4751,
+        width: 1921,
+        height: 1624,
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+      manufacturer: ['manufacturer'],
+      dimensions: [
+        {
+          origin: 'length',
+          destination: 'length',
+          type: 'number',
+        } as DecomposeChartComponentPropertyDef,
+        {
+          origin: 'width',
+          destination: 'width',
+          type: 'number',
+        } as DecomposeChartComponentPropertyDef,
+        {
+          origin: 'height',
+          destination: 'height',
+          type: 'number',
+        } as DecomposeChartComponentPropertyDef,
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    await expectGolden(
+      'example/converter/simple-list-typed-components.json',
+    ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
   it('List w/ types but w/o names should throw Error.', async () => {
