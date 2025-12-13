@@ -28,12 +28,12 @@
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
-    "@types/node": "^25.0.0",
+    "@types/node": "^25.0.1",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "@vitest/coverage-v8": "^4.0.15",
     "cross-env": "^10.1.0",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^61.5.0",
     "eslint-plugin-tsdoc": "^0.5.0",
     "globals": "^16.5.0",

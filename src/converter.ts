@@ -13,11 +13,17 @@ import {
   ComponentRef,
   ComponentsTable,
   createCakeTableCfg,
+  createEditHistoryTableCfg,
+  createEditTableCfg,
   createInsertHistoryTableCfg,
   createLayerTableCfg,
+  createMultiEditTableCfg,
+  EditHistoryTable,
+  EditsTable,
   Layer,
   LayerRef,
   LayersTable,
+  MultiEditsTable,
   removeDuplicates,
   Rljson,
   SliceIdsRef,
@@ -49,7 +55,7 @@ export type DecomposeChartComponentPropertyDef = {
   destination: string;
 };
 
-const createHistoryTable = (tableKey: string): Rljson => ({
+const createInsertHistoryTable = (tableKey: string): Rljson => ({
   [tableKey + 'InsertHistory']: {
     _type: 'insertHistory',
     _data: [],
@@ -507,11 +513,27 @@ export const fromJson = (
   //.............................................................................
   // Convert nested types first --> references to nested types possible
   const nestedRljson: Rljson = {};
+  const nestedSliceIdsMap = new Map<string, Map<string, string[]>>();
   if (chart._types && Array.isArray(chart._types)) {
-    for (const t of chart._types as DecomposeChart[]) {
-      const nestedJson = json.flatMap((i) => (i as any)[t._path as string]);
-      const result = fromJson(nestedJson, t);
-      Object.assign(nestedRljson, result);
+    for (const subType of chart._types as DecomposeChart[]) {
+      const nestedJson = json.flatMap(
+        (i) => (i as any)[subType._path as string],
+      );
+
+      //Collect sliceIds of nested type for reference resolution
+      const nestedSliceIdRefs = new Map<string, string[]>(
+        json.map((item) => [
+          item[chart._sliceId] as string,
+          (Array.isArray((item as any)[subType._path as string])
+            ? (item as any)[subType._path as string]
+            : [(item as any)[subType._path as string]]
+          ).map((subItem: any) => subItem[subType._sliceId]) as string[],
+        ]),
+      );
+      nestedSliceIdsMap.set(subType._name as string, nestedSliceIdRefs);
+
+      const nested = fromJson(nestedJson, subType);
+      Object.assign(nestedRljson, nested);
     }
   }
 
@@ -557,7 +579,7 @@ export const fromJson = (
 
   //Create Histories for Components
   for (const [componentKey] of Object.entries(components)) {
-    Object.assign(histories, createHistoryTable(componentKey));
+    Object.assign(histories, createInsertHistoryTable(componentKey));
   }
 
   // Create Layers
@@ -585,7 +607,7 @@ export const fromJson = (
     );
 
     //Create History for Layer
-    Object.assign(histories, createHistoryTable(layerName));
+    Object.assign(histories, createInsertHistoryTable(layerName));
 
     //Create TableCfg for layer
     const layerTableCfg: TableCfg = createLayerTableCfg(layerName);
@@ -594,24 +616,26 @@ export const fromJson = (
   }
 
   // Create Cake
+  const typeName = chart._name ?? '';
   const cakeName = chart._name ? chart._name.toLowerCase() + 'Cake' : 'cake';
   const cakeLayers: { [key: string]: LayerRef } = {};
   for (const [layerKey, layer] of Object.entries(layers)) {
     cakeLayers[layerKey] = layer._data[0]._hash as string;
   }
-  const cake: CakesTable = {
+
+  const cake: Cake = hip<Cake>({
+    sliceIdsTable: sliceIdsName(chart._name as string),
+    sliceIdsRow: sliceIds._data[0]._hash as string,
+    layers: cakeLayers,
+  });
+
+  const cakesTable: CakesTable = {
     _type: 'cakes',
-    _data: [
-      {
-        sliceIdsTable: sliceIdsName(chart._name as string),
-        sliceIdsRow: sliceIds._data[0]._hash as string,
-        layers: cakeLayers,
-      } as Cake,
-    ],
+    _data: [cake],
   };
 
   //Create History for Cake
-  Object.assign(histories, createHistoryTable(cakeName));
+  Object.assign(histories, createInsertHistoryTable(cakeName));
 
   // TableCfgs
   for (const [layerKey, componentProperties] of Object.entries(chart)) {
@@ -649,6 +673,43 @@ export const fromJson = (
   tableCfgs.push(cakeTableCfg);
   tableCfgs.push(createInsertHistoryTableCfg(cakeTableCfg));
 
+  const edits: Rljson = {};
+
+  //Add edits table & tableCfg
+  const editsTable: EditsTable = {
+    _type: 'edits',
+    _data: [],
+  };
+  Object.assign(edits, {
+    [cakeName + 'Edits']: hip(editsTable, { throwOnWrongHashes: false }),
+  });
+  tableCfgs.push(createEditTableCfg(cakeName));
+
+  //Add multiEdits table & tableCfg
+  const multiEditsTable: MultiEditsTable = {
+    _type: 'multiEdits',
+    _data: [],
+  };
+  Object.assign(edits, {
+    [cakeName + 'MultiEdits']: hip(multiEditsTable, {
+      throwOnWrongHashes: false,
+    }),
+  });
+  tableCfgs.push(createMultiEditTableCfg(cakeName));
+
+  //Add edits table & tableCfg
+  const editHistoryTable: EditHistoryTable = {
+    _type: 'editHistory',
+    _data: [],
+  };
+  Object.assign(edits, {
+    [cakeName + 'EditHistory']: hip(editHistoryTable, {
+      throwOnWrongHashes: false,
+    }),
+  });
+
+  tableCfgs.push(createEditHistoryTableCfg(cakeName));
+
   //Create TableCfg for sliceIds
 
   //Add sliceIds TableCfg and its history TableCfg
@@ -661,8 +722,101 @@ export const fromJson = (
   //Create History for sliceIds
   Object.assign(
     histories,
-    createHistoryTable(sliceIdsName(chart._name as string)),
+    createInsertHistoryTable(sliceIdsName(chart._name as string)),
   );
+
+  // Create Relations for nested types
+  const relations: Rljson = {};
+  for (const [subTypeName, sliceIdMap] of nestedSliceIdsMap.entries()) {
+    const cakeRef = cake._hash as string;
+    const subCakeName = `${subTypeName}Cake`;
+    const relationName = `${typeName.toLowerCase()}${subTypeName}s`;
+
+    //Create relation TableCfg
+    const relationTableCfg: TableCfg = {
+      key: relationName,
+      type: 'components',
+      columns: [
+        {
+          key: '_hash',
+          type: 'string',
+          titleLong: 'Hash',
+          titleShort: 'Hash',
+        },
+        {
+          key: `${subTypeName.toLowerCase()}s`,
+          type: 'jsonArray',
+          titleLong: `${subTypeName} References`,
+          titleShort: `${subTypeName}s`,
+          ref: {
+            tableKey: subCakeName,
+            type: 'cakes',
+          },
+        },
+      ],
+      isHead: false,
+      isRoot: false,
+      isShared: false,
+    };
+
+    //Create relation components
+    const relationComponents = Array.from(sliceIdMap.values()).map(
+      (subSliceIds) =>
+        hip<Json>({
+          [`${subTypeName.toLowerCase()}s`]: [
+            {
+              ref: cakeRef,
+              sliceIds: subSliceIds,
+            },
+          ],
+        }),
+    );
+    const relationComponentsTable: ComponentsTable<Json> = {
+      _type: 'components',
+      _data: relationComponents,
+    };
+    Object.assign(relations, {
+      [relationName]: hip(relationComponentsTable, {
+        throwOnWrongHashes: false,
+      }),
+    });
+
+    //Create relation layer
+    const relationLayer = Array.from(sliceIdMap.keys())
+      .map((sliceId, idx) => ({
+        [sliceId]: relationComponents[idx]._hash as string,
+      }))
+      .reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+    const relationLayerTable: LayersTable = {
+      _type: 'layers',
+      _data: [
+        {
+          add: relationLayer,
+          sliceIdsTable: sliceIdsName(chart._name as string),
+          sliceIdsTableRow: sliceIds._data[0]._hash as string,
+          componentsTable: relationName,
+        } as Layer,
+      ],
+    };
+    Object.assign(relations, {
+      [relationName + 'Layer']: hip(relationLayerTable, {
+        throwOnWrongHashes: false,
+      }),
+    });
+
+    const relationLayerTableCfg = createLayerTableCfg(relationName + 'Layer');
+
+    //Add relation TableCfg and its history TableCfg
+    tableCfgs.push(relationTableCfg);
+    tableCfgs.push(createInsertHistoryTableCfg(relationTableCfg));
+    Object.assign(histories, createInsertHistoryTable(relationName));
+
+    //Add relation layer TableCfg and its history TableCfg
+    tableCfgs.push(relationLayerTableCfg);
+    tableCfgs.push(createInsertHistoryTableCfg(relationLayerTableCfg));
+    Object.assign(histories, createInsertHistoryTable(relationName + 'Layer'));
+  }
 
   //Merge tableCfgs of nested rljson if existing
   if (nestedRljson.tableCfgs) {
@@ -684,7 +838,9 @@ export const fromJson = (
     ...components,
     ...layers,
     ...histories,
-    [cakeName]: cake,
+    ...edits,
+    ...relations,
+    [cakeName]: cakesTable,
     ...nestedRljson,
     tableCfgs: tableCfgsTable,
   };

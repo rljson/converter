@@ -64,6 +64,24 @@
     "tableCfg": "urKlCO89yjtJFcJRZo7mP0",
     "_hash": "72o1MvzBHAXmzjab7sPNt_"
   },
+  "cakeEdits": {
+    "_type": "edits",
+    "_data": [],
+    "_hash": "DUkCwD5MSuDs4-ROLby9GQ",
+    "tableCfg": "qlQS3VXDBK7_LCa-R5LPp4"
+  },
+  "cakeMultiEdits": {
+    "_type": "multiEdits",
+    "_data": [],
+    "_hash": "7E_pqNxZX1XPs9pZ494xEX",
+    "tableCfg": "6fkO0tDtVngSTsMYAzDpZ6"
+  },
+  "cakeEditHistory": {
+    "_type": "editHistory",
+    "_data": [],
+    "_hash": "YAQqZvDJq990ASR1jcSoTy",
+    "tableCfg": "br6Gh7cYwZ-BzuTIvvIdrG"
+  },
   "cake": {
     "_type": "cakes",
     "_data": [
@@ -368,6 +386,125 @@
         "_hash": "uLU98_dKJPiux7dUkB_-Zi"
       },
       {
+        "key": "cakeEdits",
+        "type": "edits",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "name",
+            "type": "string",
+            "titleLong": "Name of the Edit",
+            "titleShort": "Name",
+            "_hash": "68dYimY7OxSjVma_WbDdt1"
+          },
+          {
+            "key": "action",
+            "type": "json",
+            "titleLong": "Edit Action Data",
+            "titleShort": "Action",
+            "_hash": "Y_wME1LxPftQx6olWB1AHg"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "qlQS3VXDBK7_LCa-R5LPp4"
+      },
+      {
+        "key": "cakeMultiEdits",
+        "type": "multiEdits",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "previous",
+            "type": "string",
+            "titleLong": "Previous Value",
+            "titleShort": "Previous",
+            "_hash": "OApUMVg0XzxL4rAp8-vHH3"
+          },
+          {
+            "key": "edit",
+            "type": "string",
+            "titleLong": "Edit Reference",
+            "titleShort": "Edit Ref",
+            "ref": {
+              "tableKey": "cakeEdits",
+              "_hash": "7DqJyCOsez_u5WDOPWZiPd"
+            },
+            "_hash": "ArNSHhLJ9wtZFzwwCuRKj6"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "6fkO0tDtVngSTsMYAzDpZ6"
+      },
+      {
+        "key": "cakeEditHistory",
+        "type": "editHistory",
+        "columns": [
+          {
+            "key": "_hash",
+            "type": "string",
+            "titleLong": "Hash",
+            "titleShort": "Hash",
+            "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
+          },
+          {
+            "key": "timeId",
+            "type": "string",
+            "titleLong": "Time Identifier",
+            "titleShort": "Time ID",
+            "_hash": "2ej3dpJSAPgLtZjcQ1zj8C"
+          },
+          {
+            "key": "multiEditRef",
+            "type": "string",
+            "titleLong": "Multi Edit Reference",
+            "titleShort": "Multi Edit Ref",
+            "ref": {
+              "tableKey": "cakeMultiEdits",
+              "_hash": "7K3KFmWk8xtz7GY9IfcoPm"
+            },
+            "_hash": "ksTfdipU0D-kyevi4ChnDw"
+          },
+          {
+            "key": "dataRef",
+            "type": "string",
+            "titleLong": "Data Reference",
+            "titleShort": "Data Ref",
+            "ref": {
+              "tableKey": "cake",
+              "_hash": "8v6-ycZSHstBxihNr5imft"
+            },
+            "_hash": "QtI62bWfhZtg5qlLsghYPv"
+          },
+          {
+            "key": "previous",
+            "type": "jsonArray",
+            "titleLong": "Previous Values",
+            "titleShort": "Previous",
+            "_hash": "7M8j7b_kcQ6SsWVzcs62fr"
+          }
+        ],
+        "isHead": false,
+        "isRoot": false,
+        "isShared": true,
+        "_hash": "br6Gh7cYwZ-BzuTIvvIdrG"
+      },
+      {
         "key": "sliceId",
         "type": "sliceIds",
         "columns": [
@@ -458,7 +595,7 @@
         "_hash": "urKlCO89yjtJFcJRZo7mP0"
       }
     ],
-    "_hash": "YV0feiWhpoVeye-dKAwhN_"
+    "_hash": "JpkWdAJjRDxEmY6hR9SyIM"
   },
-  "_hash": "CTl2AL0FFt6CrZKoJrFIMd"
+  "_hash": "nPaj9H1eyrLQ_nBfPL3HkT"
 }
