@@ -737,7 +737,7 @@ export const fromJson = (
     subTypeName,
     { cakeRef, sliceIdMap },
   ] of nestedInfoMap.entries()) {
-    const subCakeName = `${subTypeName}Cake`;
+    const subCakeName = `${subTypeName.toLowerCase()}Cake`;
     const relationName = `${typeName.toLowerCase()}${subTypeName}s`;
 
     //Create relation TableCfg
