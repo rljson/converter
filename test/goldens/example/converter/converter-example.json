@@ -248,29 +248,29 @@
       {
         "wheels": [
           {
-            "ref": "0Z0z_u39BMbROSbCYB-us-",
+            "ref": "hGbYKpi_xrKddU6uuDRZhS",
             "sliceIds": [
               "BOB37382"
             ],
-            "_hash": "25A0_5MwYyqJLTknCEZIf_"
+            "_hash": "DZb6Jp_vLqJLJXhjQpEJt8"
           }
         ],
-        "_hash": "jbeBy8YyQnuRPcoC5WyMBX"
+        "_hash": "wtM7-xkQCYTAezGDvmqi9r"
       },
       {
         "wheels": [
           {
-            "ref": "0Z0z_u39BMbROSbCYB-us-",
+            "ref": "hGbYKpi_xrKddU6uuDRZhS",
             "sliceIds": [
               "BOB37383"
             ],
-            "_hash": "A-XGAhQl8bTlZl9Kkzy08H"
+            "_hash": "HZ7N-ZBE2BKoDQTnp9cEP4"
           }
         ],
-        "_hash": "N3bZ-uXyexFxp8zOKX6UG0"
+        "_hash": "knfhxEJstME_7vqs2O-YLn"
       }
     ],
-    "_hash": "3FN2cR5V7FUnj_5w2Yl_Rp",
+    "_hash": "ZOuQVcFSmOVCrSYMJO8HjA",
     "tableCfg": "zGvHX3GkO4kBdTTJE61qEH"
   },
   "carWheelsLayer": {
@@ -278,17 +278,17 @@
     "_data": [
       {
         "add": {
-          "VIN1": "jbeBy8YyQnuRPcoC5WyMBX",
-          "VIN2": "N3bZ-uXyexFxp8zOKX6UG0",
-          "_hash": "Cjg_yviAUGafDmIBZkX4j4"
+          "VIN1": "wtM7-xkQCYTAezGDvmqi9r",
+          "VIN2": "knfhxEJstME_7vqs2O-YLn",
+          "_hash": "F9qWF2I14tHHN2j4ULMlIb"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "gaY8E_pzUVZYJT1RTMWsrh",
         "componentsTable": "carWheels",
-        "_hash": "8qhle82vaqSfYms7ixl-Gb"
+        "_hash": "OxC1erJQPvpwZwJwhbDWT6"
       }
     ],
-    "_hash": "mqOhjaJnLsHwOwzr48SggC",
+    "_hash": "qmjoH73bzm5uFOWJtXEO14",
     "tableCfg": "aZx0t0MCPRbCw9RlDsAymC"
   },
   "carCake": {
@@ -302,13 +302,14 @@
           "carTechnicalLayer": "3FqkEWxnPT6ctdPHk04XBL",
           "carColorLayer": "3-Xak37KCHtV-LXU084JCt",
           "carWheelLayer": "tYWK2dZbgVJv2xmI5knESg",
-          "_hash": "VQqIJ1ggrax-OHhkFQ1Owb"
+          "carWheelsLayer": "OxC1erJQPvpwZwJwhbDWT6",
+          "_hash": "2QhWfQFSH0LfA012jNE-An"
         },
-        "_hash": "0Z0z_u39BMbROSbCYB-us-"
+        "_hash": "SlAfqmTUEX-o9OzDGXs-tQ"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "OX0rvT4ydr5Vym3Mfh0_1i"
+    "_hash": "qO-uNU4Qzg3rmdoZ-Jw4F0"
   },
   "wheelSliceId": {
     "_type": "sliceIds",
@@ -2445,5 +2446,5 @@
     ],
     "_hash": "ycbRUpvZNYYEiv8jtNc_7V"
   },
-  "_hash": "jTaToVCkb-lEiv2WUzIyIf"
+  "_hash": "DMtswSxsiX29poMgen6xTC"
 }
