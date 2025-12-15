@@ -147,29 +147,29 @@
       {
         "colors": [
           {
-            "ref": "EJE0bObdQnUIch7ZQs1mc5",
+            "ref": "YljKyCAT0LUN7XBZl-s5MS",
             "sliceIds": [
               "RAL9000"
             ],
-            "_hash": "Y9jlzX4zZ1GzjX7M7jBEyD"
+            "_hash": "j_2IFjmcj1BFC9b1M41chU"
           }
         ],
-        "_hash": "ukMsY13G2xlT46X4uDOCHH"
+        "_hash": "9maW46i4UGDbUhbbQpqAZn"
       },
       {
         "colors": [
           {
-            "ref": "EJE0bObdQnUIch7ZQs1mc5",
+            "ref": "YljKyCAT0LUN7XBZl-s5MS",
             "sliceIds": [
               "RAL7000"
             ],
-            "_hash": "PH4RB8rIcOL1oRRVRBWWeA"
+            "_hash": "Wo-vQmpEg-yMqp6E5i4Nkh"
           }
         ],
-        "_hash": "v1_3mWK-HMgqUfhADNSZNG"
+        "_hash": "_5H1fo9F2iwZ-wgRjARrQ-"
       }
     ],
-    "_hash": "5DqvpwgPXGD9gAX0LFA1Hp",
+    "_hash": "XbXKow2HxIfCq1lCY8vzoM",
     "tableCfg": "Seu410tzwvyuY_TKHOJ5zY"
   },
   "carColorsLayer": {
@@ -177,17 +177,17 @@
     "_data": [
       {
         "add": {
-          "car1": "ukMsY13G2xlT46X4uDOCHH",
-          "car2": "v1_3mWK-HMgqUfhADNSZNG",
-          "_hash": "Te5jULTM2R1YSGvhvW3hTh"
+          "car1": "9maW46i4UGDbUhbbQpqAZn",
+          "car2": "_5H1fo9F2iwZ-wgRjARrQ-",
+          "_hash": "UjdHyRMWQRCnqx5WyH1wTT"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
         "componentsTable": "carColors",
-        "_hash": "yp5OYRAX2C2xmNtYDQ62gI"
+        "_hash": "IOm5VnMEFsr-0fPHIldhKV"
       }
     ],
-    "_hash": "yXFHNUyaK04pa24Fxw9eS9",
+    "_hash": "0UmrBZGyLuMoqxI_tNyuEw",
     "tableCfg": "JUV9z1lhftUZ5DVxPKqCdX"
   },
   "carCake": {
@@ -199,13 +199,14 @@
         "layers": {
           "carModelLayer": "_bF_LsT-kiQw18vRk1BEhY",
           "carManufacturerLayer": "zOu5K9QHP3VskL0QZUe5Mv",
-          "_hash": "LFOCaBObQ8S_S3d1FdhccP"
+          "carColorsLayer": "IOm5VnMEFsr-0fPHIldhKV",
+          "_hash": "kPG6TnaupB429n3u7EQfdH"
         },
-        "_hash": "EJE0bObdQnUIch7ZQs1mc5"
+        "_hash": "_zaAVGAaLovu_UEVlqPtz1"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "2n6-lI2jK2WHTWtI5q6eYs"
+    "_hash": "l0MUukiaNggehvhfCeghXC"
   },
   "colorSliceId": {
     "_type": "sliceIds",
@@ -1683,5 +1684,5 @@
     ],
     "_hash": "JJ0Yg987ThbZ4qxxgotqJy"
   },
-  "_hash": "-7mgv_1K9ST2xEZ8PRc41q"
+  "_hash": "KhDBxHEiXxUYPifTPR3SkV"
 }
