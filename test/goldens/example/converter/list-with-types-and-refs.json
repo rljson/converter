@@ -31,8 +31,8 @@
       }
     ],
     "_type": "components",
-    "_hash": "VUPNa3lbWA76rJeFbjmx3E",
-    "tableCfg": "RzcRDReA6sAeL1Z9aq7Ahm"
+    "_hash": "aaaJP_0OsJCDYnbpmL5XHX",
+    "tableCfg": "KLClFBtADE83X80ubaSiba"
   },
   "carColorRefsLayer": {
     "_type": "layers",
@@ -409,9 +409,10 @@
             "titleShort": "colorSliceId",
             "ref": {
               "tableKey": "colorSliceId",
-              "_hash": "y4z4wyinmZkJkBnYmOftYs"
+              "type": "components",
+              "_hash": "SZgCGHe1wNr_3NypRIlkgm"
             },
-            "_hash": "C_UT9LUYHsyfSo865Fbn1G"
+            "_hash": "LbbPDotjhvUT9UNRWgRS1U"
           },
           {
             "key": "colorGeneral",
@@ -420,15 +421,16 @@
             "titleShort": "colorGeneral",
             "ref": {
               "tableKey": "colorGeneral",
-              "_hash": "1fIzfi8129IOW4ewtDtg1y"
+              "type": "components",
+              "_hash": "fChsQm6XkOEso2riUElHFm"
             },
-            "_hash": "0VdAUPdPBtTBqo-XVofogG"
+            "_hash": "jQbwzG2rsc0sWG0CDz2jlv"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "RzcRDReA6sAeL1Z9aq7Ahm"
+        "_hash": "KLClFBtADE83X80ubaSiba"
       },
       {
         "key": "carColorRefsInsertHistory",
@@ -1474,7 +1476,7 @@
         "_hash": "bX4kCrRpxtTcoOVtZlCJKf"
       }
     ],
-    "_hash": "dpU-G6va1EGNuRGdJMDVAK"
+    "_hash": "857EhSGqdG3MnkGhHoHbeS"
   },
-  "_hash": "7hXCH5nXDQ-wDvYjd5A58x"
+  "_hash": "PgWaii3rJPdNTIj2qvuatx"
 }
