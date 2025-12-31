@@ -7,32 +7,14 @@
 import { hip } from '@rljson/hash';
 import { Json, JsonBasicValueType } from '@rljson/json';
 import {
-  Cake,
-  CakesTable,
-  ColumnCfg,
-  ComponentRef,
-  ComponentsTable,
-  createCakeTableCfg,
-  createEditHistoryTableCfg,
-  createEditTableCfg,
-  createInsertHistoryTableCfg,
-  createLayerTableCfg,
-  createMultiEditTableCfg,
-  EditHistoryTable,
-  EditsTable,
-  Layer,
-  LayerRef,
-  LayersTable,
-  MultiEditsTable,
-  removeDuplicates,
-  Rljson,
-  SliceIdsRef,
-  SliceIdsTable,
-  TableCfg,
-  TablesCfgTable,
+  Cake, CakesTable, ColumnCfg, ComponentRef, ComponentsTable, createCakeTableCfg,
+  createEditHistoryTableCfg, createEditTableCfg, createInsertHistoryTableCfg, createLayerTableCfg,
+  createMultiEditTableCfg, EditHistoryTable, EditsTable, Layer, LayerRef, LayersTable,
+  MultiEditsTable, removeDuplicates, Rljson, SliceIdsRef, SliceIdsTable, TableCfg, TablesCfgTable
 } from '@rljson/rljson';
 
 import { traverse } from 'object-traversal';
+
 
 /* v8 ignore start */
 export class Converter {
@@ -389,7 +371,7 @@ const createComponentTableCfgs = (
       );
 
       // Extract reference info if applicable
-      let ref: { tableKey: string; columnKey?: string } | undefined;
+      let ref: ColumnCfg['ref'] | undefined;
       let originProperty;
 
       // Determine destination property name
@@ -412,6 +394,7 @@ const createComponentTableCfgs = (
 
         ref = {
           tableKey: refTable,
+          type: 'components',
         };
       }
 
