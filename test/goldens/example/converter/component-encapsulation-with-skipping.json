@@ -78,44 +78,44 @@
   "lengthInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "81MrUufNXJRjNm1p49P_GP",
-    "_hash": "m3G8vhgyG1n_H3ihvwCPLa"
+    "tableCfg": "CXAx7ylyXi9wq5HMAZyfxI",
+    "_hash": "KDlXKHKnxpbQ-CysZzXOy-"
   },
   "widthInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "P5tPEBwYp_bZJZtRXSDdrs",
-    "_hash": "_BeMk22ZLQQ9jZtHReWNYa"
+    "tableCfg": "sPPw_fcf3kIxtN-_TYaiQl",
+    "_hash": "5Fmd7YtRdJ2o7jOcCJnE7d"
   },
   "heightInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "ZqAmEoPMP3fh8X7pTljcOy",
-    "_hash": "dXOz7CDRvX3TItOX4LY8TC"
+    "tableCfg": "YjE2lj5PILDS0pYmnB-PvV",
+    "_hash": "xP8rNpGyjyox678VnYGd2N"
   },
   "dimensionInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "gYL7WL_rwUyRVGqqRF401e",
-    "_hash": "xBGC3sv8tmWtRPJDPKwTOF"
+    "tableCfg": "jSa3Slx2ujxO465MlN0_2o",
+    "_hash": "0x1LU9PG61OhVi0ZIj4wji"
   },
   "dimensionLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "jSMKcM9YSvo-Mnmgiytq9F",
-    "_hash": "yo6L9bnsFxJvP09WNfAomV"
+    "tableCfg": "Ku8RzQw0ALxHjGvgHhiqTa",
+    "_hash": "XIEYmiWXWuZL9BJz7XMvjt"
   },
   "cakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "uLU98_dKJPiux7dUkB_-Zi",
-    "_hash": "Wpnzm9AtVxxKxIhIWa7GrO"
+    "tableCfg": "QUxFy8GQt2-rkvJB8mIMt-",
+    "_hash": "noMcl33ZNKerYm1Q9cMw3r"
   },
   "sliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "urKlCO89yjtJFcJRZo7mP0",
-    "_hash": "72o1MvzBHAXmzjab7sPNt_"
+    "tableCfg": "Gps6fPMp2kF-B3kutuwVMI",
+    "_hash": "Ss6JmQf643F1WfuFoBBAm6"
   },
   "cakeEdits": {
     "_type": "edits",
@@ -236,7 +236,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "5XyJJ26in2CWEiXn0Q3zEF"
+            "ref": {
+              "tableKey": "dimensionLayerMultiEdits",
+              "type": "layers",
+              "_hash": "nntRD_H-mgmMS6kZo6gJVr"
+            },
+            "_hash": "X10Yel1j-ufPnIbaBbA1PG"
           },
           {
             "key": "route",
@@ -263,7 +268,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "jSMKcM9YSvo-Mnmgiytq9F"
+        "_hash": "Ku8RzQw0ALxHjGvgHhiqTa"
       },
       {
         "key": "length",
@@ -312,7 +317,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "pOfsPkEM2sNhz_B0AaSLpc"
+            "ref": {
+              "tableKey": "lengthMultiEdits",
+              "type": "components",
+              "_hash": "sCR1CGWKZcB1gfxqqSNA2P"
+            },
+            "_hash": "qIgo1qJp4VfQ-7ICG06Onq"
           },
           {
             "key": "route",
@@ -339,7 +349,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "81MrUufNXJRjNm1p49P_GP"
+        "_hash": "CXAx7ylyXi9wq5HMAZyfxI"
       },
       {
         "key": "width",
@@ -388,7 +398,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "EtjfkzMdfK2tLbN7st10v7"
+            "ref": {
+              "tableKey": "widthMultiEdits",
+              "type": "components",
+              "_hash": "5lNsKvJZuDqywjYN4vql73"
+            },
+            "_hash": "VluTN-SaRQACR6hX73AfLe"
           },
           {
             "key": "route",
@@ -415,7 +430,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "P5tPEBwYp_bZJZtRXSDdrs"
+        "_hash": "sPPw_fcf3kIxtN-_TYaiQl"
       },
       {
         "key": "height",
@@ -464,7 +479,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "IYTcGB19jOiflxHyPvP0AQ"
+            "ref": {
+              "tableKey": "heightMultiEdits",
+              "type": "components",
+              "_hash": "REEh6YKne7fW_Xxc6nZaUM"
+            },
+            "_hash": "4y50HSkb1hhKGOEzBO6u4R"
           },
           {
             "key": "route",
@@ -491,7 +511,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "ZqAmEoPMP3fh8X7pTljcOy"
+        "_hash": "YjE2lj5PILDS0pYmnB-PvV"
       },
       {
         "key": "dimension",
@@ -569,7 +589,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "BdapC_4i0vLskVTOpU-juZ"
+            "ref": {
+              "tableKey": "dimensionMultiEdits",
+              "type": "components",
+              "_hash": "5Y3d07LKK8HKCgRaUOTBRa"
+            },
+            "_hash": "7HapyedGYNQDupysZbILSt"
           },
           {
             "key": "route",
@@ -596,7 +621,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "gYL7WL_rwUyRVGqqRF401e"
+        "_hash": "jSa3Slx2ujxO465MlN0_2o"
       },
       {
         "key": "cake",
@@ -666,7 +691,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "RIQePWGEW8pM49hSSxddYp"
+            "ref": {
+              "tableKey": "cakeMultiEdits",
+              "type": "cakes",
+              "_hash": "FuA7gf7rbIS95e35mlQsFt"
+            },
+            "_hash": "vsOnsbqGa4Dvvc25UcaReG"
           },
           {
             "key": "route",
@@ -693,7 +723,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "uLU98_dKJPiux7dUkB_-Zi"
+        "_hash": "QUxFy8GQt2-rkvJB8mIMt-"
       },
       {
         "key": "cakeEdits",
@@ -875,7 +905,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "PFYdeVJeUa4_HUHn4d4DvJ"
+            "ref": {
+              "tableKey": "sliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "kC_foemDUPdsEOkDitGpFX"
+            },
+            "_hash": "163-SDrrAqEpi-X47m4_vt"
           },
           {
             "key": "route",
@@ -902,10 +937,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "urKlCO89yjtJFcJRZo7mP0"
+        "_hash": "Gps6fPMp2kF-B3kutuwVMI"
       }
     ],
-    "_hash": "lh7OL-cuxy4LpAbEz0vTWD"
+    "_hash": "WzspWKOpHMP0MkI3_Z5pO3"
   },
-  "_hash": "mDq42LxazmoUvayNgwdKpB"
+  "_hash": "PlsPla4BxQ-SCz7tlMqWac"
 }

@@ -78,38 +78,38 @@
   "modelInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "9tL6IEWlYsyF1tsAN8APJ2",
-    "_hash": "23ijIHteTnCcSvfRbIsDmk"
+    "tableCfg": "bjZsMMNIaQhfYf5PApT6kT",
+    "_hash": "S3ekCSe8ZT3HcNO5e2W_pi"
   },
   "manufacturerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "6QD3SS1iZIzEBqDC8xhW3B",
-    "_hash": "aZb5j4TSfIdQvUODiKmBBB"
+    "tableCfg": "2-YiiQc-QLyLR5Bos3sftH",
+    "_hash": "zSqgoozzg9heS5lhBq8_FU"
   },
   "modelLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "7q--Qo-kyOh9AsvV4ssc0U",
-    "_hash": "mgZiKzABlV6BUvQV_UykHG"
+    "tableCfg": "ohmf0c_pka1t6uedER_iKv",
+    "_hash": "t8I-1HD6Mr7N7tlCWQueWc"
   },
   "manufacturerLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "KvRQSouLPlJVr7Sj8WmeZY",
-    "_hash": "S0P5d5FONpOBA-I9v4yoRD"
+    "tableCfg": "L8b_XEylbaH5ZivEjLGSHe",
+    "_hash": "QQebBocjjvPg8dJxnAwO5L"
   },
   "cakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "uLU98_dKJPiux7dUkB_-Zi",
-    "_hash": "Wpnzm9AtVxxKxIhIWa7GrO"
+    "tableCfg": "QUxFy8GQt2-rkvJB8mIMt-",
+    "_hash": "noMcl33ZNKerYm1Q9cMw3r"
   },
   "sliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "urKlCO89yjtJFcJRZo7mP0",
-    "_hash": "72o1MvzBHAXmzjab7sPNt_"
+    "tableCfg": "Gps6fPMp2kF-B3kutuwVMI",
+    "_hash": "Ss6JmQf643F1WfuFoBBAm6"
   },
   "cakeEdits": {
     "_type": "edits",
@@ -231,7 +231,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "k8rDwagxgRtnbHQ9y8XFY3"
+            "ref": {
+              "tableKey": "modelLayerMultiEdits",
+              "type": "layers",
+              "_hash": "qXgdgml464gI5_epWve4c6"
+            },
+            "_hash": "HEtV6aocXK5ilUAXszkRPu"
           },
           {
             "key": "route",
@@ -258,7 +263,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "7q--Qo-kyOh9AsvV4ssc0U"
+        "_hash": "ohmf0c_pka1t6uedER_iKv"
       },
       {
         "key": "manufacturerLayer",
@@ -342,7 +347,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "EElr4-fb82zXgqbsjCII99"
+            "ref": {
+              "tableKey": "manufacturerLayerMultiEdits",
+              "type": "layers",
+              "_hash": "8c-5qpQowYMeps-SLLu6AE"
+            },
+            "_hash": "jdELKW6HV7EiAxlu-RCkev"
           },
           {
             "key": "route",
@@ -369,7 +379,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "KvRQSouLPlJVr7Sj8WmeZY"
+        "_hash": "L8b_XEylbaH5ZivEjLGSHe"
       },
       {
         "key": "model",
@@ -418,7 +428,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "NsFGUpw-w2jDd4_lfCxSIU"
+            "ref": {
+              "tableKey": "modelMultiEdits",
+              "type": "components",
+              "_hash": "JM7tUiiJx4TgdyZexTh5id"
+            },
+            "_hash": "TpLe0xar-_0gnLGrKZx9h5"
           },
           {
             "key": "route",
@@ -445,7 +460,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "9tL6IEWlYsyF1tsAN8APJ2"
+        "_hash": "bjZsMMNIaQhfYf5PApT6kT"
       },
       {
         "key": "manufacturer",
@@ -494,7 +509,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "XwdheD3u2mLk9T-F91yJb1"
+            "ref": {
+              "tableKey": "manufacturerMultiEdits",
+              "type": "components",
+              "_hash": "_21POFyD2wAqLIwkebGCJH"
+            },
+            "_hash": "_GWGnu5o6j76GgliHlNC9x"
           },
           {
             "key": "route",
@@ -521,7 +541,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "6QD3SS1iZIzEBqDC8xhW3B"
+        "_hash": "2-YiiQc-QLyLR5Bos3sftH"
       },
       {
         "key": "cake",
@@ -591,7 +611,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "RIQePWGEW8pM49hSSxddYp"
+            "ref": {
+              "tableKey": "cakeMultiEdits",
+              "type": "cakes",
+              "_hash": "FuA7gf7rbIS95e35mlQsFt"
+            },
+            "_hash": "vsOnsbqGa4Dvvc25UcaReG"
           },
           {
             "key": "route",
@@ -618,7 +643,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "uLU98_dKJPiux7dUkB_-Zi"
+        "_hash": "QUxFy8GQt2-rkvJB8mIMt-"
       },
       {
         "key": "cakeEdits",
@@ -800,7 +825,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "PFYdeVJeUa4_HUHn4d4DvJ"
+            "ref": {
+              "tableKey": "sliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "kC_foemDUPdsEOkDitGpFX"
+            },
+            "_hash": "163-SDrrAqEpi-X47m4_vt"
           },
           {
             "key": "route",
@@ -827,10 +857,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "urKlCO89yjtJFcJRZo7mP0"
+        "_hash": "Gps6fPMp2kF-B3kutuwVMI"
       }
     ],
-    "_hash": "V54d3w0lBwqauaqFAJZ4M0"
+    "_hash": "AQrjkCO99x3b5wqSnxcsOV"
   },
-  "_hash": "R3YRls9KyevpIVlXpmDHSp"
+  "_hash": "OpWnwfqv2Emb5ZTtLVfLe3"
 }

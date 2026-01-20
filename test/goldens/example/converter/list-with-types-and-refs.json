@@ -55,38 +55,38 @@
   "carColorRefsInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "JvcAu2ZGJjM730CUR1nGJ5",
-    "_hash": "RMcPpmOywAoJ5ChEJYXKHZ"
+    "tableCfg": "y50iaGq8jgUw7yzAMetoOe",
+    "_hash": "6Ls1c1OhWJJUGCUzRtloOQ"
   },
   "carColorRefsLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "KghLsXzNMVgemfUgyssDO1",
-    "_hash": "08rQ9vCevf-0_eLKH5eplQ"
+    "tableCfg": "66Oo0ItvGHRr61TNVnwiOS",
+    "_hash": "8o4Kx3-0uDu9EjGWjmju2F"
   },
   "carCakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "Mq5c69xgIk66BP1RXxa49V",
-    "_hash": "S7Sy6K4Uc6dntW4_mZJJe8"
+    "tableCfg": "HoDxF1BuoENgrCcU3KUcFX",
+    "_hash": "fq8NZeeHIql71f8Uox0x4C"
   },
   "carSliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "DZMEfQVN_Jqv6tw9JgEUpZ",
-    "_hash": "-xhfLQ1yunp98FTGPwM16x"
+    "tableCfg": "nD7s9p92WDhjeU8UweiQxe",
+    "_hash": "E6G9ykfdQGtoyMnx4l-CZe"
   },
   "carColorsInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "d6OdQNY33EJviNaHm2GPqx",
-    "_hash": "4uCVBQocZ0f5gm69vVwVjm"
+    "tableCfg": "U6UprfscYVjuC_aW0IxyXO",
+    "_hash": "IiCbtFvFfR_kWFhft_kAp7"
   },
   "carColorsLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "owOqCY1EHd_7LNLK32gt82",
-    "_hash": "2wrAuriF9YSCtdm2fT544u"
+    "tableCfg": "tvt6xKr2cP4nZXWruMbEdp",
+    "_hash": "4iDBS-dRtw2mFdzegx2x2N"
   },
   "carCakeEdits": {
     "_type": "edits",
@@ -222,26 +222,26 @@
   "colorGeneralInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "VWy6AOaIJ8XQJl5_xJ_SC5",
-    "_hash": "cAJOxTTsE3Bjy8svX1UE5g"
+    "tableCfg": "u_PoVMzzM2LnbJSsWIJ5af",
+    "_hash": "bUWxtY2NY8i4QsHorXnw8Y"
   },
   "colorGeneralLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "GnpBNQRxbPAbOc3HXQT43V",
-    "_hash": "U4Pu9H5A0DOt47PQDtgLiO"
+    "tableCfg": "gIezPrKKY_hbMHsQLQXFQj",
+    "_hash": "eXkQ2S7uo3PHIY9QOkXLXt"
   },
   "colorCakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "YXYtD1RWHnAEwqfkyHFIAT",
-    "_hash": "ycAEHdW_Lo1PWNTjmT2Nmg"
+    "tableCfg": "KzsRl4z-5kSfmrDBasaEN_",
+    "_hash": "z0TP8Qpc9HdGQvSBUMkJrR"
   },
   "colorSliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "bX4kCrRpxtTcoOVtZlCJKf",
-    "_hash": "JC3ya6I-Utb3GzsVmEQYEO"
+    "tableCfg": "ge3OomaF8ogL4EsbUQ-aje",
+    "_hash": "Fzw67Ah2buYQMvapBfZXdk"
   },
   "colorCakeEdits": {
     "_type": "edits",
@@ -362,7 +362,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "zrJc6TKXks4BHVxV_tQmvy"
+            "ref": {
+              "tableKey": "carColorRefsLayerMultiEdits",
+              "type": "layers",
+              "_hash": "gtdyuiI-1wMAo1-0VqYzNv"
+            },
+            "_hash": "62-h-W7unBiGoUN7Oq1QfW"
           },
           {
             "key": "route",
@@ -389,7 +394,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "KghLsXzNMVgemfUgyssDO1"
+        "_hash": "66Oo0ItvGHRr61TNVnwiOS"
       },
       {
         "key": "carColorRefs",
@@ -455,7 +460,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "b1vX1janvpaU0QnG99YmIp"
+            "ref": {
+              "tableKey": "carColorRefsMultiEdits",
+              "type": "components",
+              "_hash": "rzliwZlUnECd1Ts9ATtbfc"
+            },
+            "_hash": "MRLOaga2fmJ8ztHaqo78Nk"
           },
           {
             "key": "route",
@@ -482,7 +492,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "JvcAu2ZGJjM730CUR1nGJ5"
+        "_hash": "y50iaGq8jgUw7yzAMetoOe"
       },
       {
         "key": "carCake",
@@ -552,7 +562,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "KzlfQRh5ox6VU5yaGMQZTV"
+            "ref": {
+              "tableKey": "carCakeMultiEdits",
+              "type": "cakes",
+              "_hash": "bIemqBEZsH2-R0bRfmfKf8"
+            },
+            "_hash": "6AvTYsVYY-pFddx3QyJf7b"
           },
           {
             "key": "route",
@@ -579,7 +594,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "Mq5c69xgIk66BP1RXxa49V"
+        "_hash": "HoDxF1BuoENgrCcU3KUcFX"
       },
       {
         "key": "carCakeEdits",
@@ -761,7 +776,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "kclIYAaRIM7Fp4oafDILIr"
+            "ref": {
+              "tableKey": "carSliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "i8o-dhIR5Rwcx1hqWXr07d"
+            },
+            "_hash": "-29olhHYu5jZblRr1n7oAL"
           },
           {
             "key": "route",
@@ -788,7 +808,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "DZMEfQVN_Jqv6tw9JgEUpZ"
+        "_hash": "nD7s9p92WDhjeU8UweiQxe"
       },
       {
         "key": "carColors",
@@ -842,7 +862,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "qwTsQvzijEF5Uf9OUo4Ikl"
+            "ref": {
+              "tableKey": "carColorsMultiEdits",
+              "type": "components",
+              "_hash": "qaWLDxhne_0b1DNS8znt99"
+            },
+            "_hash": "zyryWNHcY3rIbP7WCSN2Jn"
           },
           {
             "key": "route",
@@ -869,7 +894,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "d6OdQNY33EJviNaHm2GPqx"
+        "_hash": "U6UprfscYVjuC_aW0IxyXO"
       },
       {
         "key": "carColorsLayer",
@@ -953,7 +978,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "cjdDiy8gf4dak1PgGGbUqb"
+            "ref": {
+              "tableKey": "carColorsLayerMultiEdits",
+              "type": "layers",
+              "_hash": "YzWY9pBUVdjcl-wdo48Za8"
+            },
+            "_hash": "eF-gK908xZFLmTvzKr2931"
           },
           {
             "key": "route",
@@ -980,7 +1010,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "owOqCY1EHd_7LNLK32gt82"
+        "_hash": "tvt6xKr2cP4nZXWruMbEdp"
       },
       {
         "key": "colorGeneralLayer",
@@ -1064,7 +1094,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "6bAnsp4o9Q_6MBQxvCVS91"
+            "ref": {
+              "tableKey": "colorGeneralLayerMultiEdits",
+              "type": "layers",
+              "_hash": "4UCUYeDWWM8h_TDI6HLsjx"
+            },
+            "_hash": "j-IZDp52k-UUGxFB6fzQoW"
           },
           {
             "key": "route",
@@ -1091,7 +1126,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "GnpBNQRxbPAbOc3HXQT43V"
+        "_hash": "gIezPrKKY_hbMHsQLQXFQj"
       },
       {
         "key": "colorGeneral",
@@ -1140,7 +1175,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "vUlwNYmAk2wMw-jZ-o0qo0"
+            "ref": {
+              "tableKey": "colorGeneralMultiEdits",
+              "type": "components",
+              "_hash": "yjWLl9FY8nbXkZ_0eI3yfL"
+            },
+            "_hash": "0Cg_O7NDphKI1uzBtPV3Gr"
           },
           {
             "key": "route",
@@ -1167,7 +1207,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "VWy6AOaIJ8XQJl5_xJ_SC5"
+        "_hash": "u_PoVMzzM2LnbJSsWIJ5af"
       },
       {
         "key": "colorCake",
@@ -1237,7 +1277,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "H7IWUGlDh3OspWsR2zZCoa"
+            "ref": {
+              "tableKey": "colorCakeMultiEdits",
+              "type": "cakes",
+              "_hash": "bzoeSrYfFHqUbc5bN5hMkF"
+            },
+            "_hash": "Xm8fSyQ-kq82ZS70W0Tg6C"
           },
           {
             "key": "route",
@@ -1264,7 +1309,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "YXYtD1RWHnAEwqfkyHFIAT"
+        "_hash": "KzsRl4z-5kSfmrDBasaEN_"
       },
       {
         "key": "colorCakeEdits",
@@ -1446,7 +1491,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "FPuZx1lzfiY2cqGTybSe6f"
+            "ref": {
+              "tableKey": "colorSliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "ZY2iAk-ZoqSdS4dM4_-MsE"
+            },
+            "_hash": "xwjAtY_wFiujOV0tW279m3"
           },
           {
             "key": "route",
@@ -1473,10 +1523,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "bX4kCrRpxtTcoOVtZlCJKf"
+        "_hash": "ge3OomaF8ogL4EsbUQ-aje"
       }
     ],
-    "_hash": "857EhSGqdG3MnkGhHoHbeS"
+    "_hash": "nbYE-iWZwtY2vjiAzrujYw"
   },
-  "_hash": "PgWaii3rJPdNTIj2qvuatx"
+  "_hash": "J4mQ_eIp0Ka5UwSYB1nRhZ"
 }

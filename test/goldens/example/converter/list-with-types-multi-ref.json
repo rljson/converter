@@ -81,50 +81,50 @@
   "carMetaInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "saoriIKLmNsdaUGxN-HnfJ",
-    "_hash": "OJsBvjBijE_gvwvQJEm4gl"
+    "tableCfg": "PFuozP9RYH_pfNJpRjbhv3",
+    "_hash": "mXThRYUYLdbpzkO6AFwyHE"
   },
   "carScrewRefsInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "g9GxJ4o8zxvmPagMgj7nZZ",
-    "_hash": "V6mHf1MFgbm6Da363iH9Aa"
+    "tableCfg": "TApq64W59wPAVPEvGdNwqb",
+    "_hash": "j9YvrpLws9fCgAmDdBbUX3"
   },
   "carMetaLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "knI7K8S8OuDhUl_rNuy60m",
-    "_hash": "CR2fTgu-ShtWdi_sk6B8Uf"
+    "tableCfg": "sWHrNSJdMe4uON49_T5-lu",
+    "_hash": "zpuULz9haPCOs485GNBHZ5"
   },
   "carScrewRefsLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "jo7E262rlU0HAU3UOR_R_g",
-    "_hash": "hwhTk-GMJWHGKQ4HWTgSmL"
+    "tableCfg": "Wv4Y25iWUDRCGgVr8oqfAJ",
+    "_hash": "X3RJxXAXx3fDZZXj41SYrR"
   },
   "carCakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "Mq5c69xgIk66BP1RXxa49V",
-    "_hash": "S7Sy6K4Uc6dntW4_mZJJe8"
+    "tableCfg": "HoDxF1BuoENgrCcU3KUcFX",
+    "_hash": "fq8NZeeHIql71f8Uox0x4C"
   },
   "carSliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "DZMEfQVN_Jqv6tw9JgEUpZ",
-    "_hash": "-xhfLQ1yunp98FTGPwM16x"
+    "tableCfg": "nD7s9p92WDhjeU8UweiQxe",
+    "_hash": "E6G9ykfdQGtoyMnx4l-CZe"
   },
   "carScrewsInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "CubFSzM-hxkY0aWY6mqxmu",
-    "_hash": "N3Y1wPMGrID3C161F9GwIk"
+    "tableCfg": "sG8tJe1A9KT5HoBuK6xaBK",
+    "_hash": "NZ46KyhmWxfENmcbkCB8wh"
   },
   "carScrewsLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "UoiPXmk_EPIBHf4kvyVqeK",
-    "_hash": "d1kYg_yY8tHnRQ_PpC0jjf"
+    "tableCfg": "vEGLDqftc3OPVJlWKm0FVZ",
+    "_hash": "I87GAveZr9kHmg-ZZz0SAh"
   },
   "carCakeEdits": {
     "_type": "edits",
@@ -255,26 +255,26 @@
   "screwTechnicalInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "5cF8E4n5Qlqv4MSEEXTa80",
-    "_hash": "DvGPx5xTFE9NSd6650m_D8"
+    "tableCfg": "SGKZqC3WFtXEU-VMlRJJ1l",
+    "_hash": "Ck5Hdi78lzdNWHhwVwwf5b"
   },
   "screwTechnicalLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "RrtUk2LtWumOhsVGoKYlcF",
-    "_hash": "EUmN07ifrPwX93U_AZRcjM"
+    "tableCfg": "rIqIT4hfnXAbv8cPfmSs2P",
+    "_hash": "UmolFASmGSbWZRTpZZumAL"
   },
   "screwCakeInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "yOuTVuU821-bl1ZBjLFrtm",
-    "_hash": "J6XTvhRvN-888A_jGBCjqE"
+    "tableCfg": "PIb_-ArY5nbmW8yMRtM9t9",
+    "_hash": "8srL-fb7VLL-DxeYC0Ebbl"
   },
   "screwSliceIdInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "l87D3t1sVnw6bWzOcfIxBf",
-    "_hash": "yU4tr8kE26Z-ub-4tuneFp"
+    "tableCfg": "sazdbI7qEOMppAchHonjD1",
+    "_hash": "2xVx3o5f1r3dfomWB4_9cy"
   },
   "screwCakeEdits": {
     "_type": "edits",
@@ -395,7 +395,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "Ac9j_bl6W6CNIvLgnHslKX"
+            "ref": {
+              "tableKey": "carMetaLayerMultiEdits",
+              "type": "layers",
+              "_hash": "4ojonO5Rtn5mSFA4UWDQiM"
+            },
+            "_hash": "pUc_dtjTCVu17YvVj7JN73"
           },
           {
             "key": "route",
@@ -422,7 +427,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "knI7K8S8OuDhUl_rNuy60m"
+        "_hash": "sWHrNSJdMe4uON49_T5-lu"
       },
       {
         "key": "carScrewRefsLayer",
@@ -506,7 +511,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "FEjIK47BOl9tD48IWvfiLi"
+            "ref": {
+              "tableKey": "carScrewRefsLayerMultiEdits",
+              "type": "layers",
+              "_hash": "MAE_uqLNrogruY56-w-J3R"
+            },
+            "_hash": "VL6EvRvdIU4f9ax2W-pAfk"
           },
           {
             "key": "route",
@@ -533,7 +543,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "jo7E262rlU0HAU3UOR_R_g"
+        "_hash": "Wv4Y25iWUDRCGgVr8oqfAJ"
       },
       {
         "key": "carMeta",
@@ -589,7 +599,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "hwrhDgctR4EsIN-7x8kblx"
+            "ref": {
+              "tableKey": "carMetaMultiEdits",
+              "type": "components",
+              "_hash": "9yFU2f3DpyB-V7OlmXAMuQ"
+            },
+            "_hash": "T-_yzHM3aYPZ3_OV9JjiAy"
           },
           {
             "key": "route",
@@ -616,7 +631,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "saoriIKLmNsdaUGxN-HnfJ"
+        "_hash": "PFuozP9RYH_pfNJpRjbhv3"
       },
       {
         "key": "carScrewRefs",
@@ -682,7 +697,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "9zEikTi1jPxJegmQIqrm0P"
+            "ref": {
+              "tableKey": "carScrewRefsMultiEdits",
+              "type": "components",
+              "_hash": "hvfgdDncFjAQX3X2tq3zEm"
+            },
+            "_hash": "6Oul7oawV_u_VZf7oUVV-C"
           },
           {
             "key": "route",
@@ -709,7 +729,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "g9GxJ4o8zxvmPagMgj7nZZ"
+        "_hash": "TApq64W59wPAVPEvGdNwqb"
       },
       {
         "key": "carCake",
@@ -779,7 +799,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "KzlfQRh5ox6VU5yaGMQZTV"
+            "ref": {
+              "tableKey": "carCakeMultiEdits",
+              "type": "cakes",
+              "_hash": "bIemqBEZsH2-R0bRfmfKf8"
+            },
+            "_hash": "6AvTYsVYY-pFddx3QyJf7b"
           },
           {
             "key": "route",
@@ -806,7 +831,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "Mq5c69xgIk66BP1RXxa49V"
+        "_hash": "HoDxF1BuoENgrCcU3KUcFX"
       },
       {
         "key": "carCakeEdits",
@@ -988,7 +1013,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "kclIYAaRIM7Fp4oafDILIr"
+            "ref": {
+              "tableKey": "carSliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "i8o-dhIR5Rwcx1hqWXr07d"
+            },
+            "_hash": "-29olhHYu5jZblRr1n7oAL"
           },
           {
             "key": "route",
@@ -1015,7 +1045,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "DZMEfQVN_Jqv6tw9JgEUpZ"
+        "_hash": "nD7s9p92WDhjeU8UweiQxe"
       },
       {
         "key": "carScrews",
@@ -1069,7 +1099,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "nv-BoemATuqpZ2abZtJLwl"
+            "ref": {
+              "tableKey": "carScrewsMultiEdits",
+              "type": "components",
+              "_hash": "8kcFwXNpfsiyp3BaE4m8hW"
+            },
+            "_hash": "oejSVzcezS_W0lkIMm27nT"
           },
           {
             "key": "route",
@@ -1096,7 +1131,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "CubFSzM-hxkY0aWY6mqxmu"
+        "_hash": "sG8tJe1A9KT5HoBuK6xaBK"
       },
       {
         "key": "carScrewsLayer",
@@ -1180,7 +1215,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "fR3s9i7-L4BvwZK8qgkn8c"
+            "ref": {
+              "tableKey": "carScrewsLayerMultiEdits",
+              "type": "layers",
+              "_hash": "gdoGKaitJRc8OJvu9ZZOVQ"
+            },
+            "_hash": "h--Kg-7oUjPe8HZFwG3KZ5"
           },
           {
             "key": "route",
@@ -1207,7 +1247,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "UoiPXmk_EPIBHf4kvyVqeK"
+        "_hash": "vEGLDqftc3OPVJlWKm0FVZ"
       },
       {
         "key": "screwTechnicalLayer",
@@ -1291,7 +1331,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "5V_cN_ur2umEqxIHhZ96lM"
+            "ref": {
+              "tableKey": "screwTechnicalLayerMultiEdits",
+              "type": "layers",
+              "_hash": "sygXgbf1vcksnCKFHk4V3_"
+            },
+            "_hash": "9YaxUnUUPQzHIZfOQBYv2y"
           },
           {
             "key": "route",
@@ -1318,7 +1363,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "RrtUk2LtWumOhsVGoKYlcF"
+        "_hash": "rIqIT4hfnXAbv8cPfmSs2P"
       },
       {
         "key": "screwTechnical",
@@ -1381,7 +1426,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "8O6Zj9Lxai227wTEuDaBjb"
+            "ref": {
+              "tableKey": "screwTechnicalMultiEdits",
+              "type": "components",
+              "_hash": "j7RmB9kda8AIfL7pbjh4lz"
+            },
+            "_hash": "Ju8PFvIgnmEAXjDfClEmaF"
           },
           {
             "key": "route",
@@ -1408,7 +1458,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "5cF8E4n5Qlqv4MSEEXTa80"
+        "_hash": "SGKZqC3WFtXEU-VMlRJJ1l"
       },
       {
         "key": "screwCake",
@@ -1478,7 +1528,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "b5sl3hbs_mLDQLoT8VZHv3"
+            "ref": {
+              "tableKey": "screwCakeMultiEdits",
+              "type": "cakes",
+              "_hash": "x4fJdEtIyE-H5ZnPf9bBdb"
+            },
+            "_hash": "7hJVR2J3L1en1rlgW5rV5R"
           },
           {
             "key": "route",
@@ -1505,7 +1560,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "yOuTVuU821-bl1ZBjLFrtm"
+        "_hash": "PIb_-ArY5nbmW8yMRtM9t9"
       },
       {
         "key": "screwCakeEdits",
@@ -1687,7 +1742,12 @@
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
-            "_hash": "5fKwPlTzYIIRdib7tvab6Q"
+            "ref": {
+              "tableKey": "screwSliceIdMultiEdits",
+              "type": "sliceIds",
+              "_hash": "i5LmSTyvNEcqBmJK-8Ujxv"
+            },
+            "_hash": "Em6laowavhnE36yl7Ylw2o"
           },
           {
             "key": "route",
@@ -1714,10 +1774,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "l87D3t1sVnw6bWzOcfIxBf"
+        "_hash": "sazdbI7qEOMppAchHonjD1"
       }
     ],
-    "_hash": "jqb1hINQv7fKW0OhRKwnvM"
+    "_hash": "JtuWDqWJZpQx1pjb-HKn5r"
   },
-  "_hash": "wO8gKNSe5qZwEBfadpzYoY"
+  "_hash": "QLLb23nES6iWGbf_orBhLu"
 }
