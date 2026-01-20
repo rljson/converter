@@ -19,7 +19,7 @@ import { runCommand } from './functions/run-command.js';
     }
 
     console.log(gray('📦 Publishing package...'));
-    runCommand('npm publish --access public');
+    runCommand('pnpm publish --access public');
     console.log(green('✅ Publish successful. Adding version tag...'));
     runCommand('node scripts/add-version-tag.js');
     console.log(green('🏷️ Version tag added.'));
