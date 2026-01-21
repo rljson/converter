@@ -51,8 +51,8 @@
       }
     ],
     "_type": "components",
-    "_hash": "dmMA3cZImW-9Rk7MB_1c_D",
-    "tableCfg": "5_shU5dgybBgjYEVXC0KGY"
+    "_hash": "9asGWe24iG6lTtC3Xmsrul",
+    "tableCfg": "CMVne5feG7Nc3K3QyNIlhH"
   },
   "carMetaLayer": {
     "_type": "layers",
@@ -656,15 +656,15 @@
           },
           {
             "key": "screwSliceId",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "ScrewSliceId",
             "titleShort": "screwSliceId",
             "ref": {
               "tableKey": "screwSliceId",
-              "type": "components",
-              "_hash": "4QeuMgVRkaoJ7gFhBl9Vhv"
+              "type": "sliceIds",
+              "_hash": "aTU_VUM23LRLTnioFcN8sh"
             },
-            "_hash": "Ts6zIUQqNmxjOQ8QeF-j1S"
+            "_hash": "CLezlp3SVUDXmVADurpm_O"
           },
           {
             "key": "screwTechnical",
@@ -680,15 +680,15 @@
           },
           {
             "key": "pointToScrewIds",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "PointToScrewIds",
             "titleShort": "pointToScrewIds",
             "ref": {
               "tableKey": "screwSliceId",
-              "type": "components",
-              "_hash": "4QeuMgVRkaoJ7gFhBl9Vhv"
+              "type": "sliceIds",
+              "_hash": "aTU_VUM23LRLTnioFcN8sh"
             },
-            "_hash": "fk9eBpqqhWfX1ZVPrIP-y_"
+            "_hash": "EmshaGgB-Jl_BRcg5xgktF"
           },
           {
             "key": "pointToScrewTechnical",
@@ -706,7 +706,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "5_shU5dgybBgjYEVXC0KGY"
+        "_hash": "CMVne5feG7Nc3K3QyNIlhH"
       },
       {
         "key": "carScrewRefsInsertHistory",
@@ -1811,7 +1811,7 @@
         "_hash": "sazdbI7qEOMppAchHonjD1"
       }
     ],
-    "_hash": "c2qKMydBf00P1Ksubnq9Ae"
+    "_hash": "qCAxix3-ANDSScU5ZFZILF"
   },
-  "_hash": "scmi_VIsAukrjbHBgStjGN"
+  "_hash": "eheY4TCsxbD18_e9KXqA02"
 }
