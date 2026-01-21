@@ -7,14 +7,32 @@
 import { hip } from '@rljson/hash';
 import { Json, JsonBasicValueType } from '@rljson/json';
 import {
-  Cake, CakesTable, ColumnCfg, ComponentRef, ComponentsTable, createCakeTableCfg,
-  createEditHistoryTableCfg, createEditTableCfg, createInsertHistoryTableCfg, createLayerTableCfg,
-  createMultiEditTableCfg, EditHistoryTable, EditsTable, Layer, LayerRef, LayersTable,
-  MultiEditsTable, removeDuplicates, Rljson, SliceIdsRef, SliceIdsTable, TableCfg, TablesCfgTable
+  Cake,
+  CakesTable,
+  ColumnCfg,
+  ComponentRef,
+  ComponentsTable,
+  createCakeTableCfg,
+  createEditHistoryTableCfg,
+  createEditTableCfg,
+  createInsertHistoryTableCfg,
+  createLayerTableCfg,
+  createMultiEditTableCfg,
+  EditHistoryTable,
+  EditsTable,
+  Layer,
+  LayerRef,
+  LayersTable,
+  MultiEditsTable,
+  removeDuplicates,
+  Rljson,
+  SliceIdsRef,
+  SliceIdsTable,
+  TableCfg,
+  TablesCfgTable,
 } from '@rljson/rljson';
 
 import { traverse } from 'object-traversal';
-
 
 /* v8 ignore start */
 export class Converter {
@@ -394,7 +412,7 @@ const createComponentTableCfgs = (
 
         ref = {
           tableKey: refTable,
-          type: 'components',
+          type: refTypeTable == 'sliceId' ? 'sliceIds' : 'components',
         };
       }
 
@@ -403,11 +421,15 @@ const createComponentTableCfgs = (
         ([key, value]) =>
           ({
             key,
-            type: !!ref ? 'string' : value,
+            type: !!ref
+              ? ref.type == 'sliceIds'
+                ? 'jsonArray'
+                : 'string'
+              : value,
             titleLong: key.charAt(0).toUpperCase() + key.slice(1),
             titleShort: key,
             ref,
-          } as ColumnCfg),
+          }) as ColumnCfg,
       );
 
       columns.push(...column);

@@ -1,6 +1,6 @@
 {
   "name": "@rljson/converter",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Convert flat textual data i. e. from JSON or XML into RLJSON data structure and data itself automatically.",
   "homepage": "https://github.com/rljson/converter",
   "bugs": "https://github.com/rljson/converter/issues",
@@ -34,7 +34,7 @@
     "@vitest/coverage-v8": "^4.0.17",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-jsdoc": "^62.2.0",
+    "eslint-plugin-jsdoc": "^62.3.0",
     "eslint-plugin-tsdoc": "^0.5.0",
     "globals": "^17.0.0",
     "jsdoc": "^4.0.5",

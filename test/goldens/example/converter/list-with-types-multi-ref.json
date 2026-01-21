@@ -41,8 +41,8 @@
       }
     ],
     "_type": "components",
-    "_hash": "COzljw6aaxqUcqC4cZ8Ol3",
-    "tableCfg": "DRdOUpihHHbhdk9r6im4jw"
+    "_hash": "M0ty0W5K6dvuNetFhvzs7v",
+    "tableCfg": "Wkv1tecYcidkeXxH_hFCbz"
   },
   "carMetaLayer": {
     "_type": "layers",
@@ -646,15 +646,15 @@
           },
           {
             "key": "screwSliceId",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "ScrewSliceId",
             "titleShort": "screwSliceId",
             "ref": {
               "tableKey": "screwSliceId",
-              "type": "components",
-              "_hash": "4QeuMgVRkaoJ7gFhBl9Vhv"
+              "type": "sliceIds",
+              "_hash": "aTU_VUM23LRLTnioFcN8sh"
             },
-            "_hash": "Ts6zIUQqNmxjOQ8QeF-j1S"
+            "_hash": "CLezlp3SVUDXmVADurpm_O"
           },
           {
             "key": "screwTechnical",
@@ -672,7 +672,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "DRdOUpihHHbhdk9r6im4jw"
+        "_hash": "Wkv1tecYcidkeXxH_hFCbz"
       },
       {
         "key": "carScrewRefsInsertHistory",
@@ -1777,7 +1777,7 @@
         "_hash": "sazdbI7qEOMppAchHonjD1"
       }
     ],
-    "_hash": "JtuWDqWJZpQx1pjb-HKn5r"
+    "_hash": "uSaT7bbIOm4iFZKgBqMBQ4"
   },
-  "_hash": "QLLb23nES6iWGbf_orBhLu"
+  "_hash": "c5Rzb5F3NuifEaO-aCda7e"
 }
