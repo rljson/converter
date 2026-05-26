@@ -33,13 +33,13 @@ git pull
 
 ## Set pull request title
 
-Replace `Rename rljson-converter into converter here and below
+Replace `Add JsonStreamStringify here and below
 by your new pull request title.
 
 ## Create a feature branch
 
 ```bash
-node scripts/create-branch.js "Rename rljson-converter into converter"
+node scripts/create-branch.js "Add JsonStreamStringify"
 ```
 
 ## Update dependencies
@@ -65,7 +65,7 @@ In Vscode, press
 
 ```bash
 git add .
-git commit -am"Rename rljson-converter into converter"
+git commit -am"Add JsonStreamStringify"
 ```
 
 ## Increase version
@@ -96,7 +96,7 @@ node scripts/push-branch.js
 ## Create a pull request
 
 ```bash
-gh pr create --base main --title "Rename rljson-converter into converter" --body " "
+gh pr create --base main --title "Add JsonStreamStringify" --body " "
 ```
 
 ## Code review
