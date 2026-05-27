@@ -33,13 +33,13 @@ git pull
 
 ## Set pull request title
 
-Replace `Add JsonStreamStringify here and below
+Replace `remove dts plugin with tsc remaining here and below
 by your new pull request title.
 
 ## Create a feature branch
 
 ```bash
-node scripts/create-branch.js "Add JsonStreamStringify"
+node scripts/create-branch.js "remove dts plugin with tsc remaining"
 ```
 
 ## Update dependencies
@@ -65,7 +65,7 @@ In Vscode, press
 
 ```bash
 git add .
-git commit -am"Add JsonStreamStringify"
+git commit -am"remove dts plugin with tsc remaining"
 ```
 
 ## Increase version
@@ -96,7 +96,7 @@ node scripts/push-branch.js
 ## Create a pull request
 
 ```bash
-gh pr create --base main --title "Add JsonStreamStringify" --body " "
+gh pr create --base main --title "remove dts plugin with tsc remaining" --body " "
 ```
 
 ## Code review
