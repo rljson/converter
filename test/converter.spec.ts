@@ -798,4 +798,145 @@ describe('From JSON', () => {
     await expectGolden('example/converter/converter-example.json').toBe(rljson);
     expect(result).toStrictEqual({});
   });
+
+  it('Basic object with nested sliceId should convert without Error.', async () => {
+    const json = {
+      meta: { id: 'car1' },
+      model: 'X',
+      manufacturer: 'Tesla',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/id',
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    // Backwards compatibility: a nested sliceId must produce byte-identical
+    // RLJSON to the flat equivalent that points at the same resolved value.
+    const flatRljson = fromJson(
+      { id: 'car1', model: 'X', manufacturer: 'Tesla' },
+      { _sliceId: 'id', model: ['model'] },
+    );
+
+    expect(rljson).toStrictEqual(flatRljson);
+    await expectGolden('example/converter/simple-object-nested-slice-id.json').toBe(
+      rljson,
+    );
+    expect(result).toStrictEqual({});
+  });
+
+  it('Basic objects List with nested sliceId should convert without Error.', async () => {
+    const json = [
+      {
+        meta: { id: 'car1' },
+        model: 'X',
+        manufacturer: 'Tesla',
+      },
+      {
+        meta: { id: 'car2' },
+        model: 'Y',
+        manufacturer: 'Tesla',
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/id',
+      model: ['model'],
+      manufacturer: ['manufacturer'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    // Backwards compatibility: identical to the flat-sliceId equivalent.
+    const flatRljson = fromJson(
+      [
+        { id: 'car1', model: 'X', manufacturer: 'Tesla' },
+        { id: 'car2', model: 'Y', manufacturer: 'Tesla' },
+      ],
+      { _sliceId: 'id', model: ['model'], manufacturer: ['manufacturer'] },
+    );
+
+    expect(rljson).toStrictEqual(flatRljson);
+    await expectGolden('example/converter/simple-list-nested-slice-id.json').toBe(
+      rljson,
+    );
+    expect(result).toStrictEqual({});
+  });
+
+  it('List w/ types and references with nested sliceIds should convert w/o errors.', async () => {
+    const json = [
+      {
+        meta: { vin: 'car1' },
+        color: {
+          ref: { id: 'RAL9000' },
+          name: 'Black',
+        },
+      },
+      {
+        meta: { vin: 'car2' },
+        color: {
+          ref: { id: 'RAL7000' },
+          name: 'Gray',
+        },
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/vin',
+      _name: 'Car',
+      colorRefs: ['sliceId@Color', 'general@Color'],
+      _types: [
+        {
+          _name: 'Color',
+          _path: 'color',
+          _sliceId: 'ref/id',
+          general: ['name'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    // Backwards compatibility: identical to the flat-sliceId equivalent for
+    // both the parent type and the referenced sub-type.
+    const flatRljson = fromJson(
+      [
+        { vin: 'car1', color: { id: 'RAL9000', name: 'Black' } },
+        { vin: 'car2', color: { id: 'RAL7000', name: 'Gray' } },
+      ],
+      {
+        _sliceId: 'vin',
+        _name: 'Car',
+        colorRefs: ['sliceId@Color', 'general@Color'],
+        _types: [
+          {
+            _name: 'Color',
+            _path: 'color',
+            _sliceId: 'id',
+            general: ['name'],
+          },
+        ],
+      },
+    );
+
+    expect(rljson).toStrictEqual(flatRljson);
+    await expectGolden(
+      'example/converter/list-with-types-and-refs-nested-slice-id.json',
+    ).toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
 });

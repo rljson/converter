@@ -100,6 +100,22 @@ const createSliceIdsTableCfg = (type: string): TableCfg => ({
   isShared: false,
 });
 
+// Resolves a sliceId from an object, supporting nested paths via '/'.
+// A flat key (no '/') resolves in a single step, behaving exactly like a
+// direct property access for full backwards compatibility. A path like
+// 'meta/vin' walks into nested objects.
+const resolveSliceId = (
+  obj: Json,
+  path: string,
+): JsonBasicValueType | undefined => {
+  const keys = path.split('/');
+  let current: any = obj;
+  for (const key of keys) {
+    current = current[key];
+  }
+  return current as JsonBasicValueType | undefined;
+};
+
 const resolvePropertySliceId = (
   obj: Json,
   refType: string,
@@ -135,7 +151,7 @@ const resolvePropertySliceId = (
     : ([obj[typePath]] as Array<Json>);
 
   for (const refObj of refObjs) {
-    sliceIds.push(refObj[typeSliceId] as SliceIdsRef);
+    sliceIds.push(resolveSliceId(refObj, typeSliceId) as SliceIdsRef);
   }
 
   //Mapping all child objects correctly
@@ -534,11 +550,13 @@ export const fromJson = (
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
         json.map((item) => [
-          item[chart._sliceId] as string,
+          resolveSliceId(item, chart._sliceId) as string,
           (Array.isArray((item as any)[subType._path as string])
             ? (item as any)[subType._path as string]
             : [(item as any)[subType._path as string]]
-          ).map((subItem: any) => subItem[subType._sliceId]) as string[],
+          ).map(
+            (subItem: any) => resolveSliceId(subItem, subType._sliceId),
+          ) as string[],
         ]),
       );
 
@@ -559,7 +577,7 @@ export const fromJson = (
     }
   }
 
-  const ids = json.map((item) => item[chart._sliceId]);
+  const ids = json.map((item) => resolveSliceId(item, chart._sliceId));
   const sliceIds: SliceIdsTable = hip(
     {
       _type: 'sliceIds',
