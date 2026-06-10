@@ -52,6 +52,29 @@ The result will be the following RLJSON environment:
   }
 ```
 
+#### Nested SliceId Paths
+
+By default `_sliceId` reads a top-level property of each object. It may also be
+a **nested path** using `/` as a separator, exactly like component property
+paths. This lets you use an identifier that lives deeper in the object tree.
+
+```ts
+const json = {
+  meta: { id: 'car1' },
+  model: 'X',
+};
+
+const chart: DecomposeChart = {
+  _sliceId: 'meta/id', // resolves to 'car1'
+  model: ['model'],
+};
+```
+
+Nested `_sliceId` paths work for the main chart as well as for sub-types in
+`_types` (e.g. `_sliceId: 'ref/id'`). A flat key (no `/`) behaves exactly as
+before, so this is fully backwards compatible — a nested `_sliceId` produces the
+identical RLJSON to a flat one pointing at the same resolved value.
+
 #### Component Definition
 
 Components devide real world objects horizontally into logical cluster of related data. Hence organizing the input data into components is key in the JSON Conversion task.
