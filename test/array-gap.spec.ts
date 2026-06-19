@@ -16,21 +16,16 @@ const validate = async (rljson: any) => {
   return v.run(rljson);
 };
 
-// These tests surface the "array in source data" gap in the *normal*
-// (non-`_types`) processing path.
-//
-// Plain `it(...)` cases assert the CURRENT (broken) behavior, so they act as
-// change-detectors: a real fix will make them fail and force an update.
-//
-// `it.fails(...)` cases assert the DESIRED behavior; they currently throw, so
-// `.fails` keeps the suite green while documenting exactly what is missing.
-describe('Array gap (normal processing path)', () => {
+// Behavior of arrays in source data on the *normal* (non-`_types`) processing
+// path. A directly-addressed array property is embedded verbatim (NOT
+// decomposed) and is now typed `jsonArray` in its TableCfg column. A path that
+// tries to reach *into* an array is still unsupported (out of scope).
+describe('Array in normal processing path', () => {
   // ── Case A: component pointed directly at an array ────────────────────────
-  // The whole array is embedded verbatim as a single component value, while
-  // the generated TableCfg column claims it is a scalar `string`. The mismatch
-  // is NOT caught by BaseValidator -> silent latent corruption.
+  // The whole array is embedded as a single component value; the generated
+  // column type is `jsonArray` so the RLJSON is internally consistent.
 
-  it('A1: array of primitives is embedded with a wrong "string" column type', async () => {
+  it('A1: array of primitives is embedded and typed jsonArray', async () => {
     const json = [{ id: 'car1', tags: ['fast', 'red', 'electric'] }];
     const chart: DecomposeChart = { _sliceId: 'id', tags: ['tags'] };
 
@@ -41,12 +36,12 @@ describe('Array gap (normal processing path)', () => {
       .find((c: any) => c.key === 'tags')
       .columns.find((c: any) => c.key === 'tags');
 
-    expect(row.tags).toEqual(['fast', 'red', 'electric']); // raw array embedded
-    expect(column.type).toBe('string'); // BUG: should be 'jsonArray' (or decomposed)
-    expect(await validate(rljson)).toStrictEqual({}); // BUG: corruption not caught
+    expect(row.tags).toEqual(['fast', 'red', 'electric']); // embedded, not decomposed
+    expect(column.type).toBe('jsonArray'); // correct type (was wrongly 'string')
+    expect(await validate(rljson)).toStrictEqual({});
   });
 
-  it('A2: array of objects is embedded (hashed blob), not decomposed', async () => {
+  it('A2: array of objects is embedded (hashed blob) and typed jsonArray', async () => {
     const json = [
       {
         id: 'car1',
@@ -65,29 +60,38 @@ describe('Array gap (normal processing path)', () => {
       .find((c: any) => c.key === 'wheels')
       .columns.find((c: any) => c.key === 'wheels');
 
-    // Inner objects are hashed in place but stay embedded; no own table/layer.
     expect(Array.isArray(row.wheels)).toBe(true);
-    expect(row.wheels[0]).toHaveProperty('_hash');
-    expect(rljson.wheel).toBeUndefined(); // no decomposed wheel table
-    expect(column.type).toBe('string'); // BUG: type/value mismatch
-    expect(await validate(rljson)).toStrictEqual({}); // BUG: corruption not caught
+    expect(row.wheels[0]).toHaveProperty('_hash'); // embedded, not its own table
+    expect(rljson.wheel).toBeUndefined(); // not decomposed into a wheel table
+    expect(column.type).toBe('jsonArray');
+    expect(await validate(rljson)).toStrictEqual({});
   });
 
-  it.fails('A-desired: an array property should be decomposed or typed jsonArray', async () => {
-    const json = [{ id: 'car1', tags: ['fast', 'red'] }];
-    const chart: DecomposeChart = { _sliceId: 'id', tags: ['tags'] };
+  it('A3: a property absent from the source is typed as scalar (no crash)', async () => {
+    // `notes` is declared in the chart but missing in the data; the value
+    // resolves to null, so the column falls back to the scalar default rather
+    // than throwing while building the TableCfg.
+    const json = [{ id: 'car1', tags: ['fast'] }];
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      tags: ['tags'],
+      notes: ['notes'],
+    };
 
     const rljson = fromJson(json, chart) as any;
-    const column = rljson.tableCfgs._data
-      .find((c: any) => c.key === 'tags')
-      .columns.find((c: any) => c.key === 'tags');
 
-    expect(column.type).toBe('jsonArray');
+    const notesColumn = rljson.tableCfgs._data
+      .find((c: any) => c.key === 'notes')
+      .columns.find((c: any) => c.key === 'notes');
+
+    expect(notesColumn.type).toBe('string'); // scalar default, not jsonArray
+    expect(await validate(rljson)).toStrictEqual({});
   });
 
-  // ── Case B: nested path INTO an array ─────────────────────────────────────
+  // ── Case B: nested path INTO an array (out of scope) ──────────────────────
   // Traversal cannot index into an array, so the property resolves to null and
-  // is silently dropped, leaving an empty component object. No error, no signal.
+  // is silently dropped, leaving an empty component object. This remains
+  // unsupported by design — arrays of objects belong in `_types`.
   // (Side finding: component tables are lower-cased, so `wheelBrand` ->
   // `wheelbrand`.)
 
@@ -105,7 +109,6 @@ describe('Array gap (normal processing path)', () => {
 
     const rljson = fromJson(json, chart) as any;
 
-    // Table name is lower-cased; the row is an empty object (data lost).
     const row = rljson.wheelbrand._data[0];
     expect(Object.keys(row)).toEqual(['_hash']); // only the hash, no `brand`
     expect(row.brand).toBeUndefined(); // silent data loss

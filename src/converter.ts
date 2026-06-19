@@ -388,6 +388,7 @@ const createComponentTableCfgs = (
   typeName?: string,
   chart?: DecomposeChart,
   nestedRljson?: Rljson,
+  data?: Array<Json>,
 ) => {
   if (Array.isArray(componentProperties)) {
     //Array of properties --> loop through properties and collect them as
@@ -432,6 +433,14 @@ const createComponentTableCfgs = (
         };
       }
 
+      // Resolve the actual value from the source data so a directly-addressed
+      // array property is typed `jsonArray` instead of the scalar default. The
+      // array is still embedded verbatim (not decomposed); only its column
+      // type is corrected. References keep their dedicated typing above.
+      const sample = ref
+        ? null
+        : nestedProperty(data![0], componentProperty, chart, nestedRljson);
+
       // Create column for each key in the propSkeleton
       const column = Object.entries(propSkeleton!).map(
         ([key, value]) =>
@@ -441,6 +450,8 @@ const createComponentTableCfgs = (
               ? ref.type == 'sliceIds'
                 ? 'jsonArray'
                 : 'string'
+              : Array.isArray((sample as any)?.[key])
+              ? 'jsonArray'
               : value,
             titleLong: key.charAt(0).toUpperCase() + key.slice(1),
             titleShort: key,
@@ -472,6 +483,7 @@ const createComponentTableCfgs = (
         typeName,
         chart,
         nestedRljson,
+        data,
       );
       nestedCompTableCfgs.push(...tableCfg);
     }
@@ -484,6 +496,7 @@ const createComponentTableCfgs = (
       typeName,
       chart![componentKey] as DecomposeChart,
       nestedRljson,
+      data,
     );
 
     return [...nestedCompTableCfgs, ...consolidatingTableCfg];
@@ -677,6 +690,7 @@ export const fromJson = (
         chart._name as string,
         chart,
         nestedRljson,
+        json,
       );
 
       //Add component TableCfgs and their history TableCfgs
