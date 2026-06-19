@@ -34,13 +34,13 @@ import {
 
 import { traverse } from 'object-traversal';
 
-/* v8 ignore start */
+/* v8 ignore start -- @preserve */
 export class Converter {
   static get example(): Converter {
     return new Converter();
   }
 }
-/* v8 ignore end */
+/* v8 ignore stop -- @preserve */
 
 export type DecomposeChart = {
   _sliceId: string;
