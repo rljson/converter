@@ -799,6 +799,55 @@ describe('From JSON', () => {
     expect(result).toStrictEqual({});
   });
 
+  it('Array-valued properties are embedded as-is and typed jsonArray.', async () => {
+    // Arrays addressed directly through a normal-path component are embedded
+    // verbatim (NOT decomposed) and their TableCfg column is typed `jsonArray`.
+    // Both arrays of primitives (`tags`) and arrays of objects (`wheels`) are
+    // supported this way.
+    const json = [
+      {
+        id: 'car1',
+        tags: ['fast', 'red'],
+        wheels: [
+          { SN: 'BOB37382', brand: 'Borbet' },
+          { SN: 'BOB37383', brand: 'Michelin' },
+        ],
+      },
+      {
+        id: 'car2',
+        tags: ['eco'],
+        wheels: [{ SN: 'BOB37384', brand: 'Borbet' }],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      tags: ['tags'],
+      wheels: ['wheels'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    // The arrays are embedded unchanged in their components.
+    expect((rljson as any).tags._data[0].tags).toEqual(['fast', 'red']);
+    expect((rljson as any).wheels._data[0].wheels).toHaveLength(2);
+
+    // Both component columns are typed `jsonArray`.
+    const columnType = (table: string) =>
+      (rljson as any).tableCfgs._data
+        .find((c: any) => c.key === table)
+        .columns.find((c: any) => c.key === table).type;
+    expect(columnType('tags')).toBe('jsonArray');
+    expect(columnType('wheels')).toBe('jsonArray');
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    await expectGolden('example/converter/array-as-is.json').toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
+
   it('Basic object with nested sliceId should convert without Error.', async () => {
     const json = {
       meta: { id: 'car1' },

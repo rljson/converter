@@ -155,6 +155,85 @@ By default, the Converter will always generate Layers for nested components. Hen
 
 It is also possible to alias component properties. The definition of the Component `brand` consists of the property `manufacturer` within the input data objects. By defining `brand` as a destination, the converter aliases the property key to `brand` in the final components definition.
 
+##### Array Values (As-Is)
+
+When a component property points **directly** at an array in your source data,
+the array is taken over **verbatim** into the component. It is *not* decomposed
+into its own Type, Components and Layers — it is embedded as a single value, and
+its generated `TableCfg` column is typed `jsonArray`.
+
+Use this whenever you want to keep a list of values together as one opaque field
+(tags, labels, raw coordinates, a small embedded record list) and you do **not**
+need to normalize, deduplicate or reference its elements individually.
+
+###### Arrays of primitives
+
+```ts
+const json = {
+  id: 'car1',
+  tags: ['fast', 'red', 'electric'],
+};
+
+const chart: DecomposeChart = {
+  _sliceId: 'id',
+  tags: ['tags'],
+};
+
+const rljson = fromJson(json, chart);
+```
+
+The resulting `tags` component holds the array unchanged, and its column is
+typed `jsonArray`:
+
+```ts
+{
+  tags: {
+    _data: [{ tags: ['fast', 'red', 'electric'], _hash: '…' }],
+    _type: 'components',
+  },
+  // tableCfgs → tags column: { key: 'tags', type: 'jsonArray', … }
+}
+```
+
+###### Arrays of objects
+
+The same applies to arrays of objects. They are embedded as-is (each nested
+object is hashed in place by the Converter, but **no** separate `wheel`
+component/layer/sliceId table is created):
+
+```ts
+const json = {
+  id: 'car1',
+  wheels: [
+    { SN: 'BOB37382', brand: 'Borbet' },
+    { SN: 'BOB37383', brand: 'Michelin' },
+  ],
+};
+
+const chart: DecomposeChart = {
+  _sliceId: 'id',
+  wheels: ['wheels'],
+};
+```
+
+→ a single `wheels` component whose value is the array, with a `jsonArray`
+column.
+
+###### As-Is vs. Decomposition
+
+| Goal | Use |
+|---|---|
+| Keep the list together as one opaque field | **Array value (as-is)** — point a component property at the array key |
+| Normalize / deduplicate / reference elements individually, build a sub-cake and relations | **Sub-Types** — declare the array under `_types` with a `_path` (see *Component References* below) |
+
+###### Limitation — no traversal *into* arrays
+
+As-is handling resolves the array **at** the addressed path. A nested path that
+tries to reach *into* the array's elements (for example `wheels/brand`, hoping
+to collect every `brand`) is **not** supported on the normal path — there is no
+element-mapping or index syntax. If you need per-element fields, model the array
+as a Sub-Type via `_types` / `_path` instead.
+
 ##### Component References
 
 RLJSON provides the concept of hard-linked References, which means, that on any Components Object you can reference another Components Objects by suffixing the components Key by "Ref" and by providing its unique reference (Hash). Otherwise its possible to reference a sliceId of another Type by just suffixing the types Key by "SliceId".
