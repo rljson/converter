@@ -6,9 +6,14 @@
 
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 
 export default defineConfig({
+  // Emit .d.ts type declarations alongside the bundle so the published package
+  // ships types (package.json "types" -> dist/index.d.ts). The `tsc` build step
+  // cannot emit them because tsconfig sets "noEmit": true.
+  plugins: [dts({ include: ['src/**/*'] })],
   build: {
     copyPublicDir: false,
     minify: false,
