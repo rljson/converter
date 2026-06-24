@@ -586,6 +586,18 @@ export const fromJson = (
         cakeRef: nestedCakeRef,
       });
 
+      /* v8 ignore else -- @preserve */
+      if (nested.tableCfgs) {
+        if (!nestedRljson.tableCfgs) {
+          nestedRljson.tableCfgs = nested.tableCfgs;
+        } else {
+          (nestedRljson.tableCfgs as any)._data.push(
+            ...(nested.tableCfgs as any)._data,
+          );
+        }
+        delete (nested as any).tableCfgs;
+      }
+
       Object.assign(nestedRljson, nested);
     }
   }
