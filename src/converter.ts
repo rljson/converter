@@ -116,6 +116,21 @@ const resolveSliceId = (
   return current as JsonBasicValueType | undefined;
 };
 
+// Resolves a nested object by walking a slash-separated path.
+// Mirrors resolveSliceId but returns the intermediate object rather than a
+// primitive, so _path values like 'shapes/singleShapes' work the same way
+// _sliceId paths do.
+const resolvePath = (obj: any, path: string | undefined): any => {
+  if (!path) return undefined;
+  const keys = path.split('/');
+  let current: any = obj;
+  for (const key of keys) {
+    if (current == null) return undefined;
+    current = current[key];
+  }
+  return current;
+};
+
 const resolvePropertySliceId = (
   obj: Json,
   refType: string,
@@ -142,13 +157,14 @@ const resolvePropertySliceId = (
 
   const sliceIds: Array<SliceIdsRef> = [];
   //No sliceIds of this type present
-  if (obj[typePath] === undefined)
+  const resolvedTypePath = resolvePath(obj, typePath);
+  if (resolvedTypePath === undefined)
     return { [sliceIdName]: sliceIds as SliceIdsRef[] };
 
   //Support for both single and multiple references
-  const refObjs = Array.isArray(obj[typePath])
-    ? (obj[typePath] as Array<Json>)
-    : ([obj[typePath]] as Array<Json>);
+  const refObjs = Array.isArray(resolvedTypePath)
+    ? (resolvedTypePath as Array<Json>)
+    : ([resolvedTypePath] as Array<Json>);
 
   for (const refObj of refObjs) {
     sliceIds.push(resolveSliceId(refObj, typeSliceId) as SliceIdsRef);
@@ -181,7 +197,7 @@ const resolvePropertyReference = (
     );
 
   //Items we want to create references to
-  const refItems = obj[destinationChart._path as string] as Array<Json>;
+  const refItems = resolvePath(obj, destinationChart._path as string) as Array<Json>;
   if (!refItems || !Array.isArray(refItems) || refItems.length === 0) {
     return { [refName]: [] };
   }
@@ -557,16 +573,16 @@ export const fromJson = (
   if (chart._types && Array.isArray(chart._types)) {
     for (const subType of chart._types as DecomposeChart[]) {
       const nestedJson = json.flatMap(
-        (i) => (i as any)[subType._path as string],
+        (i) => resolvePath(i, subType._path as string),
       );
 
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
         json.map((item) => [
           resolveSliceId(item, chart._sliceId) as string,
-          (Array.isArray((item as any)[subType._path as string])
-            ? (item as any)[subType._path as string]
-            : [(item as any)[subType._path as string]]
+          (Array.isArray(resolvePath(item, subType._path as string))
+            ? resolvePath(item, subType._path as string)
+            : [resolvePath(item, subType._path as string)]
           ).map(
             (subItem: any) => resolveSliceId(subItem, subType._sliceId),
           ) as string[],
