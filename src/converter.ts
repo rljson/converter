@@ -197,7 +197,10 @@ const resolvePropertyReference = (
     );
 
   //Items we want to create references to
-  const refItems = resolvePath(obj, destinationChart._path as string) as Array<Json>;
+  const refItems = resolvePath(
+    obj,
+    destinationChart._path as string,
+  ) as Array<Json>;
   if (!refItems || !Array.isArray(refItems) || refItems.length === 0) {
     return { [refName]: [] };
   }
@@ -467,8 +470,8 @@ const createComponentTableCfgs = (
                 ? 'jsonArray'
                 : 'string'
               : Array.isArray((sample as any)?.[key])
-              ? 'jsonArray'
-              : value,
+                ? 'jsonArray'
+                : value,
             titleLong: key.charAt(0).toUpperCase() + key.slice(1),
             titleShort: key,
             ref,
@@ -572,8 +575,8 @@ export const fromJson = (
   >();
   if (chart._types && Array.isArray(chart._types)) {
     for (const subType of chart._types as DecomposeChart[]) {
-      const nestedJson = json.flatMap(
-        (i) => resolvePath(i, subType._path as string),
+      const nestedJson = json.flatMap((i) =>
+        resolvePath(i, subType._path as string),
       );
 
       //Collect sliceIds of nested type for reference resolution
@@ -583,8 +586,8 @@ export const fromJson = (
           (Array.isArray(resolvePath(item, subType._path as string))
             ? resolvePath(item, subType._path as string)
             : [resolvePath(item, subType._path as string)]
-          ).map(
-            (subItem: any) => resolveSliceId(subItem, subType._sliceId),
+          ).map((subItem: any) =>
+            resolveSliceId(subItem, subType._sliceId),
           ) as string[],
         ]),
       );
@@ -619,6 +622,15 @@ export const fromJson = (
   }
 
   const ids = json.map((item) => resolveSliceId(item, chart._sliceId));
+
+  // Validate that all sliceIds were successfully resolved
+  /* v8 ignore next -- @preserve */
+  if (ids.some((id) => id === undefined || id === null)) {
+    throw new Error(
+      `Could not resolve all sliceIds using path "${chart._sliceId}". Some items in the data are missing this field or it is null/undefined.`,
+    );
+  }
+
   const sliceIds: SliceIdsTable = hip(
     {
       _type: 'sliceIds',
