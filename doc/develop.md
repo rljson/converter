@@ -33,13 +33,13 @@ git pull
 
 ## Set pull request title
 
-Replace `remove dts plugin with tsc remaining here and below
+Replace 'fix error when there is no sliceId' here and below
 by your new pull request title.
 
 ## Create a feature branch
 
 ```bash
-node scripts/create-branch.js "remove dts plugin with tsc remaining"
+node scripts/create-branch.js "fix error when there is no sliceId"
 ```
 
 ## Update dependencies
@@ -65,7 +65,7 @@ In Vscode, press
 
 ```bash
 git add .
-git commit -am"remove dts plugin with tsc remaining"
+git commit -am"fix error when there is no sliceId"
 ```
 
 ## Increase version
@@ -96,7 +96,7 @@ node scripts/push-branch.js
 ## Create a pull request
 
 ```bash
-gh pr create --base main --title "remove dts plugin with tsc remaining" --body " "
+gh pr create --base main --title "fix error when there is no sliceId" --body " "
 ```
 
 ## Code review
