@@ -623,10 +623,10 @@ export const fromJson = (
 
   const ids = json.map((item) => resolveSliceId(item, chart._sliceId));
 
-  // Validate that all sliceIds were successfully resolved
+  // Warn if some sliceIds could not be resolved
   /* v8 ignore next -- @preserve */
   if (ids.some((id) => id === undefined || id === null)) {
-    throw new Error(
+    console.warn(
       `Could not resolve all sliceIds using path "${chart._sliceId}". Some items in the data are missing this field or it is null/undefined.`,
     );
   }
