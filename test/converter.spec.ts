@@ -235,7 +235,45 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError('All component names must be unique within one chart!');
+    ).toThrowError(
+      'All component names must be unique within one chart! ' +
+        'Duplicate component names: model',
+    );
+  });
+  it('List w/ types but multiple duplicate comp names should name each duplicate once.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        color: {
+          id: 'RAL9000',
+          name: 'Black',
+          manufacturer: 'ColorCorp',
+        },
+      },
+    ];
+
+    expect(() =>
+      fromJson(json, {
+        _sliceId: 'id',
+        _name: 'Car',
+        model: ['model'],
+        manufacturer: ['manufacturer'],
+        _types: [
+          {
+            _sliceId: 'id',
+            _name: 'Color',
+            _path: 'color',
+            model: ['name'],
+            manufacturer: ['manufacturer'],
+          },
+        ],
+      }),
+    ).toThrowError(
+      'All component names must be unique within one chart! ' +
+        'Duplicate component names: model, manufacturer',
+    );
   });
   it('List w/ types but w/o paths should throw Error.', async () => {
     const json = [
