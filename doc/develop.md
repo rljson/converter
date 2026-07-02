@@ -33,13 +33,13 @@ git pull
 
 ## Set pull request title
 
-Replace 'fix error when there is no sliceId' here and below
+Replace 'fix error when the node path does not exist' here and below
 by your new pull request title.
 
 ## Create a feature branch
 
 ```bash
-node scripts/create-branch.js "fix error when there is no sliceId"
+node scripts/create-branch.js "fix error when the node path does not exist"
 ```
 
 ## Update dependencies
@@ -65,7 +65,7 @@ In Vscode, press
 
 ```bash
 git add .
-git commit -am"fix error when there is no sliceId"
+git commit -am"fix error when the node path does not exist"
 ```
 
 ## Increase version
@@ -96,7 +96,7 @@ node scripts/push-branch.js
 ## Create a pull request
 
 ```bash
-gh pr create --base main --title "fix error when there is no sliceId" --body " "
+gh pr create --base main --title "fix error when the node path does not exist" --body " "
 ```
 
 ## Code review

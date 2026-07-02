@@ -546,11 +546,18 @@ export const fromJson = (
       ? componentNames.push(key!)
       : null,
   );
-  if (new Set(componentNames).size < componentNames.length)
+  if (new Set(componentNames).size < componentNames.length) {
+    const seen = new Set<string>();
+    const duplicateNames = new Set<string>();
+    for (const name of componentNames) {
+      if (seen.has(name)) duplicateNames.add(name);
+      seen.add(name);
+    }
     throw new Error(
-      'All component names must be unique within one chart! Component names: ' +
-        componentNames.join(', '),
+      'All component names must be unique within one chart! Duplicate component names: ' +
+        [...duplicateNames].join(', '),
     );
+  }
 
   //Type names must be unique within one chart
   const typeNames: string[] = [];
