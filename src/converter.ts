@@ -111,6 +111,7 @@ const resolveSliceId = (
   const keys = path.split('/');
   let current: any = obj;
   for (const key of keys) {
+    if (current == null) return undefined;
     current = current[key];
   }
   return current as JsonBasicValueType | undefined;
@@ -575,18 +576,22 @@ export const fromJson = (
   >();
   if (chart._types && Array.isArray(chart._types)) {
     for (const subType of chart._types as DecomposeChart[]) {
-      const nestedJson = json.flatMap((i) =>
-        resolvePath(i, subType._path as string),
-      );
+      // Items whose _path does not resolve contribute no sub-items rather
+      // than causing an error — a missing nested object simply means there
+      // is nothing to convert/reference for that item.
+      const subItemsPerItem = json.map((item) => {
+        const resolved = resolvePath(item, subType._path as string);
+        if (resolved === undefined) return [] as Array<Json>;
+        return Array.isArray(resolved) ? resolved : [resolved];
+      });
+
+      const nestedJson = subItemsPerItem.flat();
 
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
-        json.map((item) => [
+        json.map((item, idx) => [
           resolveSliceId(item, chart._sliceId) as string,
-          (Array.isArray(resolvePath(item, subType._path as string))
-            ? resolvePath(item, subType._path as string)
-            : [resolvePath(item, subType._path as string)]
-          ).map((subItem: any) =>
+          subItemsPerItem[idx].map((subItem: any) =>
             resolveSliceId(subItem, subType._sliceId),
           ) as string[],
         ]),

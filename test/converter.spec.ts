@@ -874,9 +874,9 @@ describe('From JSON', () => {
     );
 
     expect(rljson).toStrictEqual(flatRljson);
-    await expectGolden('example/converter/simple-object-nested-slice-id.json').toBe(
-      rljson,
-    );
+    await expectGolden(
+      'example/converter/simple-object-nested-slice-id.json',
+    ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
 
@@ -916,10 +916,61 @@ describe('From JSON', () => {
     );
 
     expect(rljson).toStrictEqual(flatRljson);
-    await expectGolden('example/converter/simple-list-nested-slice-id.json').toBe(
-      rljson,
-    );
+    await expectGolden(
+      'example/converter/simple-list-nested-slice-id.json',
+    ).toBe(rljson);
     expect(result).toStrictEqual({});
+  });
+
+  it('Basic objects List with nested sliceId and unknown string chart entry should convert without Error.', async () => {
+    const json = [
+      {
+        meta: { id: 'car1' },
+        model: 'X',
+        manufacturer: 'Tesla',
+      },
+      {
+        meta: { id: 'car2' },
+        model: 'Y',
+        manufacturer: 'Tesla',
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/id',
+      model: ['model'],
+      manufacturer: ['manufacturer'],
+      notthere: ['notthere'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    expect(result).toStrictEqual({});
+  });
+
+  it('Basic objects List with nested sliceId and a missing intermediate object should not throw.', () => {
+    const json = [
+      {
+        meta: { id: 'car1' },
+        model: 'X',
+      },
+      {
+        // meta is missing entirely here, so the nested sliceId path
+        // 'meta/id' cannot be resolved for this item.
+        model: 'Y',
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/id',
+      model: ['model'],
+    };
+
+    expect(() => fromJson(json, chart)).not.toThrow();
   });
 
   it('List w/ types and references with nested sliceIds should convert w/o errors.', async () => {
@@ -985,6 +1036,69 @@ describe('From JSON', () => {
     expect(rljson).toStrictEqual(flatRljson);
     await expectGolden(
       'example/converter/list-with-types-and-refs-nested-slice-id.json',
+    ).toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
+
+  it('List w/ types and references with nested sliceIds and non-existent _path should not throw and skip the missing objects.', async () => {
+    const json = [
+      {
+        meta: { vin: 'car1' },
+        color: {
+          ref: { id: 'RAL9000' },
+          name: 'Black',
+        },
+        other: {
+          ref: { id: 'RAL9000' },
+          name: 'Black',
+        },
+      },
+      {
+        meta: { vin: 'car2' },
+        color: {
+          ref: { id: 'RAL7000' },
+          name: 'Gray',
+        },
+        other: {
+          ref: { id: 'RAL7000' },
+          name: 'Gray',
+        },
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'meta/vin',
+      _name: 'Car',
+      colorRefs: ['sliceId@Color', 'general@Color'],
+      _types: [
+        {
+          _name: 'Color',
+          _path: 'color/color',
+          _sliceId: 'ref/id',
+          general: ['name'],
+        },
+        {
+          _name: 'Other',
+          _path: 'other',
+          _sliceId: 'ref/id',
+          g2: ['name'],
+        },
+      ],
+    };
+
+    expect(() => fromJson(json, chart)).not.toThrow();
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    // No item has a resolvable 'color/color' path, so the nested Color type
+    // ends up with no slices and every reference is left empty instead of
+    // erroring.
+    await expectGolden(
+      'example/converter/list-with-types-and-refs-nested-slice-id-missing-path.json',
     ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
