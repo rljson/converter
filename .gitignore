@@ -34,3 +34,6 @@ Thumbs.db
 *.lock  # (Optional: for ignoring package-lock.json or yarn.lock if you don't want to version them)
 pnpm-lock.yaml
 pnpm-lock.yaml
+
+# Large local-only test fixtures
+src/systemat-out.json

@@ -157,7 +157,7 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError('If subtypes are defined, _name must be provided!');
+    ).toThrow('If subtypes are defined, _name must be provided!');
   });
 
   it('List w/ types but duplicate type names should throw Error.', async () => {
@@ -196,7 +196,7 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError('All _name properties must be unique within one chart!');
+    ).toThrow('All _name properties must be unique within one chart!');
   });
   it('List w/ types but duplicate comp names should throw Error.', async () => {
     const json = [
@@ -235,7 +235,7 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError(
+    ).toThrow(
       'All component names must be unique within one chart! ' +
         'Duplicate component names: model',
     );
@@ -270,7 +270,7 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError(
+    ).toThrow(
       'All component names must be unique within one chart! ' +
         'Duplicate component names: model, manufacturer',
     );
@@ -309,7 +309,7 @@ describe('From JSON', () => {
           },
         ],
       }),
-    ).toThrowError('If subtypes are defined, _path must be provided!');
+    ).toThrow('If subtypes are defined, _path must be provided!');
   });
   it('List w/ types should convert w/o errors.', async () => {
     const json = [
