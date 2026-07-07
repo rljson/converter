@@ -4,6 +4,7 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
+import { hsh } from '@rljson/hash';
 import { BaseValidator, removeDuplicates, Validate } from '@rljson/rljson';
 
 import { describe, expect, it } from 'vitest';
@@ -998,7 +999,8 @@ describe('From JSON', () => {
       },
       {
         // meta is missing entirely here, so the nested sliceId path
-        // 'meta/id' cannot be resolved for this item.
+        // 'meta/id' cannot be resolved for this item — it falls back to a
+        // content hash of the item itself.
         model: 'Y',
       },
     ];
@@ -1008,7 +1010,145 @@ describe('From JSON', () => {
       model: ['model'],
     };
 
-    expect(() => fromJson(json, chart)).not.toThrow();
+    const rljson = fromJson(json, chart);
+    const ids = (rljson.sliceId as any)._data[0].add as string[];
+
+    expect(ids[0]).toBe('car1');
+    expect(ids[1]).toBe(hsh(json[1] as any)._hash);
+  });
+
+  it('Basic objects List with no _sliceId declared should derive one from a content hash.', () => {
+    const json = [{ model: 'X' }, { model: 'Y' }, { model: 'X' }];
+
+    const chart: DecomposeChart = {
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+    const ids = (rljson.sliceId as any)._data[0].add as string[];
+
+    expect(ids[0]).toBe((hsh({ model: 'X' }) as any)._hash);
+    expect(ids[1]).toBe((hsh({ model: 'Y' }) as any)._hash);
+    // Identical content produces the identical fallback sliceId.
+    expect(ids[2]).toBe(ids[0]);
+  });
+
+  it('List w/ types and no natural key on the sub-type should derive sliceIds from a content hash.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        wheels: [{ brand: 'Borbet' }, { brand: 'Michelin' }],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      _types: [
+        {
+          _name: 'Wheel',
+          _path: 'wheels',
+          general: ['brand'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    const wheelIds = (rljson.wheelSliceId as any)._data[0].add as string[];
+    expect(wheelIds).toEqual([
+      (hsh({ brand: 'Borbet' }) as any)._hash,
+      (hsh({ brand: 'Michelin' }) as any)._hash,
+    ]);
+  });
+
+  it('List w/ types and duplicate-content sub-items with no natural key collapse into one addressable slice (documented tradeoff).', async () => {
+    const json = [
+      {
+        id: 'car1',
+        wheels: [{ brand: 'Borbet' }, { brand: 'Borbet' }],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      _types: [
+        {
+          _name: 'Wheel',
+          _path: 'wheels',
+          general: ['brand'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    // Two physically distinct wheels with identical content and no natural
+    // key cannot be told apart by a content-hash-derived sliceId — they
+    // collapse into a single addressable slice. This mirrors how identical
+    // content already collapses to one component row elsewhere in the
+    // converter, and is an accepted, documented tradeoff (see
+    // README.public.md), not a bug.
+    const wheelIds = (rljson.wheelSliceId as any)._data[0].add as string[];
+    expect(new Set(wheelIds).size).toBe(1);
+
+    const wheelGeneralLayer = (rljson.wheelGeneralLayer as any)._data[0]
+      .add as Record<string, string>;
+    expect(Object.keys(wheelGeneralLayer).filter((k) => k !== '_hash')).toHaveLength(1);
+
+    expect((rljson.wheelGeneral as any)._data).toHaveLength(1);
+  });
+
+  it('sliceId@Type reference embedding should use the content-hash fallback for a keyless sub-type.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        screws: [
+          { material: 'Stainless Steel', dimension: 'M4x20' },
+          { material: 'Steel Zinc plated', dimension: 'M6x30' },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      screwRefs: ['sliceId@Screw'],
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          technical: ['material', 'dimension'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    const embeddedIds = (rljson.carScrewRefs as any)._data[0]
+      .screwSliceId as string[];
+
+    expect(embeddedIds).toEqual([
+      (hsh({ material: 'Stainless Steel', dimension: 'M4x20' }) as any)._hash,
+      (hsh({ material: 'Steel Zinc plated', dimension: 'M6x30' }) as any)
+        ._hash,
+    ]);
   });
 
   it('List w/ types and references with nested sliceIds should convert w/o errors.', async () => {

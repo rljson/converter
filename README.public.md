@@ -75,6 +75,46 @@ Nested `_sliceId` paths work for the main chart as well as for sub-types in
 before, so this is fully backwards compatible — a nested `_sliceId` produces the
 identical RLJSON to a flat one pointing at the same resolved value.
 
+#### SliceId Fallback
+
+Real-world data doesn't always have a natural, already-unique field to use as
+`_sliceId` — this is especially common for sub-objects declared via `_types`
+(e.g. array elements from a third-party export). If `_sliceId` is omitted
+entirely, or the declared path doesn't resolve for a given item, that item's
+own content hash is used as its sliceId instead:
+
+```ts
+const json = {
+  id: 'car1',
+  wheels: [{ brand: 'Borbet' }, { brand: 'Michelin' }],
+};
+
+const chart: DecomposeChart = {
+  _sliceId: 'id',
+  _name: 'Car',
+  _types: [
+    {
+      _name: 'Wheel',
+      _path: 'wheels',
+      // no natural key on wheel objects — falls back to a content hash
+      general: ['brand'],
+    },
+  ],
+};
+```
+
+Each wheel still becomes its own individually addressable row, without
+requiring a natural key in the source data.
+
+**Limitation:** since the fallback is a pure function of content, two sibling
+sub-objects with byte-identical content and no natural key produce the *same*
+fallback sliceId and collapse into a single addressable slice (e.g. two
+structurally-identical wheels under one car would be recorded as one wheel
+reference, not two). This mirrors how identical content already collapses to
+a single component row elsewhere in the converter. If you need to count or
+reference every occurrence individually, the source data needs a natural key
+(or one added during pre-processing).
+
 #### Component Definition
 
 Components devide real world objects horizontally into logical cluster of related data. Hence organizing the input data into components is key in the JSON Conversion task.

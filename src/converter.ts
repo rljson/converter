@@ -4,7 +4,7 @@
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
-import { hip } from '@rljson/hash';
+import { hip, hsh } from '@rljson/hash';
 import { Json, JsonBasicValueType } from '@rljson/json';
 import {
   Cake,
@@ -43,7 +43,7 @@ export class Converter {
 /* v8 ignore stop -- @preserve */
 
 export type DecomposeChart = {
-  _sliceId: string;
+  _sliceId?: string;
   _name?: string;
   _path?: string;
   _types?: DecomposeChart[];
@@ -117,6 +117,18 @@ const resolveSliceId = (
   return current as JsonBasicValueType | undefined;
 };
 
+// Falls back to a content hash of the item when no _sliceId path is
+// declared, or the declared path does not resolve for this item — this
+// gives every item a stable identity even without a natural key.
+const resolveSliceIdWithFallback = (
+  item: Json,
+  path: string | undefined,
+): JsonBasicValueType => {
+  const resolved = path ? resolveSliceId(item, path) : undefined;
+  if (resolved !== undefined && resolved !== null) return resolved;
+  return hsh(item)._hash as JsonBasicValueType;
+};
+
 // Resolves a nested object by walking a slash-separated path.
 // Mirrors resolveSliceId but returns the intermediate object rather than a
 // primitive, so _path values like 'shapes/singleShapes' work the same way
@@ -168,7 +180,9 @@ const resolvePropertySliceId = (
     : ([resolvedTypePath] as Array<Json>);
 
   for (const refObj of refObjs) {
-    sliceIds.push(resolveSliceId(refObj, typeSliceId) as SliceIdsRef);
+    sliceIds.push(
+      resolveSliceIdWithFallback(refObj, typeSliceId) as SliceIdsRef,
+    );
   }
 
   //Mapping all child objects correctly
@@ -597,9 +611,9 @@ export const fromJson = (
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
         json.map((item, idx) => [
-          resolveSliceId(item, chart._sliceId) as string,
+          resolveSliceIdWithFallback(item, chart._sliceId) as string,
           subItemsPerItem[idx].map((subItem: any) =>
-            resolveSliceId(subItem, subType._sliceId),
+            resolveSliceIdWithFallback(subItem, subType._sliceId),
           ) as string[],
         ]),
       );
@@ -633,15 +647,9 @@ export const fromJson = (
     }
   }
 
-  const ids = json.map((item) => resolveSliceId(item, chart._sliceId));
-
-  // Warn if some sliceIds could not be resolved
-  /* v8 ignore next -- @preserve */
-  if (ids.some((id) => id === undefined || id === null)) {
-    console.warn(
-      `Could not resolve all sliceIds using path "${chart._sliceId}". Some items in the data are missing this field or it is null/undefined.`,
-    );
-  }
+  const ids = json.map((item) =>
+    resolveSliceIdWithFallback(item, chart._sliceId),
+  );
 
   const sliceIds: SliceIdsTable = hip(
     {
