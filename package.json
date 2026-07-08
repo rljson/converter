@@ -1,6 +1,6 @@
 {
   "name": "@rljson/converter",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "description": "Convert flat textual data i. e. from JSON or XML into RLJSON data structure and data itself automatically.",
   "homepage": "https://github.com/rljson/converter",
   "bugs": "https://github.com/rljson/converter/issues",
@@ -28,7 +28,7 @@
     "updateGoldens": "cross-env UPDATE_GOLDENS=true pnpm test"
   },
   "devDependencies": {
-    "@types/node": "^26.1.0",
+    "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^8.63.0",
     "@typescript-eslint/parser": "^8.63.0",
     "@vitest/coverage-v8": "^4.1.10",

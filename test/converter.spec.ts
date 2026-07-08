@@ -1273,11 +1273,61 @@ describe('From JSON', () => {
     const result = await v.run(rljson);
 
     // No item has a resolvable 'color/color' path, so the nested Color type
-    // ends up with no slices and every reference is left empty instead of
-    // erroring.
+    // has zero items and is omitted from the output entirely — no
+    // colorSliceId/colorGeneral/colorCake/carColors tables are written.
+    // Explicit reference columns (colorRefs) are unaffected and still
+    // resolve to empty arrays instead of erroring.
     await expectGolden(
       'example/converter/list-with-types-and-refs-nested-slice-id-missing-path.json',
     ).toBe(rljson);
     expect(result).toStrictEqual({});
+
+    expect(rljson.colorSliceId).toBeUndefined();
+    expect(rljson.colorGeneral).toBeUndefined();
+    expect(rljson.colorCake).toBeUndefined();
+    expect(rljson.carColors).toBeUndefined();
+    expect(rljson.carColorsLayer).toBeUndefined();
+    expect(
+      (rljson.carCake as any)._data[0].layers.carColorsLayer,
+    ).toBeUndefined();
+
+    // Other has a resolvable path for every item, so it is written normally.
+    expect(rljson.otherSliceId).toBeDefined();
+    expect((rljson.carCake as any)._data[0].layers.carOthersLayer).toBeDefined();
+  });
+
+  it('List w/ types where a type has zero items overall should be omitted entirely.', async () => {
+    const json = [
+      { id: 'car1', model: 'X' },
+      { id: 'car2', model: 'Y' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      model: ['model'],
+      _types: [
+        {
+          _name: 'Wheel',
+          _path: 'wheels', // no car in this data set has a 'wheels' property
+          _sliceId: 'SN',
+          general: ['brand'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    for (const key of Object.keys(rljson)) {
+      expect(key.toLowerCase().startsWith('wheel')).toBe(false);
+      expect(key.toLowerCase().startsWith('carwheel')).toBe(false);
+    }
+
+    expect((rljson.carCake as any)._data[0].layers.carWheelsLayer).toBeUndefined();
   });
 });
