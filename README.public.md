@@ -329,6 +329,19 @@ In this example, we provide two kinds of references. First within `sliceId@Color
   }
 ```
 
+##### Empty Sub-Types Are Omitted
+
+If a `_types` entry ends up with zero items across every parent item (its
+`_path` never resolves to anything anywhere in the data), that type is
+omitted from the output entirely — no `sliceIds`/component/layer/cake
+tables are written for it, and the parent's automatic relation table for
+it (and the corresponding layer in the parent's cake) is skipped too. This
+always applies to `_types`; it is not configurable.
+
+Explicit reference columns (`sliceId@Type` / `compKey@Type`) are
+unaffected by this — they still resolve to empty arrays for a type with no
+data, exactly as before.
+
 ## Example
 
 [src/example.ts](src/example.ts)

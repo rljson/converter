@@ -608,6 +608,11 @@ export const fromJson = (
 
       const nestedJson = subItemsPerItem.flat();
 
+      // A sub-type with no items anywhere across the parent items has
+      // nothing to convert or relate — skip it entirely rather than writing
+      // an empty shell of tables (sliceIds/components/cake/relation) for it.
+      if (nestedJson.length === 0) continue;
+
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
         json.map((item, idx) => [
