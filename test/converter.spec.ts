@@ -1151,6 +1151,151 @@ describe('From JSON', () => {
     ]);
   });
 
+  it('Composite _sliceId (array of field paths) should combine resolved values into one deterministic sliceId.', () => {
+    const json = [
+      { make: 'Volkswagen', model: 'Polo', doors: 5 },
+      { make: 'Volkswagen', model: 'Golf', doors: 3 },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: ['make', 'model'],
+      general: ['doors'],
+    };
+
+    const rljson = fromJson(json, chart);
+    const ids = (rljson.sliceId as any)._data[0].add as string[];
+
+    expect(ids[0]).toBe(
+      (hsh({ make: 'Volkswagen', model: 'Polo' }) as any)._hash,
+    );
+    expect(ids[1]).toBe(
+      (hsh({ make: 'Volkswagen', model: 'Golf' }) as any)._hash,
+    );
+    // Sharing a value in one field but not the other must not collapse the
+    // two items into the same sliceId.
+    expect(ids[0]).not.toBe(ids[1]);
+  });
+
+  it('Composite _sliceId should fall back to a content hash when one of its fields does not resolve for an item.', () => {
+    const json = [
+      { make: 'Volkswagen', model: 'Polo' },
+      // 'model' is missing here, so the composite key ['make', 'model']
+      // cannot fully resolve for this item.
+      { make: 'Volkswagen' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: ['make', 'model'],
+      general: ['make'],
+    };
+
+    const rljson = fromJson(json, chart);
+    const ids = (rljson.sliceId as any)._data[0].add as string[];
+
+    expect(ids[0]).toBe(
+      (hsh({ make: 'Volkswagen', model: 'Polo' }) as any)._hash,
+    );
+    expect(ids[1]).toBe((hsh(json[1] as any) as any)._hash);
+  });
+
+  it('Composite _sliceId should support nested paths for each of its fields.', () => {
+    const json = {
+      meta: { region: 'EU', id: 'car1' },
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: ['meta/region', 'meta/id'],
+      general: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+    const ids = (rljson.sliceId as any)._data[0].add as string[];
+
+    expect(ids[0]).toBe(
+      (hsh({ 'meta/region': 'EU', 'meta/id': 'car1' }) as any)._hash,
+    );
+  });
+
+  it('Composite _sliceId on a sub-type should combine that sub-type\'s own field values.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        wheels: [
+          { axle: 'front', side: 'left', brand: 'Borbet' },
+          { axle: 'front', side: 'right', brand: 'Borbet' },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      _types: [
+        {
+          _name: 'Wheel',
+          _path: 'wheels',
+          _sliceId: ['axle', 'side'],
+          general: ['brand'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    const wheelIds = (rljson.wheelSliceId as any)._data[0].add as string[];
+    expect(wheelIds).toEqual([
+      (hsh({ axle: 'front', side: 'left' }) as any)._hash,
+      (hsh({ axle: 'front', side: 'right' }) as any)._hash,
+    ]);
+  });
+
+  it('sliceId@Type reference embedding should use the composite-key hash when the sub-type declares a composite _sliceId.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        screws: [
+          { axle: 'front', side: 'left', material: 'Stainless Steel' },
+          { axle: 'front', side: 'right', material: 'Steel Zinc plated' },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      screwRefs: ['sliceId@Screw'],
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: ['axle', 'side'],
+          technical: ['material'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    const embeddedIds = (rljson.carScrewRefs as any)._data[0]
+      .screwSliceId as string[];
+
+    expect(embeddedIds).toEqual([
+      (hsh({ axle: 'front', side: 'left' }) as any)._hash,
+      (hsh({ axle: 'front', side: 'right' }) as any)._hash,
+    ]);
+  });
+
   it('List w/ types and references with nested sliceIds should convert w/o errors.', async () => {
     const json = [
       {
