@@ -43,7 +43,7 @@ export class Converter {
 /* v8 ignore stop -- @preserve */
 
 export type DecomposeChart = {
-  _sliceId?: string;
+  _sliceId?: string | string[];
   _name?: string;
   _path?: string;
   _types?: DecomposeChart[];
@@ -117,14 +117,37 @@ const resolveSliceId = (
   return current as JsonBasicValueType | undefined;
 };
 
+// Resolves a composite sliceId from multiple field paths, combining the
+// resolved values into a single deterministic hash. Hashing (rather than
+// e.g. delimiter-joining) avoids collisions between items whose field values
+// themselves contain a separator character. If any of the paths does not
+// resolve, returns undefined so the caller can fall back like a single
+// unresolved _sliceId path would.
+const resolveCompositeSliceId = (
+  item: Json,
+  paths: string[],
+): JsonBasicValueType | undefined => {
+  const values: Json = {};
+  for (const path of paths) {
+    const value = resolveSliceId(item, path);
+    if (value === undefined || value === null) return undefined;
+    values[path] = value as JsonBasicValueType;
+  }
+  return hsh(values)._hash as JsonBasicValueType;
+};
+
 // Falls back to a content hash of the item when no _sliceId path is
-// declared, or the declared path does not resolve for this item — this
+// declared, or the declared path(s) do not resolve for this item — this
 // gives every item a stable identity even without a natural key.
 const resolveSliceIdWithFallback = (
   item: Json,
-  path: string | undefined,
+  path: string | string[] | undefined,
 ): JsonBasicValueType => {
-  const resolved = path ? resolveSliceId(item, path) : undefined;
+  const resolved = path
+    ? Array.isArray(path)
+      ? resolveCompositeSliceId(item, path)
+      : resolveSliceId(item, path)
+    : undefined;
   if (resolved !== undefined && resolved !== null) return resolved;
   return hsh(item)._hash as JsonBasicValueType;
 };

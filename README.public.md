@@ -75,6 +75,38 @@ Nested `_sliceId` paths work for the main chart as well as for sub-types in
 before, so this is fully backwards compatible — a nested `_sliceId` produces the
 identical RLJSON to a flat one pointing at the same resolved value.
 
+#### Composite SliceId
+
+If no single field is unique on its own, `_sliceId` may be an **array of
+paths** instead of a single path. Each path is resolved independently
+(nested `/` paths are supported per entry), and the resolved values are
+combined into one deterministic sliceId:
+
+```ts
+const json = [
+  { make: 'Volkswagen', model: 'Polo', doors: 5 },
+  { make: 'Volkswagen', model: 'Golf', doors: 3 },
+];
+
+const chart: DecomposeChart = {
+  _sliceId: ['make', 'model'], // 'make' alone is not unique here
+  general: ['doors'],
+};
+```
+
+Values are combined by hashing the resolved `{path: value}` record rather
+than joining them into a string. This avoids collisions between items whose
+field values themselves contain a separator character (e.g. `make: 'A/B'`
++ `model: 'C'` colliding with `make: 'A'` + `model: 'B/C'` under a naive
+join). Composite `_sliceId` works anywhere a single `_sliceId` does — the
+main chart, sub-types declared via `_types`, and `sliceId@Type` reference
+embedding.
+
+If any one of the declared fields doesn't resolve for a given item, the
+whole composite key is treated as unresolved for that item and the
+[SliceId Fallback](#sliceid-fallback) content-hash applies, exactly like an
+unresolved single-path `_sliceId`.
+
 #### SliceId Fallback
 
 Real-world data doesn't always have a natural, already-unique field to use as
