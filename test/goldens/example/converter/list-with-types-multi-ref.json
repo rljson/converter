@@ -150,19 +150,19 @@
       {
         "screws": [
           {
-            "ref": "HU6A9ixXjdFxzhBo8jeAl5",
+            "ref": "LmTMIBDtOhkRpUVgupxUsp",
             "sliceIds": [
               "SCW-001",
               "SCW-001",
               "SCW-002"
             ],
-            "_hash": "eYwr2KGMcuBGdSA9XKiNuj"
+            "_hash": "eWinEY5iVJZhnOkIG_0hl1"
           }
         ],
-        "_hash": "S_p0z5Mll6kAAsw1bZEKMi"
+        "_hash": "Wi11MMx6xh85QYZQ3KWDQ7"
       }
     ],
-    "_hash": "Oq5NJNeqWHZPscxOJkHrmr",
+    "_hash": "Nchu6weN9dayrKaN0hYllR",
     "tableCfg": "Bd_bBqfRfoYn-3WdIX7y0d"
   },
   "carScrewsLayer": {
@@ -170,16 +170,16 @@
     "_data": [
       {
         "add": {
-          "car1": "S_p0z5Mll6kAAsw1bZEKMi",
-          "_hash": "dMBHlks3EgIH5sncADFLcM"
+          "car1": "Wi11MMx6xh85QYZQ3KWDQ7",
+          "_hash": "IdtMiplycM25p4bZIDbQHc"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "kDDxr90W7nJNEn8p2X5Hbl",
         "componentsTable": "carScrews",
-        "_hash": "P8mwUHjJF-7t_jVaZgAafs"
+        "_hash": "1UmENDkXbwfKTkMN-2EAGx"
       }
     ],
-    "_hash": "NQnX5ys88kuPBBEd9ChORp",
+    "_hash": "DjajEBpyvcAvIp10vmK83R",
     "tableCfg": "UBr_r7Ge7Vn_uRuaQkg-hn"
   },
   "carCake": {
@@ -191,14 +191,14 @@
         "layers": {
           "carMetaLayer": "6nmN98POuTqRn79mRFaYyQ",
           "carScrewRefsLayer": "1R-WghUnKo6un0karMMnUs",
-          "carScrewsLayer": "P8mwUHjJF-7t_jVaZgAafs",
-          "_hash": "pa9PL08yIAhdIwZtgPkO0X"
+          "carScrewsLayer": "1UmENDkXbwfKTkMN-2EAGx",
+          "_hash": "mpxfZLzey91Wbj4NB4dtN7"
         },
-        "_hash": "9LwXCudYBy4BYqyLQ9a9Db"
+        "_hash": "CJfFHRuN9OX0GZtxZvBMFh"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "BVOFMTH7THNU9g4gWzJGxm"
+    "_hash": "v5RkPIaf26DvxYN-dA7MMi"
   },
   "screwSliceId": {
     "_type": "sliceIds",
@@ -206,13 +206,12 @@
       {
         "add": [
           "SCW-001",
-          "SCW-001",
           "SCW-002"
         ],
-        "_hash": "xUloAEA4YX0vxsvmbQSmgZ"
+        "_hash": "mHlLicXXAWwwgqKj9SZlz-"
       }
     ],
-    "_hash": "K8NeoN1qM78KzxTPVKxw2z",
+    "_hash": "ule48vS4DtJhuAl9VPilXe",
     "tableCfg": "izkhRcql5wabLhmbpEaMf8"
   },
   "screwTechnical": {
@@ -244,12 +243,12 @@
           "_hash": "tLh_mRFVOBg_wQ0IjWzLJC"
         },
         "sliceIdsTable": "screwSliceId",
-        "sliceIdsTableRow": "xUloAEA4YX0vxsvmbQSmgZ",
+        "sliceIdsTableRow": "mHlLicXXAWwwgqKj9SZlz-",
         "componentsTable": "screwTechnical",
-        "_hash": "uYHoXEKloDRV4ZjpEJ8iLJ"
+        "_hash": "hy9qV4D_k1Gm9lKQVakomD"
       }
     ],
-    "_hash": "H2N6lhE3w2RK8r4UKxfJcV",
+    "_hash": "ePUQNg88CXuXDjkhegEpxH",
     "tableCfg": "zg_fEuvUGUE61xdtb5xQWS"
   },
   "screwTechnicalInsertHistory": {
@@ -299,16 +298,16 @@
     "_data": [
       {
         "sliceIdsTable": "screwSliceId",
-        "sliceIdsRow": "xUloAEA4YX0vxsvmbQSmgZ",
+        "sliceIdsRow": "mHlLicXXAWwwgqKj9SZlz-",
         "layers": {
-          "screwTechnicalLayer": "uYHoXEKloDRV4ZjpEJ8iLJ",
-          "_hash": "OURHBM1RcNqBcv2NkPn_lB"
+          "screwTechnicalLayer": "hy9qV4D_k1Gm9lKQVakomD",
+          "_hash": "5lRHPKnaY9d07ApcspRg6W"
         },
-        "_hash": "HU6A9ixXjdFxzhBo8jeAl5"
+        "_hash": "LmTMIBDtOhkRpUVgupxUsp"
       }
     ],
     "tableCfg": "CdUr4i-a1UDjkV-Kf6qyJB",
-    "_hash": "ooLFy48GQzb8A84VcMN33M"
+    "_hash": "SOgxiFz8FD7K3fjOo9VoBA"
   },
   "tableCfgs": {
     "_type": "tableCfgs",
@@ -1863,5 +1862,5 @@
     ],
     "_hash": "gUicNUV0cV3O1Mh-DSitz2"
   },
-  "_hash": "FP3Ts6rkBQtpxwLV9grKfE"
+  "_hash": "fxGrmpLIg24u3Wp2tk_FXz"
 }

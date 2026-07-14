@@ -138,10 +138,15 @@ const resolveCompositeSliceId = (
 
 // Falls back to a content hash of the item when no _sliceId path is
 // declared, or the declared path(s) do not resolve for this item — this
-// gives every item a stable identity even without a natural key.
+// gives every item a stable identity even without a natural key. The index
+// (an item's position within the array it is being resolved from) is folded
+// into that hash so that two items with identical content — but no key to
+// tell them apart — still get distinct fallback ids instead of silently
+// colliding into a single slice.
 const resolveSliceIdWithFallback = (
   item: Json,
   path: string | string[] | undefined,
+  index: number,
 ): JsonBasicValueType => {
   const resolved = path
     ? Array.isArray(path)
@@ -149,7 +154,8 @@ const resolveSliceIdWithFallback = (
       : resolveSliceId(item, path)
     : undefined;
   if (resolved !== undefined && resolved !== null) return resolved;
-  return hsh(item)._hash as JsonBasicValueType;
+  return hsh({ ...item, __rowIndex: index } as Json)
+    ._hash as JsonBasicValueType;
 };
 
 // Resolves a nested object by walking a slash-separated path.
@@ -172,6 +178,8 @@ const resolvePropertySliceId = (
   refType: string,
   chart: DecomposeChart,
   destination?: string,
+  itemIndex: number = 0,
+  subItemOffsets: Map<string, number[]> = new Map(),
 ) => {
   const typesIndexed: { [key: string]: string | undefined } = {};
   for (const t of chart._types!) {
@@ -202,9 +210,19 @@ const resolvePropertySliceId = (
     ? (resolvedTypePath as Array<Json>)
     : ([resolvedTypePath] as Array<Json>);
 
-  for (const refObj of refObjs) {
+  // Base offset of this parent item's own sub-items within the flattened
+  // array the referenced sub-type's own sliceIds table was built from — this
+  // keeps the fallback index (and therefore the resulting hash) aligned with
+  // the id that sub-type actually assigned to the same object.
+  const baseOffset = subItemOffsets.get(refType)?.[itemIndex] ?? 0;
+
+  for (let j = 0; j < refObjs.length; j++) {
     sliceIds.push(
-      resolveSliceIdWithFallback(refObj, typeSliceId) as SliceIdsRef,
+      resolveSliceIdWithFallback(
+        refObjs[j],
+        typeSliceId,
+        baseOffset + j,
+      ) as SliceIdsRef,
     );
   }
 
@@ -306,6 +324,8 @@ const nestedProperty = (
   chart?: DecomposeChart,
   nestedRljson?: Rljson,
   destination?: string,
+  itemIndex: number = 0,
+  subItemOffsets: Map<string, number[]> = new Map(),
 ) => {
   if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
     const pathParsed = path as DecomposeChartComponentPropertyDef;
@@ -315,6 +335,8 @@ const nestedProperty = (
       chart,
       nestedRljson,
       pathParsed.destination,
+      itemIndex,
+      subItemOffsets,
     );
   } else {
     const keys = Array.isArray(path)
@@ -339,7 +361,14 @@ const nestedProperty = (
         const refType = key.split('@')[1];
 
         if (refComp === 'sliceId') {
-          return resolvePropertySliceId(obj, refType, chart, destination);
+          return resolvePropertySliceId(
+            obj,
+            refType,
+            chart,
+            destination,
+            itemIndex,
+            subItemOffsets,
+          );
         } else {
           return resolvePropertyReference(
             key,
@@ -361,6 +390,8 @@ const nestedProperty = (
         chart,
         nestedRljson,
         destination,
+        itemIndex,
+        subItemOffsets,
       );
     }
   }
@@ -373,6 +404,7 @@ const createComponent = (
   typeName?: string,
   chart?: DecomposeChart,
   nestedRljson?: Rljson,
+  subItemOffsets: Map<string, number[]> = new Map(),
 ) => {
   if (Array.isArray(componentProperties)) {
     //Array of properties --> loop through properties and collect them as
@@ -385,7 +417,15 @@ const createComponent = (
       for (const componentProperty of componentProperties as string[]) {
         Object.assign(
           obj,
-          nestedProperty(item, componentProperty, chart, nestedRljson),
+          nestedProperty(
+            item,
+            componentProperty,
+            chart,
+            nestedRljson,
+            undefined,
+            idx,
+            subItemOffsets,
+          ),
         );
       }
       compArr[idx] = obj;
@@ -413,6 +453,7 @@ const createComponent = (
           typeName,
           chart,
           nestedRljson,
+          subItemOffsets,
         ),
       );
     }
@@ -618,6 +659,11 @@ export const fromJson = (
     string,
     { sliceIdMap: Map<string, string[]>; cakeRef: string }
   >();
+  // For every sub-type, the global starting offset (within that sub-type's
+  // own flattened, index-aligned item list) of each parent item's sub-items —
+  // lets sliceId@Type embedding (further below) recompute the exact same
+  // fallback id the sub-type itself assigned to a keyless sub-item.
+  const subItemStartOffsets = new Map<string, number[]>();
   if (chart._types && Array.isArray(chart._types)) {
     for (const subType of chart._types as DecomposeChart[]) {
       // Items whose _path does not resolve contribute no sub-items rather
@@ -636,12 +682,24 @@ export const fromJson = (
       // an empty shell of tables (sliceIds/components/cake/relation) for it.
       if (nestedJson.length === 0) continue;
 
+      let runningOffset = 0;
+      const startOffsets = subItemsPerItem.map((items) => {
+        const start = runningOffset;
+        runningOffset += items.length;
+        return start;
+      });
+      subItemStartOffsets.set(subType._name as string, startOffsets);
+
       //Collect sliceIds of nested type for reference resolution
       const nestedSliceIds = new Map<string, string[]>(
         json.map((item, idx) => [
-          resolveSliceIdWithFallback(item, chart._sliceId) as string,
-          subItemsPerItem[idx].map((subItem: any) =>
-            resolveSliceIdWithFallback(subItem, subType._sliceId),
+          resolveSliceIdWithFallback(item, chart._sliceId, idx) as string,
+          subItemsPerItem[idx].map((subItem: any, j: number) =>
+            resolveSliceIdWithFallback(
+              subItem,
+              subType._sliceId,
+              startOffsets[idx] + j,
+            ),
           ) as string[],
         ]),
       );
@@ -675,16 +733,23 @@ export const fromJson = (
     }
   }
 
-  const ids = json.map((item) =>
-    resolveSliceIdWithFallback(item, chart._sliceId),
+  const ids = json.map((item, idx) =>
+    resolveSliceIdWithFallback(item, chart._sliceId, idx),
   );
+
+  // Several items may resolve to the same slice id (e.g. two items sharing
+  // one explicitly declared natural key). The "add" list is the set of slice
+  // ids added to this table, so it must not contain repeats — even though
+  // `ids` itself keeps one entry per source item for the index-aligned
+  // lookups below (layers, relations).
+  const uniqueIds = [...new Set(ids)];
 
   const sliceIds: SliceIdsTable = hip(
     {
       _type: 'sliceIds',
       _data: [
         {
-          add: ids as SliceIdsRef[],
+          add: uniqueIds as SliceIdsRef[],
         },
       ],
     },
@@ -709,6 +774,7 @@ export const fromJson = (
           chart._name,
           chart,
           nestedRljson,
+          subItemStartOffsets,
         ),
       );
     }

@@ -138,14 +138,15 @@ const chart: DecomposeChart = {
 Each wheel still becomes its own individually addressable row, without
 requiring a natural key in the source data.
 
-**Limitation:** since the fallback is a pure function of content, two sibling
-sub-objects with byte-identical content and no natural key produce the *same*
-fallback sliceId and collapse into a single addressable slice (e.g. two
-structurally-identical wheels under one car would be recorded as one wheel
-reference, not two). This mirrors how identical content already collapses to
-a single component row elsewhere in the converter. If you need to count or
-reference every occurrence individually, the source data needs a natural key
-(or one added during pre-processing).
+The fallback folds each item's position within its array into the content
+hash, so two sibling sub-objects with byte-identical content and no natural
+key still get *distinct* fallback sliceIds (e.g. two structurally-identical
+wheels under one car are recorded as two separate wheel references, not one).
+This is independent of component-level deduplication: the underlying
+`brand: 'Borbet'` data still collapses to a single shared component row (as
+identical content does everywhere else in the converter) — only the sliceId
+identity, and therefore the ability to address/count each occurrence
+individually, is kept distinct.
 
 #### Component Definition
 
