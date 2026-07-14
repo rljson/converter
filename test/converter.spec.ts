@@ -519,6 +519,66 @@ describe('From JSON', () => {
     );
     expect(result).toStrictEqual({});
   });
+  it('List w/ types, references and an additional flat property should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        color: {
+          id: 'RAL9000',
+          name: 'Black',
+        },
+      },
+      {
+        id: 'car2',
+        color: {
+          id: 'RAL7000',
+          name: 'Gray',
+        },
+      },
+      {
+        id: 'car3',
+        color: {
+          id: 'RAL9000',
+          name: 'Black',
+        },
+        size: 'large',
+      },
+      {
+        id: 'car4',
+        color: {
+          id: 'RAL7000',
+          name: 'Gray',
+        },
+        size: 'medium',
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      colorRefs: ['sliceId@Color', 'general@Color'],
+      size: ['size'],
+      _types: [
+        {
+          _name: 'Color',
+          _path: 'color',
+          _sliceId: 'id',
+          general: ['name'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    await expectGolden(
+      'example/converter/list-with-types-and-refs-and-size.json',
+    ).toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
   it('Object with nested components should convert w/o errors.', async () => {
     const json = {
       id: 'car1',
