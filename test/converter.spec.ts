@@ -519,6 +519,66 @@ describe('From JSON', () => {
     );
     expect(result).toStrictEqual({});
   });
+  it('List w/ types, references and an additional flat property should convert w/o errors.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        color: {
+          id: 'RAL9000',
+          name: 'Black',
+        },
+      },
+      {
+        id: 'car2',
+        color: {
+          id: 'RAL7000',
+          name: 'Gray',
+        },
+      },
+      {
+        id: 'car3',
+        color: {
+          id: 'RAL9000',
+          name: 'Black',
+        },
+        size: 'large',
+      },
+      {
+        id: 'car4',
+        color: {
+          id: 'RAL7000',
+          name: 'Gray',
+        },
+        size: 'medium',
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      colorRefs: ['sliceId@Color', 'general@Color'],
+      size: ['size'],
+      _types: [
+        {
+          _name: 'Color',
+          _path: 'color',
+          _sliceId: 'id',
+          general: ['name'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+
+    await expectGolden(
+      'example/converter/list-with-types-and-refs-and-size.json',
+    ).toBe(rljson);
+    expect(result).toStrictEqual({});
+  });
   it('Object with nested components should convert w/o errors.', async () => {
     const json = {
       id: 'car1',
@@ -1014,10 +1074,12 @@ describe('From JSON', () => {
     const ids = (rljson.sliceId as any)._data[0].add as string[];
 
     expect(ids[0]).toBe('car1');
-    expect(ids[1]).toBe(hsh(json[1] as any)._hash);
+    expect(ids[1]).toBe(
+      hsh({ ...(json[1] as any), __rowIndex: 1 } as any)._hash,
+    );
   });
 
-  it('Basic objects List with no _sliceId declared should derive one from a content hash.', () => {
+  it('Basic objects List with no _sliceId declared should derive a distinct id per item from a content-and-position hash.', () => {
     const json = [{ model: 'X' }, { model: 'Y' }, { model: 'X' }];
 
     const chart: DecomposeChart = {
@@ -1027,13 +1089,16 @@ describe('From JSON', () => {
     const rljson = fromJson(json, chart);
     const ids = (rljson.sliceId as any)._data[0].add as string[];
 
-    expect(ids[0]).toBe((hsh({ model: 'X' }) as any)._hash);
-    expect(ids[1]).toBe((hsh({ model: 'Y' }) as any)._hash);
-    // Identical content produces the identical fallback sliceId.
-    expect(ids[2]).toBe(ids[0]);
+    expect(ids[0]).toBe((hsh({ model: 'X', __rowIndex: 0 }) as any)._hash);
+    expect(ids[1]).toBe((hsh({ model: 'Y', __rowIndex: 1 }) as any)._hash);
+    expect(ids[2]).toBe((hsh({ model: 'X', __rowIndex: 2 }) as any)._hash);
+    // Item 0 and item 2 share identical content but its position in the
+    // array is folded into the fallback hash, so they no longer collide into
+    // the same sliceId.
+    expect(ids[2]).not.toBe(ids[0]);
   });
 
-  it('List w/ types and no natural key on the sub-type should derive sliceIds from a content hash.', async () => {
+  it('List w/ types and no natural key on the sub-type should derive sliceIds from a content-and-position hash.', async () => {
     const json = [
       {
         id: 'car1',
@@ -1062,12 +1127,12 @@ describe('From JSON', () => {
 
     const wheelIds = (rljson.wheelSliceId as any)._data[0].add as string[];
     expect(wheelIds).toEqual([
-      (hsh({ brand: 'Borbet' }) as any)._hash,
-      (hsh({ brand: 'Michelin' }) as any)._hash,
+      (hsh({ brand: 'Borbet', __rowIndex: 0 }) as any)._hash,
+      (hsh({ brand: 'Michelin', __rowIndex: 1 }) as any)._hash,
     ]);
   });
 
-  it('List w/ types and duplicate-content sub-items with no natural key collapse into one addressable slice (documented tradeoff).', async () => {
+  it('List w/ types and duplicate-content sub-items with no natural key should still get distinct, addressable slices.', async () => {
     const json = [
       {
         id: 'car1',
@@ -1095,18 +1160,21 @@ describe('From JSON', () => {
     expect(result).toStrictEqual({});
 
     // Two physically distinct wheels with identical content and no natural
-    // key cannot be told apart by a content-hash-derived sliceId — they
-    // collapse into a single addressable slice. This mirrors how identical
-    // content already collapses to one component row elsewhere in the
-    // converter, and is an accepted, documented tradeoff (see
-    // README.public.md), not a bug.
+    // key cannot be told apart by content alone — but their position within
+    // the array is folded into the fallback sliceId, so they still get two
+    // distinct, addressable slices instead of collapsing into one.
     const wheelIds = (rljson.wheelSliceId as any)._data[0].add as string[];
-    expect(new Set(wheelIds).size).toBe(1);
+    expect(new Set(wheelIds).size).toBe(2);
 
     const wheelGeneralLayer = (rljson.wheelGeneralLayer as any)._data[0]
       .add as Record<string, string>;
-    expect(Object.keys(wheelGeneralLayer).filter((k) => k !== '_hash')).toHaveLength(1);
+    expect(
+      Object.keys(wheelGeneralLayer).filter((k) => k !== '_hash'),
+    ).toHaveLength(2);
 
+    // The underlying "brand: Borbet" content is still genuinely identical,
+    // so — independently of sliceId identity — it still collapses to one
+    // shared component row; both distinct wheel slices point at it.
     expect((rljson.wheelGeneral as any)._data).toHaveLength(1);
   });
 
@@ -1145,10 +1213,77 @@ describe('From JSON', () => {
       .screwSliceId as string[];
 
     expect(embeddedIds).toEqual([
-      (hsh({ material: 'Stainless Steel', dimension: 'M4x20' }) as any)._hash,
-      (hsh({ material: 'Steel Zinc plated', dimension: 'M6x30' }) as any)
-        ._hash,
+      (
+        hsh({
+          material: 'Stainless Steel',
+          dimension: 'M4x20',
+          __rowIndex: 0,
+        }) as any
+      )._hash,
+      (
+        hsh({
+          material: 'Steel Zinc plated',
+          dimension: 'M6x30',
+          __rowIndex: 1,
+        }) as any
+      )._hash,
     ]);
+  });
+
+  it('sliceId@Type embedded inside a general@Type-synthesized sub-component should still resolve w/o errors.', async () => {
+    // general@Type re-synthesizes the referenced type's own component
+    // independently (see resolvePropertyReference), outside of the recursive
+    // fromJson call that originally built that type's tables. When the
+    // referenced component itself contains a sliceId@Type reference to a
+    // further keyless sub-type, that re-synthesis has no way to know the
+    // real base offset the original recursive call assigned — it falls back
+    // to treating the item as if it were first (offset 0).
+    const json = [
+      {
+        id: 'car1',
+        colors: [{ id: 'RAL9000', pigments: [{ name: 'Titanium White' }] }],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      colorRefs: ['general@Color'],
+      _types: [
+        {
+          _name: 'Color',
+          _path: 'colors',
+          _sliceId: 'id',
+          general: ['sliceId@Pigment'],
+          _types: [
+            {
+              _name: 'Pigment',
+              _path: 'pigments',
+              info: ['name'],
+            },
+          ],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    const result = await v.run(rljson);
+    expect(result).toStrictEqual({});
+
+    const embeddedRef = (rljson.carColorRefs as any)._data[0]
+      .colorGeneral as string[];
+    expect(embeddedRef).toHaveLength(1);
+
+    // With a single color and a single pigment, the real base offset and the
+    // offset-0 fallback happen to coincide, so the re-synthesized reference
+    // still points at an actual row of the real colorGeneral table.
+    const colorGeneralHashes = (rljson.colorGeneral as any)._data.map(
+      (row: any) => row._hash,
+    );
+    expect(colorGeneralHashes).toContain(embeddedRef[0]);
   });
 
   it('Composite _sliceId (array of field paths) should combine resolved values into one deterministic sliceId.', () => {
@@ -1195,7 +1330,9 @@ describe('From JSON', () => {
     expect(ids[0]).toBe(
       (hsh({ make: 'Volkswagen', model: 'Polo' }) as any)._hash,
     );
-    expect(ids[1]).toBe((hsh(json[1] as any) as any)._hash);
+    expect(ids[1]).toBe(
+      (hsh({ ...(json[1] as any), __rowIndex: 1 }) as any)._hash,
+    );
   });
 
   it('Composite _sliceId should support nested paths for each of its fields.', () => {
