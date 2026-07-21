@@ -10,6 +10,7 @@ import { BaseValidator, removeDuplicates, Validate } from '@rljson/rljson';
 import { describe, expect, it } from 'vitest';
 
 import {
+  ConvertProgress,
   DecomposeChart,
   DecomposeChartComponentPropertyDef,
   exampleFromJsonDecomposeSheet,
@@ -1611,5 +1612,32 @@ describe('From JSON', () => {
     }
 
     expect((rljson.carCake as any)._data[0].layers.carWheelsLayer).toBeUndefined();
+  });
+
+  it('reports progress via onProgress while building a component', () => {
+    // 250 items so progress reporting (throttled to ~100 calls per
+    // component) exercises both the throttled-skip and the always-report-
+    // the-last-item paths.
+    const json = Array.from({ length: 250 }, (_, i) => ({
+      id: `car${i}`,
+      model: 'X',
+    }));
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+    };
+
+    const calls: ConvertProgress[] = [];
+    fromJson(json, chart, (progress) => calls.push(progress));
+
+    expect(calls.length).toBeGreaterThan(0);
+    expect(calls.length).toBeLessThan(json.length);
+    expect(calls[0]).toEqual({ phase: 'model', processed: 1, total: 250 });
+    expect(calls[calls.length - 1]).toEqual({
+      phase: 'model',
+      processed: 250,
+      total: 250,
+    });
   });
 });
