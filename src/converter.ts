@@ -56,6 +56,24 @@ export type DecomposeChartComponentPropertyDef = {
   type?: JsonBasicValueType;
 };
 
+// A callback fromJson() invokes periodically while building each component's
+// data, so callers can surface progress for a large conversion without
+// waiting for the whole result. Coverage is best-effort: it reports progress
+// for the per-item work driving most of a conversion's runtime (the
+// top-level components and any recursively converted nested _types), not the
+// smaller, per-item reference lookups fromJson also performs while building
+// those components.
+export type ConvertProgress = {
+  /** Component (or layer) key currently being built. */
+  phase: string;
+  /** Items processed so far for `phase`. */
+  processed: number;
+  /** Total items to process for `phase`. */
+  total: number;
+};
+
+export type OnConvertProgress = (progress: ConvertProgress) => void;
+
 const createInsertHistoryTable = (tableKey: string): Rljson => ({
   [tableKey + 'InsertHistory']: {
     _type: 'insertHistory',
@@ -405,10 +423,17 @@ const createComponent = (
   chart?: DecomposeChart,
   nestedRljson?: Rljson,
   subItemOffsets: Map<string, number[]> = new Map(),
+  onProgress?: OnConvertProgress,
 ) => {
   if (Array.isArray(componentProperties)) {
     //Array of properties --> loop through properties and collect them as
     // key-value pairs in one object
+
+    const name = componentsName(componentKey, typeName);
+    // Reporting on every single item would make onProgress itself the
+    // bottleneck for very large arrays, so it's throttled to roughly 100
+    // calls per component.
+    const progressInterval = Math.max(1, Math.floor(data.length / 100));
 
     const compArr = new Array(data.length);
     for (let idx = 0; idx < data.length; idx++) {
@@ -429,8 +454,14 @@ const createComponent = (
         );
       }
       compArr[idx] = obj;
+
+      if (
+        onProgress &&
+        (idx % progressInterval === 0 || idx === data.length - 1)
+      ) {
+        onProgress({ phase: name, processed: idx + 1, total: data.length });
+      }
     }
-    const name = componentsName(componentKey, typeName);
     return {
       [name]: hip(
         { _data: compArr, _type: 'components' },
@@ -454,6 +485,7 @@ const createComponent = (
           chart,
           nestedRljson,
           subItemOffsets,
+          onProgress,
         ),
       );
     }
@@ -604,9 +636,10 @@ const createComponentTableCfgs = (
 export const fromJson = (
   json: Json | Array<Json>,
   chart: DecomposeChart,
+  onProgress?: OnConvertProgress,
 ): Rljson => {
   //If a single object is passed, convert to array
-  if (!Array.isArray(json)) return fromJson([json], chart);
+  if (!Array.isArray(json)) return fromJson([json], chart, onProgress);
 
   //Property Guards
   //............................................................................
@@ -704,7 +737,7 @@ export const fromJson = (
         ]),
       );
 
-      const nested = fromJson(nestedJson, subType);
+      const nested = fromJson(nestedJson, subType, onProgress);
       /* v8 ignore next -- @preserve */
       const nestedCakeRef = nested[
         (subType._name
@@ -775,6 +808,7 @@ export const fromJson = (
           chart,
           nestedRljson,
           subItemStartOffsets,
+          onProgress,
         ),
       );
     }
