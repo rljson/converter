@@ -1015,11 +1015,13 @@ export const fromJson = (
     });
 
     //Create relation layer
-    const relationLayer = Array.from(sliceIdMap.keys())
-      .map((sliceId, idx) => ({
-        [sliceId]: relationComponents[idx]._hash as string,
-      }))
-      .reduce((acc, curr) => ({ ...acc, ...curr }), {});
+    const relationLayer: Record<string, string> = {};
+    let relationLayerIdx = 0;
+    for (const sliceId of sliceIdMap.keys()) {
+      relationLayer[sliceId] = relationComponents[relationLayerIdx]
+        ._hash as string;
+      relationLayerIdx++;
+    }
 
     const relationLayerTable: LayersTable = hip<LayersTable>({
       _type: 'layers',
