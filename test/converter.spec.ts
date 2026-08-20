@@ -7,7 +7,7 @@
 import { hsh } from '@rljson/hash';
 import { BaseValidator, removeDuplicates, Validate } from '@rljson/rljson';
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import {
   ConvertProgress,
@@ -1177,6 +1177,76 @@ describe('From JSON', () => {
     // so — independently of sliceId identity — it still collapses to one
     // shared component row; both distinct wheel slices point at it.
     expect((rljson.wheelGeneral as any)._data).toHaveLength(1);
+  });
+
+  it('warns when two rows share a declared sliceId but differ in content, since the second silently overwrites the first.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'blue' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const rljson = fromJson(json, chart);
+
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).toContain('carGeneral');
+    expect(warnSpy.mock.calls[0][0]).toContain('Car');
+
+    // Existing behavior is unchanged by the warning: the second row's
+    // content still silently wins in the layer.
+    const generalLayer = (rljson.carGeneralLayer as any)._data[0].add;
+    const carSliceId = (rljson.carSliceId as any)._data[0].add[0];
+    const generalHashes = (rljson.carGeneral as any)._data.map(
+      (row: any) => row._hash,
+    );
+    expect(generalLayer[carSliceId]).toBe(generalHashes[1]);
+
+    warnSpy.mockRestore();
+  });
+
+  it('warns without naming a chart when the chart declares no _name.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'blue' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    fromJson(json, chart);
+
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).not.toContain('of chart');
+
+    warnSpy.mockRestore();
+  });
+
+  it('does not warn when two rows share a declared sliceId with identical content.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'red' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    fromJson(json, chart);
+
+    expect(warnSpy).not.toHaveBeenCalled();
+
+    warnSpy.mockRestore();
   });
 
   it('sliceId@Type reference embedding should use the content-hash fallback for a keyless sub-type.', async () => {

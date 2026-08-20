@@ -148,6 +148,34 @@ identical content does everywhere else in the converter) — only the sliceId
 identity, and therefore the ability to address/count each occurrence
 individually, is kept distinct.
 
+#### Non-Unique SliceIds
+
+`_sliceId` is trusted to be unique per row — the layer step groups each
+component's rows by resolved slice id, so two rows that resolve to the *same*
+slice id but hold *different* content silently collapse into one: the later
+row's content wins, and the earlier row's data is dropped without error.
+
+`fromJson` cannot know on its own whether a declared `_sliceId` is really
+unique in your data, but it does detect the *symptom* — two rows sharing a
+slice id whose content actually differs — and logs a `console.warn` when this
+happens, naming the chart, the component, and the colliding slice id:
+
+```
+[rljson-converter] sliceId collision in component "usesFurther" of chart
+"Uses": multiple rows resolve to slice id "true" with different content. Only
+the last row is kept — the rest are silently dropped. Check whether the
+declared _sliceId is really unique per row.
+```
+
+Two rows sharing a slice id with *identical* content are not warned about —
+that's the harmless case: they were always going to collapse into one shared
+component row anyway (see "SliceId Fallback" above), so no data is lost.
+
+If you see this warning, either declare a genuinely unique `_sliceId` (a real
+key, a nested path, or a composite of multiple fields — see above), or drop
+`_sliceId` entirely and let the content-hash fallback give each row its own
+identity.
+
 #### Component Definition
 
 Components devide real world objects horizontally into logical cluster of related data. Hence organizing the input data into components is key in the JSON Conversion task.
