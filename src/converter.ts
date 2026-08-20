@@ -176,6 +176,29 @@ const resolveSliceIdWithFallback = (
     ._hash as JsonBasicValueType;
 };
 
+// The layer's "add" map is a plain object keyed by slice id, so two rows
+// resolving to the same slice id but differing in a given component's
+// content would otherwise silently collapse into one — the later row
+// overwrites the earlier one with no trace of the dropped data. Warns so a
+// non-unique (or wrongly declared) _sliceId surfaces at conversion time
+// instead of only showing up later as unexpectedly thin data.
+const warnOnSliceIdCollision = (
+  chartName: string | undefined,
+  componentKey: string,
+  id: string,
+  previousHash: string,
+  hash: string,
+): void => {
+  if (previousHash === hash) return;
+  console.warn(
+    `[rljson-converter] sliceId collision in component "${componentKey}"` +
+      (chartName ? ` of chart "${chartName}"` : '') +
+      `: multiple rows resolve to slice id "${id}" with different content.` +
+      ` Only the last row is kept — the rest are silently dropped. Check` +
+      ` whether the declared _sliceId is really unique per row.`,
+  );
+};
+
 // Resolves a nested object by walking a slash-separated path.
 // Mirrors resolveSliceId but returns the intermediate object rather than a
 // primitive, so _path values like 'shapes/singleShapes' work the same way
@@ -828,8 +851,22 @@ export const fromJson = (
     if (skipLayersForComps.includes(componentKey)) continue;
 
     const layerObj: any = {};
+    const hashById = new Map<string, string>();
     for (let idx = 0; idx < component._data.length; idx++) {
-      layerObj[ids[idx] as string] = (component._data[idx] as any)._hash;
+      const id = ids[idx] as string;
+      const hash = (component._data[idx] as any)._hash as string;
+      const previousHash = hashById.get(id);
+      if (previousHash !== undefined) {
+        warnOnSliceIdCollision(
+          chart._name,
+          componentKey,
+          id,
+          previousHash,
+          hash,
+        );
+      }
+      hashById.set(id, hash);
+      layerObj[id] = hash;
     }
     const layerName = componentKey + 'Layer';
     layers[layerName] = hip(
