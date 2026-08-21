@@ -15,6 +15,7 @@ import {
   DecomposeChartComponentPropertyDef,
   exampleFromJsonDecomposeSheet,
   exampleFromJsonJson,
+  findSliceIdCollisions,
   fromJson,
 } from '../src/converter';
 
@@ -1709,5 +1710,63 @@ describe('From JSON', () => {
       processed: 250,
       total: 250,
     });
+  });
+});
+
+describe('findSliceIdCollisions', () => {
+  it('returns an empty array when no row collides', () => {
+    const json = [
+      { id: 'car1', model: 'X' },
+      { id: 'car2', model: 'Y' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+    };
+
+    expect(findSliceIdCollisions(json, chart)).toStrictEqual([]);
+  });
+
+  it('groups colliding rows into one summary per component, without warning', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const json = [
+      { id: 'a', model: 'X' },
+      { id: 'a', model: 'Y' },
+      { id: 'a', model: 'Z' },
+      { id: 'b', model: 'W' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+    };
+
+    const collisions = findSliceIdCollisions(json, chart);
+
+    expect(collisions).toStrictEqual([
+      {
+        chartName: undefined,
+        componentKey: 'model',
+        collidingSliceIds: ['a'],
+      },
+    ]);
+    expect(warnSpy).not.toHaveBeenCalled();
+
+    warnSpy.mockRestore();
+  });
+
+  it('restores console.warn even if fromJson throws', () => {
+    const originalWarn = console.warn;
+
+    // _types given without _name is a guard-clause error fromJson throws
+    // before any collision detection runs.
+    expect(() =>
+      findSliceIdCollisions([{ id: 'a' }], {
+        _types: [{ _path: 'x' }],
+      } as DecomposeChart),
+    ).toThrow('If subtypes are defined, _name must be provided!');
+    expect(console.warn).toBe(originalWarn);
   });
 });
