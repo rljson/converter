@@ -74,6 +74,27 @@ export type ConvertProgress = {
 
 export type OnConvertProgress = (progress: ConvertProgress) => void;
 
+// One occurrence of the "symptom" warnOnSliceIdCollision logs: two rows in
+// the same component resolved to the same slice id but held different
+// content, so the earlier row's data was dropped.
+export type SliceIdCollision = {
+  chartName?: string;
+  componentKey: string;
+  sliceId: string;
+};
+
+export type OnSliceIdCollision = (collision: SliceIdCollision) => void;
+
+// One entry per component that had at least one SliceIdCollision, listing
+// every distinct slice id involved — the shape findSliceIdCollisions()
+// returns, grouped away from the one-collision-per-row detail fromJson()
+// itself warns about.
+export type SliceIdCollisionSummary = {
+  chartName?: string;
+  componentKey: string;
+  collidingSliceIds: string[];
+};
+
 const createInsertHistoryTable = (tableKey: string): Rljson => ({
   [tableKey + 'InsertHistory']: {
     _type: 'insertHistory',
@@ -188,6 +209,7 @@ const warnOnSliceIdCollision = (
   id: string,
   previousHash: string,
   hash: string,
+  onSliceIdCollision?: OnSliceIdCollision,
 ): void => {
   if (previousHash === hash) return;
   console.warn(
@@ -197,6 +219,7 @@ const warnOnSliceIdCollision = (
       ` Only the last row is kept — the rest are silently dropped. Check` +
       ` whether the declared _sliceId is really unique per row.`,
   );
+  onSliceIdCollision?.({ chartName, componentKey, sliceId: id });
 };
 
 // Resolves a nested object by walking a slash-separated path.
@@ -660,9 +683,11 @@ export const fromJson = (
   json: Json | Array<Json>,
   chart: DecomposeChart,
   onProgress?: OnConvertProgress,
+  onSliceIdCollision?: OnSliceIdCollision,
 ): Rljson => {
   //If a single object is passed, convert to array
-  if (!Array.isArray(json)) return fromJson([json], chart, onProgress);
+  if (!Array.isArray(json))
+    return fromJson([json], chart, onProgress, onSliceIdCollision);
 
   //Property Guards
   //............................................................................
@@ -760,7 +785,12 @@ export const fromJson = (
         ]),
       );
 
-      const nested = fromJson(nestedJson, subType, onProgress);
+      const nested = fromJson(
+        nestedJson,
+        subType,
+        onProgress,
+        onSliceIdCollision,
+      );
       /* v8 ignore next -- @preserve */
       const nestedCakeRef = nested[
         (subType._name
@@ -863,6 +893,7 @@ export const fromJson = (
           id,
           previousHash,
           hash,
+          onSliceIdCollision,
         );
       }
       hashById.set(id, hash);
@@ -1147,6 +1178,40 @@ export const fromJson = (
 
   //Remove duplicate entries on all levels
   return removeDuplicates(rljson);
+};
+
+// Runs the same conversion fromJson() does — including recursively
+// converted _types — but instead of building the full Rljson result,
+// collects every SliceIdCollision it detects along the way and groups them
+// into one SliceIdCollisionSummary per affected component. The caller is
+// explicitly asking for this structured report, so the console.warn
+// fromJson() would otherwise print for every colliding row is suppressed
+// for the duration of this call.
+export const findSliceIdCollisions = (
+  json: Json | Array<Json>,
+  chart: DecomposeChart,
+): SliceIdCollisionSummary[] => {
+  const summaryByKey = new Map<string, SliceIdCollisionSummary>();
+  const originalWarn = console.warn;
+
+  try {
+    console.warn = () => {};
+    fromJson(json, chart, undefined, ({ chartName, componentKey, sliceId }) => {
+      const key = `${chartName ?? ''} ${componentKey}`;
+      let summary = summaryByKey.get(key);
+      if (!summary) {
+        summary = { chartName, componentKey, collidingSliceIds: [] };
+        summaryByKey.set(key, summary);
+      }
+      if (!summary.collidingSliceIds.includes(sliceId)) {
+        summary.collidingSliceIds.push(sliceId);
+      }
+    });
+  } finally {
+    console.warn = originalWarn;
+  }
+
+  return [...summaryByKey.values()];
 };
 
 export const exampleFromJsonJson: Array<Json> = [

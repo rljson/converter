@@ -176,6 +176,26 @@ key, a nested path, or a composite of multiple fields — see above), or drop
 `_sliceId` entirely and let the content-hash fallback give each row its own
 identity.
 
+To check a catalog for these collisions without running a full conversion (or
+parsing `console.warn` output), call `findSliceIdCollisions(json, chart)`. It
+runs the same detection `fromJson` does — including inside recursively
+converted `_types` — but returns one summary per affected component instead
+of one line of console output per colliding row:
+
+```ts
+const collisions = findSliceIdCollisions(json, chart);
+// [
+//   {
+//     chartName: 'Uses',
+//     componentKey: 'usesFurther',
+//     collidingSliceIds: ['true'],
+//   },
+// ]
+```
+
+An empty array means no collisions were found. `console.warn` is not called
+during this check.
+
 #### Component Definition
 
 Components devide real world objects horizontally into logical cluster of related data. Hence organizing the input data into components is key in the JSON Conversion task.
