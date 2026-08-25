@@ -54,6 +54,14 @@ export type DecomposeChartComponentPropertyDef = {
   origin: string;
   destination: string;
   type?: JsonBasicValueType;
+  /**
+   * By default, a falsy source value (0, false, '') is treated the same as
+   * an absent one and left out of the converted component — matching how
+   * most callers use 0/false/'' to mean "not set". Set this to keep a
+   * property whose value is genuinely falsy but was actually provided,
+   * e.g. a numeric field where 0 is a meaningful, distinct value.
+   */
+  keepFalsy?: boolean;
 };
 
 // A callback fromJson() invokes periodically while building each component's
@@ -390,6 +398,7 @@ const nestedProperty = (
   destination?: string,
   itemIndex: number = 0,
   subItemOffsets: Map<string, number[]> = new Map(),
+  keepFalsy: boolean = false,
 ) => {
   if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
     const pathParsed = path as DecomposeChartComponentPropertyDef;
@@ -401,6 +410,7 @@ const nestedProperty = (
       pathParsed.destination,
       itemIndex,
       subItemOffsets,
+      keepFalsy || !!pathParsed.keepFalsy,
     );
   } else {
     const keys = Array.isArray(path)
@@ -444,7 +454,8 @@ const nestedProperty = (
           );
         }
       }
-      if (!obj || !obj[key]) return null;
+      if (!obj || obj[key] === undefined || obj[key] === null) return null;
+      if (!keepFalsy && !obj[key]) return null;
 
       return { [destination ? destination : key]: obj[key] };
     } else {
@@ -456,6 +467,7 @@ const nestedProperty = (
         destination,
         itemIndex,
         subItemOffsets,
+        keepFalsy,
       );
     }
   }
@@ -700,7 +712,7 @@ export const fromJson = (
   const componentNames: string[] = [];
   traverse(chart, ({ key }) =>
     isNaN(+key!) &&
-    !['origin', 'destination', 'type'].includes(key!) &&
+    !['origin', 'destination', 'type', 'keepFalsy'].includes(key!) &&
     !key?.startsWith('_')
       ? componentNames.push(key!)
       : null,
