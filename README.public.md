@@ -276,6 +276,33 @@ By default, the Converter will always generate Layers for nested components. Hen
 
 It is also possible to alias component properties. The definition of the Component `brand` consists of the property `manufacturer` within the input data objects. By defining `brand` as a destination, the converter aliases the property key to `brand` in the final components definition.
 
+##### Falsy Values Are Dropped By Default
+
+By default, a source value of `0`, `false`, or `''` is treated the same as
+an absent property and left out of the converted component — this matches
+the common convention of using such values to mean "not set".
+
+If a column needs a falsy value to be kept because it is a real, meaningful
+value rather than "unset" (e.g. a `count` field where `0` is a distinct,
+valid count), set `keepFalsy: true` on that property's `{origin, destination}`
+definition:
+
+```ts
+const json = { id: 'car1', mileage: 0 };
+
+const chart: DecomposeChart = {
+  _sliceId: 'id',
+  mileage: [{ origin: 'mileage', destination: 'mileage', keepFalsy: true }],
+};
+
+const rljson = fromJson(json, chart);
+// mileage component -> { mileage: 0, _hash: '…' }
+```
+
+Without `keepFalsy`, the same definition would produce a `mileage`
+component with no `mileage` property at all. `null` and `undefined` are
+always treated as absent, regardless of `keepFalsy`.
+
 ##### Array Values (As-Is)
 
 When a component property points **directly** at an array in your source data,

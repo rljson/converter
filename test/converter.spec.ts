@@ -126,6 +126,106 @@ describe('From JSON', () => {
     ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
+  it('by default drops falsy property values (0, false, empty string), same as an absent property.', () => {
+    const json = {
+      id: 'car1',
+      mileage: 0,
+      electric: false,
+      trim: '',
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      mileage: ['mileage'],
+      electric: ['electric'],
+      trim: ['trim'],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.mileage._data[0]).not.toHaveProperty('mileage');
+    expect(rljson.electric._data[0]).not.toHaveProperty('electric');
+    expect(rljson.trim._data[0]).not.toHaveProperty('trim');
+  });
+
+  it('keeps a falsy property value (0, false, empty string) when its column def sets keepFalsy.', () => {
+    const json = {
+      id: 'car1',
+      mileage: 0,
+      electric: false,
+      trim: '',
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      mileage: [
+        {
+          origin: 'mileage',
+          destination: 'mileage',
+          type: 'number',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      electric: [
+        {
+          origin: 'electric',
+          destination: 'electric',
+          type: 'boolean',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      trim: [
+        {
+          origin: 'trim',
+          destination: 'trim',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.mileage._data[0]).toMatchObject({ mileage: 0 });
+    expect(rljson.electric._data[0]).toMatchObject({ electric: false });
+    expect(rljson.trim._data[0]).toMatchObject({ trim: '' });
+  });
+
+  it('still treats a genuinely absent property (undefined/null) as absent, even with keepFalsy.', () => {
+    const json = {
+      id: 'car1',
+      nickname: null,
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      nickname: [
+        {
+          origin: 'nickname',
+          destination: 'nickname',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      unset: [
+        {
+          origin: 'doesNotExist',
+          destination: 'unset',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.nickname._data[0]).not.toHaveProperty('nickname');
+    expect(rljson.unset._data[0]).not.toHaveProperty('unset');
+  });
+
   it('List w/ types but w/o names should throw Error.', async () => {
     const json = [
       {
