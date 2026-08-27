@@ -610,6 +610,7 @@ const createComponentTableCfgs = (
       }
 
       // Reference to another component
+      let refsAsArray = false;
       if (originProperty.includes('@')) {
         const refType = originProperty.split('@')[1];
         const refTypeTable = originProperty.split('@')[0];
@@ -619,6 +620,19 @@ const createComponentTableCfgs = (
           tableKey: refTable,
           type: refTypeTable == 'sliceId' ? 'sliceIds' : 'components',
         };
+
+        // "@Type" only goes through nestedProperty's reference resolution
+        // (resolvePropertySliceId / resolvePropertyReference -- both always
+        // resolve to an array of refs, one per matched item at the
+        // referenced type's _path) when refType names a Sub-Type actually
+        // declared on this chart via _types. The component-encapsulation
+        // mechanism above (the nested-object branch of this function) reuses
+        // this same "@" column-key convention purely as an internal
+        // implementation detail to synthesize its consolidating table, but
+        // resolves its refs directly to a single hash in createComponent
+        // without ever going through that reference resolution -- so its
+        // columns stay scalar `string`.
+        refsAsArray = !!chart?._types?.some((t) => t._name === refType);
       }
 
       // Resolve the actual value from the source data so a directly-addressed
@@ -635,7 +649,7 @@ const createComponentTableCfgs = (
           ({
             key,
             type: !!ref
-              ? ref.type == 'sliceIds'
+              ? ref.type == 'sliceIds' || refsAsArray
                 ? 'jsonArray'
                 : 'string'
               : Array.isArray((sample as any)?.[key])
