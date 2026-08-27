@@ -105,8 +105,8 @@
       }
     ],
     "_type": "components",
-    "_hash": "XhkXWBj7tg5gjyJEUQvBtD",
-    "tableCfg": "702P8VpUArU1E0jyRBAmDs"
+    "_hash": "3uKuQ1OEUQFZbjAtMDQvxh",
+    "tableCfg": "JwRK6wu0rnv-rGcbnbd39K"
   },
   "fruitColorLayer": {
     "_type": "layers",
@@ -1625,7 +1625,7 @@
           },
           {
             "key": "usesFurther",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "UsesFurther",
             "titleShort": "usesFurther",
             "ref": {
@@ -1633,7 +1633,7 @@
               "type": "components",
               "_hash": "aM3Fwy2pL0yqbMtXFBvjEu"
             },
-            "_hash": "6Or2vrSAmwraBvt_5yLG1f"
+            "_hash": "M__sci6EWA8woqznBEFN-6"
           },
           {
             "key": "shapesSliceId",
@@ -1649,7 +1649,7 @@
           },
           {
             "key": "shapesDetails",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "ShapesDetails",
             "titleShort": "shapesDetails",
             "ref": {
@@ -1657,13 +1657,13 @@
               "type": "components",
               "_hash": "w07zEaGxADY28-RpdsYrJ2"
             },
-            "_hash": "jcneX42s01bl8io8FBEVrw"
+            "_hash": "Ifg1XNvOsvdkSTQO72fJ1l"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "702P8VpUArU1E0jyRBAmDs"
+        "_hash": "JwRK6wu0rnv-rGcbnbd39K"
       },
       {
         "key": "fruitUsesRefsInsertHistory",
@@ -3574,7 +3574,7 @@
         "_hash": "RlgrEklOqXeDnTDu3Pr5vq"
       }
     ],
-    "_hash": "rd8MfZ5FgqwBCxsaPt06Un"
+    "_hash": "DIf2HkbiHD5Dfb0Rp3KYMC"
   },
-  "_hash": "o4lVPz8RepSdFkoit5-qGn"
+  "_hash": "46B_4VqJppnL0MJOEmmed3"
 }

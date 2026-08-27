@@ -426,16 +426,23 @@ In this example, we provide two kinds of references. First within `sliceId@Color
   carColorRefs: {
     _data: [
       {
-        colorSliceId: "RAL9000", //SliceId of Color directly inserted
-        colorGeneralRef: "cIMFhZaDtJAkCF_h3PCCT1", //Corresponding reference (Hash) of colorGeneral Component
+        colorSliceId: ["RAL9000"], //SliceId(s) of Color directly inserted
+        colorGeneralRef: ["cIMFhZaDtJAkCF_h3PCCT1"], //Corresponding reference(s) (Hash) of colorGeneral Component
       },
       {
-        colorSliceId: "RAL7000",
-        colorGeneralRef: "nxgBIGoNSFZO083VAufXk9",
+        colorSliceId: ["RAL7000"],
+        colorGeneralRef: ["nxgBIGoNSFZO083VAufXk9"],
       }
     ]
   }
 ```
+
+Both `sliceId@Type` and `compKey@Type` resolve to **one entry per item** found
+at the referenced Sub-Type's `_path` — one for a single nested object, several
+for a repeating (array) `_path`, none if it doesn't resolve at all. Because the
+count isn't fixed, the generated `TableCfg` always types these columns
+`jsonArray`, never `string` — even when a given chart only ever produces one
+reference per row.
 
 ##### Empty Sub-Types Are Omitted
 

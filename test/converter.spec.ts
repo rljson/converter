@@ -517,6 +517,75 @@ describe('From JSON', () => {
     expect(valid).toStrictEqual({});
   });
 
+  it('types a "@Type" reference column jsonArray, since it always resolves to an array of refs, never a bare hash.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        dimension: { length: 5036, width: 1999, height: 1684 },
+        screws: [
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      meta: ['model', 'manufacturer'],
+      screwRefs: ['sliceId@Screw', 'technical@Screw'],
+      dimension: {
+        length: ['dimension/length'],
+        width: ['dimension/width'],
+        height: ['dimension/height'],
+      },
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: 'id',
+          technical: ['type', 'material', 'dimension'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const columnType = (tableKey: string, columnKey: string) => {
+      const tableCfg = rljson.tableCfgs._data.find(
+        (cfg: any) => cfg.key === tableKey,
+      );
+      const column = tableCfg.columns.find((c: any) => c.key === columnKey);
+      return column.type;
+    };
+
+    // A genuine "@Type" reference into a declared Sub-Type -- even one that
+    // (as here) only ever matches a single item -- is typed jsonArray,
+    // matching the array resolvePropertyReference/resolvePropertySliceId
+    // actually produce (see carScrewRefs._data below).
+    expect(columnType('carScrewRefs', 'screwSliceId')).toBe('jsonArray');
+    expect(columnType('carScrewRefs', 'screwTechnical')).toBe('jsonArray');
+    expect(
+      (rljson as any).carScrewRefs._data[0].screwTechnical,
+    ).toBeInstanceOf(Array);
+
+    // The unrelated nested-object component-encapsulation mechanism (see
+    // "Component Encapsulation" tests below) reuses the same "@" column-key
+    // convention purely as an internal implementation detail and resolves
+    // its refs to a single hash directly in createComponent, without going
+    // through that reference resolution -- so it stays scalar `string`.
+    expect(columnType('carDimension', 'carLength')).toBe('string');
+    expect(typeof (rljson as any).carDimension._data[0].carLength).toBe(
+      'string',
+    );
+  });
+
   it('List w/ types and named multilateral references should convert w/o errors.', async () => {
     const json = [
       {
