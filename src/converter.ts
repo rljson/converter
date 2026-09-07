@@ -54,6 +54,14 @@ export type DecomposeChartComponentPropertyDef = {
   origin: string;
   destination: string;
   type?: JsonBasicValueType;
+  /**
+   * By default, a falsy source value (0, false, '') is treated the same as
+   * an absent one and left out of the converted component — matching how
+   * most callers use 0/false/'' to mean "not set". Set this to keep a
+   * property whose value is genuinely falsy but was actually provided,
+   * e.g. a numeric field where 0 is a meaningful, distinct value.
+   */
+  keepFalsy?: boolean;
 };
 
 // A callback fromJson() invokes periodically while building each component's
@@ -73,6 +81,27 @@ export type ConvertProgress = {
 };
 
 export type OnConvertProgress = (progress: ConvertProgress) => void;
+
+// One occurrence of the "symptom" warnOnSliceIdCollision logs: two rows in
+// the same component resolved to the same slice id but held different
+// content, so the earlier row's data was dropped.
+export type SliceIdCollision = {
+  chartName?: string;
+  componentKey: string;
+  sliceId: string;
+};
+
+export type OnSliceIdCollision = (collision: SliceIdCollision) => void;
+
+// One entry per component that had at least one SliceIdCollision, listing
+// every distinct slice id involved — the shape findSliceIdCollisions()
+// returns, grouped away from the one-collision-per-row detail fromJson()
+// itself warns about.
+export type SliceIdCollisionSummary = {
+  chartName?: string;
+  componentKey: string;
+  collidingSliceIds: string[];
+};
 
 const createInsertHistoryTable = (tableKey: string): Rljson => ({
   [tableKey + 'InsertHistory']: {
@@ -174,6 +203,31 @@ const resolveSliceIdWithFallback = (
   if (resolved !== undefined && resolved !== null) return resolved;
   return hsh({ ...item, __rowIndex: index } as Json)
     ._hash as JsonBasicValueType;
+};
+
+// The layer's "add" map is a plain object keyed by slice id, so two rows
+// resolving to the same slice id but differing in a given component's
+// content would otherwise silently collapse into one — the later row
+// overwrites the earlier one with no trace of the dropped data. Warns so a
+// non-unique (or wrongly declared) _sliceId surfaces at conversion time
+// instead of only showing up later as unexpectedly thin data.
+const warnOnSliceIdCollision = (
+  chartName: string | undefined,
+  componentKey: string,
+  id: string,
+  previousHash: string,
+  hash: string,
+  onSliceIdCollision?: OnSliceIdCollision,
+): void => {
+  if (previousHash === hash) return;
+  console.warn(
+    `[rljson-converter] sliceId collision in component "${componentKey}"` +
+      (chartName ? ` of chart "${chartName}"` : '') +
+      `: multiple rows resolve to slice id "${id}" with different content.` +
+      ` Only the last row is kept — the rest are silently dropped. Check` +
+      ` whether the declared _sliceId is really unique per row.`,
+  );
+  onSliceIdCollision?.({ chartName, componentKey, sliceId: id });
 };
 
 // Resolves a nested object by walking a slash-separated path.
@@ -344,6 +398,7 @@ const nestedProperty = (
   destination?: string,
   itemIndex: number = 0,
   subItemOffsets: Map<string, number[]> = new Map(),
+  keepFalsy: boolean = false,
 ) => {
   if (typeof path === 'object' && 'destination' in path && 'origin' in path) {
     const pathParsed = path as DecomposeChartComponentPropertyDef;
@@ -355,6 +410,7 @@ const nestedProperty = (
       pathParsed.destination,
       itemIndex,
       subItemOffsets,
+      keepFalsy || !!pathParsed.keepFalsy,
     );
   } else {
     const keys = Array.isArray(path)
@@ -398,7 +454,8 @@ const nestedProperty = (
           );
         }
       }
-      if (!obj || !obj[key]) return null;
+      if (!obj || obj[key] === undefined || obj[key] === null) return null;
+      if (!keepFalsy && !obj[key]) return null;
 
       return { [destination ? destination : key]: obj[key] };
     } else {
@@ -410,6 +467,7 @@ const nestedProperty = (
         destination,
         itemIndex,
         subItemOffsets,
+        keepFalsy,
       );
     }
   }
@@ -552,6 +610,7 @@ const createComponentTableCfgs = (
       }
 
       // Reference to another component
+      let refsAsArray = false;
       if (originProperty.includes('@')) {
         const refType = originProperty.split('@')[1];
         const refTypeTable = originProperty.split('@')[0];
@@ -561,6 +620,19 @@ const createComponentTableCfgs = (
           tableKey: refTable,
           type: refTypeTable == 'sliceId' ? 'sliceIds' : 'components',
         };
+
+        // "@Type" only goes through nestedProperty's reference resolution
+        // (resolvePropertySliceId / resolvePropertyReference -- both always
+        // resolve to an array of refs, one per matched item at the
+        // referenced type's _path) when refType names a Sub-Type actually
+        // declared on this chart via _types. The component-encapsulation
+        // mechanism above (the nested-object branch of this function) reuses
+        // this same "@" column-key convention purely as an internal
+        // implementation detail to synthesize its consolidating table, but
+        // resolves its refs directly to a single hash in createComponent
+        // without ever going through that reference resolution -- so its
+        // columns stay scalar `string`.
+        refsAsArray = !!chart?._types?.some((t) => t._name === refType);
       }
 
       // Resolve the actual value from the source data so a directly-addressed
@@ -577,7 +649,7 @@ const createComponentTableCfgs = (
           ({
             key,
             type: !!ref
-              ? ref.type == 'sliceIds'
+              ? ref.type == 'sliceIds' || refsAsArray
                 ? 'jsonArray'
                 : 'string'
               : Array.isArray((sample as any)?.[key])
@@ -637,9 +709,11 @@ export const fromJson = (
   json: Json | Array<Json>,
   chart: DecomposeChart,
   onProgress?: OnConvertProgress,
+  onSliceIdCollision?: OnSliceIdCollision,
 ): Rljson => {
   //If a single object is passed, convert to array
-  if (!Array.isArray(json)) return fromJson([json], chart, onProgress);
+  if (!Array.isArray(json))
+    return fromJson([json], chart, onProgress, onSliceIdCollision);
 
   //Property Guards
   //............................................................................
@@ -652,7 +726,7 @@ export const fromJson = (
   const componentNames: string[] = [];
   traverse(chart, ({ key }) =>
     isNaN(+key!) &&
-    !['origin', 'destination', 'type'].includes(key!) &&
+    !['origin', 'destination', 'type', 'keepFalsy'].includes(key!) &&
     !key?.startsWith('_')
       ? componentNames.push(key!)
       : null,
@@ -737,7 +811,12 @@ export const fromJson = (
         ]),
       );
 
-      const nested = fromJson(nestedJson, subType, onProgress);
+      const nested = fromJson(
+        nestedJson,
+        subType,
+        onProgress,
+        onSliceIdCollision,
+      );
       /* v8 ignore next -- @preserve */
       const nestedCakeRef = nested[
         (subType._name
@@ -828,8 +907,23 @@ export const fromJson = (
     if (skipLayersForComps.includes(componentKey)) continue;
 
     const layerObj: any = {};
+    const hashById = new Map<string, string>();
     for (let idx = 0; idx < component._data.length; idx++) {
-      layerObj[ids[idx] as string] = (component._data[idx] as any)._hash;
+      const id = ids[idx] as string;
+      const hash = (component._data[idx] as any)._hash as string;
+      const previousHash = hashById.get(id);
+      if (previousHash !== undefined) {
+        warnOnSliceIdCollision(
+          chart._name,
+          componentKey,
+          id,
+          previousHash,
+          hash,
+          onSliceIdCollision,
+        );
+      }
+      hashById.set(id, hash);
+      layerObj[id] = hash;
     }
     const layerName = componentKey + 'Layer';
     layers[layerName] = hip(
@@ -1015,11 +1109,13 @@ export const fromJson = (
     });
 
     //Create relation layer
-    const relationLayer = Array.from(sliceIdMap.keys())
-      .map((sliceId, idx) => ({
-        [sliceId]: relationComponents[idx]._hash as string,
-      }))
-      .reduce((acc, curr) => ({ ...acc, ...curr }), {});
+    const relationLayer: Record<string, string> = {};
+    let relationLayerIdx = 0;
+    for (const sliceId of sliceIdMap.keys()) {
+      relationLayer[sliceId] = relationComponents[relationLayerIdx]
+        ._hash as string;
+      relationLayerIdx++;
+    }
 
     const relationLayerTable: LayersTable = hip<LayersTable>({
       _type: 'layers',
@@ -1108,6 +1204,40 @@ export const fromJson = (
 
   //Remove duplicate entries on all levels
   return removeDuplicates(rljson);
+};
+
+// Runs the same conversion fromJson() does — including recursively
+// converted _types — but instead of building the full Rljson result,
+// collects every SliceIdCollision it detects along the way and groups them
+// into one SliceIdCollisionSummary per affected component. The caller is
+// explicitly asking for this structured report, so the console.warn
+// fromJson() would otherwise print for every colliding row is suppressed
+// for the duration of this call.
+export const findSliceIdCollisions = (
+  json: Json | Array<Json>,
+  chart: DecomposeChart,
+): SliceIdCollisionSummary[] => {
+  const summaryByKey = new Map<string, SliceIdCollisionSummary>();
+  const originalWarn = console.warn;
+
+  try {
+    console.warn = () => {};
+    fromJson(json, chart, undefined, ({ chartName, componentKey, sliceId }) => {
+      const key = `${chartName ?? ''} ${componentKey}`;
+      let summary = summaryByKey.get(key);
+      if (!summary) {
+        summary = { chartName, componentKey, collidingSliceIds: [] };
+        summaryByKey.set(key, summary);
+      }
+      if (!summary.collidingSliceIds.includes(sliceId)) {
+        summary.collidingSliceIds.push(sliceId);
+      }
+    });
+  } finally {
+    console.warn = originalWarn;
+  }
+
+  return [...summaryByKey.values()];
 };
 
 export const exampleFromJsonJson: Array<Json> = [

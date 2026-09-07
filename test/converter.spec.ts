@@ -7,7 +7,7 @@
 import { hsh } from '@rljson/hash';
 import { BaseValidator, removeDuplicates, Validate } from '@rljson/rljson';
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import {
   ConvertProgress,
@@ -15,6 +15,7 @@ import {
   DecomposeChartComponentPropertyDef,
   exampleFromJsonDecomposeSheet,
   exampleFromJsonJson,
+  findSliceIdCollisions,
   fromJson,
 } from '../src/converter';
 
@@ -125,6 +126,106 @@ describe('From JSON', () => {
     ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
+  it('by default drops falsy property values (0, false, empty string), same as an absent property.', () => {
+    const json = {
+      id: 'car1',
+      mileage: 0,
+      electric: false,
+      trim: '',
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      mileage: ['mileage'],
+      electric: ['electric'],
+      trim: ['trim'],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.mileage._data[0]).not.toHaveProperty('mileage');
+    expect(rljson.electric._data[0]).not.toHaveProperty('electric');
+    expect(rljson.trim._data[0]).not.toHaveProperty('trim');
+  });
+
+  it('keeps a falsy property value (0, false, empty string) when its column def sets keepFalsy.', () => {
+    const json = {
+      id: 'car1',
+      mileage: 0,
+      electric: false,
+      trim: '',
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      mileage: [
+        {
+          origin: 'mileage',
+          destination: 'mileage',
+          type: 'number',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      electric: [
+        {
+          origin: 'electric',
+          destination: 'electric',
+          type: 'boolean',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      trim: [
+        {
+          origin: 'trim',
+          destination: 'trim',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.mileage._data[0]).toMatchObject({ mileage: 0 });
+    expect(rljson.electric._data[0]).toMatchObject({ electric: false });
+    expect(rljson.trim._data[0]).toMatchObject({ trim: '' });
+  });
+
+  it('still treats a genuinely absent property (undefined/null) as absent, even with keepFalsy.', () => {
+    const json = {
+      id: 'car1',
+      nickname: null,
+      model: 'X',
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      nickname: [
+        {
+          origin: 'nickname',
+          destination: 'nickname',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      unset: [
+        {
+          origin: 'doesNotExist',
+          destination: 'unset',
+          keepFalsy: true,
+        } as DecomposeChartComponentPropertyDef,
+      ],
+      model: ['model'],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(rljson.nickname._data[0]).not.toHaveProperty('nickname');
+    expect(rljson.unset._data[0]).not.toHaveProperty('unset');
+  });
+
   it('List w/ types but w/o names should throw Error.', async () => {
     const json = [
       {
@@ -414,6 +515,75 @@ describe('From JSON', () => {
     );
 
     expect(valid).toStrictEqual({});
+  });
+
+  it('types a "@Type" reference column jsonArray, since it always resolves to an array of refs, never a bare hash.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        manufacturer: 'Tesla',
+        dimension: { length: 5036, width: 1999, height: 1684 },
+        screws: [
+          {
+            id: 'SCW-001',
+            type: 'DIN7984',
+            material: 'Stainless Steel',
+            dimension: 'M4x20',
+          },
+        ],
+      },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      meta: ['model', 'manufacturer'],
+      screwRefs: ['sliceId@Screw', 'technical@Screw'],
+      dimension: {
+        length: ['dimension/length'],
+        width: ['dimension/width'],
+        height: ['dimension/height'],
+      },
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: 'id',
+          technical: ['type', 'material', 'dimension'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    const columnType = (tableKey: string, columnKey: string) => {
+      const tableCfg = rljson.tableCfgs._data.find(
+        (cfg: any) => cfg.key === tableKey,
+      );
+      const column = tableCfg.columns.find((c: any) => c.key === columnKey);
+      return column.type;
+    };
+
+    // A genuine "@Type" reference into a declared Sub-Type -- even one that
+    // (as here) only ever matches a single item -- is typed jsonArray,
+    // matching the array resolvePropertyReference/resolvePropertySliceId
+    // actually produce (see carScrewRefs._data below).
+    expect(columnType('carScrewRefs', 'screwSliceId')).toBe('jsonArray');
+    expect(columnType('carScrewRefs', 'screwTechnical')).toBe('jsonArray');
+    expect(
+      (rljson as any).carScrewRefs._data[0].screwTechnical,
+    ).toBeInstanceOf(Array);
+
+    // The unrelated nested-object component-encapsulation mechanism (see
+    // "Component Encapsulation" tests below) reuses the same "@" column-key
+    // convention purely as an internal implementation detail and resolves
+    // its refs to a single hash directly in createComponent, without going
+    // through that reference resolution -- so it stays scalar `string`.
+    expect(columnType('carDimension', 'carLength')).toBe('string');
+    expect(typeof (rljson as any).carDimension._data[0].carLength).toBe(
+      'string',
+    );
   });
 
   it('List w/ types and named multilateral references should convert w/o errors.', async () => {
@@ -1179,6 +1349,76 @@ describe('From JSON', () => {
     expect((rljson.wheelGeneral as any)._data).toHaveLength(1);
   });
 
+  it('warns when two rows share a declared sliceId but differ in content, since the second silently overwrites the first.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'blue' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const rljson = fromJson(json, chart);
+
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).toContain('carGeneral');
+    expect(warnSpy.mock.calls[0][0]).toContain('Car');
+
+    // Existing behavior is unchanged by the warning: the second row's
+    // content still silently wins in the layer.
+    const generalLayer = (rljson.carGeneralLayer as any)._data[0].add;
+    const carSliceId = (rljson.carSliceId as any)._data[0].add[0];
+    const generalHashes = (rljson.carGeneral as any)._data.map(
+      (row: any) => row._hash,
+    );
+    expect(generalLayer[carSliceId]).toBe(generalHashes[1]);
+
+    warnSpy.mockRestore();
+  });
+
+  it('warns without naming a chart when the chart declares no _name.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'blue' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    fromJson(json, chart);
+
+    expect(warnSpy).toHaveBeenCalledTimes(1);
+    expect(warnSpy.mock.calls[0][0]).not.toContain('of chart');
+
+    warnSpy.mockRestore();
+  });
+
+  it('does not warn when two rows share a declared sliceId with identical content.', () => {
+    const json = [
+      { id: 'car1', color: 'red' },
+      { id: 'car1', color: 'red' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      general: ['color'],
+    };
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    fromJson(json, chart);
+
+    expect(warnSpy).not.toHaveBeenCalled();
+
+    warnSpy.mockRestore();
+  });
+
   it('sliceId@Type reference embedding should use the content-hash fallback for a keyless sub-type.', async () => {
     const json = [
       {
@@ -1639,5 +1879,63 @@ describe('From JSON', () => {
       processed: 250,
       total: 250,
     });
+  });
+});
+
+describe('findSliceIdCollisions', () => {
+  it('returns an empty array when no row collides', () => {
+    const json = [
+      { id: 'car1', model: 'X' },
+      { id: 'car2', model: 'Y' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+    };
+
+    expect(findSliceIdCollisions(json, chart)).toStrictEqual([]);
+  });
+
+  it('groups colliding rows into one summary per component, without warning', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const json = [
+      { id: 'a', model: 'X' },
+      { id: 'a', model: 'Y' },
+      { id: 'a', model: 'Z' },
+      { id: 'b', model: 'W' },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      model: ['model'],
+    };
+
+    const collisions = findSliceIdCollisions(json, chart);
+
+    expect(collisions).toStrictEqual([
+      {
+        chartName: undefined,
+        componentKey: 'model',
+        collidingSliceIds: ['a'],
+      },
+    ]);
+    expect(warnSpy).not.toHaveBeenCalled();
+
+    warnSpy.mockRestore();
+  });
+
+  it('restores console.warn even if fromJson throws', () => {
+    const originalWarn = console.warn;
+
+    // _types given without _name is a guard-clause error fromJson throws
+    // before any collision detection runs.
+    expect(() =>
+      findSliceIdCollisions([{ id: 'a' }], {
+        _types: [{ _path: 'x' }],
+      } as DecomposeChart),
+    ).toThrow('If subtypes are defined, _name must be provided!');
+    expect(console.warn).toBe(originalWarn);
   });
 });

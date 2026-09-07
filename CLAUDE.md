@@ -1,8 +1,10 @@
 # CLAUDE.md — @rljson/converter
 
 Converts flat/tree-shaped textual data (JSON) into the layer-based RLJSON data
-model via a declarative **Decompose Chart**. The public surface is a single
-function, `fromJson(json, chart)` ([src/converter.ts](src/converter.ts)).
+model via a declarative **Decompose Chart**. The public surface is centered on
+`fromJson(json, chart)` ([src/converter.ts](src/converter.ts)), plus
+`findSliceIdCollisions(json, chart)`, a read-only check that reports the same
+sliceId collisions `fromJson` would warn about, grouped per component.
 
 Downstream package — depends on `@rljson/rljson`, `@rljson/json`,
 `@rljson/hash`. When those publish a new version, run `pnpm update --latest`

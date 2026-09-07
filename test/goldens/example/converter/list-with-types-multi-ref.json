@@ -41,8 +41,8 @@
       }
     ],
     "_type": "components",
-    "_hash": "M0ty0W5K6dvuNetFhvzs7v",
-    "tableCfg": "Wkv1tecYcidkeXxH_hFCbz"
+    "_hash": "mDrEJGl-2H1nIIObtFKq4L",
+    "tableCfg": "yzVTXvGsJ94puJ4a0adc-j"
   },
   "carMetaLayer": {
     "_type": "layers",
@@ -678,7 +678,7 @@
           },
           {
             "key": "screwTechnical",
-            "type": "string",
+            "type": "jsonArray",
             "titleLong": "ScrewTechnical",
             "titleShort": "screwTechnical",
             "ref": {
@@ -686,13 +686,13 @@
               "type": "components",
               "_hash": "aeKkMUfy8Ndo80Slh2n2ID"
             },
-            "_hash": "W48s-znp6kAIl6kd-6RiDr"
+            "_hash": "N-2skkJCrAs-gyAYnVsCzI"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "Wkv1tecYcidkeXxH_hFCbz"
+        "_hash": "yzVTXvGsJ94puJ4a0adc-j"
       },
       {
         "key": "carScrewRefsInsertHistory",
@@ -1860,7 +1860,7 @@
         "_hash": "Hs6SuygvgOOEJOw-rev_Ix"
       }
     ],
-    "_hash": "gUicNUV0cV3O1Mh-DSitz2"
+    "_hash": "kIZfA_Jj-T_I-t9QuQZYCi"
   },
-  "_hash": "fxGrmpLIg24u3Wp2tk_FXz"
+  "_hash": "M6zzqrqL2MVZZyqyFeaGCQ"
 }

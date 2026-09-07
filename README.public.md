@@ -148,6 +148,54 @@ identical content does everywhere else in the converter) — only the sliceId
 identity, and therefore the ability to address/count each occurrence
 individually, is kept distinct.
 
+#### Non-Unique SliceIds
+
+`_sliceId` is trusted to be unique per row — the layer step groups each
+component's rows by resolved slice id, so two rows that resolve to the *same*
+slice id but hold *different* content silently collapse into one: the later
+row's content wins, and the earlier row's data is dropped without error.
+
+`fromJson` cannot know on its own whether a declared `_sliceId` is really
+unique in your data, but it does detect the *symptom* — two rows sharing a
+slice id whose content actually differs — and logs a `console.warn` when this
+happens, naming the chart, the component, and the colliding slice id:
+
+```
+[rljson-converter] sliceId collision in component "usesFurther" of chart
+"Uses": multiple rows resolve to slice id "true" with different content. Only
+the last row is kept — the rest are silently dropped. Check whether the
+declared _sliceId is really unique per row.
+```
+
+Two rows sharing a slice id with *identical* content are not warned about —
+that's the harmless case: they were always going to collapse into one shared
+component row anyway (see "SliceId Fallback" above), so no data is lost.
+
+If you see this warning, either declare a genuinely unique `_sliceId` (a real
+key, a nested path, or a composite of multiple fields — see above), or drop
+`_sliceId` entirely and let the content-hash fallback give each row its own
+identity.
+
+To check a catalog for these collisions without running a full conversion (or
+parsing `console.warn` output), call `findSliceIdCollisions(json, chart)`. It
+runs the same detection `fromJson` does — including inside recursively
+converted `_types` — but returns one summary per affected component instead
+of one line of console output per colliding row:
+
+```ts
+const collisions = findSliceIdCollisions(json, chart);
+// [
+//   {
+//     chartName: 'Uses',
+//     componentKey: 'usesFurther',
+//     collidingSliceIds: ['true'],
+//   },
+// ]
+```
+
+An empty array means no collisions were found. `console.warn` is not called
+during this check.
+
 #### Component Definition
 
 Components devide real world objects horizontally into logical cluster of related data. Hence organizing the input data into components is key in the JSON Conversion task.
@@ -227,6 +275,33 @@ By default, the Converter will always generate Layers for nested components. Hen
 ##### Component Aliases
 
 It is also possible to alias component properties. The definition of the Component `brand` consists of the property `manufacturer` within the input data objects. By defining `brand` as a destination, the converter aliases the property key to `brand` in the final components definition.
+
+##### Falsy Values Are Dropped By Default
+
+By default, a source value of `0`, `false`, or `''` is treated the same as
+an absent property and left out of the converted component — this matches
+the common convention of using such values to mean "not set".
+
+If a column needs a falsy value to be kept because it is a real, meaningful
+value rather than "unset" (e.g. a `count` field where `0` is a distinct,
+valid count), set `keepFalsy: true` on that property's `{origin, destination}`
+definition:
+
+```ts
+const json = { id: 'car1', mileage: 0 };
+
+const chart: DecomposeChart = {
+  _sliceId: 'id',
+  mileage: [{ origin: 'mileage', destination: 'mileage', keepFalsy: true }],
+};
+
+const rljson = fromJson(json, chart);
+// mileage component -> { mileage: 0, _hash: '…' }
+```
+
+Without `keepFalsy`, the same definition would produce a `mileage`
+component with no `mileage` property at all. `null` and `undefined` are
+always treated as absent, regardless of `keepFalsy`.
 
 ##### Array Values (As-Is)
 
@@ -351,16 +426,23 @@ In this example, we provide two kinds of references. First within `sliceId@Color
   carColorRefs: {
     _data: [
       {
-        colorSliceId: "RAL9000", //SliceId of Color directly inserted
-        colorGeneralRef: "cIMFhZaDtJAkCF_h3PCCT1", //Corresponding reference (Hash) of colorGeneral Component
+        colorSliceId: ["RAL9000"], //SliceId(s) of Color directly inserted
+        colorGeneralRef: ["cIMFhZaDtJAkCF_h3PCCT1"], //Corresponding reference(s) (Hash) of colorGeneral Component
       },
       {
-        colorSliceId: "RAL7000",
-        colorGeneralRef: "nxgBIGoNSFZO083VAufXk9",
+        colorSliceId: ["RAL7000"],
+        colorGeneralRef: ["nxgBIGoNSFZO083VAufXk9"],
       }
     ]
   }
 ```
+
+Both `sliceId@Type` and `compKey@Type` resolve to **one entry per item** found
+at the referenced Sub-Type's `_path` — one for a single nested object, several
+for a repeating (array) `_path`, none if it doesn't resolve at all. Because the
+count isn't fixed, the generated `TableCfg` always types these columns
+`jsonArray`, never `string` — even when a given chart only ever produces one
+reference per row.
 
 ##### Empty Sub-Types Are Omitted
 
