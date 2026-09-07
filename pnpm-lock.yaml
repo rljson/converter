@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@rljson/hash':
-        specifier: ^0.0.19
+        specifier: 0.0.19
         version: 0.0.19
       '@rljson/json':
-        specifier: ^0.0.23
+        specifier: 0.0.23
         version: 0.0.23
       '@rljson/rljson':
-        specifier: ^0.0.80
-        version: 0.0.80
+        specifier: 0.0.81
+        version: 0.0.81
       object-traversal:
         specifier: ^1.0.1
         version: 1.0.1
@@ -382,8 +382,8 @@ packages:
     resolution: {integrity: sha512-ViYo8zx0z/SomjpS2f+xK+tS7HTwZI1HzRarHpXO3spVjpaF+GKCa7HgDXoV/Wc+zsliDzo8wz7S5NFb0yZaow==}
     engines: {node: '>=22.14.0'}
 
-  '@rljson/rljson@0.0.80':
-    resolution: {integrity: sha512-wh3l1fGVukXjzF1SY7BMT0h7zbvBhAuGZDnFIOGpDIYDYeJKJF+T9mehUVnodZqrhBs/t4fmFCAdC3OJtonJ+w==}
+  '@rljson/rljson@0.0.81':
+    resolution: {integrity: sha512-e+ha2nWl1oH2SC3G6ih1pbgHwJ2fJL6US+SIEs7aQkDpZbo0pHkea61BCZLf3u2o2j1LGdxUDcHznNUoHEsNkQ==}
     engines: {node: '>=22.14.0'}
 
   '@rolldown/binding-android-arm64@1.1.5':
@@ -1967,7 +1967,7 @@ snapshots:
 
   '@rljson/json@0.0.23': {}
 
-  '@rljson/rljson@0.0.80':
+  '@rljson/rljson@0.0.81':
     dependencies:
       '@rljson/hash': 0.0.19
       '@rljson/json': 0.0.23
