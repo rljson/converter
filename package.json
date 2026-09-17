@@ -1,6 +1,6 @@
 {
   "name": "@rljson/converter",
-  "version": "0.0.56",
+  "version": "0.0.58",
   "description": "Convert flat textual data i. e. from JSON or XML into RLJSON data structure and data itself automatically.",
   "homepage": "https://github.com/rljson/converter",
   "bugs": "https://github.com/rljson/converter/issues",
@@ -51,9 +51,9 @@
     "vitest-dom": "^0.1.1"
   },
   "dependencies": {
-    "@rljson/hash": "^0.0.19",
-    "@rljson/json": "^0.0.23",
-    "@rljson/rljson": "^0.0.80",
+    "@rljson/hash": "0.0.19",
+    "@rljson/json": "0.0.23",
+    "@rljson/rljson": "0.0.81",
     "object-traversal": "^1.0.1"
   },
   "packageManager": "pnpm@10.11.0"

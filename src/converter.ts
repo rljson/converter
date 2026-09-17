@@ -113,6 +113,10 @@ const createInsertHistoryTable = (tableKey: string): Rljson => ({
 const sliceIdsName = (type: string) =>
   type ? type.toLowerCase() + 'SliceId' : 'sliceId';
 
+// Appends 's' to pluralize, but is idempotent for names already plural
+// (e.g. catalog node names, which are pluralized upstream).
+const pluralize = (name: string) => (name.endsWith('s') ? name : `${name}s`);
+
 const createSliceIdsTableCfg = (type: string): TableCfg => ({
   key: sliceIdsName(type),
   type: 'sliceIds',
@@ -1056,8 +1060,9 @@ export const fromJson = (
     subTypeName,
     { cakeRef, sliceIdMap },
   ] of nestedInfoMap.entries()) {
+    const subTypeNamePlural = pluralize(subTypeName);
     const subCakeName = `${subTypeName.toLowerCase()}Cake`;
-    const relationName = `${typeName.toLowerCase()}${subTypeName}s`;
+    const relationName = `${typeName.toLowerCase()}${subTypeNamePlural}`;
 
     //Create relation TableCfg
     const relationTableCfg: TableCfg = {
@@ -1071,10 +1076,10 @@ export const fromJson = (
           titleShort: 'Hash',
         },
         {
-          key: `${subTypeName.toLowerCase()}s`,
+          key: `${pluralize(subTypeName.toLowerCase())}`,
           type: 'jsonArray',
           titleLong: `${subTypeName} References`,
-          titleShort: `${subTypeName}s`,
+          titleShort: subTypeNamePlural,
           ref: {
             tableKey: subCakeName,
             type: 'cakes',
@@ -1090,7 +1095,7 @@ export const fromJson = (
     const relationComponents = Array.from(sliceIdMap.values()).map(
       (subSliceIds) =>
         hip<Json>({
-          [`${subTypeName.toLowerCase()}s`]: [
+          [`${pluralize(subTypeName.toLowerCase())}`]: [
             {
               ref: cakeRef,
               sliceIds: subSliceIds,
