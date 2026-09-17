@@ -37,3 +37,8 @@ pnpm-lock.yaml
 
 # Large local-only test fixtures
 src/systemat-out.json
+.gg/publish_config.json
+.gg/publish_state.json
+.gg/gg-publish.json
+.gg/pubspec_overrides_backup.yaml
+.gg/pnpm_workspace_backup.yaml
