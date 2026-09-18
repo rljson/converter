@@ -270,29 +270,29 @@
     "tableCfg": "H2ymWhI_tE13m6xyss72_f",
     "_hash": "pJFnjBon3ay-evsyNIKpcf"
   },
-  "fruitUsesInsertHistory": {
+  "fruitUsesesInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "eg94FtR7pQrC5JAdu3Ms0K",
-    "_hash": "Z_cNqYsJhrXIjqnqRqqAEg"
+    "tableCfg": "RHN4N7AEque6Ph-OM0w4Lv",
+    "_hash": "gYmNUoJYsMFeoYlsFCWbtE"
   },
-  "fruitUsesLayerInsertHistory": {
+  "fruitUsesesLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "UFZLrs9x9Z9DFZI90xn025",
-    "_hash": "Rf75OZqVsY3HEZtKlT66LV"
+    "tableCfg": "-qRzNna7vN6zELAKb5R7Zd",
+    "_hash": "uwpEiGjiNEEmRQ2yDQ_Bvu"
   },
-  "fruitShapesInsertHistory": {
+  "fruitShapesesInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "IF88EUPpjnkeYRtagu4aj6",
-    "_hash": "GUGlUY88GBXFWzkrKNrniT"
+    "tableCfg": "Zl6-H_egEZ3QhAoCfAcPCE",
+    "_hash": "Tneto7b4DJDfsxUxIjSUn0"
   },
-  "fruitShapesLayerInsertHistory": {
+  "fruitShapesesLayerInsertHistory": {
     "_type": "insertHistory",
     "_data": [],
-    "tableCfg": "l2nywtZ6-82EwHOxQ92yXP",
-    "_hash": "Y4tWCAwQr0cn-zoSCGw_BM"
+    "tableCfg": "To2N0W2srJoSojgknyETMQ",
+    "_hash": "wjuFKTyK4Tk1mYXlOD4jfU"
   },
   "fruitCakeEdits": {
     "_type": "edits",
@@ -312,11 +312,11 @@
     "_hash": "qA6gnEq_9k-ongVCrTc62W",
     "tableCfg": "FuCuXY1SIZBuOgd_UvTWui"
   },
-  "fruitUses": {
+  "fruitUseses": {
     "_type": "components",
     "_data": [
       {
-        "uses": [
+        "useses": [
           {
             "ref": "jcKIEBq8jWhPbu7dLatTOR",
             "sliceIds": [
@@ -325,35 +325,35 @@
             "_hash": "ADdQw6_3G5pzazGvnxQRW-"
           }
         ],
-        "_hash": "bC9Vt-XN49-wdf7HrS9Nvh"
+        "_hash": "UVjkUKg9bcRHn7x6bjmZ3C"
       }
     ],
-    "_hash": "peOfgkkh3lFyvaFOJBLHju",
-    "tableCfg": "akuvy10JaKYh8ZlaBK5BmQ"
+    "_hash": "IY-6BsDEPlQhCv9l8bBLQJ",
+    "tableCfg": "rtEw6VzHclUjPgb7e5DNPV"
   },
-  "fruitUsesLayer": {
+  "fruitUsesesLayer": {
     "_type": "layers",
     "_data": [
       {
         "add": {
-          "Apple": "bC9Vt-XN49-wdf7HrS9Nvh",
-          "Pear": "bC9Vt-XN49-wdf7HrS9Nvh",
-          "_hash": "2RP79Bmq06K1QFDGeukkDo"
+          "Apple": "UVjkUKg9bcRHn7x6bjmZ3C",
+          "Pear": "UVjkUKg9bcRHn7x6bjmZ3C",
+          "_hash": "ohzrfbs52MHqY-p1FEMlxZ"
         },
         "sliceIdsTable": "fruitSliceId",
         "sliceIdsTableRow": "RD8MjfsilUaUdIPb_XoMIN",
-        "componentsTable": "fruitUses",
-        "_hash": "gTnhyll6M6NcNZz3-rjJlr"
+        "componentsTable": "fruitUseses",
+        "_hash": "yKE_OMeh_X5QjtBLkWojXi"
       }
     ],
-    "_hash": "8ai4uzOjqioq_QmahCwYeV",
-    "tableCfg": "BZL-Zpdehk_3N4qlJnJeJb"
+    "_hash": "xwVFxsSfQ0kjJmGpzx7Pa6",
+    "tableCfg": "A26XW1PPbWCvuktcYtL7w9"
   },
-  "fruitShapes": {
+  "fruitShapeses": {
     "_type": "components",
     "_data": [
       {
-        "shapes": [
+        "shapeses": [
           {
             "ref": "CkZpcUrPRobPFioF7SfL69",
             "sliceIds": [
@@ -362,10 +362,10 @@
             "_hash": "yLeDGEJjSnF-9nHouVwnas"
           }
         ],
-        "_hash": "qQxeqnAlAOKtt04tA69G-8"
+        "_hash": "I0pWR8-5E2YJ-9gUsJrSk5"
       },
       {
-        "shapes": [
+        "shapeses": [
           {
             "ref": "CkZpcUrPRobPFioF7SfL69",
             "sliceIds": [
@@ -374,29 +374,29 @@
             "_hash": "c79_rkzZl8f0ss94fcE-G0"
           }
         ],
-        "_hash": "BIfZ1Gsktse7kCt7D-XLZO"
+        "_hash": "WBUquFsiLCfsNOUxVqXT_O"
       }
     ],
-    "_hash": "ODDccgoZH1-_Z401TjLDuZ",
-    "tableCfg": "xsoTDCCLe_BboKx7nkLi-5"
+    "_hash": "9uuwcoWX85TXDTLkcOzKNb",
+    "tableCfg": "tSVZ-cAEWba-sMkOmajL28"
   },
-  "fruitShapesLayer": {
+  "fruitShapesesLayer": {
     "_type": "layers",
     "_data": [
       {
         "add": {
-          "Apple": "qQxeqnAlAOKtt04tA69G-8",
-          "Pear": "BIfZ1Gsktse7kCt7D-XLZO",
-          "_hash": "jVYE5k-XS1B3du_IPXs9iR"
+          "Apple": "I0pWR8-5E2YJ-9gUsJrSk5",
+          "Pear": "WBUquFsiLCfsNOUxVqXT_O",
+          "_hash": "7mooNhK4plyWFF9B6ZrnoD"
         },
         "sliceIdsTable": "fruitSliceId",
         "sliceIdsTableRow": "RD8MjfsilUaUdIPb_XoMIN",
-        "componentsTable": "fruitShapes",
-        "_hash": "8hsfrKGLENsDPLVnN_DajE"
+        "componentsTable": "fruitShapeses",
+        "_hash": "JoY2Rqo9XGi0_r8lvI2Ei-"
       }
     ],
-    "_hash": "w0J_3vvo0az_jpczzYPGMk",
-    "tableCfg": "HEf83NATCfmFDM-Kz43ye-"
+    "_hash": "obb5kbmXZFScol_XqcEkPU",
+    "tableCfg": "Cbr9GqVT2Xv8BhvYK_-k_u"
   },
   "fruitCake": {
     "_type": "cakes",
@@ -410,15 +410,15 @@
           "fruitRetailInfoLayer": "xGJenCxBHba64quWWdnL9y",
           "fruitNutrientsLayer": "nGsRkEzmqw2BI9hzxjhxOE",
           "fruitUsesRefsLayer": "Ar2qwkepQyJ4cDiLDiiRV-",
-          "fruitUsesLayer": "gTnhyll6M6NcNZz3-rjJlr",
-          "fruitShapesLayer": "8hsfrKGLENsDPLVnN_DajE",
-          "_hash": "_m5NRMpuPID9cXyLhHu_L0"
+          "fruitUsesesLayer": "yKE_OMeh_X5QjtBLkWojXi",
+          "fruitShapesesLayer": "JoY2Rqo9XGi0_r8lvI2Ei-",
+          "_hash": "Rn1Q7Ijf1jvP3bvRB7Wxiq"
         },
-        "_hash": "anjgvaJ6WX2w9QxtwZklSu"
+        "_hash": "u94n7A2NjqaTdXFB4dca3Q"
       }
     ],
     "tableCfg": "fgOwpAjw9WdJx7RDIDcRPM",
-    "_hash": "LqE9mIt0f8Pv9wCXUzlrFL"
+    "_hash": "-_8bI1XwVdP0cLOkdtpeSV"
   },
   "usesSliceId": {
     "_type": "sliceIds",
@@ -2060,7 +2060,7 @@
         "_hash": "H2ymWhI_tE13m6xyss72_f"
       },
       {
-        "key": "fruitUses",
+        "key": "fruitUseses",
         "type": "components",
         "columns": [
           {
@@ -2071,25 +2071,25 @@
             "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
           },
           {
-            "key": "uses",
+            "key": "useses",
             "type": "jsonArray",
             "titleLong": "Uses References",
-            "titleShort": "Uses",
+            "titleShort": "Useses",
             "ref": {
               "tableKey": "usesCake",
               "type": "cakes",
               "_hash": "dbHwBEXOex0slguQo0xvHu"
             },
-            "_hash": "Im_9ueBF3TsIz9ZhXw_qzJ"
+            "_hash": "TxkE_Pivwx9R8Y_icWTbYW"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "akuvy10JaKYh8ZlaBK5BmQ"
+        "_hash": "rtEw6VzHclUjPgb7e5DNPV"
       },
       {
-        "key": "fruitUsesInsertHistory",
+        "key": "fruitUsesesInsertHistory",
         "type": "insertHistory",
         "columns": [
           {
@@ -2107,16 +2107,16 @@
             "_hash": "h3f2KT-46nyCtBx3cx3P-r"
           },
           {
-            "key": "fruitUsesRef",
+            "key": "fruitUsesesRef",
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
             "ref": {
-              "tableKey": "fruitUsesMultiEdits",
+              "tableKey": "fruitUsesesMultiEdits",
               "type": "components",
-              "_hash": "55E2c7pvl_RD32SzMJvdd6"
+              "_hash": "OvDkPAgR_QW3yTrTKTU54o"
             },
-            "_hash": "d-4gKBnz7-YQX6zp5pSoDx"
+            "_hash": "E_pqovhBy4P1TwWhV-JZL5"
           },
           {
             "key": "route",
@@ -2150,10 +2150,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "eg94FtR7pQrC5JAdu3Ms0K"
+        "_hash": "RHN4N7AEque6Ph-OM0w4Lv"
       },
       {
-        "key": "fruitUsesLayer",
+        "key": "fruitUsesesLayer",
         "type": "layers",
         "columns": [
           {
@@ -2209,10 +2209,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "BZL-Zpdehk_3N4qlJnJeJb"
+        "_hash": "A26XW1PPbWCvuktcYtL7w9"
       },
       {
-        "key": "fruitUsesLayerInsertHistory",
+        "key": "fruitUsesesLayerInsertHistory",
         "type": "insertHistory",
         "columns": [
           {
@@ -2230,16 +2230,16 @@
             "_hash": "h3f2KT-46nyCtBx3cx3P-r"
           },
           {
-            "key": "fruitUsesLayerRef",
+            "key": "fruitUsesesLayerRef",
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
             "ref": {
-              "tableKey": "fruitUsesLayerMultiEdits",
+              "tableKey": "fruitUsesesLayerMultiEdits",
               "type": "layers",
-              "_hash": "uTbVUd8Nmx4QqtRse6oeam"
+              "_hash": "8cILbhNdL1EMso6utVC_XG"
             },
-            "_hash": "_pPjb9ZCho0tdo0zQXT-pB"
+            "_hash": "yG3xsW2L7qHmfqhLhoMDs5"
           },
           {
             "key": "route",
@@ -2273,10 +2273,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "UFZLrs9x9Z9DFZI90xn025"
+        "_hash": "-qRzNna7vN6zELAKb5R7Zd"
       },
       {
-        "key": "fruitShapes",
+        "key": "fruitShapeses",
         "type": "components",
         "columns": [
           {
@@ -2287,25 +2287,25 @@
             "_hash": "Np5O9L6tfUaUFTAYyx6g5E"
           },
           {
-            "key": "shapes",
+            "key": "shapeses",
             "type": "jsonArray",
             "titleLong": "Shapes References",
-            "titleShort": "Shapes",
+            "titleShort": "Shapeses",
             "ref": {
               "tableKey": "shapesCake",
               "type": "cakes",
               "_hash": "lbCYbMgJn53Hui1Y2qWBjt"
             },
-            "_hash": "lBwDjWVV-gOH5X-WLrWk7b"
+            "_hash": "vsQxpEZKekyQhhff0qhZ7N"
           }
         ],
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "xsoTDCCLe_BboKx7nkLi-5"
+        "_hash": "tSVZ-cAEWba-sMkOmajL28"
       },
       {
-        "key": "fruitShapesInsertHistory",
+        "key": "fruitShapesesInsertHistory",
         "type": "insertHistory",
         "columns": [
           {
@@ -2323,16 +2323,16 @@
             "_hash": "h3f2KT-46nyCtBx3cx3P-r"
           },
           {
-            "key": "fruitShapesRef",
+            "key": "fruitShapesesRef",
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
             "ref": {
-              "tableKey": "fruitShapesMultiEdits",
+              "tableKey": "fruitShapesesMultiEdits",
               "type": "components",
-              "_hash": "KlQjOpB9sXrngNs7BAmaJZ"
+              "_hash": "-ujj-RoWBX2UZOVIq9N_yN"
             },
-            "_hash": "K0YOjyYBpVUw5_76sTlrk5"
+            "_hash": "WsTMKbZPfpJ4DoXhQDTSZn"
           },
           {
             "key": "route",
@@ -2366,10 +2366,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "IF88EUPpjnkeYRtagu4aj6"
+        "_hash": "Zl6-H_egEZ3QhAoCfAcPCE"
       },
       {
-        "key": "fruitShapesLayer",
+        "key": "fruitShapesesLayer",
         "type": "layers",
         "columns": [
           {
@@ -2425,10 +2425,10 @@
         "isHead": false,
         "isRoot": false,
         "isShared": true,
-        "_hash": "HEf83NATCfmFDM-Kz43ye-"
+        "_hash": "Cbr9GqVT2Xv8BhvYK_-k_u"
       },
       {
-        "key": "fruitShapesLayerInsertHistory",
+        "key": "fruitShapesesLayerInsertHistory",
         "type": "insertHistory",
         "columns": [
           {
@@ -2446,16 +2446,16 @@
             "_hash": "h3f2KT-46nyCtBx3cx3P-r"
           },
           {
-            "key": "fruitShapesLayerRef",
+            "key": "fruitShapesesLayerRef",
             "type": "string",
             "titleLong": "Reference",
             "titleShort": "Ref",
             "ref": {
-              "tableKey": "fruitShapesLayerMultiEdits",
+              "tableKey": "fruitShapesesLayerMultiEdits",
               "type": "layers",
-              "_hash": "c2nQo9CkyVARDTLYoR209_"
+              "_hash": "aRtKWj0NXgprfx3zWGB03U"
             },
-            "_hash": "GtEZ7rv9JbAB8DDwCg8-ZS"
+            "_hash": "e_F-UPK34sHfe0j4Oc91vC"
           },
           {
             "key": "route",
@@ -2489,7 +2489,7 @@
         "isHead": false,
         "isRoot": false,
         "isShared": false,
-        "_hash": "l2nywtZ6-82EwHOxQ92yXP"
+        "_hash": "To2N0W2srJoSojgknyETMQ"
       },
       {
         "key": "usesFurtherLayer",
@@ -3574,7 +3574,7 @@
         "_hash": "RlgrEklOqXeDnTDu3Pr5vq"
       }
     ],
-    "_hash": "6y3MD-7L_Q5wCdWz6zzYj9"
+    "_hash": "N972XJl9ijCu8nn1XndEgo"
   },
-  "_hash": "f6LV-5xbT4LiquOIuq1HYq"
+  "_hash": "ubX5bTTfdDO4oIck-2r2I3"
 }

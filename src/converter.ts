@@ -113,9 +113,8 @@ const createInsertHistoryTable = (tableKey: string): Rljson => ({
 const sliceIdsName = (type: string) =>
   type ? type.toLowerCase() + 'SliceId' : 'sliceId';
 
-// Appends 's' to pluralize, but is idempotent for names already plural
-// (e.g. catalog node names, which are pluralized upstream).
-const pluralize = (name: string) => (name.endsWith('s') ? name : `${name}s`);
+// Appends 'es' to names ending in 's'; appends 's' to all other names.
+const pluralize = (name: string) => `${name}${name.endsWith('s') ? 'es' : 's'}`;
 
 const createSliceIdsTableCfg = (type: string): TableCfg => ({
   key: sliceIdsName(type),
