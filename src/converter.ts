@@ -113,8 +113,10 @@ const createInsertHistoryTable = (tableKey: string): Rljson => ({
 const sliceIdsName = (type: string) =>
   type ? type.toLowerCase() + 'SliceId' : 'sliceId';
 
-// Appends 'es' to names ending in 's'; appends 's' to all other names.
-const pluralize = (name: string) => `${name}${name.endsWith('s') ? 'es' : 's'}`;
+// Leave already-plural names alone so repeated conversion does not create
+// names like 'blockPartses' from an input already shaped as 'blockParts'.
+const pluralize = (name: string) =>
+  name.endsWith('s') || name.endsWith('es') ? name : `${name}s`;
 
 const createSliceIdsTableCfg = (type: string): TableCfg => ({
   key: sliceIdsName(type),

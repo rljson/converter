@@ -126,6 +126,34 @@ describe('From JSON', () => {
     ).toBe(rljson);
     expect(result).toStrictEqual({});
   });
+  it('does not double-pluralize names that are already plural', () => {
+    const json = {
+      id: 'article1',
+      blockParts: [
+        { id: 'bp1', label: 'left' },
+        { id: 'bp2', label: 'right' },
+      ],
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Article',
+      _types: [
+        {
+          _sliceId: 'id',
+          _path: 'blockParts',
+          _name: 'blockParts',
+          label: ['label'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+
+    expect(Object.keys(rljson)).toContain('articleblockParts');
+    expect(Object.keys(rljson)).not.toContain('articleblockPartses');
+  });
+
   it('by default drops falsy property values (0, false, empty string), same as an absent property.', () => {
     const json = {
       id: 'car1',
@@ -571,9 +599,9 @@ describe('From JSON', () => {
     // actually produce (see carScrewRefs._data below).
     expect(columnType('carScrewRefs', 'screwSliceId')).toBe('jsonArray');
     expect(columnType('carScrewRefs', 'screwTechnical')).toBe('jsonArray');
-    expect(
-      (rljson as any).carScrewRefs._data[0].screwTechnical,
-    ).toBeInstanceOf(Array);
+    expect((rljson as any).carScrewRefs._data[0].screwTechnical).toBeInstanceOf(
+      Array,
+    );
 
     // The unrelated nested-object component-encapsulation mechanism (see
     // "Component Encapsulation" tests below) reuses the same "@" column-key
@@ -1595,7 +1623,7 @@ describe('From JSON', () => {
     );
   });
 
-  it('Composite _sliceId on a sub-type should combine that sub-type\'s own field values.', async () => {
+  it("Composite _sliceId on a sub-type should combine that sub-type's own field values.", async () => {
     const json = [
       {
         id: 'car1',
@@ -1816,7 +1844,9 @@ describe('From JSON', () => {
 
     // Other has a resolvable path for every item, so it is written normally.
     expect(rljson.otherSliceId).toBeDefined();
-    expect((rljson.carCake as any)._data[0].layers.carOthersLayer).toBeDefined();
+    expect(
+      (rljson.carCake as any)._data[0].layers.carOthersLayer,
+    ).toBeDefined();
   });
 
   it('List w/ types where a type has zero items overall should be omitted entirely.', async () => {
@@ -1851,7 +1881,9 @@ describe('From JSON', () => {
       expect(key.toLowerCase().startsWith('carwheel')).toBe(false);
     }
 
-    expect((rljson.carCake as any)._data[0].layers.carWheelsLayer).toBeUndefined();
+    expect(
+      (rljson.carCake as any)._data[0].layers.carWheelsLayer,
+    ).toBeUndefined();
   });
 
   it('reports progress via onProgress while building a component', () => {
