@@ -15,8 +15,8 @@ importers:
         specifier: 0.0.23
         version: 0.0.23
       '@rljson/rljson':
-        specifier: 0.0.81
-        version: 0.0.81
+        specifier: 0.0.83
+        version: 0.0.83
       object-traversal:
         specifier: ^1.0.1
         version: 1.0.1
@@ -385,8 +385,8 @@ packages:
     resolution: {integrity: sha512-ViYo8zx0z/SomjpS2f+xK+tS7HTwZI1HzRarHpXO3spVjpaF+GKCa7HgDXoV/Wc+zsliDzo8wz7S5NFb0yZaow==}
     engines: {node: '>=22.14.0'}
 
-  '@rljson/rljson@0.0.81':
-    resolution: {integrity: sha512-e+ha2nWl1oH2SC3G6ih1pbgHwJ2fJL6US+SIEs7aQkDpZbo0pHkea61BCZLf3u2o2j1LGdxUDcHznNUoHEsNkQ==}
+  '@rljson/rljson@0.0.83':
+    resolution: {integrity: sha512-/JVC8yEtbWP/lnQbmYTlEAqGBJN/6LoKJSYoxyn8IUTouBIylPNhBmSy9kxYnRlCfgL7pkXlRL/DXQn8jzTOQw==}
     engines: {node: '>=22.14.0'}
 
   '@rolldown/binding-android-arm-eabi@1.2.11':
@@ -1241,9 +1241,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.1.16:
-    resolution: {integrity: sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==}
-    engines: {node: ^18 || >=20}
+  nanoid@6.0.1:
+    resolution: {integrity: sha512-3wVS3i51pE2pi1k5FFL/95BGfVS0kSsvDVuGXHOtxox/TywUmtgq+3qiTOTbs9J7KfHaXPiN171k/A6dBnaXFw==}
+    engines: {node: ^22 || ^24 || >=26}
     hasBin: true
 
   natural-compare@1.4.0:
@@ -1955,11 +1955,11 @@ snapshots:
 
   '@rljson/json@0.0.23': {}
 
-  '@rljson/rljson@0.0.81':
+  '@rljson/rljson@0.0.83':
     dependencies:
       '@rljson/hash': 0.0.19
       '@rljson/json': 0.0.23
-      nanoid: 5.1.16
+      nanoid: 6.0.1
 
   '@rolldown/binding-android-arm-eabi@1.2.11':
     optional: true
@@ -2816,7 +2816,7 @@ snapshots:
 
   nanoid@3.3.19: {}
 
-  nanoid@5.1.16: {}
+  nanoid@6.0.1: {}
 
   natural-compare@1.4.0: {}
 

@@ -51,7 +51,7 @@
   "dependencies": {
     "@rljson/hash": "0.0.19",
     "@rljson/json": "0.0.23",
-    "@rljson/rljson": "0.0.81",
+    "@rljson/rljson": "0.0.83",
     "object-traversal": "^1.0.1"
   },
   "packageManager": "pnpm@10.11.0"
