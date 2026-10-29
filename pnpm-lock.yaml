@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  '@rljson/dna-rljson': link:../dna_rljson
   '@rljson/hash': link:./.gg/ts_links/@rljson/hash
   '@rljson/rljson': link:./.gg/ts_links/@rljson/rljson
 
@@ -25,6 +26,12 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
     devDependencies:
+      '@rljson/dna-rljson':
+        specifier: link:../dna_rljson
+        version: link:../dna_rljson
+      '@tssuite/helix-js':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@types/node':
         specifier: ^26.6.3
         version: 26.6.3
@@ -520,6 +527,10 @@ packages:
   '@sindresorhus/base62@1.0.0':
     resolution: {integrity: sha512-TeheYy0ILzBEI/CO55CP6zJCSdSWeRtGnHy8U8dWSUH4I68iqTsy7HkMktR4xakThc9jotkPQUXT4ITdbV7cHA==}
     engines: {node: '>=18'}
+
+  '@tssuite/helix-js@0.5.1':
+    resolution: {integrity: sha512-8i4zsO3uu3i9O8Ns5hFLVAtd3K4QiBP5v7QP7+s0an9idfC8KDt7AvuZkSZ2nh6iD5NKWN2f3ydRpblLFpv8pA==}
+    engines: {node: '>=22'}
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -2040,6 +2051,8 @@ snapshots:
     optional: true
 
   '@sindresorhus/base62@1.0.0': {}
+
+  '@tssuite/helix-js@0.5.1': {}
 
   '@types/argparse@1.0.38':
     optional: true

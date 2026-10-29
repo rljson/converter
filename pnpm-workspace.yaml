@@ -3,5 +3,6 @@
 # this workspace without touching their published constraints.
 # change-refs-to-pub-dev removes the section again.
 overrides:
+  "@rljson\/dna-rljson": link:../dna_rljson
   "@rljson\/hash": link:./.gg/ts_links/@rljson/hash
   "@rljson\/rljson": link:./.gg/ts_links/@rljson/rljson
