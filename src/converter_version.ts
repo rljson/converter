@@ -2,4 +2,4 @@
 // Kept in sync by test/converter_version.spec.ts.
 
 /** The version of the `@rljson/converter` package. */
-export const converterVersion = '0.0.60';
+export const converterVersion = '0.0.61';
