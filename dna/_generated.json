@@ -77,9 +77,9 @@
       "name": "dna-gg",
       "package": "@ggdna/dna-gg",
       "ecosystem": "node",
-      "resolvedVersion": "1.2.0",
+      "resolvedVersion": "1.3.0",
       "via": "dna-rljson",
-      "hash": "0x815024b382c3d167"
+      "hash": "0x7e5e4bbb754c4f13"
     },
     {
       "name": "dna-rljson",
@@ -223,7 +223,7 @@
     },
     {
       "path": "doc/guides/for-ai/ai-dev-guide.md",
-      "hash": "0xf8f80ff1b66b5ddf"
+      "hash": "0x9288aa01265c070f"
     },
     {
       "path": "doc/guides/for-ai/ai-review-guide.md",
