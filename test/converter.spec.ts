@@ -154,6 +154,31 @@ describe('From JSON', () => {
     expect(Object.keys(rljson)).not.toContain('articleblockPartses');
   });
 
+  it('pluralizes a consonant followed by "y" with "-ies" and a vowel followed by "y" with "-s"', () => {
+    const json = {
+      id: 'article1',
+      legacy: [{ id: 'l1', era: 'old' }],
+      key: [{ id: 'k1', code: 'main' }],
+    };
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Article',
+      _types: [
+        { _sliceId: 'id', _path: 'legacy', _name: 'Legacy', era: ['era'] },
+        { _sliceId: 'id', _path: 'key', _name: 'Key', code: ['code'] },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+    const keys = Object.keys(rljson);
+
+    expect(keys).toContain('articleLegacies');
+    expect(keys).not.toContain('articleLegacys');
+    expect(keys).toContain('articleKeys');
+    expect(keys).not.toContain('articleKeies');
+  });
+
   it('by default drops falsy property values (0, false, empty string), same as an absent property.', () => {
     const json = {
       id: 'car1',
