@@ -115,8 +115,13 @@ const sliceIdsName = (type: string) =>
 
 // Leave already-plural names alone so repeated conversion does not create
 // names like 'blockPartses' from an input already shaped as 'blockParts'.
-const pluralize = (name: string) =>
-  name.endsWith('s') || name.endsWith('es') ? name : `${name}s`;
+// A consonant followed by 'y' takes '-ies' ('legacy' -> 'legacies'), a vowel
+// followed by 'y' keeps a plain '-s' ('key' -> 'keys').
+const pluralize = (name: string) => {
+  if (name.endsWith('s')) return name;
+  if (/[^aeiou]y$/i.test(name)) return `${name.slice(0, -1)}ies`;
+  return `${name}s`;
+};
 
 const createSliceIdsTableCfg = (type: string): TableCfg => ({
   key: sliceIdsName(type),
