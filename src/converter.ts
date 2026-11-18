@@ -339,6 +339,8 @@ const resolvePropertyReference = (
     obj,
     destinationChart._path as string,
   ) as Array<Json>;
+  // No items to reference. The empty array still names the column for the
+  // table config; createComponent leaves it out of the rows.
   if (!refItems || !Array.isArray(refItems) || refItems.length === 0) {
     return { [refName]: [] };
   }
@@ -364,6 +366,38 @@ const resolvePropertyReference = (
   }
 
   return { [refName]: refs as ComponentRef[] };
+};
+
+/**
+ * True if a component property references the components of a sub-type
+ * ("<component>\@<Type>"), as opposed to its slice ids ("sliceId\@<Type>").
+ * @param property - The component property of the chart
+ */
+const isComponentReference = (
+  property: string | DecomposeChartComponentPropertyDef,
+): boolean => {
+  const origin = typeof property === 'object' ? property.origin : property;
+  return origin.includes('@') && origin.split('@')[0] !== 'sliceId';
+};
+
+/**
+ * The value of a component property for one row. A component reference
+ * without any referenced item is left out, like a property without a value,
+ * instead of being written as an empty array.
+ * @param property - The component property of the chart
+ * @param value - The value nestedProperty resolved for the row
+ */
+const rowValue = (
+  property: string | DecomposeChartComponentPropertyDef,
+  value: Json | null,
+): Json | null => {
+  if (!value || !isComponentReference(property)) return value;
+  const entries = Object.entries(value);
+  const isEmpty =
+    entries.length === 1 &&
+    Array.isArray(entries[0][1]) &&
+    entries[0][1].length === 0;
+  return isEmpty ? null : value;
 };
 
 const synthesizeObjectFromPath = (
@@ -510,14 +544,17 @@ const createComponent = (
       for (const componentProperty of componentProperties as string[]) {
         Object.assign(
           obj,
-          nestedProperty(
-            item,
+          rowValue(
             componentProperty,
-            chart,
-            nestedRljson,
-            undefined,
-            idx,
-            subItemOffsets,
+            nestedProperty(
+              item,
+              componentProperty,
+              chart,
+              nestedRljson,
+              undefined,
+              idx,
+              subItemOffsets,
+            ) as Json | null,
           ),
         );
       }

@@ -85,27 +85,23 @@
         "usesSliceId": [
           true
         ],
-        "usesFurther": [],
         "shapesSliceId": [
           "round"
         ],
-        "shapesDetails": [],
-        "_hash": "o1HYP0noOHk5inqYw_sdyc"
+        "_hash": "4pRvPEoF40HhvJngnB8tFz"
       },
       {
         "usesSliceId": [
           true
         ],
-        "usesFurther": [],
         "shapesSliceId": [
           "elliptical"
         ],
-        "shapesDetails": [],
-        "_hash": "ufQu1Kbj5hZTdtKnhPDQLx"
+        "_hash": "-dZ9MAGz3IJZDKv5DReztp"
       }
     ],
     "_type": "components",
-    "_hash": "3uKuQ1OEUQFZbjAtMDQvxh",
+    "_hash": "3s8LETFGu7tzN4RkoanD_7",
     "tableCfg": "JwRK6wu0rnv-rGcbnbd39K"
   },
   "fruitColorLayer": {
@@ -185,17 +181,17 @@
     "_data": [
       {
         "add": {
-          "Apple": "o1HYP0noOHk5inqYw_sdyc",
-          "Pear": "ufQu1Kbj5hZTdtKnhPDQLx",
-          "_hash": "ng0WEnsXLNZSSo-rD9LmLx"
+          "Apple": "4pRvPEoF40HhvJngnB8tFz",
+          "Pear": "-dZ9MAGz3IJZDKv5DReztp",
+          "_hash": "Lcb6yUy5BDHBAE5SeQlstJ"
         },
         "sliceIdsTable": "fruitSliceId",
         "sliceIdsTableRow": "RD8MjfsilUaUdIPb_XoMIN",
         "componentsTable": "fruitUsesRefs",
-        "_hash": "Ar2qwkepQyJ4cDiLDiiRV-"
+        "_hash": "mrTc47CbRcMmJ8skJ3xGHM"
       }
     ],
-    "_hash": "_b4VPKMjb_Ondcz8Jvpof-",
+    "_hash": "v0bkX0fuJpfLiAGXiiVQmq",
     "tableCfg": "OOHW18Ztyaa6ciZRd0hb4N"
   },
   "fruitColorInsertHistory": {
@@ -409,16 +405,16 @@
           "fruitTasteLayer": "Q0H2R4kjUTXRezk-mCDMvm",
           "fruitRetailInfoLayer": "xGJenCxBHba64quWWdnL9y",
           "fruitNutrientsLayer": "nGsRkEzmqw2BI9hzxjhxOE",
-          "fruitUsesRefsLayer": "Ar2qwkepQyJ4cDiLDiiRV-",
+          "fruitUsesRefsLayer": "mrTc47CbRcMmJ8skJ3xGHM",
           "fruitUsesLayer": "gTnhyll6M6NcNZz3-rjJlr",
           "fruitShapesLayer": "8hsfrKGLENsDPLVnN_DajE",
-          "_hash": "_m5NRMpuPID9cXyLhHu_L0"
+          "_hash": "SWubV1DQSyjh69_10_3WRo"
         },
-        "_hash": "anjgvaJ6WX2w9QxtwZklSu"
+        "_hash": "8dtb_LStYMMRvdOPvSvXkM"
       }
     ],
     "tableCfg": "fgOwpAjw9WdJx7RDIDcRPM",
-    "_hash": "LqE9mIt0f8Pv9wCXUzlrFL"
+    "_hash": "bVkOYK5phncdWJLEpGAqHW"
   },
   "usesSliceId": {
     "_type": "sliceIds",
@@ -3576,5 +3572,5 @@
     ],
     "_hash": "6y3MD-7L_Q5wCdWz6zzYj9"
   },
-  "_hash": "f6LV-5xbT4LiquOIuq1HYq"
+  "_hash": "j2byfyXBW9KO5in-lXeY8P"
 }

@@ -17,12 +17,11 @@
     "_data": [
       {
         "colorSliceId": [],
-        "colorGeneral": [],
-        "_hash": "45f2JIbGoDCInGC9zxGWyl"
+        "_hash": "81XNMMWxdVRJjn9rW-OVJN"
       }
     ],
     "_type": "components",
-    "_hash": "53uyaNcCpz22RJebT0YIIs",
+    "_hash": "GAxryCg_dHjYGSJnju3Yfu",
     "tableCfg": "wP0w-0-8WnMpDt0DSQtiFi"
   },
   "carColorRefsLayer": {
@@ -30,17 +29,17 @@
     "_data": [
       {
         "add": {
-          "car1": "45f2JIbGoDCInGC9zxGWyl",
-          "car2": "45f2JIbGoDCInGC9zxGWyl",
-          "_hash": "N9-XZ5RRaQFaVowQqKdmPn"
+          "car1": "81XNMMWxdVRJjn9rW-OVJN",
+          "car2": "81XNMMWxdVRJjn9rW-OVJN",
+          "_hash": "vmeF05eKVMChhn4gskYBUW"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
         "componentsTable": "carColorRefs",
-        "_hash": "3yvZtnf_2FEZhaWyzeyCXW"
+        "_hash": "mCG8KA6K2Zf4hjArvM1q69"
       }
     ],
-    "_hash": "zeWE48ZvcYeM5gJMkxAXnr",
+    "_hash": "Nz0DZOW8eUT0x8iwSHRRMi",
     "tableCfg": "1vwnm5_U23zQICZu8WRQWM"
   },
   "carColorRefsInsertHistory": {
@@ -153,15 +152,15 @@
         "sliceIdsTable": "carSliceId",
         "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
         "layers": {
-          "carColorRefsLayer": "3yvZtnf_2FEZhaWyzeyCXW",
+          "carColorRefsLayer": "mCG8KA6K2Zf4hjArvM1q69",
           "carOthersLayer": "JDSipT7zseevcIBvcShvDu",
-          "_hash": "dPFX94kcf8Av4vfiV5AdjP"
+          "_hash": "gbUz5kOVwUmtoTQg8KHiOv"
         },
-        "_hash": "hmEYTT-rtio4STTzOhb54F"
+        "_hash": "xDDkgC_eTDwJ-hB5RpNKfb"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "WSlJWOgtmCbMOc8osqH1Sk"
+    "_hash": "rM1kZwHTNgUIg8UoxheaNQ"
   },
   "otherSliceId": {
     "_type": "sliceIds",
@@ -1589,5 +1588,5 @@
     ],
     "_hash": "VN4qNNui5Sltmfu5-efQ0B"
   },
-  "_hash": "862fijf5XtlN_mVBC1xzvx"
+  "_hash": "DhPqSvp1iM3Bg_nAL_a-vn"
 }
