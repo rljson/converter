@@ -570,6 +570,59 @@ describe('From JSON', () => {
     expect(valid).toStrictEqual({});
   });
 
+  it('leaves a "<component>@Type" reference out of a row that has no item of the sub-type.', async () => {
+    const json = [
+      {
+        id: 'car1',
+        model: 'X',
+        screws: [{ id: 'SCW-001', type: 'DIN7984' }],
+      },
+      { id: 'car2', model: 'Y' },
+      { id: 'car3', model: 'Z', screws: [] },
+    ];
+
+    const chart: DecomposeChart = {
+      _sliceId: 'id',
+      _name: 'Car',
+      meta: ['model'],
+      screwRefs: [
+        'sliceId@Screw',
+        { origin: 'technical@Screw', destination: 'screwTechnicalRefs' },
+      ],
+      _types: [
+        {
+          _name: 'Screw',
+          _path: 'screws',
+          _sliceId: 'id',
+          technical: ['type'],
+        },
+      ],
+    };
+
+    const rljson = fromJson(json, chart);
+    const rows = (rljson as any).carScrewRefs._data;
+
+    // car2 (no screws) and car3 (empty screws) give the same row, stored once
+    expect(rows).toHaveLength(2);
+    expect(rows[0].screwTechnicalRefs).toHaveLength(1);
+    expect(rows[1]).not.toHaveProperty('screwTechnicalRefs');
+
+    // The column itself stays in the table config
+    const tableCfg = (rljson as any).tableCfgs._data.find(
+      (cfg: any) => cfg.key === 'carScrewRefs',
+    );
+    expect(tableCfg.columns.map((c: any) => c.key)).toContain(
+      'screwTechnicalRefs',
+    );
+
+    // Slice id references are not affected
+    expect(rows[1].screwSliceId).toEqual([]);
+
+    const v = new Validate();
+    v.addValidator(new BaseValidator());
+    expect(await v.run(rljson)).toStrictEqual({});
+  });
+
   it('types a "@Type" reference column jsonArray, since it always resolves to an array of refs, never a bare hash.', async () => {
     const json = [
       {

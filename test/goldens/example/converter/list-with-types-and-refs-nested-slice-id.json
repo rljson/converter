@@ -19,19 +19,17 @@
         "colorSliceId": [
           "RAL9000"
         ],
-        "colorGeneral": [],
-        "_hash": "Z31mhO2Lp9I82wDgt4ygUK"
+        "_hash": "Z71imW7SeFfipkkvHm6rK_"
       },
       {
         "colorSliceId": [
           "RAL7000"
         ],
-        "colorGeneral": [],
-        "_hash": "LcrAW9z0xTAX4xFLuIIi85"
+        "_hash": "AhuRJi_XMcudbHMIvsr3tl"
       }
     ],
     "_type": "components",
-    "_hash": "ht3yi3yeonwqqV3ZZobQnT",
+    "_hash": "b6sy9Z87ZPa86vCTJUDx96",
     "tableCfg": "wP0w-0-8WnMpDt0DSQtiFi"
   },
   "carColorRefsLayer": {
@@ -39,17 +37,17 @@
     "_data": [
       {
         "add": {
-          "car1": "Z31mhO2Lp9I82wDgt4ygUK",
-          "car2": "LcrAW9z0xTAX4xFLuIIi85",
-          "_hash": "qDAKjH8NUxHGK98azH5MAx"
+          "car1": "Z71imW7SeFfipkkvHm6rK_",
+          "car2": "AhuRJi_XMcudbHMIvsr3tl",
+          "_hash": "kc5RQySBEivk9in6fctSBW"
         },
         "sliceIdsTable": "carSliceId",
         "sliceIdsTableRow": "_nk8S8AyHcfQkgZB4h7np7",
         "componentsTable": "carColorRefs",
-        "_hash": "3OFo6LOSxbVLKZffA-iw1A"
+        "_hash": "7DHF3i6PAHAuMKt1P8N5oW"
       }
     ],
-    "_hash": "ZYjZm_AviMrfq5Z3QqFhQW",
+    "_hash": "Qi4yELnj6raiQrjOel81ub",
     "tableCfg": "1vwnm5_U23zQICZu8WRQWM"
   },
   "carColorRefsInsertHistory": {
@@ -162,15 +160,15 @@
         "sliceIdsTable": "carSliceId",
         "sliceIdsRow": "_nk8S8AyHcfQkgZB4h7np7",
         "layers": {
-          "carColorRefsLayer": "3OFo6LOSxbVLKZffA-iw1A",
+          "carColorRefsLayer": "7DHF3i6PAHAuMKt1P8N5oW",
           "carColorsLayer": "wCwclAw26FA9jRlfslCXGw",
-          "_hash": "Zh04_wcFeU6i7aVQ52jnQt"
+          "_hash": "VjTyZ6MM9USl0crdy0oM1r"
         },
-        "_hash": "WVkwpzY_qo6dchyDkJI8tn"
+        "_hash": "dUQAuwQ_5Vxdc9ZPr_upov"
       }
     ],
     "tableCfg": "5tcrs9FhrPleZv_JXzetfy",
-    "_hash": "A9lfkgppHIyvi9X2lsf8xX"
+    "_hash": "cIi6jCZ0wkKKkoTcEHpHf3"
   },
   "colorSliceId": {
     "_type": "sliceIds",
@@ -1598,5 +1596,5 @@
     ],
     "_hash": "TFaaCNXtwLRD1653GcnY_6"
   },
-  "_hash": "ecZkzw0gQtTlMhOiXLYdHa"
+  "_hash": "b-ImMTd71A8RTSdg3QvCXC"
 }
