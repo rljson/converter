@@ -50,10 +50,10 @@ pnpm update --latest
 
 ## Develop & debug
 
-- [Debug & debug with Vscode](./debug-with-vscode.md)
-- [Update Goldens](./update-goldens.md)
-- [Rename classes](./rename-classes.md)
-- [Super hero tricks](./super-hero.md)
+- [Debug & debug with Vscode](debug-with-vscode.md)
+- [Update Goldens](update-goldens.md)
+- [Rename classes](rename-classes.md)
+- [Super hero tricks](../super-hero.md)
 
 ## Commit
 
@@ -101,7 +101,7 @@ gh pr create --base main --title "fix error when the node path does not exist" -
 
 ## Code review
 
-You need a code review? Read [code-review.md](./code-review.md).
+You need a code review? Read [code-review.md](code-review.md).
 
 If you don't require a code review, auto merge the branch
 
