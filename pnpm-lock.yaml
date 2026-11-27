@@ -13,13 +13,13 @@ importers:
   .:
     dependencies:
       '@rljson/hash':
-        specifier: link:.gg\ts_links\@rljson\hash
+        specifier: link:.gg/ts_links/@rljson/hash
         version: link:.gg/ts_links/@rljson/hash
       '@rljson/json':
         specifier: 0.0.23
         version: 0.0.23
       '@rljson/rljson':
-        specifier: link:.gg\ts_links\@rljson\rljson
+        specifier: link:.gg/ts_links/@rljson/rljson
         version: link:.gg/ts_links/@rljson/rljson
       object-traversal:
         specifier: ^1.0.1
