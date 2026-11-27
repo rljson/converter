@@ -15,18 +15,18 @@ found in the LICENSE file in the root of this package.
 
 ## Prepare
 
-Read [prepare.md](doc/prepare.md)
+Read [prepare.md](doc/en/prepare.md)
 
 <!-- ........................................................................-->
 
 ## Develop
 
-Read [develop.md](doc/develop.md)
+Read [develop.md](doc/en/develop.md)
 
 ## Administrate
 
-Read [create-new-repo.md](doc/create-new-repo.md)
+Read [create-new-repo.md](doc/en/create-new-repo.md)
 
 ## Fast Coding
 
-Read [fast-coding-guide.md](doc/fast-coding-guide.md)
+Read [fast-coding-guide.md](doc/en/fast-coding-guide.md)
